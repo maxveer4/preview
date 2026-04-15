@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jouw website wordt gebouwd... | gowebbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --accent: #2563EB;
+      --accent-dim: rgba(37, 99, 235, 0.15);
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --border: rgba(255,255,255,0.08);
+      --check: #22c55e;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── Layout ── */
+    .page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 24px 32px;
+    }
+
+    /* ── Header ── */
+    header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .logo span { color: var(--accent); }
+
+    .tagline {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Center ── */
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* ── Ring ── */
+    .ring-wrap {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .ring-wrap svg {
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 8;
+    }
+
+    .ring-fill {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 565.49; /* 2π × 90 */
+      stroke-dashoffset: 565.49;
+      transition: stroke-dashoffset 1s linear;
+      filter: drop-shadow(0 0 6px rgba(37,99,235,0.6));
+    }
+
+    .ring-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .timer {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .timer-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Status ── */
+    .status-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .status-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      min-height: 1.4em;
+      transition: opacity 0.4s;
+      text-align: center;
+    }
+
+    /* ── Steps ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
+      transition: color 0.5s;
+    }
+
+    .step.done { color: var(--text); }
+
+    .step-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.4s, border-color 0.4s;
+      font-size: 0.65rem;
+    }
+
+    .step.done .step-icon {
+      background: var(--check);
+      border-color: var(--check);
+    }
+
+    .checkmark {
+      opacity: 0;
+      color: #fff;
+      font-weight: 700;
+      transition: opacity 0.3s 0.1s;
+    }
+
+    .step.done .checkmark { opacity: 1; }
+
+    /* ── CTA button ── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.5s, transform 0.5s, background 0.2s;
+      margin-top: 4px;
+    }
+
+    .cta-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .cta-btn:hover { background: #1d4ed8; }
+
+    /* ── Footer ── */
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .url-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #93c5fd;
+      letter-spacing: 0.01em;
+    }
+
+    .url-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── Fade-in ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page > * { animation: fadeUp 0.6s ease both; }
+    header    { animation-delay: 0.0s; }
+    .center   { animation-delay: 0.15s; }
+    footer    { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">go<span>webbo</span></div>
+    <div class="tagline">Jouw website wordt gebouwd...</div>
+  </header>
+
+  <!-- Center -->
+  <div class="center">
+
+    <!-- Circular ring -->
+    <div class="ring-wrap">
+      <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle class="ring-bg" cx="100" cy="100" r="90" />
+        <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="90" />
+      </svg>
+      <div class="ring-inner">
+        <div class="timer" id="timer">3:00</div>
+        <div class="timer-label">resterend</div>
+      </div>
+    </div>
+
+    <!-- Status + steps -->
+    <div class="status-wrap">
+      <div class="status-text" id="statusText">✦ Teksten schrijven op basis van jouw gegevens...</div>
+
+      <div class="steps" id="steps">
+        <div class="step done" id="step-0">
+          <div class="step-icon"><span class="checkmark">✓</span></div>
+          <span>Gegevens ontvangen</span>
+        </div>
+        <div class="step" id="step-1">
+          <div class="step-icon"><span class="checkmark">✓</span></div>
+          <span>Teksten gegenereerd</span>
+        </div>
+        <div class="step" id="step-2">
+          <div class="step-icon"><span class="checkmark">✓</span></div>
+          <span>Pagina opgebouwd</span>
+        </div>
+        <div class="step" id="step-3">
+          <div class="step-icon"><span class="checkmark">✓</span></div>
+          <span>Foto's verwerkt</span>
+        </div>
+        <div class="step" id="step-4">
+          <div class="step-icon"><span class="checkmark">✓</span></div>
+          <span>Website gepubliceerd</span>
+        </div>
+      </div>
+
+      <a class="cta-btn" id="ctaBtn" href="#">
+        Ga nu naar mijn website <span>→</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-label">Jouw website wordt straks live op:</div>
+    <div class="url-pill">
+      <div class="url-dot"></div>
+      <span id="previewUrl">https://preview.gowebbo.io/jouw-website.html</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const TOTAL = 180;
+  const CIRCUMFERENCE = 2 * Math.PI * 90; // 565.49
+
+  // Read site param
+  const params = new URLSearchParams(window.location.search);
+  const site = params.get('site') || 'jouw-website';
+  const targetUrl = `https://preview.gowebbo.io/${site}.html`;
+
+  // Set URL display and CTA href
+  document.getElementById('previewUrl').textContent = targetUrl;
+  document.getElementById('ctaBtn').href = targetUrl;
+
+  // Status messages keyed by the second they activate
+  const statusMessages = [
+    { at: 0,   text: '✦ Teksten schrijven op basis van jouw gegevens...' },
+    { at: 30,  text: '✦ Pagina structuur opbouwen...' },
+    { at: 60,  text: '✦ Foto\'s verwerken en optimaliseren...' },
+    { at: 100, text: '✦ Website publiceren op jouw URL...' },
+    { at: 150, text: '✦ Laatste controles uitvoeren...' },
+  ];
+
+  // Steps: { id, at } — 'at' is the elapsed second when it checks off
+  const stepTriggers = [
+    { id: 'step-0', at: 0   },
+    { id: 'step-1', at: 30  },
+    { id: 'step-2', at: 60  },
+    { id: 'step-3', at: 100 },
+    { id: 'step-4', at: 150 },
+  ];
+
+  const ringFill    = document.getElementById('ringFill');
+  const timerEl     = document.getElementById('timer');
+  const statusEl    = document.getElementById('statusText');
+  const ctaBtn      = document.getElementById('ctaBtn');
+
+  ringFill.style.strokeDasharray  = CIRCUMFERENCE;
+  ringFill.style.strokeDashoffset = CIRCUMFERENCE;
+
+  const startTime = Date.now();
+  let ctaShown = false;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const elapsed = Math.min((Date.now() - startTime) / 1000, TOTAL);
+    const remaining = TOTAL - elapsed;
+
+    // Timer display
+    const mins = Math.floor(remaining / 60);
+    const secs = Math.floor(remaining % 60);
+    timerEl.textContent = `${mins}:${pad(secs)}`;
+
+    // Ring fill
+    const offset = CIRCUMFERENCE * (1 - elapsed / TOTAL);
+    ringFill.style.strokeDashoffset = offset;
+
+    // Status text — pick the last message whose 'at' <= elapsed
+    let activeMsg = statusMessages[0].text;
+    for (const { at, text } of statusMessages) {
+      if (elapsed >= at) activeMsg = text;
+    }
+    if (statusEl.textContent !== activeMsg) {
+      statusEl.style.opacity = '0';
+      setTimeout(() => {
+        statusEl.textContent = activeMsg;
+        statusEl.style.opacity = '1';
+      }, 200);
+    }
+
+    // Step checkmarks
+    for (const { id, at } of stepTriggers) {
+      if (elapsed >= at) {
+        document.getElementById(id).classList.add('done');
+      }
+    }
+
+    // CTA button appears at 150s
+    if (elapsed >= 150 && !ctaShown) {
+      ctaShown = true;
+      ctaBtn.classList.add('visible');
+    }
+
+    // Redirect at 180s
+    if (elapsed >= TOTAL) {
+      window.location.href = targetUrl;
+      return;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>
