@@ -11,12 +11,12 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d0d;
+      --bg: #F8F8F6;
       --accent: #2563EB;
       --accent-dim: rgba(37, 99, 235, 0.15);
-      --text: #f1f5f9;
-      --muted: #64748b;
-      --border: rgba(255,255,255,0.08);
+      --text: #1a1a1a;
+      --muted: #666;
+      --border: rgba(0,0,0,0.12);
       --check: #22c55e;
     }
 
@@ -79,8 +79,13 @@
       height: 200px;
     }
 
+    @keyframes spin-arc {
+      to { transform: rotate(360deg); }
+    }
+
     .ring-wrap svg {
-      transform: rotate(-90deg);
+      animation: spin-arc 1.4s linear infinite;
+      transform-origin: center;
     }
 
     .ring-bg {
@@ -94,9 +99,8 @@
       stroke: var(--accent);
       stroke-width: 8;
       stroke-linecap: round;
-      stroke-dasharray: 565.49; /* 2π × 90 */
-      stroke-dashoffset: 565.49;
-      transition: stroke-dashoffset 1s linear;
+      stroke-dasharray: 145 421;
+      stroke-dashoffset: 0;
       filter: drop-shadow(0 0 6px rgba(37,99,235,0.6));
     }
 
@@ -243,7 +247,7 @@
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 500;
-      color: #93c5fd;
+      color: var(--accent);
       letter-spacing: 0.01em;
     }
 
@@ -291,10 +295,7 @@
         <circle class="ring-bg" cx="100" cy="100" r="90" />
         <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="90" />
       </svg>
-      <div class="ring-inner">
-        <div class="timer" id="timer">3:00</div>
-        <div class="timer-label">resterend</div>
-      </div>
+      <div class="ring-inner"></div>
     </div>
 
     <!-- Status + steps -->
@@ -343,9 +344,6 @@
 </div>
 
 <script>
-  const TOTAL = 180;
-  const CIRCUMFERENCE = 2 * Math.PI * 90; // 565.49
-
   // Read site param
   const params = new URLSearchParams(window.location.search);
   const site = params.get('site') || 'jouw-website';
@@ -355,86 +353,43 @@
   document.getElementById('previewUrl').textContent = targetUrl;
   document.getElementById('ctaBtn').href = targetUrl;
 
-  // Status messages keyed by the second they activate
-  const statusMessages = [
-    { at: 0,   text: '✦ Teksten schrijven op basis van jouw gegevens...' },
-    { at: 30,  text: '✦ Pagina structuur opbouwen...' },
-    { at: 60,  text: '✦ Foto\'s verwerken en optimaliseren...' },
-    { at: 100, text: '✦ Website publiceren op jouw URL...' },
-    { at: 150, text: '✦ Laatste controles uitvoeren...' },
-  ];
+  const statusEl = document.getElementById('statusText');
+  const ctaBtn   = document.getElementById('ctaBtn');
 
-  // Steps: { id, at } — 'at' is the elapsed second when it checks off
-  const stepTriggers = [
-    { id: 'step-0', at: 0   },
-    { id: 'step-1', at: 30  },
-    { id: 'step-2', at: 60  },
-    { id: 'step-3', at: 100 },
-    { id: 'step-4', at: 150 },
-  ];
-
-  const ringFill    = document.getElementById('ringFill');
-  const timerEl     = document.getElementById('timer');
-  const statusEl    = document.getElementById('statusText');
-  const ctaBtn      = document.getElementById('ctaBtn');
-
-  ringFill.style.strokeDasharray  = CIRCUMFERENCE;
-  ringFill.style.strokeDashoffset = CIRCUMFERENCE;
-
+  const MAX_MS   = 3 * 60 * 1000; // 3 minuten
   const startTime = Date.now();
-  let ctaShown = false;
+  let pollDone   = false;
 
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function tick() {
-    const elapsed = Math.min((Date.now() - startTime) / 1000, TOTAL);
-    const remaining = TOTAL - elapsed;
-
-    // Timer display
-    const mins = Math.floor(remaining / 60);
-    const secs = Math.floor(remaining % 60);
-    timerEl.textContent = `${mins}:${pad(secs)}`;
-
-    // Ring fill
-    const offset = CIRCUMFERENCE * (1 - elapsed / TOTAL);
-    ringFill.style.strokeDashoffset = offset;
-
-    // Status text — pick the last message whose 'at' <= elapsed
-    let activeMsg = statusMessages[0].text;
-    for (const { at, text } of statusMessages) {
-      if (elapsed >= at) activeMsg = text;
-    }
-    if (statusEl.textContent !== activeMsg) {
-      statusEl.style.opacity = '0';
-      setTimeout(() => {
-        statusEl.textContent = activeMsg;
-        statusEl.style.opacity = '1';
-      }, 200);
-    }
-
-    // Step checkmarks
-    for (const { id, at } of stepTriggers) {
-      if (elapsed >= at) {
-        document.getElementById(id).classList.add('done');
-      }
-    }
-
-    // CTA button appears at 150s
-    if (elapsed >= 150 && !ctaShown) {
-      ctaShown = true;
-      ctaBtn.classList.add('visible');
-    }
-
-    // Redirect at 180s
-    if (elapsed >= TOTAL) {
-      window.location.href = targetUrl;
-      return;
-    }
-
-    requestAnimationFrame(tick);
+  function mark(id) {
+    document.getElementById(id)?.classList.add('done');
   }
 
-  requestAnimationFrame(tick);
+  // Stappen 0-2 animeren in tijdens polling
+  mark('step-0');
+  setTimeout(() => mark('step-1'), 8000);
+  setTimeout(() => mark('step-2'), 20000);
+
+  async function poll() {
+    if (pollDone) return;
+    if (Date.now() - startTime > MAX_MS) {
+      statusEl.textContent = 'Het duurt langer dan verwacht. Probeer de link hieronder handmatig te openen.';
+      statusEl.style.color = '#ef4444';
+      return;
+    }
+    try {
+      const res = await fetch(targetUrl, { method: 'HEAD', cache: 'no-store' });
+      if (res.ok) {
+        pollDone = true;
+        mark('step-3');
+        mark('step-4');
+        setTimeout(() => { window.location.href = targetUrl; }, 1500);
+        return;
+      }
+    } catch (_) {}
+    setTimeout(poll, 3000);
+  }
+
+  setTimeout(poll, 3000);
 </script>
 </body>
 </html>
