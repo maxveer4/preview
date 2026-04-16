@@ -377,13 +377,16 @@
       return;
     }
     try {
-      const res = await fetch(targetUrl, { method: 'HEAD', cache: 'no-store' });
+      const res = await fetch(targetUrl, { cache: 'no-store' });
       if (res.ok) {
-        pollDone = true;
-        mark('step-3');
-        mark('step-4');
-        setTimeout(() => { window.location.href = targetUrl; }, 1500);
-        return;
+        const text = await res.text();
+        if (text.includes('<!DOCTYPE html>') && !text.includes('NOT_FOUND')) {
+          pollDone = true;
+          mark('step-3');
+          mark('step-4');
+          setTimeout(() => { window.location.href = targetUrl; }, 1500);
+          return;
+        }
       }
     } catch (_) {}
     setTimeout(poll, 1000);
