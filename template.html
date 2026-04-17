@@ -608,5 +608,26 @@ function scrollReviews(dir) {
 renderReviews();
 window.addEventListener('resize', renderReviews);
 </script>
+
+<script>
+(function(){
+  const slug = window.location.pathname.replace(/^\//, '').replace(/\.html$/, '');
+  const btn = document.createElement('a');
+  btn.href = '/editor/' + slug + '.html';
+  btn.id = 'editBtn';
+  btn.innerHTML = '&#9998; Aanpassen';
+  btn.style.cssText = [
+    'position:fixed', 'bottom:24px', 'right:24px', 'z-index:9999',
+    'background:#2563eb', 'color:#fff', 'padding:11px 20px',
+    'border-radius:999px', 'text-decoration:none',
+    'font-family:system-ui,sans-serif', 'font-size:14px', 'font-weight:600',
+    'box-shadow:0 4px 14px rgba(37,99,235,.4)', 'transition:opacity .2s',
+    'opacity:.92'
+  ].join(';');
+  btn.onmouseover = function(){ btn.style.opacity = '1'; };
+  btn.onmouseout  = function(){ btn.style.opacity = '.92'; };
+  document.body.appendChild(btn);
+})();
+</script>
 </body>
 </html>

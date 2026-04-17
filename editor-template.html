@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor — {{SLUG}} | gowebbo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f1f5f9;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #0f172a;
+      --muted: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    .app-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .header-logo {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -.02em;
+    }
+    .header-logo span { color: var(--muted); font-weight: 500; }
+    .header-slug {
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .header-preview-link {
+      font-size: 12px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .header-preview-link:hover { text-decoration: underline; }
+
+    /* ── LAYOUT ── */
+    .app-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── PANEL ── */
+    .edit-panel {
+      width: 400px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      flex-shrink: 0;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      padding: 12px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      user-select: none;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ── FORM ── */
+    .tab-content { display: none; flex: 1; overflow-y: auto; padding: 20px; }
+    .tab-content.active { display: block; }
+
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 5px;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="url"],
+    .field textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color .15s;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.08);
+    }
+    .field textarea { min-height: 70px; resize: vertical; }
+    .field-hint { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .section-divider {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin: 20px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-divider:first-child { margin-top: 0; }
+
+    /* Color picker */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .color-row input[type="color"] {
+      width: 42px;
+      height: 36px;
+      padding: 2px;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      cursor: pointer;
+      flex-shrink: 0;
+      background: var(--surface);
+    }
+    .color-row input[type="text"] {
+      flex: 1;
+    }
+
+    /* ── FOOTER PANEL ── */
+    .panel-footer {
+      border-top: 1px solid var(--border);
+      padding: 14px 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-save {
+      width: 100%;
+      padding: 11px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-save:hover { background: var(--primary-hover); }
+    .btn-save:disabled { opacity: .5; cursor: not-allowed; }
+
+    .status-msg {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      min-height: 16px;
+      transition: color .2s;
+    }
+    .status-msg.success { color: var(--success); font-weight: 600; }
+    .status-msg.error   { color: var(--danger);  font-weight: 600; }
+
+    /* ── PREVIEW PANE ── */
+    .preview-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .preview-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .preview-url {
+      flex: 1;
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .btn-refresh {
+      padding: 6px 14px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .btn-refresh:hover { border-color: var(--primary); color: var(--primary); }
+
+    .preview-iframe-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .preview-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      body { overflow: auto; }
+      .app-body { flex-direction: column; overflow: visible; }
+      .edit-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); overflow: visible; }
+      .tab-content { max-height: none; }
+      .preview-pane { height: 60vh; }
+      .preview-pane .preview-iframe-wrap { height: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="app-header">
+  <div class="header-logo">go<span>webbo</span></div>
+  <div class="header-slug">{{SLUG}}</div>
+  <a class="header-preview-link" href="https://preview.gowebbo.io/{{SLUG}}.html" target="_blank">↗ Bekijk pagina</a>
+</header>
+
+<div class="app-body">
+
+  <!-- Edit panel -->
+  <div class="edit-panel">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-tab="kleuren">🎨 Kleuren</div>
+      <div class="tab" data-tab="teksten">📝 Teksten</div>
+      <div class="tab" data-tab="fotos">🖼️ Foto's</div>
+      <div class="tab" data-tab="contact">📞 Contact</div>
+      <div class="tab" data-tab="diensten">🔧 Diensten</div>
+    </div>
+
+    <!-- Tab: Kleuren -->
+    <div class="tab-content active" id="tab-kleuren">
+      <div class="section-divider">Primaire kleur</div>
+      <div class="field">
+        <label>Hoofdkleur</label>
+        <div class="color-row">
+          <input type="color" id="color-picker" value="#2563eb">
+          <input type="text" id="kleur_primary" name="kleur_primary" placeholder="bijv. hsl(213,76%,52%)">
+        </div>
+        <p class="field-hint">Gebruik een HSL waarde voor het beste resultaat, bijv. hsl(213,76%,52%)</p>
+      </div>
+    </div>
+
+    <!-- Tab: Teksten -->
+    <div class="tab-content" id="tab-teksten">
+      <div class="section-divider">Hero sectie</div>
+      <div class="field">
+        <label>Hero titel</label>
+        <input type="text" id="hero_title" name="hero_title" placeholder="Uw hoofdtitel">
+      </div>
+      <div class="field">
+        <label>Hero beschrijving</label>
+        <textarea id="hero_desc" name="hero_desc" placeholder="Korte beschrijving onder de titel"></textarea>
+      </div>
+      <div class="section-divider">SEO</div>
+      <div class="field">
+        <label>SEO paginatitel</label>
+        <input type="text" id="seo_title" name="seo_title" placeholder="Bedrijfsnaam | Dienst | Stad">
+        <p class="field-hint">Wordt getoond in Google (max. 60 tekens)</p>
+      </div>
+      <div class="field">
+        <label>SEO beschrijving</label>
+        <textarea id="seo_description" name="seo_description" placeholder="Beschrijving voor zoekmachines (max. 155 tekens)"></textarea>
+      </div>
+    </div>
+
+    <!-- Tab: Foto's -->
+    <div class="tab-content" id="tab-fotos">
+      <div class="section-divider">Afbeeldingen</div>
+      <div class="field">
+        <label>Logo URL</label>
+        <input type="url" id="logo_url" name="logo_url" placeholder="https://...">
+        <p class="field-hint">Directe link naar uw logo (PNG of SVG aanbevolen)</p>
+      </div>
+      <div class="field">
+        <label>Hero foto URL</label>
+        <input type="url" id="foto_hero" name="foto_hero" placeholder="https://...">
+        <p class="field-hint">Grote achtergrond bovenaan de pagina</p>
+      </div>
+      <div class="field">
+        <label>Foto naast tekst URL</label>
+        <input type="url" id="foto_waarom" name="foto_waarom" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>USP sectie achtergrond URL</label>
+        <input type="url" id="foto_usp" name="foto_usp" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>Werkwijze foto URL</label>
+        <input type="url" id="foto_werkwijze" name="foto_werkwijze" placeholder="https://...">
+      </div>
+    </div>
+
+    <!-- Tab: Contact -->
+    <div class="tab-content" id="tab-contact">
+      <div class="section-divider">Bedrijfsgegevens</div>
+      <div class="field">
+        <label>Bedrijfsnaam</label>
+        <input type="text" id="bedrijfsnaam" name="bedrijfsnaam" placeholder="Uw bedrijfsnaam">
+      </div>
+      <div class="section-divider">Telefoon</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Telefoonnummer (link)</label>
+          <input type="text" id="telefoon_href" name="telefoon_href" placeholder="0612345678">
+          <p class="field-hint">Alleen cijfers, geen spaties</p>
+        </div>
+        <div class="field">
+          <label>Telefoon (weergave)</label>
+          <input type="text" id="telefoon_display" name="telefoon_display" placeholder="06 12 34 56 78">
+        </div>
+      </div>
+      <div class="section-divider">Contact</div>
+      <div class="field">
+        <label>E-mailadres</label>
+        <input type="email" id="email" name="email" placeholder="info@bedrijf.nl">
+      </div>
+      <div class="section-divider">Adres</div>
+      <div class="field">
+        <label>Straat + huisnummer</label>
+        <input type="text" id="adres_straat" name="adres_straat" placeholder="Voorbeeldstraat 12">
+      </div>
+      <div class="field">
+        <label>Postcode + stad</label>
+        <input type="text" id="adres_postcode_stad" name="adres_postcode_stad" placeholder="1234 AB Amsterdam">
+      </div>
+      <div class="field">
+        <label>KvK-nummer</label>
+        <input type="text" id="kvk" name="kvk" placeholder="12345678">
+      </div>
+    </div>
+
+    <!-- Tab: Diensten -->
+    <div class="tab-content" id="tab-diensten">
+      <div class="section-divider">Diensten (menu & footer)</div>
+      <div class="field">
+        <label>Dienst 1</label>
+        <input type="text" id="dienst_1" name="dienst_1" placeholder="bijv. Airco installatie">
+      </div>
+      <div class="field">
+        <label>Dienst 2</label>
+        <input type="text" id="dienst_2" name="dienst_2" placeholder="bijv. Warmtepomp">
+      </div>
+      <div class="field">
+        <label>Dienst 3</label>
+        <input type="text" id="dienst_3" name="dienst_3" placeholder="bijv. Onderhoud & service">
+      </div>
+      <div class="field">
+        <label>Dienst 4</label>
+        <input type="text" id="dienst_4" name="dienst_4" placeholder="bijv. Spoedservice">
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="panel-footer">
+      <button class="btn-save" id="saveBtn" onclick="saveChanges()">Wijzigingen opslaan</button>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+  </div>
+
+  <!-- Preview pane -->
+  <div class="preview-pane">
+    <div class="preview-bar">
+      <div class="preview-url" id="previewUrlBar">https://preview.gowebbo.io/{{SLUG}}.html</div>
+      <button class="btn-refresh" onclick="refreshPreview()">🔄 Vernieuwen</button>
+    </div>
+    <div class="preview-iframe-wrap">
+      <iframe id="previewFrame" src="https://preview.gowebbo.io/{{SLUG}}.html" title="Preview"></iframe>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const SLUG        = '{{SLUG}}';
+  const WEBHOOK_URL = 'JOUW_N8N_UPDATE_WEBHOOK_URL';
+  const PREVIEW_URL = 'https://preview.gowebbo.io/' + SLUG + '.html';
+
+  // ── Tabs ──
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const id = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    });
+  });
+
+  // ── Kleurpicker sync ──
+  const colorPicker = document.getElementById('color-picker');
+  const colorText   = document.getElementById('kleur_primary');
+
+  colorPicker.addEventListener('input', () => {
+    const hex = colorPicker.value;
+    colorText.value = hexToHsl(hex);
+  });
+
+  function hexToHsl(hex) {
+    let r = parseInt(hex.slice(1,3),16)/255;
+    let g = parseInt(hex.slice(3,5),16)/255;
+    let b = parseInt(hex.slice(5,7),16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let h, s, l = (max+min)/2;
+    if (max === min) { h = s = 0; }
+    else {
+      const d = max - min;
+      s = l > .5 ? d/(2-max-min) : d/(max+min);
+      switch(max){
+        case r: h = ((g-b)/d + (g<b?6:0))/6; break;
+        case g: h = ((b-r)/d + 2)/6; break;
+        case b: h = ((r-g)/d + 4)/6; break;
+      }
+    }
+    return `hsl(${Math.round(h*360)},${Math.round(s*100)}%,${Math.round(l*100)}%)`;
+  }
+
+  // ── Preview ──
+  function refreshPreview() {
+    const frame = document.getElementById('previewFrame');
+    frame.src = PREVIEW_URL + '?t=' + Date.now();
+  }
+
+  // ── Opslaan ──
+  function saveChanges() {
+    const btn    = document.getElementById('saveBtn');
+    const status = document.getElementById('statusMsg');
+
+    // Verzamel alle niet-lege velden
+    const fields = [
+      'kleur_primary','hero_title','hero_desc','seo_title','seo_description',
+      'logo_url','foto_hero','foto_waarom','foto_usp','foto_werkwijze',
+      'bedrijfsnaam','telefoon_href','telefoon_display','email',
+      'adres_straat','adres_postcode_stad','kvk',
+      'dienst_1','dienst_2','dienst_3','dienst_4'
+    ];
+
+    const payload = { slug: SLUG };
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.value.trim()) payload[id] = el.value.trim();
+    });
+
+    if (Object.keys(payload).length === 1) {
+      status.textContent = 'Vul eerst minimaal één veld in.';
+      status.className   = 'status-msg error';
+      return;
+    }
+
+    btn.disabled = true;
+    status.textContent = 'Wijzigingen worden verwerkt...';
+    status.className   = 'status-msg';
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Webhook fout ' + res.status);
+
+      // 60 seconden aftellen
+      let secs = 60;
+      status.textContent = `Uw wijzigingen worden verwerkt, even geduld (nog ${secs}s)...`;
+
+      const interval = setInterval(() => {
+        secs--;
+        if (secs > 0) {
+          status.textContent = `Uw wijzigingen worden verwerkt, even geduld (nog ${secs}s)...`;
+        } else {
+          clearInterval(interval);
+          status.textContent = 'Uw wijzigingen zijn live! Klik op 🔄 Vernieuwen om ze te bekijken.';
+          status.className   = 'status-msg success';
+          btn.disabled = false;
+        }
+      }, 1000);
+    })
+    .catch(() => {
+      status.textContent = 'Er is iets misgegaan, probeer het opnieuw.';
+      status.className   = 'status-msg error';
+      btn.disabled = false;
+    });
+  }
+</script>
+</body>
+</html>
