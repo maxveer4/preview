@@ -230,10 +230,10 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="#" class="navbar-logo"><img id="logoImg" src="{{logo_url}}" alt="{{BEDRIJFSNAAM}} logo"></a>
+    <a href="/{{SLUG}}.html" class="navbar-logo"><img id="logoImg" src="{{LOGO_URL}}" alt="{{BEDRIJFSNAAM}} logo"></a>
     <nav class="navbar-nav">
-      <a href="#">Home</a>
-      <a href="#">Over</a>
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-over-ons.html">Over</a>
       <div class="dropdown">
         <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
         <div class="dropdown-menu">
@@ -244,7 +244,7 @@ footer ul li a:hover { color: var(--primary); }
         </div>
       </div>
       <a href="#">Werkgebied</a>
-      <a href="#">Contact</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
     <button class="btn-primary" onclick="openModal('offerte')">Offerte aanvragen</button>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
@@ -257,14 +257,14 @@ footer ul li a:hover { color: var(--primary); }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
     <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_1}}</a>
     <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_2}}</a>
     <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_3}}</a>
     <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_4}}</a>
     <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="openModal('offerte');document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</button></div>
   </div>
 </div>
@@ -474,9 +474,9 @@ footer ul li a:hover { color: var(--primary); }
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="#">Over ons</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Offerte aanvragen</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
