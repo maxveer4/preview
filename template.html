@@ -234,16 +234,7 @@ footer ul li a:hover { color: var(--primary); }
     <nav class="navbar-nav">
       <a href="/{{SLUG}}.html">Home</a>
       <a href="/{{SLUG}}-over-ons.html">Over</a>
-      <div class="dropdown">
-        <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
-        <div class="dropdown-menu">
-          <a href="/{{SLUG}}-diensten.html">{{DIENST_1}}</a>
-          <a href="/{{SLUG}}-diensten.html">{{DIENST_2}}</a>
-          <a href="/{{SLUG}}-diensten.html">{{DIENST_3}}</a>
-          <a href="/{{SLUG}}-diensten.html">{{DIENST_4}}</a>
-        </div>
-      </div>
-      <a href="#">Werkgebied</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
       <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
     <button class="btn-primary" onclick="openModal('offerte')">Offerte aanvragen</button>
@@ -259,11 +250,7 @@ footer ul li a:hover { color: var(--primary); }
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
     <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_1}}</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_2}}</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_3}}</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">{{DIENST_4}}</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
     <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="openModal('offerte');document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</button></div>
   </div>
