@@ -197,65 +197,7 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Diensten cards -->
 <section class="diensten-section">
   <div class="container">
-    <div class="diensten-grid">
-
-      <article class="dienst-card">
-        <div class="dienst-card-img-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div class="dienst-card-body">
-          <h2>{{DIENST_1}}</h2>
-          <p>{{DIENST_1_DESC}}</p>
-          <a href="/{{SLUG}}-contact.html" class="dienst-card-btn">
-            Offerte aanvragen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="dienst-card">
-        <div class="dienst-card-img-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg>
-        </div>
-        <div class="dienst-card-body">
-          <h2>{{DIENST_2}}</h2>
-          <p>{{DIENST_2_DESC}}</p>
-          <a href="/{{SLUG}}-contact.html" class="dienst-card-btn">
-            Offerte aanvragen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="dienst-card">
-        <div class="dienst-card-img-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="dienst-card-body">
-          <h2>{{DIENST_3}}</h2>
-          <p>{{DIENST_3_DESC}}</p>
-          <a href="/{{SLUG}}-contact.html" class="dienst-card-btn">
-            Offerte aanvragen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="dienst-card">
-        <div class="dienst-card-img-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </div>
-        <div class="dienst-card-body">
-          <h2>{{DIENST_4}}</h2>
-          <p>{{DIENST_4_DESC}}</p>
-          <a href="/{{SLUG}}-contact.html" class="dienst-card-btn">
-            Offerte aanvragen
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-          </a>
-        </div>
-      </article>
-
-    </div>
+    <div class="diensten-grid" id="dienstenGrid"></div>
   </div>
 </section>
 
@@ -359,10 +301,43 @@ footer ul li a:hover { color: var(--primary); }
 </footer>
 
 <script>
-const slug = window.location.pathname.split('/').pop().replace('.html','').replace(/-over-ons$|-contact$|-diensten$/, '');
-document.querySelectorAll('a[href*="{{SLUG}}"]').forEach(a => {
-  a.href = a.href.replace(/\{\{SLUG\}\}/g, slug);
-});
+(function(){
+  var slug = window.location.pathname.split('/').pop().replace('.html','').replace(/-over-ons$|-contact$|-diensten$/, '');
+  document.querySelectorAll('a[href*="{{SLUG}}"]').forEach(function(a){
+    a.href = a.href.replace(/\{\{SLUG\}\}/g, slug);
+  });
+
+  var icons = [
+    '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
+    '<path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/>',
+    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>',
+    '<circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>',
+    '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'
+  ];
+
+  var diensten = {{DIENSTEN_JSON}};
+  var grid = document.getElementById('dienstenGrid');
+
+  diensten.forEach(function(d, i){
+    var icon = icons[i % icons.length];
+    var card = document.createElement('article');
+    card.className = 'dienst-card';
+    card.innerHTML =
+      '<div class="dienst-card-img-placeholder">' +
+        '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5">' + icon + '</svg>' +
+      '</div>' +
+      '<div class="dienst-card-body">' +
+        '<h2>' + d.naam + '</h2>' +
+        '<p>' + d.desc + '</p>' +
+        '<a href="/' + slug + '-contact.html" class="dienst-card-btn">' +
+          'Offerte aanvragen ' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>' +
+        '</a>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+})();
 </script>
 </body>
 </html>
