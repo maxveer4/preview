@@ -237,7 +237,7 @@ footer ul li a:hover { color: var(--primary); }
       <a href="/{{SLUG}}-diensten.html">Diensten</a>
       <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
-    <button class="btn-primary" onclick="openModal('offerte')">Offerte aanvragen</button>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -252,7 +252,7 @@ footer ul li a:hover { color: var(--primary); }
     <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
     <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
     <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="openModal('offerte');document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</button></div>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
 
@@ -282,8 +282,8 @@ footer ul li a:hover { color: var(--primary); }
         </li>
       </ul>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="openModal('advies')">Plan een gratis adviesgesprek</button>
-        <a href="#diensten" class="btn-outline">Bekijk diensten</a>
+        <a href="/{{SLUG}}-contact.html" class="btn-primary">Plan een gratis adviesgesprek</a>
+        <a href="/{{SLUG}}-diensten.html" class="btn-outline">Bekijk diensten</a>
       </div>
     </div>
     <div class="hero-form-col">
@@ -328,7 +328,7 @@ footer ul li a:hover { color: var(--primary); }
         <div>
           <h2>{{SERVICE_TITLE}}</h2>
           <p>{{SERVICE_DESC}}</p>
-          <button class="btn-primary" onclick="openModal('offerte')">Vraag een offerte aan</button>
+          <a href="/{{SLUG}}-contact.html" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
     </div>
@@ -391,7 +391,7 @@ footer ul li a:hover { color: var(--primary); }
         <h2>{{WERK_TITLE}}</h2>
         <p class="work-desc">{{WERK_DESC_1}}</p>
         <p class="work-desc">{{WERK_DESC_2}}</p>
-        <button class="btn-primary" onclick="openModal('advies')">Advies nodig?</button>
+        <a href="/{{SLUG}}-contact.html" class="btn-primary">Advies nodig?</a>
         <img id="werkwijzeImg" src="{{FOTO_WERKWIJZE}}" alt="{{WERK_ALT}}" class="work-img">
         <div class="work-steps">
           <h3>{{STAPPEN_TITLE}}</h3>
@@ -417,7 +417,7 @@ footer ul li a:hover { color: var(--primary); }
             <h4>Advies nodig?</h4>
             <p>Vraag een gratis adviesgesprek aan en ontvang direct <strong style="color:#fff">persoonlijk advies</strong>.</p>
           </div>
-          <button class="btn-primary" onclick="openModal('advies')">Gratis adviesgesprek aanvragen</button>
+          <a href="/{{SLUG}}-contact.html" class="btn-primary">Gratis adviesgesprek aanvragen</a>
         </div>
         <div class="work-vakmanschap">
           <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
