@@ -1,0 +1,53 @@
+{
+  "dakdekker": {
+    "hero": [
+      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.png",
+      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-2.png"
+    ],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "loodgieter": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "elektricien": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "aannemer": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "installateur": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "schilder": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "timmerman": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  },
+  "glazenwasser": {
+    "hero": [],
+    "waarom": [],
+    "werkwijze": [],
+    "diensten": []
+  }
+}
