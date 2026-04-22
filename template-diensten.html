@@ -74,8 +74,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Diensten cards */
 .diensten-section { padding: 5rem 0; }
 .diensten-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-@media(min-width:640px){ .diensten-grid { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px){ .diensten-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:640px){
+  .diensten-grid.count-3 { grid-template-columns: repeat(3, 1fr); }
+  .diensten-grid.count-4 { grid-template-columns: repeat(2, 1fr); }
+  .diensten-grid.count-6 { grid-template-columns: repeat(3, 1fr); }
+  .diensten-grid.count-5 { grid-template-columns: repeat(6, 1fr); }
+  .diensten-grid.count-5 .dienst-card:nth-child(-n+3) { grid-column: span 2; }
+  .diensten-grid.count-5 .dienst-card:nth-child(4) { grid-column: 2 / 4; }
+  .diensten-grid.count-5 .dienst-card:nth-child(5) { grid-column: 4 / 6; }
+}
 
 .dienst-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
@@ -318,6 +325,10 @@ footer ul li a:hover { color: var(--primary); }
 
   var diensten = {{DIENSTEN_JSON}};
   var grid = document.getElementById('dienstenGrid');
+
+  if (diensten.length >= 3 && diensten.length <= 6) {
+    grid.classList.add('count-' + diensten.length);
+  }
 
   diensten.forEach(function(d, i){
     var icon = icons[i % icons.length];
