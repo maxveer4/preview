@@ -333,19 +333,20 @@ footer ul li a:hover { color: var(--primary); }
   diensten.forEach(function(d, i){
     var icon = icons[i % icons.length];
     var card = document.createElement('article');
-    card.className = 'dienst-card';
-    card.innerHTML =
-      '<div class="dienst-card-img-placeholder">' +
-        '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5">' + icon + '</svg>' +
-      '</div>' +
-      '<div class="dienst-card-body">' +
-        '<h2>' + d.naam + '</h2>' +
-        '<p>' + d.desc + '</p>' +
-        '<a href="/' + slug + '-contact.html" class="dienst-card-btn">' +
-          'Offerte aanvragen ' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>' +
-        '</a>' +
-      '</div>';
+card.className = 'dienst-card';
+var imgHtml = d.foto
+  ? '<img class="dienst-card-img" src="' + d.foto + '" alt="' + d.naam + '">'
+  : '<div class="dienst-card-img-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--primary);opacity:0.5">' + icon + '</svg></div>';
+card.innerHTML =
+  imgHtml +
+  '<div class="dienst-card-body">' +
+    '<h2>' + d.naam + '</h2>' +
+    '<p>' + d.desc + '</p>' +
+    '<a href="/' + slug + '-contact.html" class="dienst-card-btn">' +
+      'Offerte aanvragen ' +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>' +
+    '</a>' +
+  '</div>';
     grid.appendChild(card);
   });
 })();
