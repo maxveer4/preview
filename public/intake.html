@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Intake – GoWebbo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Roboto', 'sans-serif'],
+          },
+          colors: {
+            border: 'hsl(var(--border))',
+            input: 'hsl(var(--input))',
+            ring: 'hsl(var(--ring))',
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            secondary: {
+              DEFAULT: 'hsl(var(--secondary))',
+              foreground: 'hsl(var(--secondary-foreground))',
+            },
+            destructive: {
+              DEFAULT: 'hsl(var(--destructive))',
+              foreground: 'hsl(var(--destructive-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+              foreground: 'hsl(var(--card-foreground))',
+            },
+          },
+          borderRadius: {
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --background: 210 20% 98%;
+      --foreground: 215 25% 15%;
+      --card: 0 0% 100%;
+      --card-foreground: 215 25% 15%;
+      --primary: 198 76% 57%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 198 30% 93%;
+      --secondary-foreground: 198 76% 35%;
+      --muted: 210 20% 95%;
+      --muted-foreground: 215 15% 50%;
+      --accent: 198 76% 95%;
+      --accent-foreground: 198 76% 35%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214 20% 90%;
+      --input: 214 20% 90%;
+      --ring: 198 76% 57%;
+      --radius: 0.75rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
+
+    /* Landing theme scoped */
+    .landing-theme {
+      --background: 216 33% 97%;
+      --foreground: 220 20% 14%;
+      --card: 0 0% 100%;
+      --card-foreground: 220 20% 14%;
+      --primary: 220 55% 65%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 216 33% 95%;
+      --secondary-foreground: 220 20% 14%;
+      --muted: 216 20% 94%;
+      --muted-foreground: 220 10% 50%;
+      --accent: 220 55% 90%;
+      --accent-foreground: 220 55% 65%;
+      --border: 220 15% 90%;
+      --input: 220 15% 90%;
+      --ring: 220 55% 65%;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .landing-theme h1,.landing-theme h2,.landing-theme h3,
+    .landing-theme h4,.landing-theme h5,.landing-theme h6 {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      pointer-events: none;
+    }
+    .toast-item {
+      background: hsl(var(--foreground)); color: hsl(var(--background));
+      padding: 0.75rem 1.25rem; border-radius: 0.5rem;
+      font-size: 0.875rem; max-width: 20rem;
+      animation: slideIn 0.3s ease; pointer-events: all;
+    }
+    .toast-item.error { background: hsl(var(--destructive)); color: hsl(var(--destructive-foreground)); }
+    @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+    /* Photo slot aspect ratios */
+    .aspect-16-9 { aspect-ratio: 16/9; }
+    .aspect-square-slot { aspect-ratio: 1/1; }
+
+    /* Dropdown */
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 0.5rem); left: 50%;
+      transform: translateX(-50%);
+      background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      width: 16rem; z-index: 50; overflow: hidden;
+      max-height: 18rem; overflow-y: auto;
+    }
+    .dropdown-menu button {
+      display: block; width: 100%; text-align: left;
+      padding: 0.625rem 1rem; font-size: 0.875rem;
+      color: hsl(var(--foreground)); background: transparent;
+      border: none; cursor: pointer; transition: background 0.15s;
+    }
+    .dropdown-menu button:hover { background: hsl(var(--accent)); }
+
+    input[type="file"] { display: none; }
+
+    /* Progress bar animation */
+    .progress-fill { transition: width 0.5s ease-out; }
+
+    /* Card hover */
+    .beroep-card { transition: all 0.2s; cursor: pointer; }
+    .beroep-card:hover { border-color: hsl(var(--primary)); background: hsl(var(--accent)); }
+    .beroep-card:hover svg { color: hsl(var(--primary)); }
+
+    /* Service checkbox card */
+    .dienst-card { transition: all 0.2s; cursor: pointer; }
+
+    /* Button base */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;
+      padding: 0.5rem 1rem; border: 1px solid transparent; cursor: pointer;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+    .btn-primary:hover:not(:disabled) { filter: brightness(0.92); }
+    .btn-outline {
+      background: transparent; color: hsl(var(--foreground));
+      border-color: hsl(var(--border));
+    }
+    .btn-outline:hover:not(:disabled) { background: hsl(var(--accent)); }
+    .btn-sm { padding: 0.25rem 0.75rem; font-size: 0.8125rem; }
+    .btn-ghost { background: transparent; color: hsl(var(--foreground)); }
+    .btn-ghost:hover:not(:disabled) { background: hsl(var(--accent)); }
+
+    /* Input */
+    .input {
+      width: 100%; border: 1px solid hsl(var(--input)); border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem; font-size: 0.875rem; height: 2.5rem;
+      background: hsl(var(--card)); color: hsl(var(--foreground));
+      font-family: inherit; outline: none; transition: border-color 0.15s;
+    }
+    .input:focus { border-color: hsl(var(--ring)); box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2); }
+    .input.error { border-color: hsl(var(--destructive)); }
+
+    label.form-label {
+      display: block; font-size: 0.875rem; font-weight: 500;
+      color: hsl(var(--foreground)); margin-bottom: 0.25rem;
+    }
+    .error-msg { color: hsl(var(--destructive)); font-size: 0.75rem; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast"></div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const dienstenPerBeroep = {
+  loodgieter: [
+    {label:"Afvoer Stoppen",value:"afvoerstoppen"},
+    {label:"CV Lekkage",value:"cvlekkage"},
+    {label:"Leidingwerk",value:"leidingwerk"},
+    {label:"Lekkage Verhelpen",value:"lekkage-verhelpen"},
+    {label:"Riool Ontstoppen",value:"riool-ontstoppen"},
+    {label:"Sanitair Instellen",value:"sanitair-instellen"},
+    {label:"Spoed Loodgieter",value:"spoed-loodgieter"},
+    {label:"WC Ontstoppen",value:"wc-ontstoppen"},
+  ],
+  elektricien: [
+    {label:"Groepenkast vervangen",value:"groepenkast-vervangen"},
+    {label:"Bijplaatsen stopcontacten",value:"bijplaatsen-stopcontacten"},
+    {label:"Buitenverlichting",value:"buitenverlichting"},
+    {label:"Laadpaal installatie",value:"laadpaal-installatie"},
+    {label:"Zonnepanelen aansluiting",value:"zonnepanelen-aansluiting"},
+    {label:"Domotica installatie",value:"domotica-installatie"},
+  ],
+  dakdekker: [
+    {label:"Bitumen",value:"bitumen"},
+    {label:"Dakinspectie",value:"dakinspectie"},
+    {label:"Dakisolatie",value:"dakisolatie"},
+    {label:"Daklekkage",value:"daklekkage"},
+    {label:"Dakpannen Vervangen",value:"dakpannen-vervangen"},
+    {label:"Dakrenovatie",value:"dakrenovatie"},
+    {label:"Dakreparatie",value:"dakreparatie"},
+    {label:"Schoorsteenrenovatie Loodwerk",value:"schoorsteenrenovatie-loodwerk"},
+  ],
+  aannemer: [
+    {label:"Aanbouw & Uitbouw",value:"aanbouw-uitbouw"},
+    {label:"Badkamer",value:"badkamer"},
+    {label:"Installatie",value:"installatie"},
+    {label:"Keuken",value:"keuken"},
+    {label:"Onderhoud",value:"onderhoud"},
+    {label:"Renovatie Woning",value:"renovatie-woning"},
+    {label:"Stucwerk",value:"stucwerk"},
+    {label:"Timmerwerk",value:"timmerwerk"},
+  ],
+  schilder: [
+    {label:"Behangen",value:"behangen"},
+    {label:"Binnenschilderwerk",value:"binnenschilderwerk"},
+    {label:"Buitenschilderwerk",value:"buitenschilderwerk"},
+    {label:"Houtrot Reparaties",value:"houtrotreparaties"},
+    {label:"Spuitwerk",value:"spuitwerk"},
+    {label:"Stucwerk",value:"stucwerk"},
+  ],
+  hovenier: [
+    {label:"Aanleg",value:"aanleg"},
+    {label:"Onderhoud",value:"onderhoud"},
+    {label:"Ontwerp",value:"ontwerp"},
+  ],
+  stukadoor: [
+    {label:"Betonlook",value:"betonlook"},
+    {label:"Buitenstucwerk",value:"buitenstucwerk"},
+    {label:"Gladstucwerk",value:"gladstucwerk"},
+    {label:"Plafondlijsten",value:"plafondlijsten"},
+    {label:"Raapwerk",value:"raapwerk"},
+    {label:"Schuurwerk",value:"schuurwerk"},
+    {label:"Sierplijster",value:"sierplijster"},
+    {label:"Spackspuiten",value:"spackspuiten"},
+  ],
+  tegelzetter: [
+    {label:"Badkamer",value:"badkamer"},
+    {label:"Buiten",value:"buiten"},
+    {label:"Keuken",value:"keuken"},
+    {label:"Toiletten",value:"toiletten"},
+    {label:"Vloeren Betegelen",value:"vloerenbetegelen"},
+  ],
+  timmerman: [
+    {label:"Maatwerk Interieur",value:"maatwerk-interieur"},
+    {label:"Overkappingen",value:"overkappingen"},
+    {label:"Verbouwing & Renovatie",value:"verbouwing-renovatie"},
+  ],
+  gevelspecialist: [
+    {label:"Gevelrenovatie",value:"gevelrenovatie"},
+    {label:"Gevelreiniging",value:"gevelreiniging"},
+    {label:"Gevelisolatie",value:"gevelisolatie"},
+    {label:"Voegwerk",value:"voegwerk"},
+    {label:"Gevelbekleding",value:"gevelbekleding"},
+    {label:"Impregneren gevel",value:"impregneren-gevel"},
+  ],
+  isolatiebedrijf: [
+    {label:"Spouwmuurisolatie",value:"spouwmuurisolatie"},
+    {label:"Dakisolatie",value:"dakisolatie"},
+    {label:"Vloerisolatie",value:"vloerisolatie"},
+    {label:"Bodemisolatie",value:"bodemisolatie"},
+    {label:"Gevelisolatie",value:"gevelisolatie"},
+    {label:"Glasisolatie",value:"glasisolatie"},
+  ],
+  vloerenlegger: [
+    {label:"PVC vloer leggen",value:"pvc-vloer-leggen"},
+    {label:"Laminaat leggen",value:"laminaat-leggen"},
+    {label:"Parket leggen",value:"parket-leggen"},
+    {label:"Gietvloer",value:"gietvloer"},
+    {label:"Tapijt leggen",value:"tapijt-leggen"},
+    {label:"Vloerrenovatie",value:"vloerrenovatie"},
+  ],
+  kozijnenspecialist: [
+    {label:"Kunststof kozijnen",value:"kunststof-kozijnen"},
+    {label:"Houten kozijnen",value:"houten-kozijnen"},
+    {label:"Aluminium kozijnen",value:"aluminium-kozijnen"},
+    {label:"Kozijnen vervangen",value:"kozijnen-vervangen"},
+    {label:"HR++ glas plaatsen",value:"hr-glas-plaatsen"},
+    {label:"Schuifpui plaatsen",value:"schuifpui-plaatsen"},
+  ],
+  badkamer_renovatie: [
+    {label:"Complete badkamer renovatie",value:"complete-badkamer-renovatie"},
+    {label:"Douche plaatsen",value:"douche-plaatsen"},
+    {label:"Bad installeren",value:"bad-installeren"},
+    {label:"Badkamermeubel",value:"badkamermeubel"},
+    {label:"Tegelwerk badkamer",value:"tegelwerk-badkamer"},
+    {label:"Sanitair vervangen",value:"sanitair-vervangen"},
+  ],
+  keuken_renovatie: [
+    {label:"Complete keuken renovatie",value:"complete-keuken-renovatie"},
+    {label:"Keuken plaatsen",value:"keuken-plaatsen"},
+    {label:"Keukenblad vervangen",value:"keukenblad-vervangen"},
+    {label:"Apparatuur installeren",value:"apparatuur-installeren"},
+    {label:"Keukenwand betegelen",value:"keukenwand-betegelen"},
+    {label:"Keukeninrichting",value:"keukeninrichting"},
+  ],
+  installateur: [
+    {label:"Airco installatie",value:"airco-installatie"},
+    {label:"Airco onderhoud",value:"airco-onderhoud"},
+    {label:"CV-ketel installatie",value:"cv-ketel-installatie"},
+    {label:"CV-ketel onderhoud",value:"cv-ketel-onderhoud"},
+    {label:"Radiator vervangen",value:"radiator-vervangen"},
+    {label:"Vloerverwarming",value:"vloerverwarming"},
+    {label:"Warmtepomp installatie",value:"warmtepomp-installatie"},
+    {label:"Hybride warmtepomp",value:"hybride-warmtepomp"},
+    {label:"Zonnepanelen installatie",value:"zonnepanelen-installatie"},
+    {label:"Omvormer installatie",value:"omvormer-installatie"},
+    {label:"Thuisbatterij",value:"thuisbatterij"},
+    {label:"Zonneboiler",value:"zonneboiler"},
+    {label:"Laadpaal thuis installatie",value:"laadpaal-thuis-installatie"},
+    {label:"Laadpaal bedrijf",value:"laadpaal-bedrijf"},
+    {label:"Groepenkast uitbreiding",value:"groepenkast-uitbreiding"},
+  ],
+};
+
+const beroepLabels = {
+  loodgieter:"Loodgieter", elektricien:"Elektricien", dakdekker:"Dakdekker",
+  aannemer:"Aannemer", schilder:"Schilder", hovenier:"Hovenier",
+  stukadoor:"Stukadoor", tegelzetter:"Tegelzetter", timmerman:"Timmerman",
+  gevelspecialist:"Gevelspecialist", isolatiebedrijf:"Isolatiebedrijf",
+  vloerenlegger:"Vloerenlegger", kozijnenspecialist:"Kozijnenspecialist",
+  badkamer_renovatie:"Badkamer renovatie", keuken_renovatie:"Keuken renovatie",
+  installateur:"Installateur",
+};
+
+const hoofdBeroepen = ["loodgieter","timmerman","dakdekker","aannemer","schilder","hovenier","stukadoor","tegelzetter"];
+const overigeBeroepen = ["elektricien","gevelspecialist","isolatiebedrijf","vloerenlegger","kozijnenspecialist","badkamer_renovatie","keuken_renovatie","installateur"];
+
+const KLEUREN = [
+  {id:"blauw",label:"Blauw",color:"#2563EB"},
+  {id:"groen",label:"Groen",color:"#16A34A"},
+  {id:"geel",label:"Geel",color:"#CA8A04"},
+  {id:"rood",label:"Rood",color:"#DC2626"},
+];
+
+const FOTO_SLOTS = [
+  {key:"foto_logo",label:"Logo",hint:"Upload het logo van je bedrijf",aspect:"aspect-16-9"},
+  {key:"foto_hero",label:"De eerst grote afbeelding op je website",hint:"Upload een foto voor de banner bovenaan je website",aspect:"aspect-16-9"},
+  {key:"foto_sectie2",label:"Foto voor op de website",hint:"Upload een foto van jezelf of je team bij het werk",aspect:"aspect-square-slot"},
+];
+
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+const SUPABASE_URL = "https://agdwnlqiepnmxwkrpzqv.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y";
+const WEBHOOK_URL = "https://maxveer.app.n8n.cloud/webhook/e2247725-a732-4dcf-829e-14bd182d9186";
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+function readInitialState() {
+  const params = new URLSearchParams(window.location.search);
+  const beroepParam = params.get("beroep");
+  const validBeroep = beroepParam && dienstenPerBeroep[beroepParam] ? beroepParam : null;
+  return {
+    step: validBeroep ? 2 : 1,
+    beroep: validBeroep,
+    diensten: [],
+    bedrijfsnaam: "",
+    naam_contactpersoon: "",
+    stad: "",
+    telefoon: "",
+    email: "",
+    kleur_thema: "blauw",
+    foto_logo: null,
+    foto_hero: null,
+    foto_sectie2: null,
+    foto_logo_url: "",
+    foto_hero_url: "",
+    foto_sectie2_url: "",
+    isUploading: false,
+    isSubmitting: false,
+    dropdownOpen: false,
+    skipped: {foto_logo:false,foto_hero:false,foto_sectie2:false},
+    errors: {},
+  };
+}
+
+let state = readInitialState();
+// file objects stored separately (can't be in innerHTML)
+let fileObjects = {foto_logo:null,foto_hero:null,foto_sectie2:null};
+let previewUrls = {foto_logo:null,foto_hero:null,foto_sectie2:null};
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function sanitize(v) {
+  return (v||"").normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .toLowerCase().replace(/[^a-z0-9._-]+/g,"-").replace(/^-+|-+$/g,"") || "upload";
+}
+
+function showToast(msg, type="info") {
+  const el = document.createElement("div");
+  el.className = "toast-item" + (type==="error" ? " error" : "");
+  el.textContent = msg;
+  document.getElementById("toast").appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// ─── ICONS (SVG) ─────────────────────────────────────────────────────────────
+const icons = {
+  wrench: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+  hammer: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 5.6a5.009 5.009 0 0 0-6.22.78l-1.25 1.25 1.06 1.06L11.16 7l1.79 1.79-1.06 1.06 1.06 1.06 2.75-2.75 1.82 1.82-1.06 1.06 1.06 1.06 1.09-1.09c.4-.4.93-.62 1.49-.62H19"/></svg>`,
+  home: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  hardhat: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6h0"/><path d="M14 6h0a6 6 0 0 1 6 6v3"/></svg>`,
+  paintbrush: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3z"/><path d="M9 8c-2 3-4 3.5-7 4l8 8c1-.5 3.5-2.5 4-7"/><path d="M14.5 17.5 4.5 15"/></svg>`,
+  trees: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg>`,
+  layers: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`,
+  grid: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`,
+  chevronDown: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`,
+  moreHorizontal: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>`,
+  upload: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>`,
+  x: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`,
+  check: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+  smartphone: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>`,
+  search: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`,
+  headphones: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>`,
+  package: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>`,
+  tag: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>`,
+  iconMap: {},
+};
+icons.iconMap = {
+  loodgieter: icons.wrench,
+  timmerman: icons.hammer,
+  dakdekker: icons.home,
+  aannemer: icons.hardhat,
+  schilder: icons.paintbrush,
+  hovenier: icons.trees,
+  stukadoor: icons.layers,
+  tegelzetter: icons.grid,
+};
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function render() {
+  const app = document.getElementById("app");
+  if (state.step === 1) {
+    app.innerHTML = renderLanding();
+  } else {
+    app.innerHTML = renderForm();
+  }
+  attachEvents();
+}
+
+// ─── LANDING (Step 1) ─────────────────────────────────────────────────────────
+function renderLanding() {
+  const cardBase = "rounded-2xl p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl";
+  const features = [
+    {icon: icons.smartphone, title:"Responsief design", desc:"Jouw website ziet er perfect uit op elk apparaat, van mobiel tot tablet en desktop."},
+    {icon: icons.search, title:"Slimme SEO", desc:"Geoptimaliseerd voor Google zodat jouw ideale klanten je sneller weten te vinden."},
+    {icon: icons.headphones, title:"Support & service", desc:"Altijd hulp wanneer je het nodig hebt, snel, persoonlijk en zonder gedoe."},
+  ];
+
+  const stepLabels = ["Beroep","Diensten","Contact","Foto's","Bevestiging"];
+
+  return `
+  <div class="landing-theme min-h-screen" style="background: linear-gradient(to bottom, white, hsl(var(--accent)));">
+    <!-- Header -->
+    <header style="position:sticky;top:0;z-index:50;background:white;border-bottom:1px solid hsl(var(--border));">
+      <div style="max-width:72rem;margin:0 auto;padding:0.75rem 1rem;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:'Manrope',sans-serif;font-weight:800;font-size:1.25rem;color:hsl(var(--foreground));">GoWebbo</span>
+        <button style="background:hsl(var(--primary));color:hsl(var(--primary-foreground));padding:0.5rem 1.25rem;border-radius:9999px;font-size:0.875rem;font-weight:600;border:none;cursor:default;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          Start de Quiz
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section style="text-align:center;max-width:42rem;margin:0 auto;padding:3rem 1.5rem 2rem;">
+      <h1 style="font-family:'Manrope',sans-serif;font-size:clamp(1.75rem,5vw,3rem);font-weight:900;line-height:1.15;letter-spacing:-0.02em;color:hsl(var(--foreground));">
+        Start de quiz en krijg direct jouw website, gemaakt door <span style="color:hsl(var(--primary));">AI</span>.
+      </h1>
+      <p style="margin-top:1.25rem;color:hsl(var(--muted-foreground));font-size:1rem;line-height:1.7;max-width:36rem;margin-left:auto;margin-right:auto;">
+        Beantwoord een paar vragen en laat onze AI binnen enkele minuten een prachtige, professionele website voor je bouwen.
+      </p>
+    </section>
+
+    <!-- Quiz Card -->
+    <div style="max-width:48rem;margin:0 auto;padding:0 1rem 2rem;">
+      <!-- Progress -->
+      <div style="width:100%;height:6px;background:hsl(var(--muted));border-radius:9999px;margin-bottom:2rem;overflow:hidden;">
+        <div style="height:100%;width:20%;background:hsl(var(--primary));border-radius:9999px;"></div>
+      </div>
+
+      <!-- Card -->
+      <div style="background:hsl(var(--card));border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:2rem 2rem 2.5rem;">
+        <!-- Step tabs -->
+        <div style="display:flex;gap:1.5rem;border-bottom:1px solid hsl(var(--border));padding-bottom:1rem;margin-bottom:2rem;overflow-x:auto;">
+          ${stepLabels.map((s,i) => `
+            <span style="font-size:0.875rem;font-weight:500;white-space:nowrap;padding-bottom:0.5rem;border-bottom:2px solid ${i===0?'hsl(var(--primary))':'transparent'};color:${i===0?'hsl(var(--primary))':'hsl(var(--muted-foreground))'};">
+              ${s}
+            </span>
+          `).join("")}
+        </div>
+
+        <h2 style="font-size:1.5rem;font-weight:700;color:hsl(var(--foreground));margin-bottom:0.25rem;">Kies je beroep</h2>
+        <p style="color:hsl(var(--muted-foreground));margin-bottom:2rem;">Selecteer het beroep dat het beste bij je past.</p>
+
+        <!-- Grid -->
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;">
+          ${hoofdBeroepen.map(b => `
+            <button class="beroep-card" data-beroep="${b}"
+              style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;padding:1.5rem;border-radius:0.75rem;border:1px solid hsl(var(--border));background:hsl(var(--card));transition:all 0.2s;cursor:pointer;">
+              <span style="color:hsl(var(--muted-foreground));">${icons.iconMap[b]||icons.wrench}</span>
+              <span style="font-size:0.875rem;font-weight:500;color:hsl(var(--foreground));">${beroepLabels[b]}</span>
+            </button>
+          `).join("")}
+        </div>
+
+        <!-- Dropdown -->
+        <div style="margin-top:2rem;display:flex;justify-content:center;position:relative;">
+          <button id="dropdown-trigger"
+            style="display:inline-flex;align-items:center;gap:0.625rem;padding:0.875rem 1.5rem;border-radius:0.75rem;border:2px dashed hsl(var(--border));background:hsl(var(--card));font-size:1rem;font-weight:500;cursor:pointer;color:hsl(var(--foreground));transition:all 0.2s;"
+            onclick="toggleDropdown()">
+            ${icons.moreHorizontal}
+            Bekijk alle beroepen
+            ${icons.chevronDown}
+          </button>
+          <div id="dropdown-menu" class="dropdown-menu" style="display:${state.dropdownOpen?'block':'none'};">
+            ${overigeBeroepen.map(b => `
+              <button data-beroep="${b}">${beroepLabels[b]}</button>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div style="padding:8rem 1rem 4rem;">
+      <div style="max-width:48rem;margin:0 auto;">
+        <h2 style="font-family:'Manrope',sans-serif;font-size:clamp(1.5rem,4vw,2.25rem);font-weight:900;text-align:center;color:hsl(var(--foreground));margin-bottom:3rem;">
+          Waarom kiezen voor GoWebbo?
+        </h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-bottom:1rem;">
+          ${features.map(f => `
+            <div style="background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:1rem;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <span style="color:hsl(var(--primary));display:block;margin-bottom:1rem;">${f.icon}</span>
+              <h3 style="font-size:1rem;font-weight:700;color:hsl(var(--foreground));margin-bottom:0.5rem;">${f.title}</h3>
+              <p style="font-size:0.875rem;color:hsl(var(--muted-foreground));line-height:1.6;">${f.desc}</p>
+            </div>
+          `).join("")}
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:1rem;">
+          <div style="background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:1rem;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <span style="color:hsl(var(--primary));display:block;margin-bottom:1rem;">${icons.package}</span>
+            <h3 style="font-size:1rem;font-weight:700;color:hsl(var(--foreground));margin-bottom:0.5rem;">Alles inbegrepen</h3>
+            <p style="font-size:0.875rem;color:hsl(var(--muted-foreground));line-height:1.6;">Hosting, domeinnaam en beveiliging geregeld. Jij hoeft nergens meer naar om te kijken.</p>
+          </div>
+          <div style="background:hsl(var(--primary));border-radius:1rem;padding:2rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+            <span style="color:hsl(var(--primary-foreground));display:block;margin-bottom:1rem;">${icons.tag}</span>
+            <h3 style="font-size:1.125rem;font-weight:700;color:hsl(var(--primary-foreground));margin-bottom:0.5rem;">Scherpe prijs zonder verrassingen</h3>
+            <p style="font-size:0.875rem;color:hsl(var(--primary-foreground));opacity:0.9;line-height:1.6;">Een professionele, op maat gemaakte website inclusief hosting vanaf slechts €30 per maand, zonder hoge opstartkosten en zonder verrassingen achteraf.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ─── FORM SHELL (Steps 2-6) ───────────────────────────────────────────────────
+function renderForm() {
+  const stepLabels = ["Beroep","Diensten","Contact","Kleur","Foto's","Bevestiging"];
+  const pct = (state.step / 6) * 100;
+
+  let content = "";
+  if (state.step === 2) content = renderStepDiensten();
+  else if (state.step === 3) content = renderStepContact();
+  else if (state.step === 4) content = renderStepKleur();
+  else if (state.step === 5) content = renderStepFotos();
+  else if (state.step === 6) content = renderStepBevestiging();
+
+  return `
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,white,hsl(var(--accent)));padding:1rem;">
+    <div style="width:100%;max-width:42rem;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <h1 style="font-size:clamp(1.5rem,4vw,2.25rem);font-weight:700;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));">Website Intake</h1>
+        <p style="color:hsl(var(--muted-foreground));margin-top:0.25rem;">In 6 stappen naar jouw professionele website</p>
+      </div>
+      <div style="background:hsl(var(--card));border-radius:0.75rem;border:1px solid hsl(var(--border));box-shadow:0 2px 12px rgba(0,0,0,0.07);padding:1.5rem 2rem;">
+        <!-- Progress Bar -->
+        <div style="margin-bottom:2rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+            ${stepLabels.map((l,i) => `
+              <span style="font-size:0.75rem;font-weight:500;font-family:'Poppins',sans-serif;color:${i+1<=state.step?'hsl(var(--primary))':'hsl(var(--muted-foreground))'};transition:color 0.3s;">
+                <span class="hidden-mobile">${l}</span>
+                <span class="show-mobile">${i+1}</span>
+              </span>
+            `).join("")}
+          </div>
+          <div style="width:100%;height:8px;border-radius:9999px;background:hsl(var(--muted));overflow:hidden;">
+            <div class="progress-fill" style="height:100%;border-radius:9999px;background:hsl(var(--primary));width:${pct}%;"></div>
+          </div>
+        </div>
+        ${content}
+      </div>
+    </div>
+  </div>
+  <style>
+    @media(max-width:480px){ .hidden-mobile{display:none;} .show-mobile{display:inline;} }
+    @media(min-width:481px){ .hidden-mobile{display:inline;} .show-mobile{display:none;} }
+  </style>`;
+}
+
+// ─── STEP 2: DIENSTEN ─────────────────────────────────────────────────────────
+function renderStepDiensten() {
+  const diensten = dienstenPerBeroep[state.beroep] || [];
+  const noneSelected = state.diensten.length === 0;
+  return `
+  <div>
+    <h2 style="font-size:1.5rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));margin-bottom:0.25rem;">Diensten voor ${beroepLabels[state.beroep]}</h2>
+    <p style="color:hsl(var(--muted-foreground));margin-bottom:1.5rem;">Selecteer de diensten die je aanbiedt.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;margin-bottom:2rem;">
+      ${diensten.map(d => {
+        const sel = state.diensten.includes(d.value);
+        return `
+        <label class="dienst-card" style="display:flex;align-items:center;gap:0.75rem;padding:1rem;border-radius:0.5rem;border:2px solid ${sel?'hsl(var(--primary))':'hsl(var(--border))'};background:${sel?'hsl(var(--accent))':'hsl(var(--card))'};cursor:pointer;transition:all 0.2s;">
+          <input type="checkbox" data-dienst="${d.value}" ${sel?'checked':''} style="display:none;" onchange="toggleDienst('${d.value}')">
+          <span style="width:18px;height:18px;border-radius:3px;border:2px solid ${sel?'hsl(var(--primary))':'hsl(var(--border))'};background:${sel?'hsl(var(--primary))':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            ${sel?`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`:''}
+          </span>
+          <span style="font-size:0.875rem;color:hsl(var(--card-foreground));">${d.label}</span>
+        </label>`;
+      }).join("")}
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-outline" onclick="goStep(1)">Terug</button>
+      <button class="btn btn-primary" onclick="goStep(3)" ${noneSelected?'disabled':''}>Volgende</button>
+    </div>
+    ${noneSelected?`<p style="color:hsl(var(--destructive));font-size:0.875rem;margin-top:0.5rem;text-align:right;">Selecteer minimaal één dienst.</p>`:''}
+  </div>`;
+}
+
+// ─── STEP 3: CONTACT ──────────────────────────────────────────────────────────
+function renderStepContact() {
+  const fields = [
+    {key:"bedrijfsnaam",label:"Bedrijfsnaam",type:"text",placeholder:"Jouw bedrijfsnaam"},
+    {key:"naam_contactpersoon",label:"Naam contactpersoon",type:"text",placeholder:"bijv. Jan de Vries"},
+    {key:"stad",label:"Stad / Regio",type:"text",placeholder:"bijv. Amsterdam"},
+    {key:"telefoon",label:"Telefoonnummer",type:"tel",placeholder:"06 12345678"},
+    {key:"email",label:"E-mailadres",type:"email",placeholder:"info@jouwebsite.nl"},
+  ];
+  return `
+  <div>
+    <h2 style="font-size:1.5rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));margin-bottom:0.25rem;">Contactgegevens</h2>
+    <p style="color:hsl(var(--muted-foreground));margin-bottom:1.5rem;">Vul je bedrijfsgegevens in.</p>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+      ${fields.map(f => `
+        <div>
+          <label class="form-label" for="field-${f.key}">${f.label} *</label>
+          <input class="input${state.errors[f.key]?' error':''}" id="field-${f.key}" type="${f.type}"
+            placeholder="${f.placeholder}" value="${escHtml(state[f.key]||'')}"
+            oninput="updateField('${f.key}',this.value)">
+          ${state.errors[f.key]?`<p class="error-msg">${state.errors[f.key]}</p>`:''}
+        </div>
+      `).join("")}
+    </div>
+    <div style="display:flex;justify-content:space-between;">
+      <button class="btn btn-outline" onclick="goStep(2)">Terug</button>
+      <button class="btn btn-primary" onclick="validateAndGoContact()">Volgende</button>
+    </div>
+  </div>`;
+}
+
+// ─── STEP 4: KLEUR ────────────────────────────────────────────────────────────
+function renderStepKleur() {
+  return `
+  <div>
+    <h2 style="font-size:1.5rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));margin-bottom:0.25rem;">Kies een kleur voor je website</h2>
+    <p style="color:hsl(var(--muted-foreground));margin-bottom:1.5rem;">De gekozen kleur wordt gebruikt als de hoofdkleur van je website.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;">
+      ${KLEUREN.map(k => {
+        const sel = state.kleur_thema === k.id;
+        return `
+        <button onclick="selectKleur('${k.id}')"
+          style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:1.5rem;border-radius:0.75rem;border:2px solid ${sel?'hsl(var(--primary))':'hsl(var(--border))'};background:hsl(var(--card));cursor:pointer;transition:all 0.15s;${sel?'box-shadow:0 0 0 4px hsl(var(--primary)/0.15);':''}">
+          <span style="width:40px;height:40px;border-radius:9999px;background:${k.color};display:block;flex-shrink:0;"></span>
+          <span style="font-size:0.875rem;font-weight:500;color:hsl(var(--foreground));">${k.label}</span>
+        </button>`;
+      }).join("")}
+    </div>
+    <div style="display:flex;justify-content:space-between;">
+      <button class="btn btn-outline" onclick="goStep(3)">Terug</button>
+      <button class="btn btn-primary" onclick="goStep(5)">Volgende</button>
+    </div>
+  </div>`;
+}
+
+// ─── STEP 5: FOTO'S ───────────────────────────────────────────────────────────
+function renderStepFotos() {
+  const dis = state.isUploading;
+  return `
+  <div>
+    <h2 style="font-size:1.5rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));margin-bottom:0.25rem;">Foto's uploaden</h2>
+    <p style="color:hsl(var(--muted-foreground));margin-bottom:1.5rem;">Upload foto's voor je website (optioneel).</p>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2rem;">
+      ${FOTO_SLOTS.map(slot => renderPhotoSlot(slot, dis)).join("")}
+    </div>
+    <div style="display:flex;justify-content:space-between;">
+      <button class="btn btn-outline" onclick="goStep(4)" ${dis?'disabled':''}>Terug</button>
+      <button class="btn btn-primary" id="btn-fotos-next" onclick="handleFotosNext()" ${dis?'disabled':''}>
+        ${dis?'Uploaden...':'Volgende'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderPhotoSlot(slot, disabled) {
+  const file = fileObjects[slot.key];
+  const preview = previewUrls[slot.key];
+  const skipped = state.skipped[slot.key];
+  return `
+  <div>
+    <p style="font-size:0.875rem;font-weight:500;color:hsl(var(--foreground));margin-bottom:0.25rem;">${slot.label}</p>
+    <p style="font-size:0.75rem;color:hsl(var(--muted-foreground));margin-bottom:0.5rem;">${slot.hint}</p>
+    <div class="${slot.aspect}" onclick="${!file&&!disabled?`document.getElementById('file-${slot.key}').click()`:''}"
+      style="position:relative;width:100%;border-radius:0.5rem;overflow:hidden;border:2px ${file?'solid hsl(var(--primary))':'dashed hsl(var(--border))'};background:${file?'transparent':'hsl(var(--muted))'};${!file&&!disabled?'cursor:pointer;':''};display:flex;align-items:center;justify-content:center;">
+      ${preview
+        ? `<img src="${preview}" alt="${slot.label}" style="width:100%;height:100%;object-fit:cover;display:block;">`
+        : `<div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;padding:1rem;">
+             <span style="color:hsl(var(--muted-foreground));">${icons.upload}</span>
+             <span style="font-size:0.75rem;color:hsl(var(--muted-foreground));">Klik om te uploaden</span>
+           </div>`
+      }
+      ${file ? `
+        <button type="button" onclick="removePhoto('${slot.key}',event)" ${disabled?'disabled':''}
+          style="position:absolute;top:0.5rem;right:0.5rem;background:rgba(255,255,255,0.85);border-radius:9999px;padding:0.25rem;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;"
+          onmouseover="this.style.background='hsl(0,84%,60%)';this.style.color='white';"
+          onmouseout="this.style.background='rgba(255,255,255,0.85)';this.style.color='inherit';">
+          ${icons.x}
+        </button>` : ''}
+    </div>
+    <div style="margin-top:0.5rem;display:flex;gap:0.75rem;align-items:center;">
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('file-${slot.key}').click()" ${disabled?'disabled':''}>
+        ${file?'Vervangen':'Uploaden'}
+      </button>
+      <button class="btn btn-sm ${skipped?'btn-primary':'btn-outline'}" onclick="toggleSkip('${slot.key}')" ${disabled?'disabled':''}>
+        Overslaan
+      </button>
+    </div>
+    <input type="file" id="file-${slot.key}" accept="image/*" onchange="handleFileChange('${slot.key}',this)">
+  </div>`;
+}
+
+// ─── STEP 6: BEVESTIGING ─────────────────────────────────────────────────────
+function renderStepBevestiging() {
+  const kleurLabel = {blauw:"Blauw",groen:"Groen",geel:"Geel",rood:"Rood"}[state.kleur_thema]||state.kleur_thema;
+  const diensten = dienstenPerBeroep[state.beroep]||[];
+  const uploadedFotos = FOTO_SLOTS.filter(s => fileObjects[s.key]);
+
+  return `
+  <div>
+    <h2 style="font-size:1.5rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--foreground));margin-bottom:0.25rem;">Bevestiging</h2>
+    <p style="color:hsl(var(--muted-foreground));margin-bottom:1.5rem;">Controleer je gegevens voordat je verstuurt.</p>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+      ${section("Beroep", `<p style="color:hsl(var(--foreground));">${beroepLabels[state.beroep]||'-'}</p>`)}
+      ${section("Diensten", `
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          ${state.diensten.map(v => {
+            const lbl = diensten.find(d=>d.value===v)?.label||v;
+            return `<span style="padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.75rem;font-weight:500;background:hsl(var(--accent));color:hsl(var(--accent-foreground));">${lbl}</span>`;
+          }).join("")}
+        </div>
+      `)}
+      ${section("Contactgegevens", `
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.5rem;font-size:0.875rem;">
+          ${infoRow("Bedrijfsnaam", state.bedrijfsnaam)}
+          ${infoRow("Contactpersoon", state.naam_contactpersoon)}
+          ${infoRow("Stad/regio", state.stad)}
+          ${infoRow("Telefoon", state.telefoon)}
+          ${infoRow("E-mail", state.email)}
+        </div>
+      `)}
+      ${section("Kleur thema", `<p style="color:hsl(var(--foreground));">${kleurLabel}</p>`)}
+      ${uploadedFotos.length>0 ? section("Foto's", `
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.25rem;font-size:0.875rem;">
+          ${uploadedFotos.map(s => `
+            <li style="color:hsl(var(--foreground));">
+              <span style="color:hsl(var(--primary));font-weight:500;">${s.label}:</span> ${escHtml(fileObjects[s.key].name)}
+            </li>
+          `).join("")}
+        </ul>
+      `) : ''}
+    </div>
+    <div style="display:flex;justify-content:space-between;">
+      <button class="btn btn-outline" onclick="goStep(5)" ${state.isSubmitting?'disabled':''}>Terug</button>
+      <button class="btn btn-primary" onclick="handleSubmit()" ${state.isSubmitting?'disabled':''}>
+        ${state.isSubmitting?'Versturen...':'Versturen'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function section(title, content) {
+  return `
+  <div style="padding:1rem;border-radius:0.5rem;background:hsl(var(--card));border:1px solid hsl(var(--border));">
+    <h3 style="font-size:0.75rem;font-weight:600;font-family:'Poppins',sans-serif;color:hsl(var(--muted-foreground));text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">${title}</h3>
+    ${content}
+  </div>`;
+}
+
+function infoRow(label, value) {
+  return `<div><span style="color:hsl(var(--muted-foreground));">${label}: </span><span style="font-weight:500;color:hsl(var(--foreground));">${escHtml(value)}</span></div>`;
+}
+
+function escHtml(s) {
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+// ─── EVENT HANDLERS ───────────────────────────────────────────────────────────
+function attachEvents() {
+  // Beroep card clicks (landing)
+  document.querySelectorAll("[data-beroep]").forEach(el => {
+    el.addEventListener("click", () => {
+      const b = el.dataset.beroep;
+      state.beroep = b;
+      state.diensten = [];
+      state.dropdownOpen = false;
+      state.step = 2;
+      render();
+    });
+  });
+}
+
+function toggleDropdown() {
+  state.dropdownOpen = !state.dropdownOpen;
+  const menu = document.getElementById("dropdown-menu");
+  if (menu) menu.style.display = state.dropdownOpen ? "block" : "none";
+}
+
+// Close dropdown on outside click
+document.addEventListener("click", e => {
+  if (state.step === 1 && state.dropdownOpen) {
+    const trigger = document.getElementById("dropdown-trigger");
+    const menu = document.getElementById("dropdown-menu");
+    if (trigger && menu && !trigger.contains(e.target) && !menu.contains(e.target)) {
+      state.dropdownOpen = false;
+      menu.style.display = "none";
+    }
+  }
+});
+
+function goStep(n) {
+  state.step = n;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function toggleDienst(value) {
+  if (state.diensten.includes(value)) {
+    state.diensten = state.diensten.filter(d => d !== value);
+  } else {
+    state.diensten = [...state.diensten, value];
+  }
+  render();
+}
+
+function updateField(key, value) {
+  state[key] = value;
+  if (state.errors[key]) {
+    delete state.errors[key];
+    // Update just the error message without full re-render
+    const errEl = document.querySelector(`#field-${key} + .error-msg`);
+    if (errEl) errEl.remove();
+    const inp = document.getElementById(`field-${key}`);
+    if (inp) inp.classList.remove("error");
+  }
+}
+
+function validateAndGoContact() {
+  const errors = {};
+  const d = state;
+  if (!d.bedrijfsnaam.trim()) errors.bedrijfsnaam = "Bedrijfsnaam is verplicht";
+  if (!d.naam_contactpersoon.trim()) errors.naam_contactpersoon = "Naam contactpersoon is verplicht";
+  else if (d.naam_contactpersoon.trim().length < 2) errors.naam_contactpersoon = "Naam moet minimaal 2 tekens zijn";
+  if (!d.stad.trim()) errors.stad = "Stad/regio is verplicht";
+  if (!d.telefoon.trim()) errors.telefoon = "Telefoonnummer is verplicht";
+  else if (!/^[0-9+\-\s()]{7,15}$/.test(d.telefoon.trim())) errors.telefoon = "Ongeldig telefoonnummer";
+  if (!d.email.trim()) errors.email = "E-mailadres is verplicht";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) errors.email = "Ongeldig e-mailadres";
+
+  state.errors = errors;
+  if (Object.keys(errors).length === 0) {
+    goStep(4);
+  } else {
+    render();
+  }
+}
+
+function selectKleur(id) {
+  state.kleur_thema = id;
+  render();
+}
+
+function handleFileChange(key, input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  // Revoke old preview
+  if (previewUrls[key]) URL.revokeObjectURL(previewUrls[key]);
+
+  fileObjects[key] = file;
+  previewUrls[key] = URL.createObjectURL(file);
+  state.skipped[key] = false;
+  input.value = "";
+  render();
+}
+
+function removePhoto(key, event) {
+  event.stopPropagation();
+  if (previewUrls[key]) { URL.revokeObjectURL(previewUrls[key]); previewUrls[key] = null; }
+  fileObjects[key] = null;
+  state.skipped[key] = false;
+  render();
+}
+
+function toggleSkip(key) {
+  state.skipped[key] = !state.skipped[key];
+  if (state.skipped[key]) {
+    if (previewUrls[key]) { URL.revokeObjectURL(previewUrls[key]); previewUrls[key] = null; }
+    fileObjects[key] = null;
+  }
+  render();
+}
+
+async function handleFotosNext() {
+  const hasAny = fileObjects.foto_logo || fileObjects.foto_hero || fileObjects.foto_sectie2;
+  if (hasAny) {
+    state.isUploading = true;
+    render();
+    try {
+      const urls = await uploadFotos();
+      state.foto_logo_url = urls.foto_logo || "";
+      state.foto_hero_url = urls.foto_hero || "";
+      state.foto_sectie2_url = urls.foto_sectie2 || "";
+      goStep(6);
+    } catch(err) {
+      showToast("Upload fout: " + err.message, "error");
+    } finally {
+      state.isUploading = false;
+      render();
+    }
+  } else {
+    goStep(6);
+  }
+}
+
+async function uploadFotos() {
+  const safeName = sanitize(state.bedrijfsnaam || "bedrijf");
+  const result = {};
+  const slots = ["foto_logo","foto_hero","foto_sectie2"];
+  for (const key of slots) {
+    const file = fileObjects[key];
+    if (!file) { result[key] = ""; continue; }
+    const safeFile = sanitize(file.name);
+    const path = `${safeName}/${key}_${safeFile}`;
+    const resp = await fetch(`${SUPABASE_URL}/storage/v1/object/foto%27s/${path}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        "Content-Type": file.type,
+        "x-upsert": "false",
+      },
+      body: file,
+    });
+    if (!resp.ok) {
+      let detail;
+      try { const j = await resp.json(); detail = j.message || j.error || JSON.stringify(j); }
+      catch { detail = await resp.text().catch(() => "(no body)"); }
+      throw new Error(`HTTP ${resp.status}: ${detail}`);
+    }
+    result[key] = `${SUPABASE_URL}/storage/v1/object/public/foto%27s/${path}`;
+  }
+  return result;
+}
+
+async function handleSubmit() {
+  state.isSubmitting = true;
+  render();
+  try {
+    const payload = {
+      bedrijfsnaam: state.bedrijfsnaam,
+      naam_contactpersoon: state.naam_contactpersoon,
+      sector: (state.beroep||"").toLowerCase(),
+      Diensten: state.diensten.join(", "),
+      stad: state.stad,
+      telefoon: state.telefoon,
+      email: state.email,
+      kleur_thema: state.kleur_thema,
+      foto_logo: state.foto_logo_url,
+      foto_hero: state.foto_hero_url,
+      foto_sectie2: state.foto_sectie2_url,
+    };
+    const body = JSON.stringify(payload);
+    let ok = false;
+    try {
+      const resp = await fetch(WEBHOOK_URL, {method:"POST",headers:{"Content-Type":"application/json"},body});
+      ok = resp.ok;
+    } catch {}
+    if (!ok) {
+      const sent = navigator.sendBeacon(WEBHOOK_URL, new Blob([body],{type:"application/json"}));
+      if (!sent) throw new Error("Webhook request mislukt");
+    }
+    const site = sanitize(state.bedrijfsnaam || "jouw-website");
+    window.location.href = `https://preview.gowebbo.io/loading.html?site=${site}`;
+  } catch(err) {
+    console.error(err);
+    showToast("Er ging iets mis. Probeer het opnieuw.", "error");
+    state.isSubmitting = false;
+    render();
+  }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

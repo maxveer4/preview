@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/maxve/OneDrive/Vibecoding/launchwebbo/src/components/intake/**)",
+      "Read(//c/Users/maxve/OneDrive/Vibecoding/launchwebbo/**)",
+      "Read(//c/Users/maxve/OneDrive/Vibecoding/launchwebbo/src/**)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")"
+    ]
+  }
+}
