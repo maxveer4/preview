@@ -365,6 +365,7 @@
   const MAX_MS   = 3 * 60 * 1000; // 3 minuten
   const startTime = Date.now();
   let pollDone   = false;
+  let successCount = 0;
 
   // Countdown: telt van 60 naar 0 maar duurt 70 seconden
   const timerEl = document.getElementById('timerCount');
@@ -402,14 +403,21 @@
       if (res.ok) {
         const text = await res.text();
         if (text.includes('<!DOCTYPE html>') && !text.includes('NOT_FOUND')) {
-          pollDone = true;
-          mark('step-3');
-          mark('step-4');
-          setTimeout(() => { window.location.href = targetUrl; }, 1500);
-          return;
+          successCount++;
+          if (successCount >= 3) {
+            pollDone = true;
+            mark('step-3');
+            mark('step-4');
+            setTimeout(() => { window.location.href = targetUrl; }, 1500);
+            return;
+          }
+        } else {
+          successCount = 0;
         }
+      } else {
+        successCount = 0;
       }
-    } catch (_) {}
+    } catch (_) { successCount = 0; }
     setTimeout(poll, 1000);
   }
 
