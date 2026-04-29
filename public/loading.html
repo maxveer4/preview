@@ -293,7 +293,10 @@
         <circle class="ring-bg" cx="100" cy="100" r="90" />
         <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="90" />
       </svg>
-      <div class="ring-inner"></div>
+      <div class="ring-inner">
+        <div class="timer" id="timerCount">60</div>
+        <div class="timer-label">seconden</div>
+      </div>
     </div>
 
     <!-- Status + steps -->
@@ -357,6 +360,17 @@
   const MAX_MS   = 3 * 60 * 1000; // 3 minuten
   const startTime = Date.now();
   let pollDone   = false;
+
+  // Countdown: telt van 60 naar 0 maar duurt 70 seconden
+  const timerEl = document.getElementById('timerCount');
+  const TIMER_REAL_MS = 70000;
+  function updateTimer() {
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.ceil(60 * (1 - elapsed / TIMER_REAL_MS));
+    timerEl.textContent = Math.max(0, remaining);
+    if (remaining > 0) setTimeout(updateTimer, 200);
+  }
+  updateTimer();
 
   function mark(id) {
     document.getElementById(id)?.classList.add('done');
