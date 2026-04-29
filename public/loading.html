@@ -110,6 +110,11 @@
       align-items: center;
       justify-content: center;
       gap: 2px;
+      transition: opacity 0.8s;
+    }
+
+    .ring-inner.hidden {
+      opacity: 0;
     }
 
     .timer {
@@ -367,8 +372,12 @@
   function updateTimer() {
     const elapsed = Date.now() - startTime;
     const remaining = Math.ceil(60 * (1 - elapsed / TIMER_REAL_MS));
-    timerEl.textContent = Math.max(0, remaining);
-    if (remaining > 0) setTimeout(updateTimer, 200);
+    if (remaining > 0) {
+      timerEl.textContent = remaining;
+      setTimeout(updateTimer, 200);
+    } else {
+      document.querySelector('.ring-inner').classList.add('hidden');
+    }
   }
   updateTimer();
 
