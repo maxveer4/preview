@@ -124,7 +124,7 @@
   function openEditor() {
     const slug = document.getElementById('slug-input').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
     if (!slug) return;
-    window.location.href = `/editor/${slug}.html`;
+    window.location.href = `/editor/editor.html?slug=${slug}`;
   }
 
   // Laad clients.json
@@ -152,7 +152,7 @@
       clients.forEach(client => {
         const a = document.createElement('a');
         a.className = 'client-card';
-        a.href = `/editor/${client.slug}.html`;
+        a.href = `/editor/editor.html?slug=${client.slug}`;
         a.innerHTML = `
           <div class="client-info">
             <div class="client-name">${escHtml(client.naam || client.slug)}</div>
