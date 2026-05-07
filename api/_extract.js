@@ -78,8 +78,8 @@ function extractHomeFields(html) {
     if (c) { set(data, k, c[1]); set(data, k.replace('titel', 'desc'), c[2]); }
   });
 
-  // ── Service section ──
-  const svcM = html.match(/<h2>(.*?)<\/h2>\s*<p>(.*?)<\/p>\s*<a[^>]*-contact\.html/);
+  // ── Service section — anchor search on serviceImg then first h2 + p ──
+  const svcM = html.match(/id="serviceImg"[\s\S]*?<h2>([\s\S]*?)<\/h2>[\s\S]*?<p>([\s\S]*?)<\/p>/);
   if (svcM) { set(data, 'service_title', svcM[1]); set(data, 'service_desc', svcM[2]); }
 
   // ── Why section ──
