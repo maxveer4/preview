@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ariebouw – Aannemer in Kerkwijk</title>
-<meta name="description" content="Ariebouw is uw betrouwbare aannemer in Kerkwijk en omgeving. Vakkundig bouwwerk, eerlijk advies en persoonlijke aanpak. Bel nu: 06 15 60 51 83.">
+<title>{{SEO_TITLE}}</title>
+<meta name="description" content="{{SEO_DESCRIPTION}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -13,7 +13,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: {{KLEUR_PRIMARY}};
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -85,7 +85,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Quote form inline */
 .qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
 .qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(213,76%,52%,0.2); }
+.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px {{KLEUR_PRIMARY_A20}}; }
 .qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
 .qf-submit:hover { opacity: 0.9; }
 .qf-success { text-align: center; padding: 2rem 0; }
@@ -167,7 +167,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .work-steps { margin-top: 3rem; }
 .work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
 .work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: hsla(213,76%,52%,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: {{KLEUR_PRIMARY_A10}}; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 .work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
 .cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
@@ -215,13 +215,13 @@ footer ul li a:hover { color: var(--primary); }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:0615605183">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        06 15 60 51 83
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:info@Ariebouw.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@Ariebouw.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -230,23 +230,14 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/ariebouw.html" class="navbar-logo"><img id="logoImg" src="{{LOGO_URL}}" alt="Ariebouw logo"></a>
+    <a href="/ariebouw.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/ariebouw.html">Home</a>
       <a href="/ariebouw-over-ons.html">Over</a>
-      <div class="dropdown">
-        <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
-        <div class="dropdown-menu">
-          <a href="/ariebouw-diensten.html">Kozijnen vervangen</a>
-          <a href="/ariebouw-diensten.html">Aanbouw</a>
-          <a href="/ariebouw-diensten.html">Vloeren leggen</a>
-          <a href="/ariebouw-diensten.html">Renovatie</a>
-        </div>
-      </div>
-      <a href="#">Werkgebied</a>
+      <a href="/ariebouw-diensten.html">Diensten</a>
       <a href="/ariebouw-contact.html">Contact</a>
     </nav>
-    <button class="btn-primary" onclick="openModal('offerte')">Offerte aanvragen</button>
+    <a href="/ariebouw-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -259,44 +250,40 @@ footer ul li a:hover { color: var(--primary); }
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
     <a href="/ariebouw.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/ariebouw-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Kozijnen vervangen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Aanbouw</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Vloeren leggen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Renovatie</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
+    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
     <a href="/ariebouw-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="openModal('offerte');document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</button></div>
+    <div style="margin-top:1rem"><a href="/ariebouw-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img id="heroImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_hero_whatsapp-image-2026-03-09-at-14.41.25.jpeg" alt="Aannemer aan het werk op een bouwproject">
+    <img id="heroImg" src="{{FOTO_HERO}}" alt="ariebouw - hero afbeelding">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <p class="hero-eyebrow">Uw vakkundige aannemer in Kerkwijk</p>
-      <h1 class="hero-title">Bouwen met kwaliteit en persoonlijke aandacht</h1>
-      <p class="hero-desc">Ariebouw verzorgt al uw bouwwerkzaamheden in Kerkwijk en omgeving. Eerlijk advies, vakmanschap en een resultaat waar u trots op bent.</p>
+      <p class="hero-eyebrow">hoi werkt dit?</p>
+      <h1 class="hero-title">{{HERO_TITLE}}</h1>
+      <p class="hero-desc">{{HERO_DESC}}</p>
       <ul class="hero-list">
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Persoonlijk contact met Arie
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{KLEUR_PRIMARY}}" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          {{USP_1}}
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Vakmanschap met oog voor detail
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{KLEUR_PRIMARY}}" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          {{USP_2}}
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Eerlijke prijs, nette oplevering
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{KLEUR_PRIMARY}}" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          {{USP_3}}
         </li>
       </ul>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="openModal('advies')">Plan een gratis adviesgesprek</button>
-        <a href="#diensten" class="btn-outline">Bekijk diensten</a>
+        <a href="/ariebouw-contact.html" class="btn-primary">Plan een gratis adviesgesprek</a>
+        <a href="/ariebouw-diensten.html" class="btn-outline">Bekijk diensten</a>
       </div>
     </div>
     <div class="hero-form-col">
@@ -311,22 +298,22 @@ footer ul li a:hover { color: var(--primary); }
 <section class="trust">
   <div class="container">
     <h2 class="section-title">Kies voor <span class="text-primary">kwaliteit</span> en <span class="text-primary">betrouwbaarheid</span></h2>
-    <p class="trust-desc">Klanten in Kerkwijk en omgeving kiezen voor Ariebouw vanwege betrouwbaarheid en kwaliteit.</p>
+    <p class="trust-desc">{{TRUST_DESC}}</p>
     <div class="trust-grid">
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Lokaal en betrokken</h3>
-        <p>Ariebouw werkt in de regio en kent de lokale bouwmarkt goed.</p>
+        <h3>{{TRUST_1_TITEL}}</h3>
+        <p>{{TRUST_1_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
-        <h3>Transparante werkwijze</h3>
-        <p>U weet altijd waar u aan toe bent, zonder verrassingen achteraf.</p>
+        <h3>{{TRUST_2_TITEL}}</h3>
+        <p>{{TRUST_2_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <h3>Kwaliteit gegarandeerd</h3>
-        <p>Elk project wordt zorgvuldig en vakkundig tot het einde afgewerkt.</p>
+        <h3>{{TRUST_3_TITEL}}</h3>
+        <p>{{TRUST_3_DESC}}</p>
       </div>
     </div>
   </div>
@@ -337,11 +324,11 @@ footer ul li a:hover { color: var(--primary); }
   <div class="container">
     <div class="service-inner">
       <div class="service-grid">
-        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_waarom_photorealistic_indoor_scene_of_nano_banana_96449.jpg" alt="Aannemer bij een verbouwingsproject" class="service-img"></div>
+        <div><img id="serviceImg" src="{{FOTO_WAAROM}}" alt="ariebouw - service afbeelding" class="service-img"></div>
         <div>
-          <h2>Wat Ariebouw voor u kan bouwen</h2>
-          <p>Ariebouw neemt al uw bouwprojecten uit handen, van kleine verbouwingen tot grootschalige nieuwbouw. Of u nu een aanbouw wilt realiseren, een badkamer wil renoveren of een complete woning wil verbouwen — Arie denkt met u mee en zorgt voor een eindresultaat dat aansluit bij uw wensen en budget. Doordat u direct met Arie zelf te maken heeft, is de communicatie snel en persoonlijk. U hoeft niet te wachten op tussenpersonen of langdurige offertetrajecten. Dat bespaart u tijd, geld en onnodige stress. Ariebouw staat voor solide bouwwerk dat jaren meegaat.</p>
-          <button class="btn-primary" onclick="openModal('offerte')">Vraag een offerte aan</button>
+          <h2>{{SERVICE_TITLE}}</h2>
+          <p>{{SERVICE_DESC}}</p>
+          <a href="/ariebouw-contact.html" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
     </div>
@@ -351,28 +338,28 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Why Choose Us -->
 <section class="why">
   <div class="why-bg">
-    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_usp_whatsapp-image-2026-03-09-at-14.41.19.jpeg" alt="">
+    <img id="whyBgImg" src="{{FOTO_USP}}" alt="">
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span class="text-primary">Ariebouw</span></h2>
-    <p class="why-desc">Er zijn veel aannemers, maar Ariebouw onderscheidt zich door persoonlijke service, vakkennis en eerlijkheid.</p>
+    <h2>Waarom kiezen voor <span class="text-primary">{{BEDRIJFSNAAM}}</span></h2>
+    <p class="why-desc">{{WHY_DESC}}</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div><h3>Direct contact</h3><p>U heeft altijd rechtstreeks contact met Arie, geen tussenpersonen.</p></div>
+        <div><h3>{{WHY_1_TITEL}}</h3><p>{{WHY_1_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg></div>
-        <div><h3>Eerlijke offertes</h3><p>Duidelijke prijsafspraken zodat u nooit voor verrassingen staat.</p></div>
+        <div><h3>{{WHY_2_TITEL}}</h3><p>{{WHY_2_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div><h3>Ruime ervaring</h3><p>Ariebouw heeft jarenlange ervaring in uiteenlopende bouwprojecten.</p></div>
+        <div><h3>{{WHY_3_TITEL}}</h3><p>{{WHY_3_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <div><h3>Nette oplevering</h3><p>Uw project wordt schoon en netjes opgeleverd, precies zoals afgesproken.</p></div>
+        <div><h3>{{WHY_4_TITEL}}</h3><p>{{WHY_4_DESC}}</p></div>
       </div>
     </div>
   </div>
@@ -401,28 +388,28 @@ footer ul li a:hover { color: var(--primary); }
   <div class="container">
     <div class="work-grid">
       <div>
-        <h2>Zo werkt Ariebouw voor u</h2>
-        <p class="work-desc">Bij Ariebouw begint elk project met een goed gesprek. Arie luistert naar uw wensen, bekijkt de situatie ter plekke en geeft eerlijk advies. Zo weet u precies wat u kunt verwachten, nog vóór er een schop de grond in gaat.</p>
-        <p class="work-desc">Tijdens de uitvoering houdt Arie u op de hoogte van de voortgang. Zo bent u nooit verrast en weet u altijd waar uw project staat.</p>
-        <button class="btn-primary" onclick="openModal('advies')">Advies nodig?</button>
-        <img id="werkwijzeImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_werkwijze_img_3899.jpeg" alt="Aannemer Arie bespreekt bouwplannen" class="work-img">
+        <h2>{{WERK_TITLE}}</h2>
+        <p class="work-desc">{{WERK_DESC_1}}</p>
+        <p class="work-desc">{{WERK_DESC_2}}</p>
+        <a href="/ariebouw-contact.html" class="btn-primary">Advies nodig?</a>
+        <img id="werkwijzeImg" src="{{FOTO_WERKWIJZE}}" alt="ariebouw - werkfoto" class="work-img">
         <div class="work-steps">
-          <h3>Van eerste contact tot oplevering</h3>
+          <h3>{{STAPPEN_TITLE}}</h3>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div><h4>Vrijblijvend kennismaken</h4><p>Neem contact op en vertel Arie wat u wilt bouwen of verbouwen.</p></div>
+            <div><h4>{{STAP_1_TITEL}}</h4><p>{{STAP_1_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><h4>Offerte op maat</h4><p>U ontvangt een duidelijke, eerlijke offerte afgestemd op uw project.</p></div>
+            <div><h4>{{STAP_2_TITEL}}</h4><p>{{STAP_2_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-            <div><h4>Uitvoering van het werk</h4><p>Arie voert het werk vakkundig en netjes uit, precies zoals afgesproken.</p></div>
+            <div><h4>{{STAP_3_TITEL}}</h4><p>{{STAP_3_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
-            <div><h4>Nette oplevering</h4><p>Het project wordt schoon opgeleverd en Arie loopt het eindresultaat met u door.</p></div>
+            <div><h4>{{STAP_4_TITEL}}</h4><p>{{STAP_4_DESC}}</p></div>
           </div>
         </div>
         <div class="cta-block">
@@ -430,11 +417,11 @@ footer ul li a:hover { color: var(--primary); }
             <h4>Advies nodig?</h4>
             <p>Vraag een gratis adviesgesprek aan en ontvang direct <strong style="color:#fff">persoonlijk advies</strong>.</p>
           </div>
-          <button class="btn-primary" onclick="openModal('advies')">Gratis adviesgesprek aanvragen</button>
+          <a href="/ariebouw-contact.html" class="btn-primary">Gratis adviesgesprek aanvragen</a>
         </div>
         <div class="work-vakmanschap">
           <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
-          <p>Ariebouw staat voor echt vakmanschap: degelijk, doordacht en duurzaam. Arie zet zijn kennis en ervaring in voor elk project, groot of klein. Zo krijgt u een bouwresultaat waar u jarenlang plezier van heeft.</p>
+          <p>{{VAKMANSCHAP_DESC}}</p>
         </div>
       </div>
       <div>
@@ -453,21 +440,21 @@ footer ul li a:hover { color: var(--primary); }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">Kozijnen vervangen</a></li>
-          <li><a href="#">Aanbouw</a></li>
-          <li><a href="#">Vloeren leggen</a></li>
-          <li><a href="#">Renovatie</a></li>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Zaltbommel</a></li>
-          <li><a href="#">Alem</a></li>
-          <li><a href="#">Rossum</a></li>
-          <li><a href="#">Hedel</a></li>
-          <li><a href="#">Brakel</a></li>
-          <li><a href="#">Velddriel</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
@@ -481,15 +468,15 @@ footer ul li a:hover { color: var(--primary); }
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Ariebouw</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">{{BEDRIJFSNAAM}}</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Ariebouw – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
@@ -497,7 +484,7 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -505,7 +492,7 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
@@ -537,7 +524,7 @@ function createForm(id) {
       <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
       <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
       <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:hsl(213,76%,52%);color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+      <button type="submit" style="width:100%;background:{{KLEUR_PRIMARY}};color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
     </form>`;
 }
 
@@ -547,7 +534,7 @@ async function submitForm(e, form, containerId) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
     await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(213,76%,52%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:{{KLEUR_PRIMARY}};border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
     alert('Er is iets misgegaan. Probeer het opnieuw.');
@@ -557,7 +544,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [[{"name":"Peter V.","text":"Arie heeft onze aanbouw perfect gerealiseerd. Hij dacht actief mee en hield zich keurig aan de planning. Het resultaat is precies wat we voor ogen hadden.","date":"1 maand geleden"},{"name":"Marieke D.","text":"Fantastische vakman! Onze badkamer is volledig gerenoveerd en ziet er prachtig uit. Arie was altijd bereikbaar en werkte netjes en snel.","date":"1 maand geleden"},{"name":"Johan B.","text":"Ariebouw heeft onze schuur verbouwd tot een mooie werkruimte. Strakke offerte, geen meerwerk en een nette oplevering. Echt een aanrader.","date":"1 maand geleden"},{"name":"Sandra K.","text":"We zijn erg blij met de verbouwing van onze keuken. Arie is een fijne vakman die goed luistert en precies levert wat je wilt. Zeker voor herhaling vatbaar.","date":"1 maand geleden"},{"name":"Thomas H.","text":"Professionele aannemer met een persoonlijke aanpak. Arie heeft onze oprit en terras aangelegd en we zijn er meer dan tevreden mee. Eerlijke prijs en goed werk.","date":"1 maand geleden"},{"name":"Linda W.","text":"Ariebouw heeft snel en vakkundig ons dak gerepareerd. Arie was eerlijk over de kosten en werkte ordelijk. We raden hem van harte aan in de regio.","date":"1 maand geleden"}]];
+const reviews = [{{REVIEWS_JSON}}];
 
 let reviewIndex = 0;
 const LIMIT = 150;
