@@ -1,3 +1,4 @@
+<!-- gowebbo-cms: {"seo_title":"Dakmax | Dakdekker specialist in Leersum en omgeving","seo_description":"Dakmax is uw specialist in dakinspectie, dakbedekking vervangen en zonnepanelen op dak in Leersum en de regio Utrecht. Vakkundig dakwerk met jarenlange ervaring.","kleur_primary":"hsl(198,76%,57%)","bedrijfsnaam":"Dakmax","telefoon_display":"06 15 60 51 83","email":"dakmax@gmail.com","hero_eyebrow":"UMooi en goed dak","hero_title":"Een sterk dak boven uw hoofd, altijd en overal","hero_desc":"Een goed dak beschermt uw woning jaar in jaar uit. Dakmax zorgt voor vakkundig dakwerk in Leersum en omgeving. Of het nu gaat om een dakinspectie, nieuw dakbedekkingswerk of de plaatsing van zonnepanelen – wij leveren kwaliteit en duidelijkheid.","usp_1":"Vakkundig dakwerk met oog voor detail","usp_2":"Transparante offertes zonder verborgen kosten","usp_3":"Snel ter plaatse in Leersum en de regio Utrecht","dienst_1":"Dakinspectie","dienst_2":"Dakbedekking vervangen","dienst_3":"Zonnepanelen op dak","dienst_4":"Leersum","stad_1":"Doorn","stad_2":"Amerongen","stad_3":"Rhenen","stad_4":"Driebergen","stad_5":"Veenendaal","stad_6":"Compleet werkgebied","werk_title":"Onze werkwijze bij <span class=\"text-primary\">dakwerkzaamheden</span>","werk_desc_1":"Dakmax helpt klanten in Leersum en omgeving bij het inspecteren, vervangen en verduurzamen van daken. Elk project begint met een persoonlijk adviesgesprek, zodat de aanpak perfect aansluit bij uw woning en wensen.","werk_desc_2":"Van het vaststellen van de beste dakoplossing tot een nette en veilige uitvoering: alles wordt zorgvuldig gedaan. Zo bent u verzekerd van een duurzaam dak dat jarenlang optimaal beschermt.","logo_url":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/dakmax/logo_url_gowebbo-logo.jpeg"} -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -230,22 +231,14 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="#" class="navbar-logo"><img id="logoImg" alt="Dakmax logo"></a>
+    <a href="/dakmax.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/dakmax/logo_url_gowebbo-logo.jpeg" alt="Dakmax logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;"></a>
     <nav class="navbar-nav">
-      <a href="#">Home</a>
-      <a href="#">Over</a>
-      <div class="dropdown">
-        <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
-        <div class="dropdown-menu">
-          <a href="#">Dakinspectie</a>
-          <a href="#">Dakbedekking vervangen</a>
-          <a href="#">Zonnepanelen op dak</a>
-        </div>
-      </div>
-      <a href="#">Werkgebied</a>
-      <a href="#">Contact</a>
+      <a href="/dakmax.html">Home</a>
+      <a href="/dakmax-over-ons.html">Over</a>
+      <a href="/dakmax-diensten.html">Diensten</a>
+      <a href="/dakmax-contact.html">Contact</a>
     </nav>
-    <button class="btn-primary" onclick="openModal('offerte')">Offerte aanvragen</button>
+    <a href="/dakmax-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -256,26 +249,23 @@ footer ul li a:hover { color: var(--primary); }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Dakinspectie</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Dakbedekking vervangen</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Zonnepanelen op dak</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="openModal('offerte');document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</button></div>
+    <a href="/dakmax.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/dakmax-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/dakmax-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/dakmax-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/dakmax-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img id="heroImg" alt="Dakdekker aan het werk op een dak">
+    <img id="heroImg" src="{{FOTO_HERO}}" alt="Dakmax - hero afbeelding">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <p class="hero-eyebrow">Uw specialist in dakinspectie, dakbedekking en zonnepanelen</p>
+      <p class="hero-eyebrow">UMooi en goed dak</p>
       <h1 class="hero-title">Een sterk dak boven uw hoofd, altijd en overal</h1>
       <p class="hero-desc">Een goed dak beschermt uw woning jaar in jaar uit. Dakmax zorgt voor vakkundig dakwerk in Leersum en omgeving. Of het nu gaat om een dakinspectie, nieuw dakbedekkingswerk of de plaatsing van zonnepanelen – wij leveren kwaliteit en duidelijkheid.</p>
       <ul class="hero-list">
@@ -293,8 +283,8 @@ footer ul li a:hover { color: var(--primary); }
         </li>
       </ul>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="openModal('advies')">Plan een gratis dakadviesgesprek</button>
-        <a href="#diensten" class="btn-outline">Bekijk diensten</a>
+        <a href="/dakmax-contact.html" class="btn-primary">Plan een gratis adviesgesprek</a>
+        <a href="/dakmax-diensten.html" class="btn-outline">Bekijk diensten</a>
       </div>
     </div>
     <div class="hero-form-col">
@@ -309,22 +299,22 @@ footer ul li a:hover { color: var(--primary); }
 <section class="trust">
   <div class="container">
     <h2 class="section-title">Kies voor <span class="text-primary">kwaliteit</span> en <span class="text-primary">betrouwbaarheid</span></h2>
-    <p class="trust-desc">Dé specialist in <strong>dakinspectie, dakbedekking en zonnepanelen op dak</strong>.<br>Betrouwbaar vakmanschap, eerlijke prijzen en persoonlijk advies voor een dak dat jarenlang meegaat.</p>
+    <p class="trust-desc">{{TRUST_DESC}}</p>
     <div class="trust-grid">
       <div class="trust-card">
-        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9,21 9,12 15,12 15,21"/></svg></div>
-        <h3>Professioneel dakwerk</h3>
-        <p>Wij voeren al uw dakwerkzaamheden vakkundig en zorgvuldig uit, van kleine reparaties tot complete dakbedekkingsvervangingen.</p>
+        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>{{TRUST_1_TITEL}}</h3>
+        <p>{{TRUST_1_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
-        <h3>Gecertificeerd en betrouwbaar</h3>
-        <p>Elk dakproject wordt uitgevoerd volgens de geldende normen en vakrichtlijnen, zodat u verzekerd bent van een veilig en duurzaam resultaat.</p>
+        <h3>{{TRUST_2_TITEL}}</h3>
+        <p>{{TRUST_2_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <h3>Gratis advies en offerte</h3>
-        <p>We komen vrijblijvend langs om uw dak te inspecteren en geven persoonlijk advies over de beste dakoplossing voor uw woning.</p>
+        <h3>{{TRUST_3_TITEL}}</h3>
+        <p>{{TRUST_3_DESC}}</p>
       </div>
     </div>
   </div>
@@ -335,11 +325,11 @@ footer ul li a:hover { color: var(--primary); }
   <div class="container">
     <div class="service-inner">
       <div class="service-grid">
-        <div><img id="serviceImg" alt="Dakdekker bezig met dakbedekking" class="service-img"></div>
+        <div><img id="serviceImg" src="{{FOTO_WAAROM}}" alt="Dakmax - service afbeelding" class="service-img"></div>
         <div>
-          <h2>Een sterk dak begint met <span class="text-primary">vakmanschap</span></h2>
-          <p>Een goed onderhouden dak is essentieel voor de bescherming en waarde van uw woning. Dakmax biedt een compleet pakket aan dakdiensten: van een grondige dakinspectie waarbij lekkages en slijtage tijdig worden opgespoord, tot het volledig vervangen van uw dakbedekking met hoogwaardige materialen. Daarnaast plaatsen wij zonnepanelen op dak, zodat u duurzame energie opwekt en bespaart op uw energierekening. Met Dakmax kiest u voor een betrouwbare partner die vakkundig werk levert en u volledig ontzorgt van begin tot eind.</p>
-          <button class="btn-primary" onclick="openModal('offerte')">Vraag een offerte aan</button>
+          <h2>{{SERVICE_TITLE}}</h2>
+          <p>{{SERVICE_DESC}}</p>
+          <a href="/dakmax-contact.html" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
     </div>
@@ -349,28 +339,28 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Why Choose Us -->
 <section class="why">
   <div class="why-bg">
-    <img id="whyBgImg" alt="">
+    <img id="whyBgImg" src="{{FOTO_USP}}" alt="">
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
     <h2>Waarom kiezen voor <span class="text-primary">Dakmax</span></h2>
-    <p class="why-desc">Dakmax helpt woningeigenaren in Leersum en omgeving met al hun dakvragen. Van een snelle inspectie tot een complete dakrenovatie of zonnepaneleninstallatie. Met vakmanschap, eerlijkheid en oog voor uw wensen zorgen wij voor een dak om op te bouwen.</p>
+    <p class="why-desc">{{WHY_DESC}}</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div><h3>Degelijke dakbedekking</h3><p>Wij werken uitsluitend met kwalitatieve materialen die bestand zijn tegen alle weersomstandigheden.</p></div>
+        <div><h3>{{WHY_1_TITEL}}</h3><p>{{WHY_1_DESC}}</p></div>
       </div>
       <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <div><h3>Grondige dakinspectie</h3><p>We speuren uw dak grondig na op lekkages, slijtage en kwetsbare plekken, zodat problemen vroeg worden aangepakt.</p></div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg></div>
+        <div><h3>{{WHY_2_TITEL}}</h3><p>{{WHY_2_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div><h3>Eerlijk en transparant</h3><p>Duidelijke communicatie, heldere offertes en geen vervelende verrassingen achteraf.</p></div>
+        <div><h3>{{WHY_3_TITEL}}</h3><p>{{WHY_3_DESC}}</p></div>
       </div>
       <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <div><h3>Zonnepanelen op dak</h3><p>Wij plaatsen zonnepanelen vakkundig en veilig, zodat u optimaal profiteert van duurzame energie.</p></div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <div><h3>{{WHY_4_TITEL}}</h3><p>{{WHY_4_DESC}}</p></div>
       </div>
     </div>
   </div>
@@ -402,37 +392,37 @@ footer ul li a:hover { color: var(--primary); }
         <h2>Onze werkwijze bij <span class="text-primary">dakwerkzaamheden</span></h2>
         <p class="work-desc">Dakmax helpt klanten in Leersum en omgeving bij het inspecteren, vervangen en verduurzamen van daken. Elk project begint met een persoonlijk adviesgesprek, zodat de aanpak perfect aansluit bij uw woning en wensen.</p>
         <p class="work-desc">Van het vaststellen van de beste dakoplossing tot een nette en veilige uitvoering: alles wordt zorgvuldig gedaan. Zo bent u verzekerd van een duurzaam dak dat jarenlang optimaal beschermt.</p>
-        <button class="btn-primary" onclick="openModal('advies')">Advies nodig?</button>
-        <img id="werkwijzeImg" alt="Dakmax werkwijze dakrenovatie" class="work-img">
+        <a href="/dakmax-contact.html" class="btn-primary">Advies nodig?</a>
+        <img id="werkwijzeImg" src="{{FOTO_WERKWIJZE}}" alt="Dakmax - werkfoto" class="work-img">
         <div class="work-steps">
-          <h3>Dakwerk laten uitvoeren in <span class="text-primary">4 stappen</span></h3>
+          <h3>{{STAPPEN_TITLE}}</h3>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div><h4>Dakinspectie en advies</h4><p>We inspecteren uw dak grondig en adviseren welke aanpak het beste past bij de staat en het type dak.</p></div>
+            <div><h4>{{STAP_1_TITEL}}</h4><p>{{STAP_1_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><h4>Offerte op maat</h4><p>U ontvangt een heldere en transparante prijsopgave zonder verborgen kosten of verrassingen.</p></div>
+            <div><h4>{{STAP_2_TITEL}}</h4><p>{{STAP_2_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-            <div><h4>Vakkundige uitvoering</h4><p>Het dakwerk wordt netjes en professioneel uitgevoerd volgens de geldende normen en met kwalitatieve materialen.</p></div>
+            <div><h4>{{STAP_3_TITEL}}</h4><p>{{STAP_3_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
-            <div><h4>Oplevering en nazorg</h4><p>Na afronding leveren we het werk netjes op, leggen we alles uit en staan we klaar voor eventuele vragen of nazorg.</p></div>
+            <div><h4>{{STAP_4_TITEL}}</h4><p>{{STAP_4_DESC}}</p></div>
           </div>
         </div>
         <div class="cta-block">
           <div>
-            <h4>Advies nodig over uw dak?</h4>
-            <p>Vraag een gratis dakadviesgesprek aan en ontvang direct <strong style="color:#fff">persoonlijk advies</strong>.</p>
+            <h4>Advies nodig?</h4>
+            <p>Vraag een gratis adviesgesprek aan en ontvang direct <strong style="color:#fff">persoonlijk advies</strong>.</p>
           </div>
-          <button class="btn-primary" onclick="openModal('advies')">Gratis dakadvies aanvragen</button>
+          <a href="/dakmax-contact.html" class="btn-primary">Gratis adviesgesprek aanvragen</a>
         </div>
         <div class="work-vakmanschap">
           <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
-          <p>Bij Dakmax staat kwaliteit centraal. Met vakkundige dakinspecties, duurzame dakbedekkingsoplossingen en professionele zonnepaneleninstallaties zorgen wij voor een dak dat beschermt en rendement oplevert. Of het nu gaat om een snelle reparatie, een complete dakrenovatie of het plaatsen van zonnepanelen: u kunt rekenen op vakmanschap, eerlijkheid en duidelijke communicatie.</p>
+          <p>{{VAKMANSCHAP_DESC}}</p>
         </div>
       </div>
       <div>
@@ -454,38 +444,35 @@ footer ul li a:hover { color: var(--primary); }
           <li><a href="#">Dakinspectie</a></li>
           <li><a href="#">Dakbedekking vervangen</a></li>
           <li><a href="#">Zonnepanelen op dak</a></li>
+          <li><a href="#">Leersum</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Leersum</a></li>
           <li><a href="#">Doorn</a></li>
           <li><a href="#">Amerongen</a></li>
           <li><a href="#">Rhenen</a></li>
           <li><a href="#">Driebergen</a></li>
           <li><a href="#">Veenendaal</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
+          <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="#">Over ons</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Offerte aanvragen</a></li>
+          <li><a href="/dakmax-over-ons.html">Over ons</a></li>
+          <li><a href="/dakmax-contact.html">Contact</a></li>
+          <li><a href="/dakmax-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
-        <h4>Contact</h4>
+        <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Dakmax</p>
-        <p>Leersum</p>
-        <p style="margin-top:0.75rem">
-          <a href="tel:0615605183" style="color:var(--muted-fg)">06 15 60 51 83</a>
-        </p>
-        <p>
-          <a href="mailto:dakmax@gmail.com" style="color:var(--muted-fg)">dakmax@gmail.com</a>
-        </p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
@@ -498,7 +485,7 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    FORM_IFRAME_PLACEHOLDER
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -506,10 +493,11 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    FORM_IFRAME_PLACEHOLDER
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
+<script src="https://link.smart-reach.nl/js/form_embed.js"></script>
 <script>
 // ── Modal ──────────────────────────────────────────
 function openModal(type) {
@@ -523,7 +511,7 @@ function closeModal(type) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('offerte'); closeModal('advies'); } });
 
 // ── Quote Form ─────────────────────────────────────
-const WEBHOOK = '';
+const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/T5od4Y8kylN1uVzv427p/webhook-trigger/ea70eb86-39dc-4e8c-a748-d6dd97a3be20';
 const inputStyle = 'width:100%;border:1px solid hsl(0,0%,88%);background:hsl(0,0%,96%);border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-family:inherit;color:hsl(0,0%,10%);margin-bottom:.75rem;outline:none;display:block';
 
 function createForm(id) {
@@ -546,9 +534,7 @@ async function submitForm(e, form, containerId) {
   const btn = form.querySelector('button[type=submit]');
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
-    if (WEBHOOK) {
-      await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag' }) });
-    }
+    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag' }) });
     document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(198,76%,57%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
@@ -559,14 +545,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [
-  { name: 'Peter van den Berg', date: '14 jan 2026', text: 'Dakmax heeft ons dak uitstekend geïnspecteerd en de lekkage snel gevonden en verholpen. Nette vakman, goede communicatie en een eerlijke prijs. Zeker een aanrader voor iedereen in de regio Leersum!' },
-  { name: 'Marieke de Vries', date: '3 dec 2025', text: 'Hele dakbedekking laten vervangen door Dakmax. Van begin tot eind liep alles vlekkeloos. Duidelijke offerte, netjes werk en de werkplek werd perfect achtergelaten. We zijn erg tevreden!' },
-  { name: 'Johan Smit', date: '18 nov 2025', text: 'Zonnepanelen laten plaatsen op ons dak. Dakmax heeft alles vakkundig en veilig uitgevoerd. Ze namen de tijd om alles goed uit te leggen en de montage verliep vlot. Top service!' },
-  { name: 'Sandra Kooijman', date: '5 okt 2025', text: 'Na een storm hadden we schade aan het dak. Dakmax was snel ter plaatse, beoordeelde de schade eerlijk en regelde alles netjes. Fijn dat je kunt rekenen op zo\'n betrouwbare dakdekker in de buurt.' },
-  { name: 'Henk Willemsen', date: '22 aug 2025', text: 'Geweldige ervaring met Dakmax. Professioneel, punctueel en keurig afgewerkt. De nieuwe dakbedekking ziet er fantastisch uit en we hebben er alle vertrouwen in dat het dak weer jaren meegaat.' },
-  { name: 'Anita Bruggeman', date: '9 jul 2025', text: 'Dakmax heeft een uitgebreide dakinspectie uitgevoerd en een duidelijk rapport opgeleverd. Prettige samenwerking, eerlijk advies en geen opdringerige verkooppraatjes. Precies wat je zoekt in een dakdekker.' },
-];
+const reviews = [{{REVIEWS_JSON}}];
 
 let reviewIndex = 0;
 const LIMIT = 150;
@@ -617,9 +596,14 @@ function scrollReviews(dir) {
 renderReviews();
 window.addEventListener('resize', renderReviews);
 </script>
+
 <script>
-document.getElementById("logoImg").src="";
-document.getElementById("heroImg").src="";
-document.getElementById("serviceImg").src="";
-document.getElementById("werkwijzeImg").src="";
-document.getElementById("whyBgImg").src
+(function(){
+  const slug = window.location.pathname.split('/').pop().replace('.html','').replace(/-over-ons$|-contact$|-diensten$/, '');
+  document.querySelectorAll('a[href*="dakmax"]').forEach(function(a){
+    a.href = a.href.replace(/\{\{SLUG\}\}/g, slug);
+  });
+})();
+</script>
+</body>
+</html>
