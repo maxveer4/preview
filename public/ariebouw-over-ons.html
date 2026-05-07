@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Over Ons | Ariebouw</title>
-<meta name="description" content="Maak kennis met Ariebouw — vakkundig, betrouwbaar en lokaal actief.">
+<title>Over Ons | {{BEDRIJFSNAAM}}</title>
+<meta name="description" content="Maak kennis met {{BEDRIJFSNAAM}} — vakkundig, betrouwbaar en lokaal actief.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -13,7 +13,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: {{KLEUR_PRIMARY}};
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -88,7 +88,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 @media(min-width:640px){ .waarden-grid { grid-template-columns: 1fr 1fr; } }
 @media(min-width:1024px){ .waarden-grid { grid-template-columns: repeat(4,1fr); } }
 .waarde-card { text-align: center; }
-.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
+.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
 .waarde-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .waarde-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); }
 
@@ -128,13 +128,13 @@ footer ul li a:hover { color: var(--primary); }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:0615605183">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        06 15 60 51 83
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:info@Ariebouw.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@Ariebouw.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -143,20 +143,11 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/ariebouw.html" class="navbar-logo"><img src="{{LOGO_URL}}" alt="Ariebouw logo"></a>
+    <a href="/ariebouw.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/ariebouw.html">Home</a>
       <a href="/ariebouw-over-ons.html" style="color:var(--primary)">Over</a>
-      <div class="dropdown">
-        <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
-        <div class="dropdown-menu">
-          <a href="/ariebouw-diensten.html">Kozijnen vervangen</a>
-          <a href="/ariebouw-diensten.html">Aanbouw</a>
-          <a href="/ariebouw-diensten.html">Vloeren leggen</a>
-          <a href="/ariebouw-diensten.html">Renovatie</a>
-        </div>
-      </div>
-      <a href="#">Werkgebied</a>
+      <a href="/ariebouw-diensten.html">Diensten</a>
       <a href="/ariebouw-contact.html">Contact</a>
     </nav>
     <a href="/ariebouw-contact.html" class="btn-primary">Offerte aanvragen</a>
@@ -172,11 +163,7 @@ footer ul li a:hover { color: var(--primary); }
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
     <a href="/ariebouw.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/ariebouw-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Kozijnen vervangen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Aanbouw</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Vloeren leggen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Renovatie</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
+    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
     <a href="/ariebouw-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><a href="/ariebouw-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
   </div>
@@ -185,12 +172,12 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_hero_whatsapp-image-2026-03-09-at-14.41.25.jpeg" alt="">
+    <img src="{{FOTO_HERO}}" alt="">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Over Ons</h1>
-    <p>Persoonlijk vakmanschap in Kerkwijk en omgeving</p>
+    <p>{{OVER_ONS_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -199,9 +186,9 @@ footer ul li a:hover { color: var(--primary); }
   <div class="container">
     <div class="intro-inner">
       <h2>Wie zijn <span>wij</span>?</h2>
-      <p>Ariebouw is het bedrijf van Arie, een ervaren aannemer met hart voor zijn vak. Vanuit Kerkwijk werkt hij aan uiteenlopende bouwprojecten voor particulieren en bedrijven in de regio. Kwaliteit en eerlijkheid staan altijd voorop.</p>
-      <p>Arie gelooft in persoonlijk contact en korte lijnen. Hij is zelf aanwezig op de bouwplaats, overlegt direct met u en zorgt dat het werk verloopt zoals afgesproken. Geen verrassingen, wel resultaat.</p>
-      <p>De belofte van Ariebouw is simpel: uw project wordt vakkundig, netjes en binnen het afgesproken budget opgeleverd.</p>
+      <p>{{OVER_ONS_INTRO_P1}}</p>
+      <p>{{OVER_ONS_INTRO_P2}}</p>
+      <p>{{OVER_ONS_INTRO_P3}}</p>
     </div>
   </div>
 </section>
@@ -215,29 +202,29 @@ footer ul li a:hover { color: var(--primary); }
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Eerlijkheid</h3>
-        <p>Transparante communicatie en duidelijke afspraken van begin tot eind.</p>
+        <h3>{{OVER_ONS_WAARDE_1_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_1_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <h3>Vakmanschap</h3>
-        <p>Elk detail wordt met zorg en precisie uitgevoerd.</p>
+        <h3>{{OVER_ONS_WAARDE_2_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_2_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <h3>Betrouwbaarheid</h3>
-        <p>Ariebouw doet wat hij belooft, altijd en op tijd.</p>
+        <h3>{{OVER_ONS_WAARDE_3_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_3_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3>Persoonlijke aanpak</h3>
-        <p>U heeft altijd direct contact met Arie zelf.</p>
+        <h3>{{OVER_ONS_WAARDE_4_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_4_DESC}}</p>
       </div>
     </div>
   </div>
@@ -247,10 +234,10 @@ footer ul li a:hover { color: var(--primary); }
 <section class="cta-section">
   <div class="container">
     <h2>Kunnen wij u <span>helpen</span>?</h2>
-    <p>Wilt u meer weten of een vrijblijvende offerte aanvragen? Neem contact op.</p>
+    <p>{{OVER_ONS_CTA_DESC}}</p>
     <div class="cta-btns">
       <a href="/ariebouw-contact.html" class="btn-primary">Offerte aanvragen</a>
-      <a href="tel:0615605183" class="btn-outline-dark">Bel 06 15 60 51 83</a>
+      <a href="tel:{{TELEFOON_HREF}}" class="btn-outline-dark">Bel {{TELEFOON_DISPLAY}}</a>
     </div>
   </div>
 </section>
@@ -262,21 +249,21 @@ footer ul li a:hover { color: var(--primary); }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">Kozijnen vervangen</a></li>
-          <li><a href="#">Aanbouw</a></li>
-          <li><a href="#">Vloeren leggen</a></li>
-          <li><a href="#">Renovatie</a></li>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Zaltbommel</a></li>
-          <li><a href="#">Alem</a></li>
-          <li><a href="#">Rossum</a></li>
-          <li><a href="#">Hedel</a></li>
-          <li><a href="#">Brakel</a></li>
-          <li><a href="#">Velddriel</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
@@ -290,15 +277,15 @@ footer ul li a:hover { color: var(--primary); }
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Ariebouw</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">{{BEDRIJFSNAAM}}</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Ariebouw – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
