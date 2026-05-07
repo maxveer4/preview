@@ -846,20 +846,9 @@
     })
     .then(res => res.ok ? res.json() : res.json().then(e => Promise.reject(e.error || res.status)))
     .then(() => {
-      // Commit succeeded — Vercel deploys automatically, takes ~45s
-      let secs = 45;
-      status.textContent = `Opgeslagen! Website wordt bijgewerkt (nog ${secs}s)...`;
-      const iv = setInterval(() => {
-        secs--;
-        if (secs > 0) {
-          status.textContent = `Opgeslagen! Website wordt bijgewerkt (nog ${secs}s)...`;
-        } else {
-          clearInterval(iv);
-          status.textContent = '✓ Live! Klik op ↺ om de preview te vernieuwen.';
-          status.className   = 'status-msg success';
-          btn.disabled = false;
-        }
-      }, 1000);
+      status.textContent = '✓ Opgeslagen! Klik op ↺ om de preview te vernieuwen.';
+      status.className   = 'status-msg success';
+      btn.disabled = false;
     })
     .catch(err => {
       status.textContent = typeof err === 'string' ? `Fout: ${err}` : 'Er is iets misgegaan, probeer het opnieuw.';
