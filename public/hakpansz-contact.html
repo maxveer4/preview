@@ -1,3 +1,4 @@
+<!-- gowebbo-cms: {"seo_title":"Hakpansz – Dakdekker in Leersuum | Hans","seo_description":"Op zoek naar een betrouwbare dakdekker in Leersuum? Hakpansz biedt vakkundige dakwerkzaamheden. Bel Hans nu: 06 12 34 56 78 voor een vrijblijvende offerte!","kleur_primary":"hsl(213,76%,52%)","bedrijfsnaam":"Hakpansz","telefoon_display":"06 12 34 56 78","email":"info@dakhansz.nl","hero_eyebrow":"Uw dakspecialist in Leersuum","hero_title":"Een betrouwbaar dak is belangrijk","hero_desc":"Hakpansz levert vakkundig dakwerk met oog voor detail en duurzaamheid. Wij zorgen dat uw dak jarenlang beschermt.","usp_1":"Vakkundig en betrouwbaar dakwerk","usp_2":"Snel ter plaatse in de regio","usp_3":"Eerlijke prijs, en een mooi dak","foto_hero":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg","foto_waarom":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg","foto_werkwijze":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg","adres_straat":"","adres_postcode_stad":"","dienst_1":"dakpannen-vervangen","dienst_2":"dakrenovatie","dienst_3":"schoorsteenrenovatie-loodwerk","dienst_4":"daklekkage","stad_1":"Bunnik","stad_2":"Zeist","stad_3":"Houten","stad_4":"De Bilt","stad_5":"Wijk bij Duurstede","stad_6":"Driebergen-Rijsenburg","werk_title":"Zo werkt Hakpansz voor u","werk_desc_1":"Wij geloven in een heldere en persoonlijke aanpak. Vanaf het eerste contact zorgt Hans ervoor dat u precies weet wat u kunt verwachten. We beginnen altijd met een grondige inspectie van uw dak om de situatie goed in kaart te brengen.","werk_desc_2":"Daarna ontvangt u een overzichtelijke offerte en plannen we het werk op een moment dat u uitkomt. Zo wordt uw project vlot en vakkundig afgerond."} -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -144,7 +145,7 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/hakpansz.html" class="navbar-logo"><img src="" alt="Hakpansz logo"></a>
+    <a href="/hakpansz.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/hakpansz.html">Home</a>
       <a href="/hakpansz-over-ons.html">Over</a>
@@ -173,12 +174,12 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="" alt="">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg" alt="">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Contact</h1>
-    <p>Neem direct contact op met Hakpansz.</p>
+    <p>{{CONTACT_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -215,7 +216,7 @@ footer ul li a:hover { color: var(--primary); }
             </div>
             <div>
               <p class="contact-item-label">Adres</p>
-              <a href="{{MAPS_URL}}" target="_blank" rel="noopener noreferrer" class="contact-item-value">, </a>
+              <a href="{{MAPS_URL}}" target="_blank" rel="noopener noreferrer" class="contact-item-value">{{ADRES_STRAAT}}, {{ADRES_POSTCODE_STAD}}</a>
             </div>
           </div>
         </div>
@@ -289,9 +290,9 @@ footer ul li a:hover { color: var(--primary); }
       <div class="footer-addr">
         <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Hakpansz</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
