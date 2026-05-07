@@ -1,3 +1,4 @@
+<!-- gowebbo-cms: {"seo_title":"Hakpansz – Dakdekker in Leersuum | Hans","seo_description":"Op zoek naar een betrouwbare dakdekker in Leersuum? Hakpansz biedt vakkundige dakwerkzaamheden. Bel Hans nu: 06 12 34 56 78 voor een vrijblijvende offerte!","kleur_primary":"hsl(213,76%,52%)","bedrijfsnaam":"Hakpansz","telefoon_display":"06 12 34 56 78","email":"info@dakhansz.nl","hero_eyebrow":"Uw dakspecialist in Leersuum","hero_title":"Een betrouwbaar dak is belangrijk","hero_desc":"Hakpansz levert vakkundig dakwerk met oog voor detail en duurzaamheid. Wij zorgen dat uw dak jarenlang beschermt.","usp_1":"Vakkundig en betrouwbaar dakwerk","usp_2":"Snel ter plaatse in de regio","usp_3":"Eerlijke prijs, en een mooi dak","foto_hero":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg","foto_waarom":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg","foto_werkwijze":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg","adres_straat":"","adres_postcode_stad":"","dienst_1":"dakpannen-vervangen","dienst_2":"dakrenovatie","dienst_3":"schoorsteenrenovatie-loodwerk","dienst_4":"daklekkage","stad_1":"Bunnik","stad_2":"Zeist","stad_3":"Houten","stad_4":"De Bilt","stad_5":"Wijk bij Duurstede","stad_6":"Driebergen-Rijsenburg","werk_title":"Zo werkt Hakpansz voor u","werk_desc_1":"Wij geloven in een heldere en persoonlijke aanpak. Vanaf het eerste contact zorgt Hans ervoor dat u precies weet wat u kunt verwachten. We beginnen altijd met een grondige inspectie van uw dak om de situatie goed in kaart te brengen.","werk_desc_2":"Daarna ontvangt u een overzichtelijke offerte en plannen we het werk op een moment dat u uitkomt. Zo wordt uw project vlot en vakkundig afgerond."} -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -163,7 +164,7 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/hakpansz.html" class="navbar-logo"><img src="" alt="Hakpansz logo"></a>
+<a href="/hakpansz.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/hakpansz.html">Home</a>
       <a href="/hakpansz-over-ons.html">Over</a>
@@ -197,7 +198,7 @@ footer ul li a:hover { color: var(--primary); }
   </div>
   <div class="container page-hero-content">
     <h1>Onze Diensten</h1>
-    <p>Hakpansz biedt complete dakoplossingen voor particulieren en bedrijven in Leersuum en omgeving.</p>
+    <p>{{DIENSTEN_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -218,8 +219,8 @@ footer ul li a:hover { color: var(--primary); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
         </div>
         <div>
-          <h3>Lokale Vakman</h3>
-          <p>Hans kent de regio en werkt snel en efficiënt bij u in de buurt.</p>
+          <h3>{{TRUST_1_TITEL}}</h3>
+          <p>{{TRUST_1_DESC}}</p>
         </div>
       </div>
       <div class="trust-item">
@@ -227,8 +228,8 @@ footer ul li a:hover { color: var(--primary); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div>
-          <h3>Kwaliteitsgarantie</h3>
-          <p>Wij gebruiken uitsluitend hoogwaardige materialen voor een duurzaam resultaat.</p>
+          <h3>{{TRUST_2_TITEL}}</h3>
+          <p>{{TRUST_2_DESC}}</p>
         </div>
       </div>
       <div class="trust-item">
@@ -236,8 +237,8 @@ footer ul li a:hover { color: var(--primary); }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <div>
-          <h3>Persoonlijke Aanpak</h3>
-          <p>U krijgt altijd eerlijk advies en een transparante offerte zonder verborgen kosten.</p>
+          <h3>{{TRUST_3_TITEL}}</h3>
+          <p>{{TRUST_3_DESC}}</p>
         </div>
       </div>
     </div>
@@ -248,8 +249,8 @@ footer ul li a:hover { color: var(--primary); }
 <section class="cta-section">
   <div class="container">
     <p class="label">Op zoek naar een vakman?</p>
-    <h2>Klaar voor een sterk en waterdicht dak?</h2>
-    <p class="desc">Neem vandaag nog contact op met Hans voor een vrijblijvende offerte op maat.</p>
+    <h2>{{DIENSTEN_CTA_TITEL}}</h2>
+    <p class="desc">{{DIENSTEN_CTA_DESC}}</p>
     <div class="cta-btns">
       <a href="/hakpansz-contact.html" class="cta-btn-white">Offerte aanvragen</a>
       <a href="tel:0612345678" class="cta-btn-outline">
@@ -296,9 +297,9 @@ footer ul li a:hover { color: var(--primary); }
       <div class="footer-addr">
         <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Hakpansz</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
@@ -323,7 +324,7 @@ footer ul li a:hover { color: var(--primary); }
     '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'
   ];
 
-  var diensten = [{"naam":"dakpannen-vervangen","desc":"Een lekkend dak kan grote schade veroorzaken aan uw woning. Hakpansz spoort lekkages snel en accuraat op en herstelt ze vakkundig. We werken met kwalitatieve materialen zodat het probleem ook echt duurzaam wordt opgelost. Zo houdt u droge voeten en blijft uw interieur beschermd.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakpannen-vervangen/dakpannen-vervangen-1.jpeg"},{"naam":"dakrenovatie","desc":"Dakpannen die verschoven, gebroken of versleten zijn, vormen een risico voor uw woning. Hakpansz vervangt of herlegt dakpannen snel en vakkundig. We selecteren pannen die passen bij uw bestaande dak qua kleur en type. Zo blijft uw dak er mooi uit zien en functioneert het optimaal.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakrenovatie/dakrenovatie-1.jpeg"},{"naam":"schoorsteenrenovatie-loodwerk","desc":"Een goed functionerende dakgoot is essentieel om regenwater goed af te voeren. Hakpansz plaatst, repareert en reinigt dakgoten zodat wateroverlast wordt voorkomen. Verstopte of kapotte goten kunnen leiden tot vochtproblemen en schade aan de fundering. Wij lossen dit vakkundig en snel voor u op.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/schoorsteenrenovatie-loodwerk/schoorsteenrenovatie-loodwerk-1.jpeg"},{"naam":"daklekkage","desc":"Is uw dak aan het einde van zijn levensduur? Een volledige dakrenovatie door Hakpansz geeft uw woning een frisse start. Hans beoordeelt de staat van uw dak grondig en adviseert over de beste oplossing. Met hoogwaardige materialen en vakmanschap zorgen wij voor een dak dat decennialang meegaat.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/daklekkage/daklekkage-1.jpeg"},{"naam":"dakreparatie","desc":"Platte daken vragen om specialistische kennis en de juiste materialen. Hakpansz heeft ruime ervaring met het aanleggen en onderhouden van platte daken. We gebruiken waterdichte en duurzame dakbedekking die bestand is tegen weersinvloeden. Uw platte dak is bij ons in goede handen.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakreparatie/dakreparatie-1.jpeg"}];
+  var diensten = {{DIENSTEN_JSON}};
   var grid = document.getElementById('dienstenGrid');
 
   if (diensten.length >= 3 && diensten.length <= 6) {
