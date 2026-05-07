@@ -1,346 +1,342 @@
 ﻿[
     {
-        "slug":  "",
-        "naam":  ""
-    },
-    {
         "slug":  "aanlegservice-nh",
-        "naam":  " aanlegservice nh.Value.ToUpper() anlegservice  aanlegservice nh.Value.ToUpper() h"
+        "naam":  "Aanlegservice Nh"
     },
     {
         "slug":  "ariebouw",
-        "naam":  " ariebouw.Value.ToUpper() riebouw"
+        "naam":  "Ariebouw"
     },
     {
         "slug":  "bb",
-        "naam":  " bb.Value.ToUpper() b"
+        "naam":  "Bb"
     },
     {
         "slug":  "berendsz-dak",
-        "naam":  " berendsz dak.Value.ToUpper() erendsz  berendsz dak.Value.ToUpper() ak"
+        "naam":  "Berendsz Dak"
     },
     {
         "slug":  "bobs-tegels",
-        "naam":  " bobs tegels.Value.ToUpper() obs  bobs tegels.Value.ToUpper() egels"
+        "naam":  "Bobs Tegels"
     },
     {
         "slug":  "booby-schoon-raam",
-        "naam":  " booby schoon raam.Value.ToUpper() ooby  booby schoon raam.Value.ToUpper() choon  booby schoon raam.Value.ToUpper() aam"
+        "naam":  "Booby Schoon Raam"
     },
     {
         "slug":  "bouwbedrijf-de-vries",
-        "naam":  " bouwbedrijf de vries.Value.ToUpper() ouwbedrijf  bouwbedrijf de vries.Value.ToUpper() e  bouwbedrijf de vries.Value.ToUpper() ries"
+        "naam":  "Bouwbedrijf De Vries"
     },
     {
         "slug":  "charvat-tuinen",
-        "naam":  " charvat tuinen.Value.ToUpper() harvat  charvat tuinen.Value.ToUpper() uinen"
+        "naam":  "Charvat Tuinen"
     },
     {
         "slug":  "dakappie",
-        "naam":  " dakappie.Value.ToUpper() akappie"
+        "naam":  "Dakappie"
     },
     {
         "slug":  "dakdekker-brams",
-        "naam":  " dakdekker brams.Value.ToUpper() akdekker  dakdekker brams.Value.ToUpper() rams"
+        "naam":  "Dakdekker Brams"
     },
     {
         "slug":  "dakdekker-de-dakpan",
-        "naam":  " dakdekker de dakpan.Value.ToUpper() akdekker  dakdekker de dakpan.Value.ToUpper() e  dakdekker de dakpan.Value.ToUpper() akpan"
+        "naam":  "Dakdekker De Dakpan"
     },
     {
         "slug":  "dakdekker-fsom",
-        "naam":  " dakdekker fsom.Value.ToUpper() akdekker  dakdekker fsom.Value.ToUpper() som"
+        "naam":  "Dakdekker Fsom"
     },
     {
         "slug":  "dakdekker-leersum-bv",
-        "naam":  " dakdekker leersum bv.Value.ToUpper() akdekker  dakdekker leersum bv.Value.ToUpper() eersum  dakdekker leersum bv.Value.ToUpper() v"
+        "naam":  "Dakdekker Leersum Bv"
     },
     {
         "slug":  "dakdekker-max",
-        "naam":  " dakdekker max.Value.ToUpper() akdekker  dakdekker max.Value.ToUpper() ax"
-    },
-    {
-        "slug":  "dakdekker-maxcs",
-        "naam":  " dakdekker maxcs.Value.ToUpper() akdekker  dakdekker maxcs.Value.ToUpper() axcs"
+        "naam":  "Dakdekker Max"
     },
     {
         "slug":  "dakdekker-max-veer-bv",
-        "naam":  " dakdekker max veer bv.Value.ToUpper() akdekker  dakdekker max veer bv.Value.ToUpper() ax  dakdekker max veer bv.Value.ToUpper() eer  dakdekker max veer bv.Value.ToUpper() v"
+        "naam":  "Dakdekker Max Veer Bv"
+    },
+    {
+        "slug":  "dakdekker-maxcs",
+        "naam":  "Dakdekker Maxcs"
     },
     {
         "slug":  "dakdekker-panniee",
-        "naam":  " dakdekker panniee.Value.ToUpper() akdekker  dakdekker panniee.Value.ToUpper() anniee"
-    },
-    {
-        "slug":  "dakdekkers-max-en-marc",
-        "naam":  " dakdekkers max en marc.Value.ToUpper() akdekkers  dakdekkers max en marc.Value.ToUpper() ax  dakdekkers max en marc.Value.ToUpper() n  dakdekkers max en marc.Value.ToUpper() arc"
-    },
-    {
-        "slug":  "dakdekkert-max",
-        "naam":  " dakdekkert max.Value.ToUpper() akdekkert  dakdekkert max.Value.ToUpper() ax"
+        "naam":  "Dakdekker Panniee"
     },
     {
         "slug":  "dakdekker-van-de-berg-bv",
-        "naam":  " dakdekker van de berg bv.Value.ToUpper() akdekker  dakdekker van de berg bv.Value.ToUpper() an  dakdekker van de berg bv.Value.ToUpper() e  dakdekker van de berg bv.Value.ToUpper() erg  dakdekker van de berg bv.Value.ToUpper() v"
+        "naam":  "Dakdekker Van De Berg Bv"
+    },
+    {
+        "slug":  "dakdekkers-max-en-marc",
+        "naam":  "Dakdekkers Max En Marc"
+    },
+    {
+        "slug":  "dakdekkert-max",
+        "naam":  "Dakdekkert Max"
     },
     {
         "slug":  "dakjan",
-        "naam":  " dakjan.Value.ToUpper() akjan"
+        "naam":  "Dakjan"
     },
     {
         "slug":  "dakkia-pang",
-        "naam":  " dakkia pang.Value.ToUpper() akkia  dakkia pang.Value.ToUpper() ang"
+        "naam":  "Dakkia Pang"
     },
     {
         "slug":  "dakkie-pan",
-        "naam":  " dakkie pan.Value.ToUpper() akkie  dakkie pan.Value.ToUpper() an"
+        "naam":  "Dakkie Pan"
     },
     {
         "slug":  "dakman-wybe",
-        "naam":  " dakman wybe.Value.ToUpper() akman  dakman wybe.Value.ToUpper() ybe"
+        "naam":  "Dakman Wybe"
     },
     {
         "slug":  "dakmax",
-        "naam":  " dakmax.Value.ToUpper() akmax"
+        "naam":  "Dakmax"
     },
     {
         "slug":  "dakmaxman",
-        "naam":  " dakmaxman.Value.ToUpper() akmaxman"
+        "naam":  "Dakmaxman"
     },
     {
         "slug":  "de-baksteen",
-        "naam":  " de baksteen.Value.ToUpper() e  de baksteen.Value.ToUpper() aksteen"
+        "naam":  "De Baksteen"
     },
     {
         "slug":  "de-grote-dakdekker",
-        "naam":  " de grote dakdekker.Value.ToUpper() e  de grote dakdekker.Value.ToUpper() rote  de grote dakdekker.Value.ToUpper() akdekker"
+        "naam":  "De Grote Dakdekker"
     },
     {
         "slug":  "de-lekkageman",
-        "naam":  " de lekkageman.Value.ToUpper() e  de lekkageman.Value.ToUpper() ekkageman"
+        "naam":  "De Lekkageman"
     },
     {
         "slug":  "de-nieuwe-dakker",
-        "naam":  " de nieuwe dakker.Value.ToUpper() e  de nieuwe dakker.Value.ToUpper() ieuwe  de nieuwe dakker.Value.ToUpper() akker"
+        "naam":  "De Nieuwe Dakker"
     },
     {
         "slug":  "dh-woning-onderhoud-",
-        "naam":  " dh woning onderhoud .Value.ToUpper() h  dh woning onderhoud .Value.ToUpper() oning  dh woning onderhoud .Value.ToUpper() nderhoud "
-    },
-    {
-        "slug":  "elektricien24",
-        "naam":  " elektricien24.Value.ToUpper() lektricien24"
+        "naam":  "Dh Woning Onderhoud "
     },
     {
         "slug":  "elektricien-de-lamp",
-        "naam":  " elektricien de lamp.Value.ToUpper() lektricien  elektricien de lamp.Value.ToUpper() e  elektricien de lamp.Value.ToUpper() amp"
+        "naam":  "Elektricien De Lamp"
     },
     {
         "slug":  "elektricien-het-zonnepaneel",
-        "naam":  " elektricien het zonnepaneel.Value.ToUpper() lektricien  elektricien het zonnepaneel.Value.ToUpper() et  elektricien het zonnepaneel.Value.ToUpper() onnepaneel"
+        "naam":  "Elektricien Het Zonnepaneel"
+    },
+    {
+        "slug":  "elektricien24",
+        "naam":  "Elektricien24"
     },
     {
         "slug":  "elise-de-schilder",
-        "naam":  " elise de schilder.Value.ToUpper() lise  elise de schilder.Value.ToUpper() e  elise de schilder.Value.ToUpper() childer"
+        "naam":  "Elise De Schilder"
     },
     {
         "slug":  "fqfr",
-        "naam":  " fqfr.Value.ToUpper() qfr"
+        "naam":  "Fqfr"
     },
     {
         "slug":  "g",
-        "naam":  " g.Value.ToUpper() "
+        "naam":  "G"
     },
     {
         "slug":  "hakpansz",
-        "naam":  " hakpansz.Value.ToUpper() akpansz"
+        "naam":  "Hakpansz"
     },
     {
         "slug":  "hans-bouwt-het",
-        "naam":  " hans bouwt het.Value.ToUpper() ans  hans bouwt het.Value.ToUpper() ouwt  hans bouwt het.Value.ToUpper() et"
+        "naam":  "Hans Bouwt Het"
     },
     {
         "slug":  "haris-dakkie",
-        "naam":  " haris dakkie.Value.ToUpper() aris  haris dakkie.Value.ToUpper() akkie"
-    },
-    {
-        "slug":  "harriaman-dak",
-        "naam":  " harriaman dak.Value.ToUpper() arriaman  harriaman dak.Value.ToUpper() ak"
+        "naam":  "Haris Dakkie"
     },
     {
         "slug":  "harri-daksz",
-        "naam":  " harri daksz.Value.ToUpper() arri  harri daksz.Value.ToUpper() aksz"
+        "naam":  "Harri Daksz"
+    },
+    {
+        "slug":  "harriaman-dak",
+        "naam":  "Harriaman Dak"
     },
     {
         "slug":  "hdjjd",
-        "naam":  " hdjjd.Value.ToUpper() djjd"
-    },
-    {
-        "slug":  "het-dakpand",
-        "naam":  " het dakpand.Value.ToUpper() et  het dakpand.Value.ToUpper() akpand"
-    },
-    {
-        "slug":  "het-dakpantje",
-        "naam":  " het dakpantje.Value.ToUpper() et  het dakpantje.Value.ToUpper() akpantje"
+        "naam":  "Hdjjd"
     },
     {
         "slug":  "het-dak-van-olaf",
-        "naam":  " het dak van olaf.Value.ToUpper() et  het dak van olaf.Value.ToUpper() ak  het dak van olaf.Value.ToUpper() an  het dak van olaf.Value.ToUpper() laf"
+        "naam":  "Het Dak Van Olaf"
+    },
+    {
+        "slug":  "het-dakpand",
+        "naam":  "Het Dakpand"
+    },
+    {
+        "slug":  "het-dakpantje",
+        "naam":  "Het Dakpantje"
     },
     {
         "slug":  "hier-",
-        "naam":  " hier .Value.ToUpper() ier "
+        "naam":  "Hier "
     },
     {
         "slug":  "hoiashao",
-        "naam":  " hoiashao.Value.ToUpper() oiashao"
+        "naam":  "Hoiashao"
     },
     {
         "slug":  "hoveniersbedrijf-jerry",
-        "naam":  " hoveniersbedrijf jerry.Value.ToUpper() oveniersbedrijf  hoveniersbedrijf jerry.Value.ToUpper() erry"
+        "naam":  "Hoveniersbedrijf Jerry"
     },
     {
         "slug":  "ilse-de-dakdekker",
-        "naam":  " ilse de dakdekker.Value.ToUpper() lse  ilse de dakdekker.Value.ToUpper() e  ilse de dakdekker.Value.ToUpper() akdekker"
+        "naam":  "Ilse De Dakdekker"
     },
     {
         "slug":  "installatiepaal",
-        "naam":  " installatiepaal.Value.ToUpper() nstallatiepaal"
+        "naam":  "Installatiepaal"
     },
     {
         "slug":  "j",
-        "naam":  " j.Value.ToUpper() "
+        "naam":  "J"
     },
     {
         "slug":  "jaccodesigntegelwerken-",
-        "naam":  " jaccodesigntegelwerken .Value.ToUpper() accodesigntegelwerken "
+        "naam":  "Jaccodesigntegelwerken "
     },
     {
         "slug":  "jan-de-man",
-        "naam":  " jan de man.Value.ToUpper() an  jan de man.Value.ToUpper() e  jan de man.Value.ToUpper() an"
+        "naam":  "Jan De Man"
     },
     {
         "slug":  "jansens-loodgieyer",
-        "naam":  " jansens loodgieyer.Value.ToUpper() ansens  jansens loodgieyer.Value.ToUpper() oodgieyer"
+        "naam":  "Jansens Loodgieyer"
     },
     {
         "slug":  "jappie-dakpan",
-        "naam":  " jappie dakpan.Value.ToUpper() appie  jappie dakpan.Value.ToUpper() akpan"
+        "naam":  "Jappie Dakpan"
     },
     {
         "slug":  "jari-verf",
-        "naam":  " jari verf.Value.ToUpper() ari  jari verf.Value.ToUpper() erf"
+        "naam":  "Jari Verf"
     },
     {
         "slug":  "launchdak-max",
-        "naam":  " launchdak max.Value.ToUpper() aunchdak  launchdak max.Value.ToUpper() ax"
+        "naam":  "Launchdak Max"
     },
     {
         "slug":  "Loodgieter Jan",
-        "naam":  " Loodgieter Jan.Value.ToUpper() oodgieter  Loodgieter Jan.Value.ToUpper() an"
+        "naam":  "Loodgieter Jan"
     },
     {
         "slug":  "loodgieter-petje",
-        "naam":  " loodgieter petje.Value.ToUpper() oodgieter  loodgieter petje.Value.ToUpper() etje"
+        "naam":  "Loodgieter Petje"
     },
     {
         "slug":  "marc",
-        "naam":  " marc.Value.ToUpper() arc"
+        "naam":  "Marc"
     },
     {
         "slug":  "mersch-dakbedekking",
-        "naam":  " mersch dakbedekking.Value.ToUpper() ersch  mersch dakbedekking.Value.ToUpper() akbedekking"
+        "naam":  "Mersch Dakbedekking"
     },
     {
         "slug":  "mijndak",
-        "naam":  " mijndak.Value.ToUpper() ijndak"
+        "naam":  "Mijndak"
     },
     {
         "slug":  "nieuwe-daken-bv",
-        "naam":  " nieuwe daken bv.Value.ToUpper() ieuwe  nieuwe daken bv.Value.ToUpper() aken  nieuwe daken bv.Value.ToUpper() v"
+        "naam":  "Nieuwe Daken Bv"
     },
     {
         "slug":  "nog-een-dakpan",
-        "naam":  " nog een dakpan.Value.ToUpper() og  nog een dakpan.Value.ToUpper() en  nog een dakpan.Value.ToUpper() akpan"
+        "naam":  "Nog Een Dakpan"
     },
     {
         "slug":  "pauls-dakpan",
-        "naam":  " pauls dakpan.Value.ToUpper() auls  pauls dakpan.Value.ToUpper() akpan"
+        "naam":  "Pauls Dakpan"
     },
     {
         "slug":  "peter-wasbak",
-        "naam":  " peter wasbak.Value.ToUpper() eter  peter wasbak.Value.ToUpper() asbak"
+        "naam":  "Peter Wasbak"
     },
     {
         "slug":  "piet",
-        "naam":  " piet.Value.ToUpper() iet"
+        "naam":  "Piet"
     },
     {
         "slug":  "puks-dakpan",
-        "naam":  " puks dakpan.Value.ToUpper() uks  puks dakpan.Value.ToUpper() akpan"
+        "naam":  "Puks Dakpan"
     },
     {
         "slug":  "schilderkwast-bv",
-        "naam":  " schilderkwast bv.Value.ToUpper() childerkwast  schilderkwast bv.Value.ToUpper() v"
+        "naam":  "Schilderkwast Bv"
     },
     {
         "slug":  "schildersbedrijf-veer",
-        "naam":  " schildersbedrijf veer.Value.ToUpper() childersbedrijf  schildersbedrijf veer.Value.ToUpper() eer"
+        "naam":  "Schildersbedrijf Veer"
     },
     {
         "slug":  "tegi-tegel",
-        "naam":  " tegi tegel.Value.ToUpper() egi  tegi tegel.Value.ToUpper() egel"
+        "naam":  "Tegi Tegel"
     },
     {
         "slug":  "test",
-        "naam":  " test.Value.ToUpper() est"
-    },
-    {
-        "slug":  "timdakpan",
-        "naam":  " timdakpan.Value.ToUpper() imdakpan"
-    },
-    {
-        "slug":  "timmerbedrijf-jerry",
-        "naam":  " timmerbedrijf jerry.Value.ToUpper() immerbedrijf  timmerbedrijf jerry.Value.ToUpper() erry"
-    },
-    {
-        "slug":  "timmerman-adre",
-        "naam":  " timmerman adre.Value.ToUpper() immerman  timmerman adre.Value.ToUpper() dre"
-    },
-    {
-        "slug":  "timmerman-de-hamer",
-        "naam":  " timmerman de hamer.Value.ToUpper() immerman  timmerman de hamer.Value.ToUpper() e  timmerman de hamer.Value.ToUpper() amer"
-    },
-    {
-        "slug":  "timmer-timmerman",
-        "naam":  " timmer timmerman.Value.ToUpper() immer  timmer timmerman.Value.ToUpper() immerman"
+        "naam":  "Test"
     },
     {
         "slug":  "tim-timmer",
-        "naam":  " tim timmer.Value.ToUpper() im  tim timmer.Value.ToUpper() immer"
+        "naam":  "Tim Timmer"
     },
     {
-        "slug":  "tomb-op-t-dak",
-        "naam":  " tomb op t dak.Value.ToUpper() omb  tomb op t dak.Value.ToUpper() p  tomb op t dak.Value.ToUpper()   tomb op t dak.Value.ToUpper() ak"
+        "slug":  "timdakpan",
+        "naam":  "Timdakpan"
+    },
+    {
+        "slug":  "timmer-timmerman",
+        "naam":  "Timmer Timmerman"
+    },
+    {
+        "slug":  "timmerbedrijf-jerry",
+        "naam":  "Timmerbedrijf Jerry"
+    },
+    {
+        "slug":  "timmerman-adre",
+        "naam":  "Timmerman Adre"
+    },
+    {
+        "slug":  "timmerman-de-hamer",
+        "naam":  "Timmerman De Hamer"
     },
     {
         "slug":  "tom-plant",
-        "naam":  " tom plant.Value.ToUpper() om  tom plant.Value.ToUpper() lant"
+        "naam":  "Tom Plant"
+    },
+    {
+        "slug":  "tomb-op-t-dak",
+        "naam":  "Tomb Op T Dak"
     },
     {
         "slug":  "veer-aannemers-bv",
-        "naam":  " veer aannemers bv.Value.ToUpper() eer  veer aannemers bv.Value.ToUpper() annemers  veer aannemers bv.Value.ToUpper() v"
+        "naam":  "Veer Aannemers Bv"
     },
     {
         "slug":  "veer-dakdekkers",
-        "naam":  " veer dakdekkers.Value.ToUpper() eer  veer dakdekkers.Value.ToUpper() akdekkers"
+        "naam":  "Veer Dakdekkers"
     },
     {
         "slug":  "wybe-installatie",
-        "naam":  " wybe installatie.Value.ToUpper() ybe  wybe installatie.Value.ToUpper() nstallatie"
+        "naam":  "Wybe Installatie"
     },
     {
         "slug":  "zed-de-dakdekker",
-        "naam":  " zed de dakdekker.Value.ToUpper() ed  zed de dakdekker.Value.ToUpper() e  zed de dakdekker.Value.ToUpper() akdekker"
+        "naam":  "Zed De Dakdekker"
     }
 ]
