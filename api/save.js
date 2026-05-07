@@ -1,6 +1,6 @@
 const fs   = require('fs');
 const path = require('path');
-const { extractFields } = require('./_extract');
+const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 
 const REPO         = 'maxveer4/preview';
 const BRANCH       = 'main';
@@ -22,15 +22,24 @@ function hslToHsla(hsl, alpha) {
   return hsl.trim().replace(/^hsl\(/, 'hsla(').replace(/\)$/, `,${alpha})`);
 }
 
-// Fetch existing field values from the live homepage
-async function loadExistingFields(slug) {
-  try {
-    const r = await fetch(`${BASE_URL}/${slug}.html`);
-    if (!r.ok) return {};
-    return extractFields(await r.text());
-  } catch (_) {
-    return {};
+// Fetch all 4 pages and extract every possible field value for merge
+async function loadAllExistingFields(slug) {
+  async function fetchHtml(url) {
+    try { const r = await fetch(url); return r.ok ? r.text() : null; }
+    catch (_) { return null; }
   }
+  const [homeHtml, contactHtml, dienstenHtml, overOnsHtml] = await Promise.all([
+    fetchHtml(`${BASE_URL}/${slug}.html`),
+    fetchHtml(`${BASE_URL}/${slug}-contact.html`),
+    fetchHtml(`${BASE_URL}/${slug}-diensten.html`),
+    fetchHtml(`${BASE_URL}/${slug}-over-ons.html`),
+  ]);
+  return {
+    ...extractHomeFields(homeHtml),
+    ...extractContactFields(contactHtml),
+    ...extractDienstenFields(dienstenHtml),
+    ...extractOverOnsFields(overOnsHtml),
+  };
 }
 
 async function githubUpsert(token, filePath, content) {
@@ -72,8 +81,8 @@ module.exports = async function handler(req, res) {
   const { slug, ...incomingFields } = req.body || {};
   if (!slug) return res.status(400).json({ error: 'slug is required' });
 
-  // Load existing values and merge — incoming fields take precedence
-  const existingFields = await loadExistingFields(slug);
+  // Load existing values from all 4 pages — incoming fields take precedence
+  const existingFields = await loadAllExistingFields(slug);
   const fields = { ...existingFields, ...incomingFields };
 
   // Build substitution map: field_name → FIELD_NAME
