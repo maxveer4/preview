@@ -551,25 +551,34 @@
   const SUPABASE_URL      = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
 
-  // ── Pre-fill fields from Supabase saved data ──
-  fetch(`${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(SLUG)}&select=data`, {
-    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
-  })
-  .then(r => r.ok ? r.json() : [])
-  .then(rows => {
-    if (!rows[0]?.data) return;
-    const d = rows[0].data;
-    Object.entries(d).forEach(([id, val]) => {
-      const el = document.getElementById(id);
-      if (el && val) el.value = val;
-    });
-    // Sync color picker if kleur_primary was restored
-    if (d.kleur_primary) {
-      const picker = document.getElementById('color-picker');
-      if (picker) picker.value = d.kleur_primary;
-    }
-  })
-  .catch(() => {}); // non-fatal
+  // ── Pre-fill fields from live website via /api/load ──
+  (function prefill() {
+    const statusEl = document.getElementById('statusMsg');
+    if (statusEl) statusEl.textContent = 'Huidige website wordt geladen...';
+
+    fetch(`/api/load?slug=${encodeURIComponent(SLUG)}`)
+      .then(r => r.json())
+      .then(({ data }) => {
+        if (!data || !Object.keys(data).length) return;
+        Object.entries(data).forEach(([id, val]) => {
+          const el = document.getElementById(id);
+          if (el && val) el.value = val;
+        });
+        // Sync color picker with restored HSL value
+        if (data.kleur_primary) {
+          const picker = document.getElementById('color-picker');
+          if (picker && data.kleur_primary.startsWith('hsl')) {
+            // Approximate: show the hsl value in the text field; picker stays as-is
+            const txt = document.getElementById('kleur_primary');
+            if (txt) txt.value = data.kleur_primary;
+          }
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (statusEl) statusEl.textContent = '';
+      });
+  })();
 
   // ── Photo slot definitions ──
   const PHOTO_SLOTS = [

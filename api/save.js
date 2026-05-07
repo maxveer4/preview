@@ -1,12 +1,14 @@
 const fs   = require('fs');
 const path = require('path');
+const { extractFields } = require('./_extract');
 
 const REPO         = 'maxveer4/preview';
 const BRANCH       = 'main';
+const BASE_URL     = 'https://preview.gowebbo.io';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
 
-// Replace all {{KEY}} occurrences using plain split/join (no regex needed)
+// Replace all {{KEY}} occurrences using plain split/join
 function applyMap(template, map) {
   let out = template;
   for (const [key, val] of Object.entries(map)) {
@@ -18,6 +20,17 @@ function applyMap(template, map) {
 // "hsl(142,72%,38%)" → "hsla(142,72%,38%,0.2)"
 function hslToHsla(hsl, alpha) {
   return hsl.trim().replace(/^hsl\(/, 'hsla(').replace(/\)$/, `,${alpha})`);
+}
+
+// Fetch existing field values from the live homepage
+async function loadExistingFields(slug) {
+  try {
+    const r = await fetch(`${BASE_URL}/${slug}.html`);
+    if (!r.ok) return {};
+    return extractFields(await r.text());
+  } catch (_) {
+    return {};
+  }
 }
 
 async function githubUpsert(token, filePath, content) {
@@ -56,13 +69,19 @@ module.exports = async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN env var not set' });
 
-  const { slug, ...fields } = req.body || {};
+  const { slug, ...incomingFields } = req.body || {};
   if (!slug) return res.status(400).json({ error: 'slug is required' });
+
+  // Load existing values and merge — incoming fields take precedence
+  const existingFields = await loadExistingFields(slug);
+  const fields = { ...existingFields, ...incomingFields };
 
   // Build substitution map: field_name → FIELD_NAME
   const map = { SLUG: slug };
   for (const [k, v] of Object.entries(fields)) {
-    map[k.toUpperCase()] = v;
+    if (v !== null && v !== undefined && String(v).trim() !== '') {
+      map[k.toUpperCase()] = String(v).trim();
+    }
   }
 
   // Derived values
@@ -76,7 +95,6 @@ module.exports = async function handler(req, res) {
   if (map.LOGO_URL) {
     map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
   }
-  // Auto-generate alt texts if not provided
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
@@ -96,21 +114,24 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: `Template read failed: ${e.message}` });
   }
 
-  // Generate HTML by replacing all placeholders
+  // Embed merged field data as a hidden comment so future loads can extract it
+  const cmsComment = `<!-- gowebbo-cms: ${JSON.stringify(fields)} -->\n`;
+
+  // Generate HTML — prepend comment then apply placeholder substitution
   const generated = {};
   for (const [filename, tpl] of Object.entries(templates)) {
-    generated[filename] = applyMap(tpl, map);
+    generated[filename] = cmsComment + applyMap(tpl, map);
   }
 
-  // Save field values to Supabase for editor pre-fill (non-fatal)
+  // Save merged field values to Supabase (non-fatal)
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/client_content`, {
       method: 'POST',
       headers: {
-        apikey:          SUPABASE_KEY,
-        Authorization:   `Bearer ${SUPABASE_KEY}`,
-        'Content-Type':  'application/json',
-        Prefer:          'resolution=merge-duplicates',
+        apikey:         SUPABASE_KEY,
+        Authorization:  `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        Prefer:         'resolution=merge-duplicates',
       },
       body: JSON.stringify({ slug, data: fields, updated_at: new Date().toISOString() }),
     });
