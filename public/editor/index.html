@@ -130,6 +130,36 @@
   const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUwNjM0MDcsImV4cCI6MjA2MDYzOTQwN30.V_SgmBBOLFMD1F6oUiPqVN4TbhqXAQcJ05i1bFsuKJk';
 
+  function renderClients(clients) {
+    const status = document.getElementById('list-status');
+    const grid   = document.getElementById('client-grid');
+
+    if (!Array.isArray(clients) || clients.length === 0) {
+      status.style.display = 'none';
+      grid.innerHTML = `
+        <div class="empty-state" style="grid-column:1/-1">
+          <p>Nog geen klanten in de lijst.<br>
+          n8n voegt automatisch een entry toe wanneer een nieuwe website wordt aangemaakt.<br><br>
+          Gebruik het zoekveld hierboven om een bestaande editor te openen via slug.</p>
+        </div>`;
+      return;
+    }
+
+    status.style.display = 'none';
+    clients.forEach(client => {
+      const a = document.createElement('a');
+      a.className = 'client-card';
+      a.href = `/editor/editor.html?slug=${client.slug}`;
+      a.innerHTML = `
+        <div class="client-info">
+          <div class="client-name">${escHtml(client.naam || client.slug)}</div>
+          <div class="client-slug">${escHtml(client.slug)}</div>
+        </div>
+        <span class="client-arrow">→</span>`;
+      grid.appendChild(a);
+    });
+  }
+
   fetch(`${SUPABASE_URL}/rest/v1/clients?select=slug,naam&order=naam`, {
     headers: {
       'apikey': SUPABASE_KEY,
@@ -140,38 +170,16 @@
       if (!r.ok) throw new Error('supabase error');
       return r.json();
     })
-    .then(clients => {
-      const status = document.getElementById('list-status');
-      const grid   = document.getElementById('client-grid');
-
-      if (!Array.isArray(clients) || clients.length === 0) {
-        status.style.display = 'none';
-        grid.innerHTML = `
-          <div class="empty-state" style="grid-column:1/-1">
-            <p>Nog geen klanten in de lijst.<br>
-            n8n voegt automatisch een entry toe wanneer een nieuwe website wordt aangemaakt.<br><br>
-            Gebruik het zoekveld hierboven om een bestaande editor te openen via slug.</p>
-          </div>`;
-        return;
-      }
-
-      status.style.display = 'none';
-      clients.forEach(client => {
-        const a = document.createElement('a');
-        a.className = 'client-card';
-        a.href = `/editor/editor.html?slug=${client.slug}`;
-        a.innerHTML = `
-          <div class="client-info">
-            <div class="client-name">${escHtml(client.naam || client.slug)}</div>
-            <div class="client-slug">${escHtml(client.slug)}</div>
-          </div>
-          <span class="client-arrow">→</span>`;
-        grid.appendChild(a);
-      });
-    })
+    .then(renderClients)
     .catch(() => {
-      document.getElementById('list-status').textContent =
-        'Kon klantenlijst niet laden — gebruik het zoekveld om een editor te openen.';
+      // Supabase niet beschikbaar, val terug op clients.json
+      fetch('/clients.json')
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(renderClients)
+        .catch(() => {
+          document.getElementById('list-status').textContent =
+            'Kon klantenlijst niet laden — gebruik het zoekveld om een editor te openen.';
+        });
     });
 
   function escHtml(s) {
