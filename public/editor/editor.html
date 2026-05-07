@@ -984,7 +984,8 @@
         date: c.querySelector('.r-date').value.trim(),
       };
     }).filter(function(r) { return r.name; });
-    document.getElementById('reviews_json').value = JSON.stringify(arr);
+    // Template is: const reviews = [{{REVIEWS_JSON}}]; — so emit WITHOUT outer brackets
+    document.getElementById('reviews_json').value = arr.map(function(r) { return JSON.stringify(r); }).join(',');
   }
 
   function esc(s) {
