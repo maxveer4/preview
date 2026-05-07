@@ -75,15 +75,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Diensten cards */
 .diensten-section { padding: 5rem 0; }
 .diensten-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-@media(min-width:640px){
-  .diensten-grid.count-3 { grid-template-columns: repeat(3, 1fr); }
-  .diensten-grid.count-4 { grid-template-columns: repeat(2, 1fr); }
-  .diensten-grid.count-6 { grid-template-columns: repeat(3, 1fr); }
-  .diensten-grid.count-5 { grid-template-columns: repeat(6, 1fr); }
-  .diensten-grid.count-5 .dienst-card:nth-child(-n+3) { grid-column: span 2; }
-  .diensten-grid.count-5 .dienst-card:nth-child(4) { grid-column: 2 / 4; }
-  .diensten-grid.count-5 .dienst-card:nth-child(5) { grid-column: 4 / 6; }
-}
+@media(min-width:640px){ .diensten-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:900px){ .diensten-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .dienst-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
@@ -326,10 +319,6 @@ footer ul li a:hover { color: var(--primary); }
 
   var diensten = [{"naam":"behangen","desc":"Een nieuwe behanglaag geeft uw interieur direct een frisse en persoonlijke uitstraling. Schildersbedrijf Veer behangen uw muren vakkundig en met oog voor detail, van het voorbereiden van de ondergrond tot het strak aanbrengen van het behang. Wij adviseren u graag over de mooiste keuzes die passen bij uw interieur en smaak. Het resultaat is een strakke afwerking waar u jarenlang plezier van heeft.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/behangen/behangen-1.jpeg"},{"naam":"binnenschilderwerk","desc":"Binnenschilderwerk geeft iedere ruimte een nieuwe en frisse uitstraling. Schildersbedrijf Veer verzorgt het schilderwerk in uw woning of pand met precisie en vakmanschap, van kozijnen en deuren tot muren en plafonds. Wij bereiden de ondergrond grondig voor zodat de verf optimaal hecht en lang mooi blijft. Zo geniet u van een strak en duurzaam resultaat dat uw interieur compleet maakt.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/binnenschilderwerk/binnenschilderwerk-1.jpeg"},{"naam":"buitenschilderwerk","desc":"Buitenschilderwerk is meer dan alleen mooi uiterlijk, het beschermt uw woning ook tegen wind en weersinvloeden. Schildersbedrijf Veer voert buitenschilderwerk professioneel uit, met de juiste voorbereiding en duurzame verfproducten. Wij zorgen voor een egale, weerbestendige afwerking die uw gevel, kozijnen en deuren jarenlang beschermt. Een goed geschilderde gevel verhoogt bovendien de waarde en uitstraling van uw woning.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/buitenschilderwerk/buitenschilderwerk-1.jpeg"},{"naam":"houtrotreparaties","desc":"Houtrot is een veelvoorkomend probleem dat u het beste zo snel mogelijk aanpakt om grotere schade te voorkomen. Schildersbedrijf Veer repareert aangetast hout vakkundig, zodat kozijnen, deuren en andere houten delen er weer als nieuw uitzien. Wij verwijderen het aangetaste hout zorgvuldig en vullen het op met hoogwaardige reparatieproducten voor een duurzaam resultaat. Zo bespaart u kosten op de lange termijn en ziet uw woning er weer piekfijn uit.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/houtrotreparaties/houtrotreparaties-1.jpeg"},{"naam":"spuitwerk","desc":"Spuitwerk zorgt voor een strakke, egale afwerking die met traditioneel schilderen moeilijk te evenaren is. Schildersbedrijf Veer past spuittechnieken toe voor o.a. deuren, kozijnen, plafonds en gevelelementen. Het resultaat is een gladde, professionele finish die er bijzonder verzorgd uitziet. Spuitwerk is bovendien efficiënt en tijdbesparend, ideaal voor grotere oppervlakken of projecten waarbij een vlekkeloos resultaat vereist is.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/spuitwerk/spuitwerk-1.jpeg"},{"naam":"nog een test dan","desc":"Stucwerk geeft uw muren en plafonds een strakke, moderne uitstraling en is de ideale basis voor verf of behang. Schildersbedrijf Veer voert stucwerk vakkundig uit, van het egaliseren van oneffenheden tot het aanbrengen van een glad of structuurafwerking. Wij zorgen voor een perfecte ondergrond die het beste resultaat garandeert bij verdere afwerking. Met ons stucwerk investeert u in een mooie en duurzame afwerking van uw interieur.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/stucwerk/stucwerk-1.jpeg"},{"naam":"De nieuwe verfmachine","desc":"dit is een test en als het werkt is het sick!","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/schildersbedrijf-veer/dienst_8_tegelzetter-buiten-3.jpeg"}];
   var grid = document.getElementById('dienstenGrid');
-
-  if (diensten.length >= 3 && diensten.length <= 6) {
-    grid.classList.add('count-' + diensten.length);
-  }
 
   diensten.forEach(function(d, i){
     var icon = icons[i % icons.length];
