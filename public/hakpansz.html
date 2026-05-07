@@ -1,3 +1,4 @@
+<!-- gowebbo-cms: {"seo_title":"Hakpansz – Dakdekker in Leersuum | Hans","seo_description":"Op zoek naar een betrouwbare dakdekker in Leersuum? Hakpansz biedt vakkundige dakwerkzaamheden. Bel Hans nu: 06 12 34 56 78 voor een vrijblijvende offerte!","kleur_primary":"hsl(213,76%,52%)","bedrijfsnaam":"Hakpansz","telefoon_display":"06 12 34 56 78","email":"info@dakhansz.nl","hero_eyebrow":"Uw dakspecialist in Leersuum","hero_title":"Een betrouwbaar dak is belangrijk","hero_desc":"Hakpansz levert vakkundig dakwerk met oog voor detail en duurzaamheid. Wij zorgen dat uw dak jarenlang beschermt.","usp_1":"Vakkundig en betrouwbaar dakwerk","usp_2":"Snel ter plaatse in de regio","usp_3":"Eerlijke prijs, en een mooi dak","foto_hero":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg","foto_waarom":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg","foto_werkwijze":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg","adres_straat":"","adres_postcode_stad":"","dienst_1":"dakpannen-vervangen","dienst_2":"dakrenovatie","dienst_3":"schoorsteenrenovatie-loodwerk","dienst_4":"daklekkage","stad_1":"Bunnik","stad_2":"Zeist","stad_3":"Houten","stad_4":"De Bilt","stad_5":"Wijk bij Duurstede","stad_6":"Driebergen-Rijsenburg","werk_title":"Zo werkt Hakpansz voor u","werk_desc_1":"Wij geloven in een heldere en persoonlijke aanpak. Vanaf het eerste contact zorgt Hans ervoor dat u precies weet wat u kunt verwachten. We beginnen altijd met een grondige inspectie van uw dak om de situatie goed in kaart te brengen.","werk_desc_2":"Daarna ontvangt u een overzichtelijke offerte en plannen we het werk op een moment dat u uitkomt. Zo wordt uw project vlot en vakkundig afgerond."} -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -230,7 +231,7 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/hakpansz.html" class="navbar-logo"><img id="logoImg" src="" alt="Hakpansz logo"></a>
+    <a href="/hakpansz.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/hakpansz.html">Home</a>
       <a href="/hakpansz-over-ons.html">Over</a>
@@ -259,13 +260,13 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img id="heroImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg" alt="Vakkundige dakdekker aan het werk op dak">
+    <img id="heroImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg" alt="Hakpansz - hero afbeelding">
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
     <div class="hero-text">
       <p class="hero-eyebrow">Uw dakspecialist in Leersuum</p>
-      <h1 class="hero-title">Een sterk dak boven uw hoofd</h1>
+      <h1 class="hero-title">Een betrouwbaar dak is belangrijk</h1>
       <p class="hero-desc">Hakpansz levert vakkundig dakwerk met oog voor detail en duurzaamheid. Wij zorgen dat uw dak jarenlang beschermt.</p>
       <ul class="hero-list">
         <li>
@@ -278,7 +279,7 @@ footer ul li a:hover { color: var(--primary); }
         </li>
         <li>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Eerlijke prijs, geen verrassingen
+          Eerlijke prijs, en een mooi dak
         </li>
       </ul>
       <div class="hero-btns">
@@ -298,22 +299,22 @@ footer ul li a:hover { color: var(--primary); }
 <section class="trust">
   <div class="container">
     <h2 class="section-title">Kies voor <span class="text-primary">kwaliteit</span> en <span class="text-primary">betrouwbaarheid</span></h2>
-    <p class="trust-desc">Huiseigenaren in Leersuum en omgeving vertrouwen op Hakpansz voor al hun dakwerkzaamheden.</p>
+    <p class="trust-desc">{{TRUST_DESC}}</p>
     <div class="trust-grid">
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Lokale Vakman</h3>
-        <p>Hans kent de regio en werkt snel en efficiënt bij u in de buurt.</p>
+        <h3>{{TRUST_1_TITEL}}</h3>
+        <p>{{TRUST_1_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
-        <h3>Kwaliteitsgarantie</h3>
-        <p>Wij gebruiken uitsluitend hoogwaardige materialen voor een duurzaam resultaat.</p>
+        <h3>{{TRUST_2_TITEL}}</h3>
+        <p>{{TRUST_2_DESC}}</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <h3>Persoonlijke Aanpak</h3>
-        <p>U krijgt altijd eerlijk advies en een transparante offerte zonder verborgen kosten.</p>
+        <h3>{{TRUST_3_TITEL}}</h3>
+        <p>{{TRUST_3_DESC}}</p>
       </div>
     </div>
   </div>
@@ -324,10 +325,10 @@ footer ul li a:hover { color: var(--primary); }
   <div class="container">
     <div class="service-inner">
       <div class="service-grid">
-        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="Dakdekker legt dakpannen in Leersuum" class="service-img"></div>
+        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="Hakpansz - service afbeelding" class="service-img"></div>
         <div>
-          <h2>Professioneel dakwerk in Leersuum en omgeving</h2>
-          <p>Bij Hakpansz staat vakmanschap centraal. Of het nu gaat om het leggen van dakpannen, het herstellen van een lekkend dak of het plaatsen van dakgoten — Hans pakt elk project grondig aan. Een goed onderhouden dak beschermt niet alleen uw woning, maar verhoogt ook de waarde ervan. Wij beoordelen uw dak nauwkeurig en adviseren u over de beste aanpak. Zo weet u precies wat er gebeurt en waarom, zonder onaangename verrassingen achteraf. Met Hakpansz investeert u in zekerheid en gemoedsrust.</p>
+          <h2>{{SERVICE_TITLE}}</h2>
+          <p>{{SERVICE_DESC}}</p>
           <a href="/hakpansz-contact.html" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
@@ -338,28 +339,28 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Why Choose Us -->
 <section class="why">
   <div class="why-bg">
-    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="">
+    <img id="whyBgImg" src="{{FOTO_USP}}" alt="">
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
     <h2>Waarom kiezen voor <span class="text-primary">Hakpansz</span></h2>
-    <p class="why-desc">Er zijn veel dakdekkers, maar Hakpansz onderscheidt zich door persoonlijk contact, eerlijkheid en jarenlange ervaring in de regio.</p>
+    <p class="why-desc">{{WHY_DESC}}</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div><h3>Ruime Ervaring</h3><p>Hans heeft jarenlange ervaring met uiteenlopende dakprojecten in de regio.</p></div>
+        <div><h3>{{WHY_1_TITEL}}</h3><p>{{WHY_1_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg></div>
-        <div><h3>Snelle Service</h3><p>Wij reageren snel op uw aanvraag en plannen het werk efficiënt in.</p></div>
+        <div><h3>{{WHY_2_TITEL}}</h3><p>{{WHY_2_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div><h3>Transparante Offertes</h3><p>U ontvangt altijd een duidelijke prijsopgave zonder verborgen kosten achteraf.</p></div>
+        <div><h3>{{WHY_3_TITEL}}</h3><p>{{WHY_3_DESC}}</p></div>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <div><h3>Nette Oplevering</h3><p>Na afloop laten wij uw woning netjes achter, inclusief opruimen van materialen.</p></div>
+        <div><h3>{{WHY_4_TITEL}}</h3><p>{{WHY_4_DESC}}</p></div>
       </div>
     </div>
   </div>
@@ -392,24 +393,24 @@ footer ul li a:hover { color: var(--primary); }
         <p class="work-desc">Wij geloven in een heldere en persoonlijke aanpak. Vanaf het eerste contact zorgt Hans ervoor dat u precies weet wat u kunt verwachten. We beginnen altijd met een grondige inspectie van uw dak om de situatie goed in kaart te brengen.</p>
         <p class="work-desc">Daarna ontvangt u een overzichtelijke offerte en plannen we het werk op een moment dat u uitkomt. Zo wordt uw project vlot en vakkundig afgerond.</p>
         <a href="/hakpansz-contact.html" class="btn-primary">Advies nodig?</a>
-        <img id="werkwijzeImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg" alt="Dakdekker inspecteert dak van woning" class="work-img">
+        <img id="werkwijzeImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg" alt="Hakpansz - werkfoto" class="work-img">
         <div class="work-steps">
-          <h3>Van aanvraag tot opgeleverd dak</h3>
+          <h3>{{STAPPEN_TITLE}}</h3>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div><h4>Contact opnemen</h4><p>Bel of mail ons en vertel wat er aan uw dak gedaan moet worden.</p></div>
+            <div><h4>{{STAP_1_TITEL}}</h4><p>{{STAP_1_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><h4>Inspectie en offerte</h4><p>Hans komt langs, bekijkt de situatie en stelt een heldere offerte op.</p></div>
+            <div><h4>{{STAP_2_TITEL}}</h4><p>{{STAP_2_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-            <div><h4>Uitvoering van het werk</h4><p>Wij voeren het dakwerk vakkundig uit met kwalitatieve materialen en aandacht.</p></div>
+            <div><h4>{{STAP_3_TITEL}}</h4><p>{{STAP_3_DESC}}</p></div>
           </div>
           <div class="work-step">
             <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
-            <div><h4>Oplevering en controle</h4><p>Na afronding controleren wij alles samen met u voor een perfecte eindoplevering.</p></div>
+            <div><h4>{{STAP_4_TITEL}}</h4><p>{{STAP_4_DESC}}</p></div>
           </div>
         </div>
         <div class="cta-block">
@@ -421,7 +422,7 @@ footer ul li a:hover { color: var(--primary); }
         </div>
         <div class="work-vakmanschap">
           <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
-          <p>Bij Hakpansz staat vakmanschap nooit ter discussie. Hans werkt met passie aan elk dak, groot of klein. U kunt rekenen op een duurzaam resultaat dat uw woning jarenlang beschermt.</p>
+          <p>{{VAKMANSCHAP_DESC}}</p>
         </div>
       </div>
       <div>
@@ -469,9 +470,9 @@ footer ul li a:hover { color: var(--primary); }
       <div class="footer-addr">
         <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Hakpansz</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
@@ -484,7 +485,7 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -492,7 +493,7 @@ footer ul li a:hover { color: var(--primary); }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
@@ -544,7 +545,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [{"name":"Peter V.","text":"Hans heeft onze daklekkage snel en professioneel opgelost. Hij was eerlijk over wat er nodig was en de prijs was meer dan redelijk. Echt een vakman!","date":"1 maand geleden"},{"name":"Marieke D.","text":"Na een storm hadden we een aantal kapotte dakpannen. Hakpansz was er snel bij en heeft alles netjes hersteld. We zijn erg tevreden met het resultaat.","date":"1 maand geleden"},{"name":"Johan B.","text":"Hans heeft ons volledige dak gerenoveerd en dat voor een eerlijke prijs. De kwaliteit van het werk is uitstekend en hij heeft alles keurig opgeruimd na afloop.","date":"1 maand geleden"},{"name":"Sandra K.","text":"Eindelijk een dakdekker die doet wat hij belooft! Hans kwam op tijd, werkte netjes en legde alles goed uit. Onze dakgoten werken nu perfect. Zeker een aanrader.","date":"1 maand geleden"},{"name":"Thomas R.","text":"Hakpansz heeft ons platte dak vervangen en de kwaliteit is geweldig. Hans dacht goed mee en adviseerde ons eerlijk. We zouden hem zeker weer inschakelen.","date":"1 maand geleden"},{"name":"Inge M.","text":"Zeer tevreden over het werk van Hans! Hij reageerde snel op onze aanvraag, stelde een duidelijke offerte op en voerde het werk netjes en vakkundig uit. Top service!","date":"1 maand geleden"}];
+const reviews = [{{REVIEWS_JSON}}];
 
 let reviewIndex = 0;
 const LIMIT = 150;
