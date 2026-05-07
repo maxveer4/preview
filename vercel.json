@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/public/$1" }
+    { "source": "/editor",    "destination": "/public/editor/index.html" },
+    { "source": "/editor/",   "destination": "/public/editor/index.html" },
+    { "source": "/(.*)",      "destination": "/public/$1" }
   ]
 }
