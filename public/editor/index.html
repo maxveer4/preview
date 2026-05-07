@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Dashboard — GoWebbo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f1f5f9; --surface: #fff; --border: #e2e8f0;
+      --primary: #2563eb; --primary-hover: #1d4ed8;
+      --text: #0f172a; --muted: #64748b;
+      --success: #10b981; --danger: #ef4444;
+    }
+    body { font-family: system-ui,-apple-system,sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* Header */
+    header {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 10;
+    }
+    .logo { font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: -.02em; }
+    .logo span { color: var(--muted); font-weight: 500; }
+    .badge {
+      font-size: 11px; font-weight: 600; background: #eff6ff;
+      color: var(--primary); padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* Main */
+    main { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+
+    /* Search */
+    .search-box {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .search-box h2 { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .search-row { display: flex; gap: 10px; }
+    .search-row input {
+      flex: 1; padding: 10px 14px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--text);
+    }
+    .search-row input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+    .search-row input::placeholder { color: var(--muted); }
+    .btn-open {
+      padding: 10px 20px; background: var(--primary); color: #fff;
+      border: none; border-radius: 8px; font-family: inherit; font-size: 14px;
+      font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap;
+    }
+    .btn-open:hover { background: var(--primary-hover); }
+    .search-hint { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    /* Client list */
+    .section-title {
+      font-size: 13px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .05em; margin-bottom: 14px;
+    }
+    .client-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .client-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      text-decoration: none; color: var(--text);
+      transition: border-color .15s, box-shadow .15s;
+      box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    }
+    .client-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(37,99,235,.12); }
+    .client-info { flex: 1; min-width: 0; }
+    .client-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .client-slug { font-size: 12px; color: var(--muted); font-family: monospace; }
+    .client-arrow { color: var(--primary); font-size: 18px; margin-left: 12px; flex-shrink: 0; }
+
+    /* Empty state */
+    .empty-state {
+      background: var(--surface); border: 1.5px dashed var(--border);
+      border-radius: 12px; padding: 40px 24px; text-align: center;
+      color: var(--muted);
+    }
+    .empty-state p { font-size: 14px; line-height: 1.6; }
+    .empty-state code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+
+    /* Error/loading */
+    #list-status { font-size: 13px; color: var(--muted); padding: 8px 0; }
+
+    @media (max-width: 600px) {
+      main { padding: 24px 16px; }
+      .search-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">go<span>webbo</span></div>
+  <div class="badge">CMS Dashboard</div>
+</header>
+
+<main>
+  <h1>Website overzicht</h1>
+  <p class="subtitle">Kies een klant om de editor te openen, of zoek op slug.</p>
+
+  <!-- Direct zoeken op slug -->
+  <div class="search-box">
+    <h2>Open editor via slug</h2>
+    <div class="search-row">
+      <input type="text" id="slug-input" placeholder="bijv. dakdekker-brams" autocomplete="off"
+        onkeydown="if(event.key==='Enter') openEditor()">
+      <button class="btn-open" onclick="openEditor()">Open editor →</button>
+    </div>
+    <p class="search-hint">De slug is de naam in de URL, bijv. <code>gowebbo.io/dakdekker-brams.html</code></p>
+  </div>
+
+  <!-- Klanten lijst -->
+  <div class="section-title">Alle klanten</div>
+  <div id="list-status">Laden...</div>
+  <div class="client-grid" id="client-grid"></div>
+</main>
+
+<script>
+  function openEditor() {
+    const slug = document.getElementById('slug-input').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
+    if (!slug) return;
+    window.location.href = `/editor/${slug}.html`;
+  }
+
+  // Laad clients.json
+  fetch('/clients.json')
+    .then(r => {
+      if (!r.ok) throw new Error('not found');
+      return r.json();
+    })
+    .then(clients => {
+      const status = document.getElementById('list-status');
+      const grid   = document.getElementById('client-grid');
+
+      if (!Array.isArray(clients) || clients.length === 0) {
+        status.style.display = 'none';
+        grid.innerHTML = `
+          <div class="empty-state" style="grid-column:1/-1">
+            <p>Nog geen klanten in de lijst.<br>
+            n8n voegt automatisch een entry toe aan <code>/clients.json</code> wanneer een nieuwe website wordt aangemaakt.<br><br>
+            Gebruik het zoekveld hierboven om een bestaande editor te openen via slug.</p>
+          </div>`;
+        return;
+      }
+
+      status.style.display = 'none';
+      clients.forEach(client => {
+        const a = document.createElement('a');
+        a.className = 'client-card';
+        a.href = `/editor/${client.slug}.html`;
+        a.innerHTML = `
+          <div class="client-info">
+            <div class="client-name">${escHtml(client.naam || client.slug)}</div>
+            <div class="client-slug">${escHtml(client.slug)}</div>
+          </div>
+          <span class="client-arrow">→</span>`;
+        grid.appendChild(a);
+      });
+    })
+    .catch(() => {
+      document.getElementById('list-status').textContent =
+        'clients.json niet gevonden — gebruik het zoekveld om een editor te openen.';
+    });
+
+  function escHtml(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>
