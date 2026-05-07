@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | Ariebouw</title>
-<meta name="description" content="Neem contact op met Ariebouw. Bel, mail of stuur een bericht via ons contactformulier.">
+<title>Contact | {{BEDRIJFSNAAM}}</title>
+<meta name="description" content="Neem contact op met {{BEDRIJFSNAAM}}. Bel, mail of stuur een bericht via ons contactformulier.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -13,7 +13,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: {{KLEUR_PRIMARY}};
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -80,7 +80,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .contact-info h2 span { color: var(--primary); }
 .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
-.contact-item-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.contact-item-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 0.75rem; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .contact-item-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-fg); margin-bottom: 0.25rem; }
 .contact-item-value { font-size: 0.9rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; }
 a.contact-item-value:hover { color: var(--primary); }
@@ -91,7 +91,7 @@ a.contact-item-value:hover { color: var(--primary); }
 .cf-field { margin-bottom: 1.25rem; }
 .cf-field label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--foreground); }
 .cf-field input, .cf-field textarea { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.cf-field input:focus, .cf-field textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(213,76%,52%,0.2); }
+.cf-field input:focus, .cf-field textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px {{KLEUR_PRIMARY_A20}}; }
 .cf-field textarea { resize: vertical; min-height: 120px; }
 .cf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media(max-width:500px){ .cf-grid { grid-template-columns: 1fr; } }
@@ -129,13 +129,13 @@ footer ul li a:hover { color: var(--primary); }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:0615605183">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        06 15 60 51 83
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:info@Ariebouw.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@Ariebouw.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -144,20 +144,11 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/ariebouw.html" class="navbar-logo"><img src="{{LOGO_URL}}" alt="Ariebouw logo"></a>
+    <a href="/ariebouw.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
       <a href="/ariebouw.html">Home</a>
       <a href="/ariebouw-over-ons.html">Over</a>
-      <div class="dropdown">
-        <button>Diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg></button>
-        <div class="dropdown-menu">
-          <a href="/ariebouw-diensten.html">Kozijnen vervangen</a>
-          <a href="/ariebouw-diensten.html">Aanbouw</a>
-          <a href="/ariebouw-diensten.html">Vloeren leggen</a>
-          <a href="/ariebouw-diensten.html">Renovatie</a>
-        </div>
-      </div>
-      <a href="#">Werkgebied</a>
+      <a href="/ariebouw-diensten.html">Diensten</a>
       <a href="/ariebouw-contact.html" style="color:var(--primary)">Contact</a>
     </nav>
     <button class="btn-primary" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'})">Stuur een bericht</button>
@@ -173,11 +164,7 @@ footer ul li a:hover { color: var(--primary); }
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
     <a href="/ariebouw.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/ariebouw-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Kozijnen vervangen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Aanbouw</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Vloeren leggen</a>
-    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Renovatie</a>
-    <a href="#" onclick="document.getElementById('mobileNav').classList.remove('open')">Werkgebied</a>
+    <a href="/ariebouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
     <a href="/ariebouw-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><button class="btn-primary" style="width:100%" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});document.getElementById('mobileNav').classList.remove('open')">Stuur een bericht</button></div>
   </div>
@@ -186,12 +173,12 @@ footer ul li a:hover { color: var(--primary); }
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/ariebouw/foto_werkwijze_img_3899.jpeg" alt="">
+    <img src="{{FOTO_HERO}}" alt="">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Contact</h1>
-    <p>Neem direct contact op met Ariebouw.</p>
+    <p>{{CONTACT_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -210,7 +197,7 @@ footer ul li a:hover { color: var(--primary); }
             </div>
             <div>
               <p class="contact-item-label">Telefoon</p>
-              <a href="tel:0615605183" class="contact-item-value">06 15 60 51 83</a>
+              <a href="tel:{{TELEFOON_HREF}}" class="contact-item-value">{{TELEFOON_DISPLAY}}</a>
             </div>
           </div>
           <div class="contact-item">
@@ -219,7 +206,7 @@ footer ul li a:hover { color: var(--primary); }
             </div>
             <div>
               <p class="contact-item-label">E-mail</p>
-              <a href="mailto:info@Ariebouw.nl" class="contact-item-value">info@Ariebouw.nl</a>
+              <a href="mailto:{{EMAIL}}" class="contact-item-value">{{EMAIL}}</a>
             </div>
           </div>
           <div class="contact-item">
@@ -228,7 +215,7 @@ footer ul li a:hover { color: var(--primary); }
             </div>
             <div>
               <p class="contact-item-label">Adres</p>
-              <a href="{{MAPS_URL}}" target="_blank" rel="noopener noreferrer" class="contact-item-value">, </a>
+              <a href="{{MAPS_URL}}" target="_blank" rel="noopener noreferrer" class="contact-item-value">{{ADRES_STRAAT}}, {{ADRES_POSTCODE_STAD}}</a>
             </div>
           </div>
         </div>
@@ -273,21 +260,21 @@ footer ul li a:hover { color: var(--primary); }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">Kozijnen vervangen</a></li>
-          <li><a href="#">Aanbouw</a></li>
-          <li><a href="#">Vloeren leggen</a></li>
-          <li><a href="#">Renovatie</a></li>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Zaltbommel</a></li>
-          <li><a href="#">Alem</a></li>
-          <li><a href="#">Rossum</a></li>
-          <li><a href="#">Hedel</a></li>
-          <li><a href="#">Brakel</a></li>
-          <li><a href="#">Velddriel</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
@@ -301,15 +288,15 @@ footer ul li a:hover { color: var(--primary); }
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Ariebouw</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">{{BEDRIJFSNAAM}}</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Ariebouw – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
@@ -321,7 +308,7 @@ async function submitContact(e, form) {
   const btn = form.querySelector('button[type=submit]');
   btn.textContent = 'Bezig...'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
-  data.bedrijf = 'Ariebouw';
+  data.bedrijf = '{{BEDRIJFSNAAM}}';
   try {
     await fetch(CONTACT_WEBHOOK, {
       method: 'POST',
