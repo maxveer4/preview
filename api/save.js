@@ -1,0 +1,132 @@
+const fs   = require('fs');
+const path = require('path');
+
+const REPO         = 'maxveer4/preview';
+const BRANCH       = 'main';
+const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
+
+// Replace all {{KEY}} occurrences using plain split/join (no regex needed)
+function applyMap(template, map) {
+  let out = template;
+  for (const [key, val] of Object.entries(map)) {
+    out = out.split(`{{${key}}}`).join(val == null ? '' : String(val));
+  }
+  return out;
+}
+
+// "hsl(142,72%,38%)" → "hsla(142,72%,38%,0.2)"
+function hslToHsla(hsl, alpha) {
+  return hsl.trim().replace(/^hsl\(/, 'hsla(').replace(/\)$/, `,${alpha})`);
+}
+
+async function githubUpsert(token, filePath, content) {
+  const url     = `https://api.github.com/repos/${REPO}/contents/${filePath}`;
+  const headers = {
+    Authorization: `token ${token}`,
+    'Content-Type': 'application/json',
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'gowebbo-editor/1.0',
+  };
+
+  const getRes  = await fetch(url, { headers });
+  const existing = getRes.ok ? await getRes.json() : null;
+
+  const body = {
+    message: `Update ${filePath} via CMS editor`,
+    content: Buffer.from(content).toString('base64'),
+    branch:  BRANCH,
+  };
+  if (existing?.sha) body.sha = existing.sha;
+
+  const putRes = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  if (!putRes.ok) {
+    const txt = await putRes.text();
+    throw new Error(`GitHub ${putRes.status} for ${filePath}: ${txt}`);
+  }
+}
+
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST')   return res.status(405).json({ error: 'Method not allowed' });
+
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN env var not set' });
+
+  const { slug, ...fields } = req.body || {};
+  if (!slug) return res.status(400).json({ error: 'slug is required' });
+
+  // Build substitution map: field_name → FIELD_NAME
+  const map = { SLUG: slug };
+  for (const [k, v] of Object.entries(fields)) {
+    map[k.toUpperCase()] = v;
+  }
+
+  // Derived values
+  if (map.KLEUR_PRIMARY) {
+    map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
+    map.KLEUR_PRIMARY_A10 = hslToHsla(map.KLEUR_PRIMARY, '0.1');
+  }
+  if (map.TELEFOON_DISPLAY) {
+    map.TELEFOON_HREF = map.TELEFOON_DISPLAY.replace(/\s+/g, '');
+  }
+  if (map.LOGO_URL) {
+    map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
+  }
+  // Auto-generate alt texts if not provided
+  const name = map.BEDRIJFSNAAM || slug;
+  if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
+  if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
+  if (!map.WERK_ALT)    map.WERK_ALT    = `${name} - werkfoto`;
+
+  // Read templates from repo root
+  const root = path.join(__dirname, '..');
+  let templates;
+  try {
+    templates = {
+      [`${slug}.html`]:          fs.readFileSync(path.join(root, 'template.html'),          'utf8'),
+      [`${slug}-contact.html`]:  fs.readFileSync(path.join(root, 'template-contact.html'),  'utf8'),
+      [`${slug}-diensten.html`]: fs.readFileSync(path.join(root, 'template-diensten.html'), 'utf8'),
+      [`${slug}-over-ons.html`]: fs.readFileSync(path.join(root, 'template-over-ons.html'),'utf8'),
+    };
+  } catch (e) {
+    return res.status(500).json({ error: `Template read failed: ${e.message}` });
+  }
+
+  // Generate HTML by replacing all placeholders
+  const generated = {};
+  for (const [filename, tpl] of Object.entries(templates)) {
+    generated[filename] = applyMap(tpl, map);
+  }
+
+  // Save field values to Supabase for editor pre-fill (non-fatal)
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/client_content`, {
+      method: 'POST',
+      headers: {
+        apikey:          SUPABASE_KEY,
+        Authorization:   `Bearer ${SUPABASE_KEY}`,
+        'Content-Type':  'application/json',
+        Prefer:          'resolution=merge-duplicates',
+      },
+      body: JSON.stringify({ slug, data: fields, updated_at: new Date().toISOString() }),
+    });
+  } catch (e) {
+    console.error('Supabase save failed (non-fatal):', e.message);
+  }
+
+  // Commit all 4 files to GitHub
+  try {
+    for (const [filename, content] of Object.entries(generated)) {
+      await githubUpsert(token, `public/${filename}`, content);
+    }
+  } catch (e) {
+    console.error('GitHub commit failed:', e.message);
+    return res.status(500).json({ error: e.message });
+  }
+
+  return res.status(200).json({ ok: true, slug, files: Object.keys(generated) });
+};

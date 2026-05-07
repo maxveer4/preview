@@ -542,7 +542,7 @@
     document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:16px;font-family:system-ui;color:#64748b;"><p style="font-size:18px;font-weight:600;color:#0f172a;">Geen klant geselecteerd</p><p>Open de editor via het <a href="/editor/" style="color:#2563eb;">CMS dashboard</a>.</p></div>';
     throw new Error('No slug');
   }
-  const WEBHOOK_URL = 'JOUW_N8N_UPDATE_WEBHOOK_URL';
+  const WEBHOOK_URL = '/api/save';
   const BASE_URL    = 'https://preview.gowebbo.io';
   // Set dynamic UI elements
   document.getElementById('header-slug').textContent = SLUG;
@@ -550,6 +550,26 @@
 
   const SUPABASE_URL      = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
+
+  // ── Pre-fill fields from Supabase saved data ──
+  fetch(`${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(SLUG)}&select=data`, {
+    headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
+  })
+  .then(r => r.ok ? r.json() : [])
+  .then(rows => {
+    if (!rows[0]?.data) return;
+    const d = rows[0].data;
+    Object.entries(d).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el && val) el.value = val;
+    });
+    // Sync color picker if kleur_primary was restored
+    if (d.kleur_primary) {
+      const picker = document.getElementById('color-picker');
+      if (picker) picker.value = d.kleur_primary;
+    }
+  })
+  .catch(() => {}); // non-fatal
 
   // ── Photo slot definitions ──
   const PHOTO_SLOTS = [
@@ -815,24 +835,25 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-    .then(res => {
-      if (!res.ok) throw new Error('Webhook fout ' + res.status);
-      let secs = 60;
-      status.textContent = `Wordt verwerkt (nog ${secs}s)...`;
+    .then(res => res.ok ? res.json() : res.json().then(e => Promise.reject(e.error || res.status)))
+    .then(() => {
+      // Commit succeeded — Vercel deploys automatically, takes ~45s
+      let secs = 45;
+      status.textContent = `Opgeslagen! Website wordt bijgewerkt (nog ${secs}s)...`;
       const iv = setInterval(() => {
         secs--;
         if (secs > 0) {
-          status.textContent = `Wordt verwerkt (nog ${secs}s)...`;
+          status.textContent = `Opgeslagen! Website wordt bijgewerkt (nog ${secs}s)...`;
         } else {
           clearInterval(iv);
-          status.textContent = '✓ Wijzigingen zijn live! Klik op ↺ om te vernieuwen.';
+          status.textContent = '✓ Live! Klik op ↺ om de preview te vernieuwen.';
           status.className   = 'status-msg success';
           btn.disabled = false;
         }
       }, 1000);
     })
-    .catch(() => {
-      status.textContent = 'Er is iets misgegaan, probeer het opnieuw.';
+    .catch(err => {
+      status.textContent = typeof err === 'string' ? `Fout: ${err}` : 'Er is iets misgegaan, probeer het opnieuw.';
       status.className   = 'status-msg error';
       btn.disabled = false;
     });
