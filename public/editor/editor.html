@@ -157,6 +157,39 @@
       border-radius: 6px; font-family: inherit; font-size: 11px;
       color: var(--muted); background: var(--bg);
     }
+
+    /* ── Card builders ── */
+    .builder-list { display: flex; flex-direction: column; gap: 10px; }
+    .builder-card {
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 12px; background: var(--bg); position: relative;
+    }
+    .builder-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .builder-card-num { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .builder-remove {
+      background: none; border: none; cursor: pointer;
+      color: var(--danger); font-size: 16px; padding: 2px 6px;
+      border-radius: 5px; line-height: 1;
+    }
+    .builder-remove:hover { background: #fee2e2; }
+    .builder-add {
+      width: 100%; padding: 8px; margin-top: 8px;
+      border: 1.5px dashed var(--border); border-radius: 7px;
+      background: none; cursor: pointer; color: var(--primary);
+      font-size: 12px; font-weight: 600; transition: background .15s;
+    }
+    .builder-add:hover { background: #eff6ff; }
+    .builder-photo-row { display: flex; gap: 6px; align-items: flex-end; }
+    .builder-photo-row input { flex: 1; }
+    .builder-photo-row .photo-btn {
+      flex-shrink: 0; padding: 7px 10px; font-size: 12px;
+      background: var(--primary); color: white; border: none;
+      border-radius: 6px; cursor: pointer; font-weight: 600;
+    }
+    .builder-photo-row .photo-btn:hover { background: var(--primary-hover); }
     .photo-url-field input:focus { outline: none; border-color: var(--primary); }
 
     /* ── FOOTER PANEL ── */
@@ -415,10 +448,11 @@
         <label>Vakmanschap tekst</label>
         <textarea id="vakmanschap_desc" name="vakmanschap_desc"></textarea>
       </div>
+      <div class="section-divider">Reviews</div>
       <div class="field">
-        <label>Reviews JSON</label>
-        <textarea class="tall" id="reviews_json" name="reviews_json" placeholder='[{"name":"Jan de Vries","text":"Uitstekend werk!","date":"2024-01"},...]'></textarea>
-        <p class="field-hint">JSON-array met name, text en date per review</p>
+        <div id="reviews-builder" class="builder-list"></div>
+        <button type="button" class="builder-add" onclick="addReview()">+ Review toevoegen</button>
+        <input type="hidden" id="reviews_json" name="reviews_json">
       </div>
 
       <div class="section-divider">Modals / Formulieren</div>
@@ -469,11 +503,11 @@
       <div class="section-divider">CTA sectie</div>
       <div class="field"><label>CTA titel</label><input type="text" id="diensten_cta_titel" name="diensten_cta_titel"></div>
       <div class="field"><label>CTA beschrijving</label><textarea id="diensten_cta_desc" name="diensten_cta_desc"></textarea></div>
-      <div class="section-divider">Diensten JSON</div>
+      <div class="section-divider">Diensten kaartjes</div>
       <div class="field">
-        <label>Diensten (JSON-array)</label>
-        <textarea class="tall" id="diensten_json" name="diensten_json" placeholder='[{"naam":"Daklekkage","desc":"Wij lossen uw daklekkage snel op.","foto":"https://..."},...]'></textarea>
-        <p class="field-hint">JSON-array met naam, desc en foto per dienst</p>
+        <div id="diensten-builder" class="builder-list"></div>
+        <button type="button" class="builder-add" onclick="addDienst()">+ Dienst toevoegen</button>
+        <input type="hidden" id="diensten_json" name="diensten_json">
       </div>
     </div>
 
@@ -564,6 +598,17 @@
           const el = document.getElementById(id);
           if (el && val) el.value = val;
         });
+        // Initialize visual builders from loaded JSON
+        if (data.diensten_json) {
+          try { JSON.parse(data.diensten_json).forEach(function(d) { addDienst(d); }); } catch(_) {}
+        }
+        if (data.reviews_json) {
+          try {
+            var rv = data.reviews_json.trim();
+            var parsed = JSON.parse(rv.startsWith('[') ? rv : '[' + rv + ']');
+            parsed.forEach(function(r) { addReview(r); });
+          } catch(_) {}
+        }
         // Sync color picker with restored HSL value
         if (data.kleur_primary) {
           const picker = document.getElementById('color-picker');
@@ -819,7 +864,136 @@
     'over_ons_cta_desc',
   ];
 
+  // ── Diensten builder ──────────────────────────────────────────────────────
+  let dienstCounter = 0;
+
+  function addDienst(data) {
+    data = data || {};
+    const id = ++dienstCounter;
+    const row = document.createElement('div');
+    row.className = 'builder-card';
+    row.dataset.dienstId = id;
+    row.innerHTML =
+      '<div class="builder-card-header">' +
+        '<span class="builder-card-num">Dienst</span>' +
+        '<button type="button" class="builder-remove" onclick="removeDienst(' + id + ')" title="Verwijder">✕</button>' +
+      '</div>' +
+      '<div class="field" style="margin-bottom:8px"><label>Naam</label>' +
+        '<input type="text" class="d-naam" value="' + esc(data.naam || '') + '" oninput="serializeDiensten()"></div>' +
+      '<div class="field" style="margin-bottom:8px"><label>Omschrijving</label>' +
+        '<textarea class="d-desc" rows="2" oninput="serializeDiensten()">' + esc(data.desc || '') + '</textarea></div>' +
+      '<div class="field" style="margin-bottom:0"><label>Foto URL</label>' +
+        '<div class="builder-photo-row">' +
+          '<input type="url" class="d-foto" placeholder="https://..." value="' + esc(data.foto || '') + '" oninput="serializeDiensten()">' +
+          '<button type="button" class="photo-btn" onclick="uploadDienstFoto(' + id + ')">Upload</button>' +
+        '</div>' +
+        '<input type="file" id="d-file-' + id + '" accept="image/*" style="display:none" onchange="handleDienstFile(' + id + ')">' +
+      '</div>';
+    document.getElementById('diensten-builder').appendChild(row);
+    serializeDiensten();
+  }
+
+  function removeDienst(id) {
+    var el = document.querySelector('[data-dienst-id="' + id + '"]');
+    if (el) el.remove();
+    serializeDiensten();
+  }
+
+  function uploadDienstFoto(id) {
+    document.getElementById('d-file-' + id).click();
+  }
+
+  async function handleDienstFile(id) {
+    const file = document.getElementById('d-file-' + id).files[0];
+    if (!file) return;
+    const safeSlug = SLUG.replace(/[^a-z0-9\-]/gi, '_');
+    const safeFile = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const path = safeSlug + '/dienst_' + id + '_' + safeFile;
+    const btn = document.querySelector('[data-dienst-id="' + id + '"] .photo-btn');
+    btn.textContent = '⏳';
+    try {
+      const resp = await fetch(SUPABASE_URL + '/storage/v1/object/foto%27s/' + path, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + SUPABASE_ANON_KEY,
+          'Content-Type': file.type,
+          'x-upsert': 'true',
+        },
+        body: file,
+      });
+      if (!resp.ok) { const e = await resp.json(); throw new Error(e.error || resp.status); }
+      const url = SUPABASE_URL + '/storage/v1/object/public/foto%27s/' + path;
+      document.querySelector('[data-dienst-id="' + id + '"] .d-foto').value = url;
+      serializeDiensten();
+      btn.textContent = '✓';
+      setTimeout(function() { btn.textContent = 'Upload'; }, 2000);
+    } catch(e) {
+      alert('Upload mislukt: ' + e.message);
+      btn.textContent = 'Upload';
+    }
+  }
+
+  function serializeDiensten() {
+    const cards = document.querySelectorAll('#diensten-builder .builder-card');
+    const arr = Array.from(cards).map(function(c) {
+      return {
+        naam: c.querySelector('.d-naam').value.trim(),
+        desc: c.querySelector('.d-desc').value.trim(),
+        foto: c.querySelector('.d-foto').value.trim(),
+      };
+    }).filter(function(d) { return d.naam; });
+    document.getElementById('diensten_json').value = JSON.stringify(arr);
+  }
+
+  // ── Reviews builder ───────────────────────────────────────────────────────
+  let reviewCounter = 0;
+
+  function addReview(data) {
+    data = data || {};
+    const id = ++reviewCounter;
+    const row = document.createElement('div');
+    row.className = 'builder-card';
+    row.dataset.reviewId = id;
+    row.innerHTML =
+      '<div class="builder-card-header">' +
+        '<span class="builder-card-num">Review</span>' +
+        '<button type="button" class="builder-remove" onclick="removeReview(' + id + ')" title="Verwijder">✕</button>' +
+      '</div>' +
+      '<div class="field" style="margin-bottom:8px"><label>Naam</label>' +
+        '<input type="text" class="r-name" value="' + esc(data.name || '') + '" oninput="serializeReviews()"></div>' +
+      '<div class="field" style="margin-bottom:8px"><label>Tekst</label>' +
+        '<textarea class="r-text" rows="3" oninput="serializeReviews()">' + esc(data.text || '') + '</textarea></div>' +
+      '<div class="field" style="margin-bottom:0"><label>Datum (bijv. 2024-01)</label>' +
+        '<input type="text" class="r-date" placeholder="2024-01" value="' + esc(data.date || '') + '" oninput="serializeReviews()"></div>';
+    document.getElementById('reviews-builder').appendChild(row);
+    serializeReviews();
+  }
+
+  function removeReview(id) {
+    var el = document.querySelector('[data-review-id="' + id + '"]');
+    if (el) el.remove();
+    serializeReviews();
+  }
+
+  function serializeReviews() {
+    const cards = document.querySelectorAll('#reviews-builder .builder-card');
+    const arr = Array.from(cards).map(function(c) {
+      return {
+        name: c.querySelector('.r-name').value.trim(),
+        text: c.querySelector('.r-text').value.trim(),
+        date: c.querySelector('.r-date').value.trim(),
+      };
+    }).filter(function(r) { return r.name; });
+    document.getElementById('reviews_json').value = JSON.stringify(arr);
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
   function saveChanges() {
+    serializeDiensten();
+    serializeReviews();
     const btn    = document.getElementById('saveBtn');
     const status = document.getElementById('statusMsg');
 
