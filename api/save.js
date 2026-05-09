@@ -108,6 +108,9 @@ module.exports = async function handler(req, res) {
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
   if (!map.WERK_ALT)    map.WERK_ALT    = `${name} - werkfoto`;
+  // Optional footer diensten: always replace so empty slots are hidden by CSS
+  if (!map.DIENST_5) map.DIENST_5 = '';
+  if (!map.DIENST_6) map.DIENST_6 = '';
 
   // Read templates from repo root
   const root = path.join(__dirname, '..');

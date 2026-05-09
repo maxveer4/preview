@@ -116,12 +116,19 @@ function extractHomeFields(html) {
   set(data, 'modal_advies_iframe',
     first(html, /closeModal\('advies'\)[^>]*>.*?<\/button>\s*([\s\S]*?)\s*<\/div>/s));
 
-  // ── Footer lists: diensten + steden ──
+  // ── Footer lists: diensten + steden (parsed per section to avoid index shift) ──
   const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '';
   if (footer) {
-    const links = all(footer, /<li><a href="#">(.*?)<\/a><\/li>/g).map(m => m[1].trim());
-    ['dienst_1','dienst_2','dienst_3','dienst_4'].forEach((k, i) => { if (links[i]) set(data, k, links[i]); });
-    ['stad_1','stad_2','stad_3','stad_4','stad_5','stad_6'].forEach((k, i) => { if (links[4+i]) set(data, k, links[4+i]); });
+    const dienstenBlock = footer.match(/<h4>Diensten<\/h4>\s*<ul>([\s\S]*?)<\/ul>/);
+    if (dienstenBlock) {
+      const dl = all(dienstenBlock[1], /<li><a[^>]*>([^<]*)<\/a><\/li>/g).map(m => m[1].trim()).filter(Boolean);
+      ['dienst_1','dienst_2','dienst_3','dienst_4','dienst_5','dienst_6'].forEach((k, i) => { if (dl[i]) set(data, k, dl[i]); });
+    }
+    const stedenBlock = footer.match(/<h4>Werkgebied<\/h4>\s*<ul>([\s\S]*?)<\/ul>/);
+    if (stedenBlock) {
+      const sl = all(stedenBlock[1], /<li><a[^>]*>([^<]*)<\/a><\/li>/g).map(m => m[1].trim()).filter(Boolean);
+      ['stad_1','stad_2','stad_3','stad_4','stad_5','stad_6'].forEach((k, i) => { if (sl[i]) set(data, k, sl[i]); });
+    }
   }
 
   // ── Maps URL (from contact section if present) ──
