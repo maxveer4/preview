@@ -100,6 +100,7 @@ module.exports = async function handler(req, res) {
   }
   if (map.TELEFOON_DISPLAY) {
     map.TELEFOON_HREF = map.TELEFOON_DISPLAY.replace(/\s+/g, '');
+    map.WHATSAPP_HREF = map.TELEFOON_HREF.replace(/^0/, '31');
   }
   if (map.LOGO_URL) {
     map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
