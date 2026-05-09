@@ -13,8 +13,9 @@ function all(html, pattern) {
 }
 
 function set(data, key, val) {
-  if (val !== null && val !== undefined && String(val).trim() !== '') {
-    data[key] = String(val).trim();
+  const s = val != null ? String(val).trim() : '';
+  if (s !== '' && !/^\{\{[^}]+\}\}$/.test(s)) {
+    data[key] = s;
   }
 }
 
