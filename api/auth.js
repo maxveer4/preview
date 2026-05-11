@@ -7,15 +7,14 @@ module.exports = async (req, res) => {
 
   const { password } = req.body || {};
   const expected = process.env.EDITOR_PASSWORD;
-  const token    = process.env.EDITOR_TOKEN;
 
-  if (!expected || !token) {
-    return res.status(500).json({ error: 'Server niet geconfigureerd (env vars ontbreken)' });
+  if (!expected) {
+    return res.status(500).json({ error: 'EDITOR_PASSWORD env var niet ingesteld in Vercel' });
   }
 
   if (!password || password !== expected) {
     return res.status(401).json({ error: 'Ongeldig wachtwoord' });
   }
 
-  return res.status(200).json({ token });
+  return res.status(200).json({ token: expected });
 };
