@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/editor",    "destination": "/public/editor/index.html" },
-    { "source": "/editor/",   "destination": "/public/editor/index.html" },
-    { "source": "/(.*)",      "destination": "/public/$1" }
+    { "source": "/editor/login", "destination": "/public/editor/login.html" },
+    { "source": "/editor",       "destination": "/public/editor/index.html" },
+    { "source": "/editor/",      "destination": "/public/editor/index.html" },
+    { "source": "/(.*)",         "destination": "/public/$1" }
   ]
 }

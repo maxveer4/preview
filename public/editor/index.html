@@ -96,7 +96,11 @@
 
 <header>
   <div class="logo">go<span>webbo</span></div>
-  <div class="badge">CMS Dashboard</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="badge">CMS Dashboard</div>
+    <button onclick="sessionStorage.removeItem('editor_token');location.replace('/editor/login')"
+      style="background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:12px;color:#64748b;cursor:pointer;">Uitloggen</button>
+  </div>
 </header>
 
 <main>
@@ -126,6 +130,8 @@
     if (!slug) return;
     window.location.href = `/editor/editor.html?slug=${slug}`;
   }
+
+  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login'); throw new Error(); }
 
   const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
