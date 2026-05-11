@@ -131,7 +131,7 @@
     window.location.href = `/editor/editor.html?slug=${slug}`;
   }
 
-  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login'); throw new Error(); }
+  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login.html'); throw new Error(); }
 
   const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';

@@ -583,7 +583,7 @@
 </div>
 
 <script>
-  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login'); throw new Error(); }
+  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login.html'); throw new Error(); }
 
   // Slug uit URL-parameter (?slug=dakdekker-brams)
   const SLUG = new URLSearchParams(window.location.search).get('slug') || '';

@@ -53,7 +53,7 @@
 </div>
 <script>
   // Als al ingelogd, direct door
-  if (sessionStorage.getItem('editor_token')) location.replace('/editor/');
+  if (sessionStorage.getItem('editor_token')) location.replace('/editor');
 
   async function login() {
     const pw  = document.getElementById('pw').value;
