@@ -179,6 +179,8 @@
       border-radius: 5px; line-height: 1;
     }
     .builder-remove:hover { background: #fee2e2; }
+    .fmt-bold { background:#f1f5f9; border:1px solid var(--border); border-radius:4px; padding:1px 7px; font-size:13px; cursor:pointer; line-height:1.4; }
+    .fmt-bold:hover { background:#e2e8f0; }
     .builder-add {
       width: 100%; padding: 8px; margin-top: 8px;
       border: 1.5px dashed var(--border); border-radius: 7px;
@@ -972,8 +974,8 @@
       '</div>' +
       '<div class="field" style="margin-bottom:8px"><label>Naam</label>' +
         '<input type="text" class="r-name" value="' + esc(data.name || '') + '" oninput="serializeReviews()"></div>' +
-      '<div class="field" style="margin-bottom:8px"><label>Tekst</label>' +
-        '<textarea class="r-text" rows="3" oninput="serializeReviews()">' + esc(data.text || '') + '</textarea></div>' +
+      '<div class="field" style="margin-bottom:8px"><label>Tekst <button type="button" class="fmt-bold" onclick="boldTA(this.closest(\'.field\').querySelector(\'textarea\'))" title="Vet (Ctrl+B)"><b>B</b></button></label>' +
+        '<textarea class="r-text" rows="3" oninput="serializeReviews()" onkeydown="if(event.ctrlKey&&event.key===\'b\'){event.preventDefault();boldTA(this);}">' + esc(data.text || '') + '</textarea></div>' +
       '<div class="field" style="margin-bottom:0"><label>Datum (bijv. 2024-01)</label>' +
         '<input type="text" class="r-date" placeholder="2024-01" value="' + esc(data.date || '') + '" oninput="serializeReviews()"></div>';
     document.getElementById('reviews-builder').appendChild(row);
@@ -984,6 +986,14 @@
     var el = document.querySelector('[data-review-id="' + id + '"]');
     if (el) el.remove();
     serializeReviews();
+  }
+
+  function boldTA(ta) {
+    var s = ta.selectionStart, e = ta.selectionEnd;
+    if (s === e) return;
+    ta.value = ta.value.slice(0, s) + '<b>' + ta.value.slice(s, e) + '</b>' + ta.value.slice(e);
+    ta.selectionStart = s; ta.selectionEnd = e + 7;
+    ta.dispatchEvent(new Event('input'));
   }
 
   function serializeReviews() {

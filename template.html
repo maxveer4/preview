@@ -560,11 +560,13 @@ function renderReviews() {
   const track = document.getElementById('reviewsTrack');
   const dots = document.getElementById('reviewsDots');
   track.innerHTML = reviews.map((r, i) => {
-    const short = r.text.length > LIMIT;
+    const plain = r.text.replace(/<[^>]+>/g, '');
+    const short = plain.length > LIMIT;
     const preview = short ? r.text.slice(0, LIMIT) + '…' : r.text;
+    const fullAttr = r.text.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     return `<div class="review-slide"><div class="review-card">
       <div class="review-stars">★★★★★</div>
-      <p class="review-text" id="rt${i}">${preview}${short ? `<button class="review-read-more" onclick="toggleR(${i},${JSON.stringify(r.text)})">Lees meer</button>` : ''}</p>
+      <p class="review-text" id="rt${i}" data-full="${fullAttr}">${preview}${short ? `<button class="review-read-more" onclick="toggleR(${i})">Lees meer</button>` : ''}</p>
       <div class="review-author"><strong>${r.name}</strong><span>${r.date}</span></div>
     </div></div>`;
   }).join('');
@@ -573,15 +575,16 @@ function renderReviews() {
   goReview(0);
 }
 
-function toggleR(i, full) {
+function toggleR(i) {
   const el = document.getElementById('rt' + i);
+  const full = el.dataset.full || (reviews[i] && reviews[i].text) || '';
   const btn = el.querySelector('button');
   if (btn.textContent === 'Lees meer') {
-    el.firstChild.textContent = full;
-    btn.textContent = 'Lees minder';
+    el.innerHTML = full + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees minder</button>';
   } else {
-    el.firstChild.textContent = full.slice(0, LIMIT) + '…';
-    btn.textContent = 'Lees meer';
+    const plain = full.replace(/<[^>]+>/g, '');
+    const preview = plain.length > LIMIT ? full.slice(0, LIMIT) + '…' : full;
+    el.innerHTML = preview + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees meer</button>';
   }
 }
 
