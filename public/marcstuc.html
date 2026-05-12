@@ -516,7 +516,7 @@ function closeModal(type) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('offerte'); closeModal('advies'); } });
 
 // ── Quote Form ─────────────────────────────────────
-const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/T5od4Y8kylN1uVzv427p/webhook-trigger/ea70eb86-39dc-4e8c-a748-d6dd97a3be20';
+const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/23a44000-d10d-419e-aa59-22e1f72bf074';
 const inputStyle = 'width:100%;border:1px solid hsl(0,0%,88%);background:hsl(0,0%,96%);border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-family:inherit;color:hsl(0,0%,10%);margin-bottom:.75rem;outline:none;display:block';
 
 function createForm(id) {
@@ -539,7 +539,7 @@ async function submitForm(e, form, containerId) {
   const btn = form.querySelector('button[type=submit]');
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
-    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag' }) });
+    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Golden Touch Klusbedrijf', email_bedrijf: 'goldentouchstucadoors010@gmail.com', slug: 'marcstuc' }) });
     document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(41,58%,66%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
