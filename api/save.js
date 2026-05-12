@@ -106,6 +106,13 @@ module.exports = async function handler(req, res) {
 
   // Load existing values from all 4 pages — incoming fields take precedence
   const existingFields = await loadAllExistingFields(slug);
+  // Guard against cross-slug contamination: if the existing HTML was generated for a
+  // different client (e.g. a copied file), strip client-specific fields so they don't
+  // bleed into this save.
+  if (existingFields.slug && existingFields.slug !== slug) {
+    ['email','bedrijfsnaam','telefoon_display','adres_straat','adres_postcode_stad','kvk',
+     'logo_url','maps_url'].forEach(f => delete existingFields[f]);
+  }
   const fields = { ...existingFields, ...incomingFields };
 
   // Build substitution map: field_name → FIELD_NAME
