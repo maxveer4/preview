@@ -43,6 +43,28 @@ async function loadAllExistingFields(slug) {
   };
 }
 
+async function githubUpdateIfExists(token, filePath, content, repo) {
+  const url     = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+  const headers = {
+    Authorization: `token ${token}`,
+    'Content-Type': 'application/json',
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'gowebbo-editor/1.0',
+  };
+  const getRes = await fetch(url, { headers });
+  if (!getRes.ok) return; // bestand bestaat niet in klanten repo → overslaan
+  const existing = await getRes.json();
+  await fetch(url, {
+    method: 'PUT', headers,
+    body: JSON.stringify({
+      message: `Update ${filePath} via CMS editor`,
+      content: Buffer.from(content).toString('base64'),
+      branch: BRANCH,
+      sha: existing.sha,
+    }),
+  });
+}
+
 async function githubUpsert(token, filePath, content, repo = REPO) {
   const url     = `https://api.github.com/repos/${repo}/contents/${filePath}`;
   const headers = {
@@ -173,7 +195,7 @@ module.exports = async function handler(req, res) {
   try {
     for (const [oldName, newPath] of Object.entries(klantenMap)) {
       if (generated[oldName]) {
-        await githubUpsert(token, newPath, generated[oldName], KLANTEN_REPO);
+        await githubUpdateIfExists(token, newPath, generated[oldName], KLANTEN_REPO);
       }
     }
   } catch (e) {
