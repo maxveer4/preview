@@ -314,6 +314,8 @@ async function submitContact(e, form) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
   data.bedrijf = '{{BEDRIJFSNAAM}}';
+  data.email_bedrijf = '{{EMAIL}}';
+  data.slug = '{{SLUG}}';
   try {
     await fetch(CONTACT_WEBHOOK, {
       method: 'POST',
