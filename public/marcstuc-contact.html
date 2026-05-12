@@ -307,7 +307,7 @@ footer ul li:has(a:empty) { display: none; }
 </footer>
 
 <script>
-const CONTACT_WEBHOOK = '{{CONTACT_FORM_WEBHOOK}}';
+const CONTACT_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/23a44000-d10d-419e-aa59-22e1f72bf074';
 
 async function submitContact(e, form) {
   e.preventDefault();
@@ -315,6 +315,8 @@ async function submitContact(e, form) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   const data = Object.fromEntries(new FormData(form));
   data.bedrijf = 'Golden Touch Klusbedrijf';
+  data.email_bedrijf = 'goldentouchstucadoors010@gmail.com';
+  data.slug = 'marcstuc';
   try {
     await fetch(CONTACT_WEBHOOK, {
       method: 'POST',
