@@ -308,10 +308,20 @@ footer ul li:has(a:empty) { display: none; }
 
 <script>
 (function(){
-  var slug = window.location.pathname.split('/').pop().replace('.html','').replace(/-over-ons$|-contact$|-diensten$/, '');
-  document.querySelectorAll('a[href*="marcstuc"]').forEach(function(a){
-    a.href = a.href.replace(/\{\{SLUG\}\}/g, slug);
-  });
+  var slug = 'marcstuc';
+  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
+  if (onLive) {
+    var remap = {};
+    remap['/' + slug + '.html'] = '/';
+    remap['/' + slug + '-contact.html'] = '/contact';
+    remap['/' + slug + '-diensten.html'] = '/diensten';
+    remap['/' + slug + '-over-ons.html'] = '/over-ons';
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var h = a.getAttribute('href');
+      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+    });
+  }
+  var contactHref = onLive ? '/contact' : '/' + slug + '-contact.html';
 
   var icons = [
     '<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>',
@@ -337,7 +347,7 @@ card.innerHTML =
   '<div class="dienst-card-body">' +
     '<h2>' + d.naam + '</h2>' +
     '<p>' + d.desc + '</p>' +
-    '<a href="/' + slug + '-contact.html" class="dienst-card-btn">' +
+    '<a href="' + contactHref + '" class="dienst-card-btn">' +
       'Offerte aanvragen ' +
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>' +
     '</a>' +
