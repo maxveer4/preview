@@ -116,11 +116,6 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // Default contact form webhook (used when no per-client override is set)
-  if (!map.CONTACT_FORM_WEBHOOK) {
-    map.CONTACT_FORM_WEBHOOK = process.env.CONTACT_FORM_WEBHOOK || '';
-  }
-
   // Derived values
   if (map.KLEUR_PRIMARY) {
     map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
