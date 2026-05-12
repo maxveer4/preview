@@ -3,6 +3,7 @@ const path = require('path');
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 
 const REPO         = 'maxveer4/preview';
+const KLANTEN_REPO = 'maxveer4/gowebbo-klanten';
 const BRANCH       = 'main';
 const BASE_URL     = 'https://preview.gowebbo.io';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
@@ -42,8 +43,8 @@ async function loadAllExistingFields(slug) {
   };
 }
 
-async function githubUpsert(token, filePath, content) {
-  const url     = `https://api.github.com/repos/${REPO}/contents/${filePath}`;
+async function githubUpsert(token, filePath, content, repo = REPO) {
+  const url     = `https://api.github.com/repos/${repo}/contents/${filePath}`;
   const headers = {
     Authorization: `token ${token}`,
     'Content-Type': 'application/json',
@@ -160,6 +161,23 @@ module.exports = async function handler(req, res) {
   } catch (e) {
     console.error('GitHub commit failed:', e.message);
     return res.status(500).json({ error: e.message });
+  }
+
+  // Ook opslaan in gowebbo-klanten (non-fataal)
+  const klantenMap = {
+    [`${slug}.html`]:          `${slug}/index.html`,
+    [`${slug}-contact.html`]:  `${slug}/contact.html`,
+    [`${slug}-diensten.html`]: `${slug}/diensten.html`,
+    [`${slug}-over-ons.html`]: `${slug}/over-ons.html`,
+  };
+  try {
+    for (const [oldName, newPath] of Object.entries(klantenMap)) {
+      if (generated[oldName]) {
+        await githubUpsert(token, newPath, generated[oldName], KLANTEN_REPO);
+      }
+    }
+  } catch (e) {
+    console.error('gowebbo-klanten commit failed (non-fatal):', e.message);
   }
 
   return res.status(200).json({ ok: true, slug, files: Object.keys(generated) });
