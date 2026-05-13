@@ -23,8 +23,20 @@ function hslToHsla(hsl, alpha) {
   return hsl.trim().replace(/^hsl\(/, 'hsla(').replace(/\)$/, `,${alpha})`);
 }
 
-// Fetch all 4 pages and extract every possible field value for merge
+// Fetch all 4 pages and extract every possible field value for merge.
+// Tries Supabase first (no CDN caching delay), falls back to CDN extraction.
 async function loadAllExistingFields(slug) {
+  try {
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(slug)}&select=data`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (r.ok) {
+      const rows = await r.json();
+      if (rows[0]?.data) return rows[0].data;
+    }
+  } catch (_) {}
+
   async function fetchHtml(url) {
     try { const r = await fetch(url); return r.ok ? r.text() : null; }
     catch (_) { return null; }
@@ -133,7 +145,10 @@ module.exports = async function handler(req, res) {
     map.WHATSAPP_HREF = map.TELEFOON_HREF.replace(/^0/, '31');
   }
   if (map.LOGO_URL) {
-    map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
+    map.LOGO_HTML    = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
+    map.FAVICON_HTML = `<link rel="icon" href="${map.LOGO_URL}">`;
+  } else {
+    map.FAVICON_HTML = '';
   }
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;

@@ -1,6 +1,8 @@
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 
-const BASE_URL = 'https://preview.gowebbo.io';
+const BASE_URL     = 'https://preview.gowebbo.io';
+const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
 
 async function fetchHtml(url) {
   try {
@@ -19,6 +21,19 @@ module.exports = async function handler(req, res) {
   if (!slug) return res.status(400).json({ error: 'slug is required' });
 
   try {
+    // Supabase first: always reflects latest save, no CDN caching delay
+    try {
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(slug)}&select=data`,
+        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+      );
+      if (r.ok) {
+        const rows = await r.json();
+        if (rows[0]?.data) return res.status(200).json({ ok: true, data: rows[0].data });
+      }
+    } catch (_) {}
+
+    // Fallback: extract from CDN HTML (first save or Supabase unavailable)
     const [homeHtml, contactHtml, dienstenHtml, overOnsHtml] = await Promise.all([
       fetchHtml(`${BASE_URL}/${slug}.html`),
       fetchHtml(`${BASE_URL}/${slug}-contact.html`),
