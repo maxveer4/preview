@@ -256,6 +256,12 @@
       .tab-content { max-height: none; }
       .preview-pane { height: 60vh; }
     }
+    .toggle-label { display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+    .toggle-track { position:relative; width:44px; height:24px; background:#cbd5e1; border-radius:12px; transition:background .2s; flex-shrink:0; }
+    .toggle-track .toggle-thumb { position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left .2s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+    #reviews_visible { display:none; }
+    #reviews_visible:checked + .toggle-track { background:var(--primary, #2563eb); }
+    #reviews_visible:checked + .toggle-track .toggle-thumb { left:23px; }
   </style>
 </head>
 <body>
@@ -466,6 +472,14 @@
       </div>
       <div class="section-divider">Reviews</div>
       <div class="field">
+        <label>Sectie zichtbaarheid</label>
+        <label class="toggle-label">
+          <input type="checkbox" id="reviews_visible" name="reviews_visible" checked>
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span style="font-size:13px;color:#374151">Reviews sectie zichtbaar op de website</span>
+        </label>
+      </div>
+      <div class="field">
         <div id="reviews-builder" class="builder-list"></div>
         <button type="button" class="builder-add" onclick="addReview()">+ Review toevoegen</button>
         <input type="hidden" id="reviews_json" name="reviews_json">
@@ -614,7 +628,12 @@
         if (!data || !Object.keys(data).length) return;
         Object.entries(data).forEach(([id, val]) => {
           const el = document.getElementById(id);
-          if (el && val) el.value = val;
+          if (!el) return;
+          if (el.type === 'checkbox') {
+            el.checked = val !== '0';
+          } else if (val) {
+            el.value = val;
+          }
         });
         // Initialize visual builders from loaded JSON
         if (data.diensten_json) {
@@ -869,7 +888,7 @@
     'werk_title','werk_desc_1','werk_desc_2','stappen_title',
     'stap_1_titel','stap_1_desc','stap_2_titel','stap_2_desc',
     'stap_3_titel','stap_3_desc','stap_4_titel','stap_4_desc',
-    'vakmanschap_desc','reviews_json','modal_offerte_iframe','modal_advies_iframe',
+    'vakmanschap_desc','reviews_visible','reviews_json','modal_offerte_iframe','modal_advies_iframe',
     'logo_url','foto_hero','foto_waarom','foto_usp','foto_werkwijze',
     'contact_hero_desc','contact_form_webhook','maps_url',
     'diensten_hero_desc','diensten_cta_titel','diensten_cta_desc','diensten_json',
@@ -1027,7 +1046,12 @@
     const payload = { slug: SLUG };
     ALL_FIELDS.forEach(id => {
       const el = document.getElementById(id);
-      if (el && el.value.trim()) payload[id] = el.value.trim();
+      if (!el) return;
+      if (el.type === 'checkbox') {
+        payload[id] = el.checked ? '1' : '0';
+      } else if (el.value.trim()) {
+        payload[id] = el.value.trim();
+      }
     });
 
     if (Object.keys(payload).length === 1) {

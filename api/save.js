@@ -150,6 +150,7 @@ module.exports = async function handler(req, res) {
   } else {
     map.FAVICON_HTML = '';
   }
+  map.REVIEWS_DISPLAY = (map.REVIEWS_VISIBLE === '0') ? 'display:none' : '';
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;

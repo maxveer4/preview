@@ -107,8 +107,9 @@ function extractHomeFields(html) {
 
   set(data, 'vakmanschap_desc', first(html, /<h3>Vakmanschap en[\s\S]*?<\/h3>\s*<p>(.*?)<\/p>/));
 
-  // ── Reviews JSON ──
+  // ── Reviews JSON + visibility ──
   set(data, 'reviews_json', first(html, /const reviews = \[([\s\S]*?)\];/));
+  set(data, 'reviews_visible', /<section class="reviews"[^>]*display:none/.test(html) ? '0' : '1');
 
   // ── Modal iframes ──
   set(data, 'modal_offerte_iframe',
