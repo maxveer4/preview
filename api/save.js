@@ -159,16 +159,44 @@ module.exports = async function handler(req, res) {
   if (!map.DIENST_5) map.DIENST_5 = '';
   if (!map.DIENST_6) map.DIENST_6 = '';
 
+  // Look up which template set this client uses
+  let templateType = 'default';
+  try {
+    const tr = await fetch(
+      `${SUPABASE_URL}/rest/v1/clients?slug=eq.${encodeURIComponent(slug)}&select=template`,
+      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+    );
+    if (tr.ok) {
+      const rows = await tr.json();
+      if (rows[0]?.template) templateType = rows[0].template;
+    }
+  } catch (_) {}
+
   // Read templates from repo root
   const root = path.join(__dirname, '..');
+
+  // Map template type → file prefix and page suffixes
+  const TEMPLATE_CONFIGS = {
+    default: {
+      prefix:   'template',
+      suffixes: ['', '-contact', '-diensten', '-over-ons'],
+    },
+    dak: {
+      prefix:   'template-dak',
+      suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
+    },
+  };
+  const tplCfg = TEMPLATE_CONFIGS[templateType] ?? TEMPLATE_CONFIGS.default;
+
   let templates;
   try {
-    templates = {
-      [`${slug}.html`]:          fs.readFileSync(path.join(root, 'template.html'),          'utf8'),
-      [`${slug}-contact.html`]:  fs.readFileSync(path.join(root, 'template-contact.html'),  'utf8'),
-      [`${slug}-diensten.html`]: fs.readFileSync(path.join(root, 'template-diensten.html'), 'utf8'),
-      [`${slug}-over-ons.html`]: fs.readFileSync(path.join(root, 'template-over-ons.html'),'utf8'),
-    };
+    templates = {};
+    for (const s of tplCfg.suffixes) {
+      const filename = s ? `${slug}${s}.html` : `${slug}.html`;
+      templates[filename] = fs.readFileSync(
+        path.join(root, `${tplCfg.prefix}${s || ''}.html`), 'utf8'
+      );
+    }
   } catch (e) {
     return res.status(500).json({ error: `Template read failed: ${e.message}` });
   }
@@ -210,10 +238,11 @@ module.exports = async function handler(req, res) {
 
   // Ook opslaan in gowebbo-klanten (non-fataal)
   const klantenMap = {
-    [`${slug}.html`]:          `${slug}/index.html`,
-    [`${slug}-contact.html`]:  `${slug}/contact.html`,
-    [`${slug}-diensten.html`]: `${slug}/diensten.html`,
-    [`${slug}-over-ons.html`]: `${slug}/over-ons.html`,
+    [`${slug}.html`]:            `${slug}/index.html`,
+    [`${slug}-contact.html`]:    `${slug}/contact.html`,
+    [`${slug}-diensten.html`]:   `${slug}/diensten.html`,
+    [`${slug}-over-ons.html`]:   `${slug}/over-ons.html`,
+    [`${slug}-projecten.html`]:  `${slug}/projecten.html`,
   };
   try {
     for (const [oldName, newPath] of Object.entries(klantenMap)) {

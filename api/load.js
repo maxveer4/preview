@@ -23,13 +23,27 @@ module.exports = async function handler(req, res) {
   try {
     // Supabase first: always reflects latest save, no CDN caching delay
     try {
-      const r = await fetch(
-        `${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(slug)}&select=data`,
-        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
-      );
-      if (r.ok) {
-        const rows = await r.json();
-        if (rows[0]?.data) return res.status(200).json({ ok: true, data: rows[0].data });
+      const [contentRes, clientRes] = await Promise.all([
+        fetch(
+          `${SUPABASE_URL}/rest/v1/client_content?slug=eq.${encodeURIComponent(slug)}&select=data`,
+          { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+        ),
+        fetch(
+          `${SUPABASE_URL}/rest/v1/clients?slug=eq.${encodeURIComponent(slug)}&select=template`,
+          { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+        ),
+      ]);
+      if (contentRes.ok) {
+        const rows = await contentRes.json();
+        if (rows[0]?.data) {
+          const data = rows[0].data;
+          // Enrich data with template type from clients table
+          if (clientRes.ok) {
+            const clientRows = await clientRes.json();
+            if (clientRows[0]?.template) data.template = clientRows[0].template;
+          }
+          return res.status(200).json({ ok: true, data });
+        }
       }
     } catch (_) {}
 

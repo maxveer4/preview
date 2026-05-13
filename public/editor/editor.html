@@ -296,6 +296,7 @@
       <div class="tab" data-tab="contact">Contact</div>
       <div class="tab" data-tab="diensten-p">Diensten</div>
       <div class="tab" data-tab="over-ons">Over ons</div>
+      <div class="tab" data-tab="projecten" style="display:none">Projecten</div>
     </div>
 
     <!-- TAB 1: KLEUREN -->
@@ -582,6 +583,18 @@
       <div class="field"><label>CTA beschrijving</label><textarea id="over_ons_cta_desc" name="over_ons_cta_desc"></textarea></div>
     </div>
 
+    <!-- TAB 9: PROJECTEN PAGINA (alleen voor 'dak' template) -->
+    <div class="tab-content" id="tab-projecten" style="display:none">
+      <div class="section-divider">Projecten pagina teksten</div>
+      <div class="field">
+        <label>Hero beschrijving</label>
+        <textarea id="projecten_hero_desc" name="projecten_hero_desc"></textarea>
+      </div>
+      <div class="section-divider">Call-to-action</div>
+      <div class="field"><label>CTA titel</label><input type="text" id="projecten_cta_titel" name="projecten_cta_titel"></div>
+      <div class="field"><label>CTA beschrijving</label><textarea id="projecten_cta_desc" name="projecten_cta_desc"></textarea></div>
+    </div>
+
     <!-- FOOTER -->
     <div class="panel-footer">
       <button class="btn-save" id="saveBtn" onclick="saveChanges()">Wijzigingen opslaan</button>
@@ -597,6 +610,7 @@
         <button class="preview-tab" onclick="switchPreview('contact', this)">Contact</button>
         <button class="preview-tab" onclick="switchPreview('diensten', this)">Diensten</button>
         <button class="preview-tab" onclick="switchPreview('over-ons', this)">Over ons</button>
+        <button class="preview-tab" data-preview-projecten style="display:none" onclick="switchPreview('projecten', this)">Projecten</button>
       </div>
       <div class="preview-url" id="previewUrlBar"></div>
       <button class="btn-refresh" onclick="refreshPreview()">↺ Vernieuwen</button>
@@ -654,6 +668,15 @@
             var parsed = JSON.parse(rv.startsWith('[') ? rv : '[' + rv + ']');
             parsed.forEach(function(r) { addReview(r); });
           } catch(_) {}
+        }
+        // Show Projecten tab for dak template
+        if (data.template === 'dak') {
+          const tab = document.querySelector('[data-tab="projecten"]');
+          if (tab) tab.style.display = '';
+          const panel = document.getElementById('tab-projecten');
+          if (panel) panel.style.display = '';
+          const previewBtn = document.querySelector('[data-preview-projecten]');
+          if (previewBtn) previewBtn.style.display = '';
         }
         // Sync color picker with restored HSL value
         if (data.kleur_primary) {
@@ -908,6 +931,8 @@
     'over_ons_waarde_3_titel','over_ons_waarde_3_desc',
     'over_ons_waarde_4_titel','over_ons_waarde_4_desc',
     'over_ons_cta_desc',
+    // Projecten page (dak template only)
+    'projecten_hero_desc','projecten_cta_titel','projecten_cta_desc',
   ];
 
   // ── Diensten builder ──────────────────────────────────────────────────────

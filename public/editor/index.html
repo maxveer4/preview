@@ -86,9 +86,53 @@
     /* Error/loading */
     #list-status { font-size: 13px; color: var(--muted); padding: 8px 0; }
 
+    /* Nieuwe klant knop */
+    .btn-new {
+      padding: 10px 20px; background: var(--success); color: #fff;
+      border: none; border-radius: 8px; font-family: inherit; font-size: 14px;
+      font-weight: 700; cursor: pointer; transition: background .15s; white-space: nowrap;
+    }
+    .btn-new:hover { background: #059669; }
+
+    /* Template badge op klantkaart */
+    .template-badge {
+      display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px;
+      border-radius: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .template-badge.default { background: #eff6ff; color: var(--primary); }
+    .template-badge.dak     { background: #f0fdf4; color: #16a34a; }
+
+    /* Modal overlay */
+    .modal-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4);
+      z-index: 100; align-items: center; justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 16px; padding: 32px 28px;
+      width: 100%; max-width: 480px; box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+    .modal-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 20px; }
+    .modal-field { margin-bottom: 14px; }
+    .modal-field label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .04em; }
+    .modal-field input, .modal-field select {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--text);
+    }
+    .modal-field input:focus, .modal-field select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .btn-cancel { flex: 1; padding: 11px; background: none; border: 1.5px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; cursor: pointer; color: var(--muted); }
+    .btn-cancel:hover { background: var(--bg); }
+    .btn-create { flex: 2; padding: 11px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .btn-create:hover { background: var(--primary-hover); }
+    .btn-create:disabled { opacity: .6; cursor: not-allowed; }
+    .modal-status { font-size: 13px; color: var(--muted); margin-top: 12px; min-height: 20px; }
+    .modal-status.error { color: var(--danger); }
+
     @media (max-width: 600px) {
       main { padding: 24px 16px; }
       .search-row { flex-direction: column; }
+      .modal-box { margin: 16px; }
     }
   </style>
 </head>
@@ -103,9 +147,43 @@
   </div>
 </header>
 
+<!-- Nieuwe klant modal -->
+<div class="modal-backdrop" id="newClientModal">
+  <div class="modal-box">
+    <h2>Nieuwe klant aanmaken</h2>
+    <div class="modal-field">
+      <label>Slug (URL-naam)</label>
+      <input type="text" id="nc-slug" placeholder="bijv. jan-de-dakdekker" autocomplete="off">
+    </div>
+    <div class="modal-field">
+      <label>Bedrijfsnaam</label>
+      <input type="text" id="nc-naam" placeholder="bijv. Jan de Dakdekker BV" autocomplete="off">
+    </div>
+    <div class="modal-field">
+      <label>Bedrijfstype (voor AI-teksten)</label>
+      <input type="text" id="nc-type" placeholder="bijv. dakdekker, schilder, stukadoor" autocomplete="off">
+    </div>
+    <div class="modal-field">
+      <label>Template</label>
+      <select id="nc-template">
+        <option value="default">Standaard template</option>
+        <option value="dak">Dak / Schilder template (5 pagina's)</option>
+      </select>
+    </div>
+    <p class="modal-status" id="nc-status"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeNewClientModal()">Annuleren</button>
+      <button class="btn-create" id="nc-submit" onclick="createClient()">Aanmaken + AI content genereren</button>
+    </div>
+  </div>
+</div>
+
 <main>
-  <h1>Website overzicht</h1>
-  <p class="subtitle">Kies een klant om de editor te openen, of zoek op slug.</p>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+    <h1>Website overzicht</h1>
+    <button class="btn-new" onclick="openNewClientModal()">+ Nieuwe klant</button>
+  </div>
+  <p class="subtitle">Kies een klant om de editor te openen, of maak een nieuwe aan.</p>
 
   <!-- Direct zoeken op slug -->
   <div class="search-box">
@@ -125,16 +203,102 @@
 </main>
 
 <script>
+  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login.html'); throw new Error(); }
+
+  const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
+
   function openEditor() {
     const slug = document.getElementById('slug-input').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
     if (!slug) return;
     window.location.href = `/editor/editor.html?slug=${slug}`;
   }
 
-  if (!sessionStorage.getItem('editor_token')) { location.replace('/editor/login.html'); throw new Error(); }
+  // ── Nieuwe klant modal ────────────────────────────────────────────────────
 
-  const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
+  function openNewClientModal() {
+    document.getElementById('newClientModal').classList.add('open');
+    document.getElementById('nc-slug').focus();
+  }
+
+  function closeNewClientModal() {
+    document.getElementById('newClientModal').classList.remove('open');
+    document.getElementById('nc-status').textContent = '';
+    document.getElementById('nc-status').className = 'modal-status';
+  }
+
+  // Auto-generate slug from bedrijfsnaam
+  document.getElementById('nc-naam').addEventListener('input', function() {
+    const slugEl = document.getElementById('nc-slug');
+    if (!slugEl._manuallyEdited) {
+      slugEl.value = this.value.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim().replace(/\s+/g, '-');
+    }
+  });
+  document.getElementById('nc-slug').addEventListener('input', function() {
+    this._manuallyEdited = this.value.length > 0;
+  });
+
+  async function createClient() {
+    const slug        = document.getElementById('nc-slug').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/^-+|-+$/g, '');
+    const naam        = document.getElementById('nc-naam').value.trim();
+    const bedrijfstype = document.getElementById('nc-type').value.trim();
+    const template    = document.getElementById('nc-template').value;
+    const statusEl    = document.getElementById('nc-status');
+    const submitBtn   = document.getElementById('nc-submit');
+
+    if (!slug || !naam || !bedrijfstype) {
+      statusEl.className = 'modal-status error';
+      statusEl.textContent = 'Vul slug, bedrijfsnaam en bedrijfstype in.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusEl.className = 'modal-status';
+
+    try {
+      // Stap 1: klant aanmaken in Supabase
+      statusEl.textContent = 'Klant aanmaken…';
+      const newRes = await fetch('/api/new-client', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${sessionStorage.getItem('editor_token')}` },
+        body: JSON.stringify({ slug, naam, template }),
+      });
+      if (!newRes.ok) throw new Error('Aanmaken mislukt');
+
+      // Stap 2: AI content genereren
+      statusEl.textContent = 'AI genereert website content… (dit duurt ~10 sec)';
+      const genRes = await fetch('/api/generate-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${sessionStorage.getItem('editor_token')}` },
+        body: JSON.stringify({ slug, naam, bedrijfstype, template }),
+      });
+      if (!genRes.ok) {
+        const err = await genRes.json().catch(() => ({}));
+        throw new Error(err.error || 'Content generatie mislukt');
+      }
+
+      // Stap 3: open de editor
+      statusEl.textContent = 'Klaar! Editor wordt geopend…';
+      setTimeout(() => {
+        window.location.href = `/editor/editor.html?slug=${slug}`;
+      }, 600);
+    } catch (e) {
+      statusEl.className = 'modal-status error';
+      statusEl.textContent = e.message;
+      submitBtn.disabled = false;
+    }
+  }
+
+  // Close modal on backdrop click
+  document.getElementById('newClientModal').addEventListener('click', function(e) {
+    if (e.target === this) closeNewClientModal();
+  });
+
+  // ── Client list ───────────────────────────────────────────────────────────
+
+  const TEMPLATE_LABELS = { default: 'Standaard', dak: 'Dak / Schilder' };
 
   function renderClients(clients) {
     const status = document.getElementById('list-status');
@@ -144,15 +308,15 @@
       status.style.display = 'none';
       grid.innerHTML = `
         <div class="empty-state" style="grid-column:1/-1">
-          <p>Nog geen klanten in de lijst.<br>
-          n8n voegt automatisch een entry toe wanneer een nieuwe website wordt aangemaakt.<br><br>
-          Gebruik het zoekveld hierboven om een bestaande editor te openen via slug.</p>
+          <p>Nog geen klanten. Klik op <strong>+ Nieuwe klant</strong> om er een aan te maken.</p>
         </div>`;
       return;
     }
 
     status.style.display = 'none';
     clients.forEach(client => {
+      const tpl   = client.template || 'default';
+      const label = TEMPLATE_LABELS[tpl] || tpl;
       const a = document.createElement('a');
       a.className = 'client-card';
       a.href = `/editor/editor.html?slug=${client.slug}`;
@@ -160,25 +324,19 @@
         <div class="client-info">
           <div class="client-name">${escHtml(client.naam || client.slug)}</div>
           <div class="client-slug">${escHtml(client.slug)}</div>
+          <span class="template-badge ${escHtml(tpl)}">${escHtml(label)}</span>
         </div>
         <span class="client-arrow">→</span>`;
       grid.appendChild(a);
     });
   }
 
-  fetch(`${SUPABASE_URL}/rest/v1/clients?select=slug,naam,created_at&order=created_at.desc`, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`
-    }
+  fetch(`${SUPABASE_URL}/rest/v1/clients?select=slug,naam,template,created_at&order=created_at.desc`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
   })
-    .then(r => {
-      if (!r.ok) throw new Error('supabase error');
-      return r.json();
-    })
+    .then(r => { if (!r.ok) throw new Error('supabase error'); return r.json(); })
     .then(renderClients)
     .catch(() => {
-      // Supabase niet beschikbaar, val terug op clients.json
       fetch('/clients.json')
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(renderClients)

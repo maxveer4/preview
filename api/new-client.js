@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN env var not set' });
 
-  const { slug, naam } = req.body || {};
+  const { slug, naam, template = 'default' } = req.body || {};
   if (!slug || !naam) {
     return res.status(400).json({ error: 'slug en naam zijn verplicht' });
   }
@@ -28,9 +28,9 @@ module.exports = async (req, res) => {
       'Content-Type': 'application/json',
       Prefer:         'resolution=ignore-duplicates',
     },
-    body: JSON.stringify({ slug, naam }),
+    body: JSON.stringify({ slug, naam, template }),
   }).catch(() => {});
 
 
-  return res.status(200).json({ ok: true, slug, naam });
+  return res.status(200).json({ ok: true, slug, naam, template });
 };
