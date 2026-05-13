@@ -495,7 +495,16 @@
         <input type="hidden" id="reviews_json" name="reviews_json">
       </div>
 
+      <div class="section-divider">Call-to-action sectie (dak template)</div>
+      <div class="field"><label>CTA titel</label><input type="text" id="cta_titel" name="cta_titel" placeholder="bijv. Vrijblijvend advies of offerte?"></div>
+      <div class="field"><label>CTA beschrijving</label><textarea id="cta_desc" name="cta_desc" placeholder="Korte tekst onder de CTA-titel"></textarea></div>
+
       <div class="section-divider">Modals / Formulieren</div>
+      <div class="field">
+        <label>Offerte webhook URL (dak template)</label>
+        <input type="url" id="offerte_webhook" name="offerte_webhook" placeholder="https://hook.eu2.make.com/...">
+        <p class="field-hint">Webhook URL voor het offerteformulier op de homepagina</p>
+      </div>
       <div class="field">
         <label>Offerte modal (iframe embed)</label>
         <textarea id="modal_offerte_iframe" name="modal_offerte_iframe" placeholder='<iframe src="https://..." ...></iframe>'></textarea>
@@ -920,7 +929,7 @@
     'werk_title','werk_desc_1','werk_desc_2','stappen_title',
     'stap_1_titel','stap_1_desc','stap_2_titel','stap_2_desc',
     'stap_3_titel','stap_3_desc','stap_4_titel','stap_4_desc',
-    'vakmanschap_desc','reviews_visible','reviews_json','modal_offerte_iframe','modal_advies_iframe',
+    'vakmanschap_desc','cta_titel','cta_desc','reviews_visible','reviews_json','offerte_webhook','modal_offerte_iframe','modal_advies_iframe',
     'logo_url','foto_hero','foto_waarom','foto_usp','foto_werkwijze',
     'contact_hero_desc','contact_form_webhook','maps_url',
     'diensten_hero_desc','diensten_cta_titel','diensten_cta_desc','diensten_json',

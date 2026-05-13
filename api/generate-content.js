@@ -52,6 +52,12 @@ const FIELDS_DEFAULT = [
   ['over_ons_waarde_3_desc',  'uitleg derde kernwaarde, max 15 woorden'],
   ['over_ons_waarde_4_titel', 'vierde kernwaarde titel, max 3 woorden'],
   ['over_ons_waarde_4_desc',  'uitleg vierde kernwaarde, max 15 woorden'],
+  ['werk_desc_1',          'eerste alinea over werkervaring en aanpak, max 40 woorden'],
+  ['werk_desc_2',          'tweede alinea over werkervaring en aanpak, max 40 woorden'],
+  ['vakmanschap_desc',     'tekst over werkgebied en regio, max 30 woorden'],
+  ['cta_titel',            'call-to-action sectietitel op homepagina, max 8 woorden'],
+  ['cta_desc',             'korte tekst onder de call-to-action titel, max 20 woorden'],
+  ['over_ons_cta_desc',    'tekst onder de CTA op over ons pagina, max 20 woorden'],
   ['contact_hero_desc',    'intro zin op contactpagina, max 20 woorden'],
   ['diensten_hero_desc',   'intro zin op dienstenpagina, max 20 woorden'],
 ];

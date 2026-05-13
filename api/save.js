@@ -139,6 +139,9 @@ module.exports = async function handler(req, res) {
   if (map.KLEUR_PRIMARY) {
     map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
     map.KLEUR_PRIMARY_A10 = hslToHsla(map.KLEUR_PRIMARY, '0.1');
+    // Tailwind CSS expects space-separated HSL without hsl() wrapper (e.g. "133 33% 24%")
+    map.KLEUR_PRIMARY_TAILWIND = map.KLEUR_PRIMARY
+      .replace(/^hsl\(\s*/, '').replace(/\s*\)$/, '').replace(/,\s*/g, ' ');
   }
   if (map.TELEFOON_DISPLAY) {
     map.TELEFOON_HREF = map.TELEFOON_DISPLAY.replace(/\s+/g, '');

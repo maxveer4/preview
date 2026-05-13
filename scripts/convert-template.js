@@ -157,20 +157,42 @@ function applyMarkers(html, markers) {
   return out;
 }
 
-// Build and inject window.GOWEBBO_DATA script block with {{KEY}} placeholders.
-// This ensures React can read all CMS values at runtime (for logo URL, webhooks, etc.)
+// Build and inject window.GOWEBBO_DATA script block + color override style.
+// Both are inserted in <head> before the Vite bundle so React reads them at mount time.
 function injectGowebboData(html, markers) {
   const dataObj = Object.keys(markers).reduce((acc, key) => {
     acc[key] = `{{${key}}}`;
     return acc;
   }, {});
 
-  // JSON.stringify produces valid JS object literal; {{KEY}} placeholders inside
-  // string values will be substituted by save.js applyMap() before serving.
+  // GOWEBBO_DATA makes all CMS values available to React at runtime.
   const scriptBlock = `<script>window.GOWEBBO_DATA=${JSON.stringify(dataObj)};</script>`;
 
+  // Color override: lets save.js swap --primary without touching the compiled CSS bundle.
+  // {{KLEUR_PRIMARY_TAILWIND}} is derived in save.js from {{KLEUR_PRIMARY}} (strips hsl() wrapper).
+  const styleBlock = `<style id="gowebbo-colors">:root{--primary:{{KLEUR_PRIMARY_TAILWIND}};--ring:{{KLEUR_PRIMARY_TAILWIND}};}</style>`;
+
+  const injection = styleBlock + '\n' + scriptBlock;
+
   // Insert before the first <script src=... or <script type=... tag (the Vite bundle)
-  return html.replace(/(<script\b(?:[^>]*\bsrc\b|\s+type\s*=)[^>]*>)/, scriptBlock + '\n$1');
+  return html.replace(/(<script\b(?:[^>]*\bsrc\b|\s+type\s*=)[^>]*>)/, injection + '\n$1');
+}
+
+// Copy JS and CSS bundles from dist/assets to preview-repo/public/assets.
+// Images are intentionally excluded — they're large and per-client replaceable.
+function copyBundleAssets(templateRepo, previewRepo) {
+  const src  = path.join(templateRepo, 'dist', 'assets');
+  const dest = path.join(previewRepo, 'public', 'assets');
+  if (!fs.existsSync(src)) { console.warn('  No dist/assets found — skipping asset copy.'); return; }
+  fs.mkdirSync(dest, { recursive: true });
+  let copied = 0;
+  for (const file of fs.readdirSync(src)) {
+    if (/\.(js|css)$/.test(file)) {
+      fs.copyFileSync(path.join(src, file), path.join(dest, file));
+      copied++;
+    }
+  }
+  console.log(`  Copied ${copied} JS/CSS bundle files → public/assets/`);
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -192,6 +214,8 @@ function injectGowebboData(html, markers) {
     fs.writeFileSync(outPath, processed, 'utf8');
     console.log(`  Written: ${outFile}`);
   }
+
+  copyBundleAssets(templateRepo, previewRepo);
 
   console.log('\nDone! Review the generated files and verify {{KEY}} placeholders.');
   console.log('Tip: search for remaining GOWEBBO_ strings to find unmarked fields.\n');
