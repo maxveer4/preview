@@ -159,11 +159,12 @@ function applyMarkers(html, markers) {
 
 // Build and inject window.GOWEBBO_DATA script block + color override style.
 // Both are inserted in <head> before the Vite bundle so React reads them at mount time.
-function injectGowebboData(html, markers) {
+function injectGowebboData(html, markers, pageRoute) {
   const dataObj = Object.keys(markers).reduce((acc, key) => {
     acc[key] = `{{${key}}}`;
     return acc;
   }, {});
+  dataObj.PAGE = pageRoute;
 
   // GOWEBBO_DATA makes all CMS values available to React at runtime.
   const scriptBlock = `<script>window.GOWEBBO_DATA=${JSON.stringify(dataObj)};</script>`;
@@ -207,9 +208,12 @@ function copyBundleAssets(templateRepo, previewRepo) {
 
   console.log('\nApplying marker substitution and writing template files…\n');
 
+  const routeByFile = Object.fromEntries(Object.entries(routes).map(([r, f]) => [f, r]));
+
   for (const [outFile, html] of Object.entries(rendered)) {
+    const pageRoute = routeByFile[outFile] ?? '/';
     let processed = applyMarkers(html, markers);
-    processed = injectGowebboData(processed, markers);
+    processed = injectGowebboData(processed, markers, pageRoute);
     const outPath   = path.join(previewRepo, outFile);
     fs.writeFileSync(outPath, processed, 'utf8');
     console.log(`  Written: ${outFile}`);
