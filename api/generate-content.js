@@ -133,7 +133,8 @@ module.exports = async function handler(req, res) {
 
     const data = await anthropicRes.json();
     const text = data.content?.[0]?.text ?? '';
-    fields = JSON.parse(text);
+    const cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
+    fields = JSON.parse(cleaned);
   } catch (e) {
     console.error('Claude generation failed:', e.message);
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
