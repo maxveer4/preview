@@ -86,18 +86,21 @@ async function githubUpsert(token, filePath, content, repo = REPO) {
     'User-Agent': 'gowebbo-editor/1.0',
   };
 
-  const getRes  = await fetch(url, { headers });
-  const existing = getRes.ok ? await getRes.json() : null;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const getRes  = await fetch(url, { headers });
+    const existing = getRes.ok ? await getRes.json() : null;
 
-  const body = {
-    message: `Update ${filePath} via CMS editor`,
-    content: Buffer.from(content).toString('base64'),
-    branch:  BRANCH,
-  };
-  if (existing?.sha) body.sha = existing.sha;
+    const body = {
+      message: `Update ${filePath} via CMS editor`,
+      content: Buffer.from(content).toString('base64'),
+      branch:  BRANCH,
+    };
+    if (existing?.sha) body.sha = existing.sha;
 
-  const putRes = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
-  if (!putRes.ok) {
+    const putRes = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+    if (putRes.ok) return;
+    // 409/422 = SHA conflict (stale SHA from a concurrent save) — retry with fresh SHA
+    if ((putRes.status === 409 || putRes.status === 422) && attempt === 0) continue;
     const txt = await putRes.text();
     throw new Error(`GitHub ${putRes.status} for ${filePath}: ${txt}`);
   }
