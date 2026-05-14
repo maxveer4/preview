@@ -144,6 +144,12 @@ module.exports = async function handler(req, res) {
     if (!(key in map)) map[key] = '';
   }
 
+  // Clear unset foto placeholders so src="" instead of src="{{FOTO_HERO}}"
+  if (!map.FOTO_HERO)      map.FOTO_HERO      = '';
+  if (!map.FOTO_WAAROM)    map.FOTO_WAAROM    = '';
+  if (!map.FOTO_WERKWIJZE) map.FOTO_WERKWIJZE = '';
+  if (!map.FOTO_USP)       map.FOTO_USP       = '';
+
   // Derived values
   if (map.KLEUR_PRIMARY) {
     map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
