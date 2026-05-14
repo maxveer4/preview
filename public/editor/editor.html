@@ -1139,7 +1139,7 @@
     })
     .then(res => res.ok ? res.json() : res.json().then(e => Promise.reject(e.error || res.status)))
     .then(() => {
-      status.textContent = '✓ Opgeslagen! Klik op ↺ om de preview te vernieuwen.';
+      status.textContent = '✓ Opgeslagen! Vercel deployment gestart — wacht ±30s en klik dan op ↺ om de preview te vernieuwen.';
       status.className   = 'status-msg success';
       btn.disabled = false;
     })
