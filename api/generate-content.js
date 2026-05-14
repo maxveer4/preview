@@ -147,10 +147,22 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
   }
 
-  // Always include bedrijfsnaam + template in the stored data
+  // Always include bedrijfsnaam + template + bedrijfstype in the stored data
   fields.bedrijfsnaam = naam;
   fields.template     = template;
+  fields.bedrijfstype = bedrijfstype;
   if (stad) fields.stad = stad;
+
+  // Assign stock photos based on trade type
+  const stockPhotos = require('../stock-photos.json');
+  const trade  = (bedrijfstype || '').toLowerCase().trim();
+  const photos = stockPhotos[trade] || null;
+  if (photos) {
+    if (photos.hero?.[0])      fields.foto_hero      = photos.hero[0];
+    if (photos.waarom?.[0])    fields.foto_waarom    = photos.waarom[0];
+    if (photos.werkwijze?.[0]) fields.foto_werkwijze = photos.werkwijze[0];
+    if (photos.sectie2?.[0])   fields.foto_usp       = photos.sectie2[0];
+  }
 
   // Pre-fill DIENST_1…6 from intake selection (first 6 selected services, for footer nav)
   const dienstenArr = Array.isArray(diensten) ? diensten : [];

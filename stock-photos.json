@@ -1,53 +1,72 @@
 {
+  "aannemer": {
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/hero/aannemer-hero-1.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/waarom/aannemer-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/werkwijze/aannemer-werkwijze-1.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/sectie2/aannemer-sectie2.jpeg"]
+  },
   "dakdekker": {
-    "hero": [
-      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.png",
-      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-2.png"
-    ],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-2.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-3.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-4.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-5.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-2.png",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-3.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-4.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-5.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-2.jpeg"]
+  },
+  "hovenier": {
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/hero/hovenier-hero-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/hero/hovenier-hero-2.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/waarom/hovenier-waarom-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/waarom/hovenier-waarom-2.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-2.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-3.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-2.jpeg"]
   },
   "loodgieter": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
-  },
-  "elektricien": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
-  },
-  "aannemer": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
-  },
-  "installateur": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/hero/loodgieter-hero-1.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/waarom/loodgieter-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/werkwijze/loodgieter-werkwijze-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/werkwijze/loodgieter-werkwijze-2.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/sectie2/loodgieter-sectie2-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/sectie2/loodgieter-sectie2-2.jpeg"]
   },
   "schilder": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/hero/schilder-hero-1.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/waarom/schilder-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/werkwijze/schilder-werkwijze-1.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/sectie2/schilder-sectie2-1.jpeg"]
+  },
+  "stukadoor": {
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/hero/stukadoor-stucwerk-1.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/waarom/stukadoor-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/werkwijze/stukadoor-werkwijze-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/werkwijze/stukadoor-werkwijze-2.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/sectie2/stukadoor-sectie2-1.jpeg"]
+  },
+  "tegelzetter": {
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/hero/tegelzetter-hero-1.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/waarom/tegelzetter-waarom-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/waarom/tegelzetter-waarom-2.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/werkwijze/tegelzetter-werkwijze-1.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/sectie2/tegelzetter-sectie2-1.jpeg"]
   },
   "timmerman": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
-  },
-  "glazenwasser": {
-    "hero": [],
-    "waarom": [],
-    "werkwijze": [],
-    "diensten": []
+    "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/hero/timmerman-hero-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/hero/timmerman-hero-2.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/hero/timmerman-hero-3.jpeg"],
+    "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/waarom/timmerman-waarom-1.jpeg"],
+    "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/werkwijze/timmerman-werkwijze-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/werkwijze/timmerman-werkwijze-2.jpeg"],
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-1.jpeg",
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-2.jpeg"]
   }
 }
