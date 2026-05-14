@@ -69,7 +69,7 @@ const FIELDS_DAK_EXTRA = [
   ['projecten_cta_desc',   'korte CTA tekst, max 20 woorden'],
 ];
 
-function buildPrompt(naam, bedrijfstype, template) {
+function buildPrompt(naam, bedrijfstype, template, diensten = [], stad = '') {
   const extraFields = template === 'dak' ? FIELDS_DAK_EXTRA : [];
   const allFields   = [...FIELDS_DEFAULT, ...extraFields];
 
@@ -77,15 +77,22 @@ function buildPrompt(naam, bedrijfstype, template) {
     .map(([key, desc]) => `  "${key}": "<${desc}>"`)
     .join(',\n');
 
+  const dienstenLine = diensten.length
+    ? `- Aangeboden diensten: ${diensten.join(', ')}`
+    : '';
+  const stadLine = stad ? `- Werkgebied: ${stad} en omstreken` : '';
+
   return `Je bent een Nederlandse copywriter die professionele website-teksten schrijft voor ${bedrijfstype}-bedrijven.
 
 Genereer website content voor het volgende bedrijf:
 - Bedrijfsnaam: ${naam}
 - Type: ${bedrijfstype}
+${dienstenLine}
+${stadLine}
 
 Schrijf alle teksten in het Nederlands. Wees direct, professioneel en lokaal georiënteerd.
 Gebruik geen generieke uitdrukkingen als "Wij zijn trots op…" of "Met jarenlange ervaring…".
-Refereer specifiek aan het vakgebied van de ${bedrijfstype}.
+Verwijs specifiek naar de aangeboden diensten en het werkgebied waar relevant.
 
 Geef je antwoord als ALLEEN geldig JSON (geen uitleg, geen markdown codeblok):
 
@@ -104,7 +111,7 @@ module.exports = async function handler(req, res) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY env var not set' });
 
-  const { slug, naam, bedrijfstype, template = 'default' } = req.body || {};
+  const { slug, naam, bedrijfstype, template = 'default', diensten = [], stad = '' } = req.body || {};
   if (!slug || !naam || !bedrijfstype) {
     return res.status(400).json({ error: 'slug, naam en bedrijfstype zijn verplicht' });
   }
@@ -122,7 +129,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model:      'claude-haiku-4-5-20251001',
         max_tokens: 2048,
-        messages: [{ role: 'user', content: buildPrompt(naam, bedrijfstype, template) }],
+        messages: [{ role: 'user', content: buildPrompt(naam, bedrijfstype, template, diensten, stad) }],
       }),
     });
 
@@ -143,6 +150,13 @@ module.exports = async function handler(req, res) {
   // Always include bedrijfsnaam + template in the stored data
   fields.bedrijfsnaam = naam;
   fields.template     = template;
+  if (stad) fields.stad = stad;
+
+  // Pre-fill DIENST_1…6 from intake selection (first 6 selected services)
+  const dienstenArr = Array.isArray(diensten) ? diensten : [];
+  for (let i = 0; i < 6; i++) {
+    fields[`dienst_${i + 1}`] = dienstenArr[i] || fields[`dienst_${i + 1}`] || '';
+  }
 
   // Save to Supabase client_content so the editor pre-fills on load
   try {
