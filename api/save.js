@@ -143,6 +143,9 @@ module.exports = async function handler(req, res) {
     const key = `DIENST_${i}_TITEL`;
     if (!(key in map)) map[key] = '';
   }
+  for (let i = 1; i <= 8; i++) {
+    if (!map[`DIENST_${i}_FOTO`]) map[`DIENST_${i}_FOTO`] = '';
+  }
 
   // Clear unset foto placeholders so src="" instead of src="{{FOTO_HERO}}"
   if (!map.FOTO_HERO)      map.FOTO_HERO      = '';

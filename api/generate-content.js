@@ -169,9 +169,15 @@ module.exports = async function handler(req, res) {
   for (let i = 0; i < 6; i++) {
     fields[`dienst_${i + 1}`] = dienstenArr[i] || fields[`dienst_${i + 1}`] || '';
   }
-  // Pre-fill DIENST_N_TITEL (up to 8) for the diensten-page service cards (dak template)
+  // Pre-fill DIENST_N_TITEL and DIENST_N_FOTO (up to 8) for the diensten-page service cards
+  const dienstFotos = photos?.diensten || {};
   for (let i = 0; i < 8; i++) {
-    fields[`dienst_${i + 1}_titel`] = dienstenArr[i] || '';
+    const titel = dienstenArr[i] || '';
+    fields[`dienst_${i + 1}_titel`] = titel;
+    if (titel) {
+      const fotoUrl = dienstFotos[titel.toLowerCase().trim()];
+      if (fotoUrl) fields[`dienst_${i + 1}_foto`] = fotoUrl;
+    }
   }
 
   // Save to Supabase client_content so the editor pre-fills on load

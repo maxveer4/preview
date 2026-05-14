@@ -3,7 +3,17 @@
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/hero/aannemer-hero-1.jpeg"],
     "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/waarom/aannemer-waarom-1.jpeg"],
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/werkwijze/aannemer-werkwijze-1.jpeg"],
-    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/sectie2/aannemer-sectie2.jpeg"]
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/sectie2/aannemer-sectie2.jpeg"],
+    "diensten": {
+      "renovatie woning":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/renovatie-woning-1.jpeg",
+      "aanbouw & uitbouw":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/aanbouw-uitbouw-1.jpeg",
+      "badkamer verbouwen": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/badkamer-1.jpeg",
+      "keuken verbouwen":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/keuken-1.jpeg",
+      "installatiewerk":    "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/installatie-1.jpeg",
+      "timmerwerk op maat": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/timmerwerk-1.webp",
+      "stucwerk en afbouw": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/stucwerk-1.jpeg",
+      "onderhoud en herstelwerk": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/onderhoud-1.jpeg"
+    }
   },
   "dakdekker": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/hero/dakdekker-hero-1.jpeg",
@@ -18,7 +28,17 @@
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-4.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-5.jpeg"],
     "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg",
-                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-2.jpeg"]
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-2.jpeg"],
+    "diensten": {
+      "dakrenovatie":                "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakrenovatie-1.jpeg",
+      "dakreparatie":                "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakreparatie-1.jpeg",
+      "dakpannen vervangen":         "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakpannen-vervangen-1.jpeg",
+      "dakisolatie":                 "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakisolatie-1.jpeg",
+      "daklekkage":                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/daklekkage-1.jpeg",
+      "dakinspectie":                "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakinspectie-1.jpeg",
+      "bitumen":                     "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/bitumen-1.jpeg",
+      "schoorsteenrenovatie loodwerk": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/schoorsteenrenovatie-loodwerk-1.jpeg"
+    }
   },
   "hovenier": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/hero/hovenier-hero-1.jpeg",
@@ -29,7 +49,12 @@
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-2.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-3.jpeg"],
     "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-1.jpeg",
-                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-2.jpeg"]
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-2.jpeg"],
+    "diensten": {
+      "tuinaanleg":      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/aanleg-1.jpeg",
+      "tuinonderhoud":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/onderhoud-1.jpeg",
+      "tuinontwerp":     "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/ontwerp-1.jpeg"
+    }
   },
   "loodgieter": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/hero/loodgieter-hero-1.jpeg"],
@@ -37,27 +62,62 @@
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/werkwijze/loodgieter-werkwijze-1.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/werkwijze/loodgieter-werkwijze-2.jpeg"],
     "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/sectie2/loodgieter-sectie2-1.jpeg",
-                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/sectie2/loodgieter-sectie2-2.jpeg"]
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/sectie2/loodgieter-sectie2-2.jpeg"],
+    "diensten": {
+      "lekkage verhelpen":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/lekkage-verhelpen-1.jpeg",
+      "riool ontstoppen":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/riool-ontstoppen-1.jpeg",
+      "cv lekkage":         "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/cvlekkage-1.jpeg",
+      "leidingwerk":        "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/leidingwerk-1.jpeg",
+      "sanitair instellen": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/sanitair-instellen-1.jpeg",
+      "wc ontstoppen":      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/wc-ontstoppen-1.jpeg",
+      "afvoer stoppen":     "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/afvoerstoppen-1.jpeg",
+      "spoed loodgieter":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/diensten/spoed-loodgieter-1.jpeg"
+    }
   },
   "schilder": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/hero/schilder-hero-1.jpeg"],
     "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/waarom/schilder-waarom-1.jpeg"],
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/werkwijze/schilder-werkwijze-1.jpeg"],
-    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/sectie2/schilder-sectie2-1.jpeg"]
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/sectie2/schilder-sectie2-1.jpeg"],
+    "diensten": {
+      "behangen":            "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/behangen-1.jpeg",
+      "binnenschilderwerk":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/binnenschilderwerk-1.jpeg",
+      "buitenschilderwerk":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/buitenschilderwerk-1.jpeg",
+      "houtrot reparaties":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/houtrotreparaties-1.jpeg",
+      "spuitwerk":           "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/spuitwerk-1.jpeg",
+      "stucwerk":            "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/diensten/stucwerk-1.jpeg"
+    }
   },
   "stukadoor": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/hero/stukadoor-stucwerk-1.jpeg"],
     "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/waarom/stukadoor-waarom-1.jpeg"],
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/werkwijze/stukadoor-werkwijze-1.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/werkwijze/stukadoor-werkwijze-2.jpeg"],
-    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/sectie2/stukadoor-sectie2-1.jpeg"]
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/sectie2/stukadoor-sectie2-1.jpeg"],
+    "diensten": {
+      "gladstucwerk":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/gladstucwerk-1.jpeg",
+      "raapwerk":       "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/raapwerk-1.jpeg",
+      "schuurwerk":     "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/schuurwerk-1.jpeg",
+      "betonlook":      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/betonlook-1.jpeg",
+      "buitenstucwerk": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/buitenstucwerk-1.jpeg",
+      "sierpleister":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/sierplijster-1.jpeg",
+      "spackspuiten":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/spackspuiten-1.jpeg",
+      "plafondlijsten": "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/stukadoor/diensten/plafondlijsten-1.jpeg"
+    }
   },
   "tegelzetter": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/hero/tegelzetter-hero-1.jpeg"],
     "waarom":    ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/waarom/tegelzetter-waarom-1.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/waarom/tegelzetter-waarom-2.jpeg"],
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/werkwijze/tegelzetter-werkwijze-1.jpeg"],
-    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/sectie2/tegelzetter-sectie2-1.jpeg"]
+    "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/sectie2/tegelzetter-sectie2-1.jpeg"],
+    "diensten": {
+      "badkamer betegelen":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/badkamer-1.jpeg",
+      "keuken betegelen":    "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/keuken-1.jpeg",
+      "vloeren betegelen":   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/vloerenbetegelen-1.jpeg",
+      "toilet betegelen":    "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/toiletten-1.jpeg",
+      "buiten betegelen":    "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/buiten-1.jpeg"
+    }
   },
   "timmerman": {
     "hero":      ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/hero/timmerman-hero-1.jpeg",
@@ -67,6 +127,11 @@
     "werkwijze": ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/werkwijze/timmerman-werkwijze-1.jpeg",
                   "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/werkwijze/timmerman-werkwijze-2.jpeg"],
     "sectie2":   ["https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-1.jpeg",
-                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-2.jpeg"]
+                  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-2.jpeg"],
+    "diensten": {
+      "maatwerk interieur":      "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/diensten/maatwerk-interieur-1.jpeg",
+      "overkappingen":           "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/diensten/overkappingen-1.jpeg",
+      "verbouwing & renovatie":  "https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/diensten/verbouwing-renovatie-1.jpeg"
+    }
   }
 }
