@@ -138,6 +138,12 @@ module.exports = async function handler(req, res) {
     }
   }
 
+  // Ensure empty service slots clear their {{KEY}} placeholder so React hides them
+  for (let i = 1; i <= 8; i++) {
+    const key = `DIENST_${i}_TITEL`;
+    if (!(key in map)) map[key] = '';
+  }
+
   // Derived values
   if (map.KLEUR_PRIMARY) {
     map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');

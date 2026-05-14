@@ -553,7 +553,28 @@
       <div class="field"><label>CTA titel</label><input type="text" id="diensten_cta_titel" name="diensten_cta_titel"></div>
       <div class="field"><label>CTA beschrijving</label><textarea id="diensten_cta_desc" name="diensten_cta_desc"></textarea></div>
       <div class="section-divider">Diensten kaartjes</div>
-      <div class="field">
+      <!-- dak template: 8 text inputs (shown when template=dak) -->
+      <div id="diensten-titels-section" style="display:none">
+        <div class="field-row">
+          <div class="field"><label>Dienst 1</label><input type="text" id="dienst_1_titel" name="dienst_1_titel" placeholder="bijv. Dakreparatie"></div>
+          <div class="field"><label>Dienst 2</label><input type="text" id="dienst_2_titel" name="dienst_2_titel"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Dienst 3</label><input type="text" id="dienst_3_titel" name="dienst_3_titel"></div>
+          <div class="field"><label>Dienst 4</label><input type="text" id="dienst_4_titel" name="dienst_4_titel"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Dienst 5</label><input type="text" id="dienst_5_titel" name="dienst_5_titel"></div>
+          <div class="field"><label>Dienst 6</label><input type="text" id="dienst_6_titel" name="dienst_6_titel"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Dienst 7</label><input type="text" id="dienst_7_titel" name="dienst_7_titel"></div>
+          <div class="field"><label>Dienst 8</label><input type="text" id="dienst_8_titel" name="dienst_8_titel"></div>
+        </div>
+        <p class="field-hint">Lege velden worden verborgen op de website</p>
+      </div>
+      <!-- default template: JSON builder -->
+      <div id="diensten-json-section">
         <div id="diensten-builder" class="builder-list"></div>
         <button type="button" class="builder-add" onclick="addDienst()">+ Dienst toevoegen</button>
         <input type="hidden" id="diensten_json" name="diensten_json">
@@ -678,7 +699,7 @@
             parsed.forEach(function(r) { addReview(r); });
           } catch(_) {}
         }
-        // Show Projecten tab for dak template
+        // Show Projecten tab + dienst_N_titel inputs for dak template
         if (data.template === 'dak') {
           const tab = document.querySelector('[data-tab="projecten"]');
           if (tab) tab.style.display = '';
@@ -686,6 +707,10 @@
           if (panel) panel.style.display = '';
           const previewBtn = document.querySelector('[data-preview-projecten]');
           if (previewBtn) previewBtn.style.display = '';
+          const titels = document.getElementById('diensten-titels-section');
+          if (titels) titels.style.display = '';
+          const jsonSection = document.getElementById('diensten-json-section');
+          if (jsonSection) jsonSection.style.display = 'none';
         }
         // Sync color picker with restored HSL value
         if (data.kleur_primary) {
