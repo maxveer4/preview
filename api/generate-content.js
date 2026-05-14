@@ -152,10 +152,14 @@ module.exports = async function handler(req, res) {
   fields.template     = template;
   if (stad) fields.stad = stad;
 
-  // Pre-fill DIENST_1…6 from intake selection (first 6 selected services)
+  // Pre-fill DIENST_1…6 from intake selection (first 6 selected services, for footer nav)
   const dienstenArr = Array.isArray(diensten) ? diensten : [];
   for (let i = 0; i < 6; i++) {
     fields[`dienst_${i + 1}`] = dienstenArr[i] || fields[`dienst_${i + 1}`] || '';
+  }
+  // Pre-fill DIENST_N_TITEL (up to 8) for the diensten-page service cards (dak template)
+  for (let i = 0; i < 8; i++) {
+    fields[`dienst_${i + 1}_titel`] = dienstenArr[i] || '';
   }
 
   // Save to Supabase client_content so the editor pre-fills on load

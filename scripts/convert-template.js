@@ -149,8 +149,10 @@ const { chromium } = require('@playwright/test');
 
 function applyMarkers(html, markers) {
   let out = html;
-  for (const [key, markerValue] of Object.entries(markers)) {
-    // Escape special regex chars in the marker value
+  // Sort by marker string length descending so longer keys (e.g. GOWEBBO_DIENST_1_TITEL)
+  // are replaced before their prefixes (e.g. GOWEBBO_DIENST_1).
+  const sorted = Object.entries(markers).sort((a, b) => b[1].length - a[1].length);
+  for (const [key, markerValue] of sorted) {
     const escaped = markerValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     out = out.replace(new RegExp(escaped, 'g'), `{{${key}}}`);
   }
