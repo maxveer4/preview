@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jhgfghfh | Timmerman in treshgdsgf</title>
+<meta name="description" content="Op zoek naar een vakkundige timmerman in treshgdsgf? jhgfghfh levert hoogwaardig timmerwerk op maat. Bel nu voor een vrijblijvende offerte!">
+<link rel="icon" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --background: hsl(0,0%,96%);
+  --foreground: hsl(0,0%,10%);
+  --card: hsl(0,0%,100%);
+  --primary: hsl(213,76%,52%);
+  --primary-fg: hsl(0,0%,100%);
+  --muted: hsl(0,0%,96%);
+  --muted-fg: hsl(0,0%,45%);
+  --border: hsl(0,0%,88%);
+  --star: hsl(33,95%,60%);
+  --topbar-bg: hsl(0,0%,10%);
+  --topbar-fg: hsl(0,0%,100%);
+}
+body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+.text-primary { color: var(--primary); }
+
+/* Topbar */
+.topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.topbar-stars { display: flex; gap: 2px; align-items: center; }
+.star-icon { color: var(--star); }
+.topbar-contact { display: flex; gap: 1.5rem; }
+.topbar-contact a { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
+.topbar-contact a:hover { color: var(--primary); }
+@media(max-width:767px){ .topbar-contact { display: none; } }
+
+/* Navbar */
+.navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
+.navbar-logo img { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+.navbar-nav { display: flex; align-items: center; gap: 2rem; }
+.navbar-nav a { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; }
+.navbar-nav a:hover { color: var(--primary); }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: inherit; }
+.btn-primary:hover { opacity: 0.9; }
+.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
+.mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
+.mobile-nav-panel a { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
+.mobile-nav.open { display: block; }
+@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+@media(max-width:767px){ .navbar-nav, .navbar .btn-primary { display: none; } .mobile-menu-btn { display: block; } }
+
+/* Hero */
+.hero { position: relative; min-height: 620px; display: flex; align-items: center; }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); }
+.hero-inner { position: relative; display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 0; }
+@media(min-width:768px){ .hero-inner { grid-template-columns: 1fr 1fr; align-items: center; } }
+.hero-text { color: #fff; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; color: rgba(255,255,255,0.75); margin-bottom: 1rem; }
+.hero-text h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.25rem; }
+.hero-text > p { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.85); margin-bottom: 2rem; max-width: 480px; }
+.hero-usps { display: flex; flex-wrap: wrap; gap: 0.625rem; }
+.hero-usp { display: inline-flex; align-items: center; gap: 0.375rem; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 2rem; padding: 0.375rem 0.875rem; font-size: 0.8rem; color: #fff; backdrop-filter: blur(4px); }
+.hero-usp svg { flex-shrink: 0; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
+.btn-hero-outline { display: inline-flex; align-items: center; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+.btn-hero-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* Hero form */
+.hero-form { background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1.25rem; padding: 2rem; }
+.hero-form h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.375rem; color: #fff; }
+.hero-form p.sub { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+.hero-form input, .hero-form textarea { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.875rem; font-family: inherit; width: 100%; outline: none; transition: border-color 0.2s; margin-bottom: 0.75rem; display: block; }
+.hero-form input::placeholder, .hero-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+.hero-form input:focus, .hero-form textarea:focus { border-color: var(--primary); }
+.hero-form textarea { resize: vertical; min-height: 100px; }
+.hero-form .btn-primary { width: 100%; justify-content: center; padding: 0.875rem; margin-top: 0.25rem; }
+.form-success { display: none; padding: 0.875rem; background: hsl(143,85%,96%); border: 1px solid hsl(145,92%,91%); border-radius: 0.5rem; color: hsl(140,100%,27%); font-size: 0.8rem; margin-top: 0.75rem; text-align: center; }
+
+/* Vakmanschap section */
+.vakman-section { padding: 5rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.vakman-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto; align-items: center; }
+@media(min-width:768px){ .vakman-grid { grid-template-columns: 1fr 1fr; } }
+.vakman-img { border-radius: 1.25rem; overflow: hidden; aspect-ratio: 4/3; }
+.vakman-img img { width: 100%; height: 100%; object-fit: cover; }
+.vakman-text .section-label { display: block; margin-bottom: 0.75rem; }
+.vakman-text h2 { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 700; margin-bottom: 1.25rem; line-height: 1.25; }
+.vakman-text > p { font-size: 0.95rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 2rem; }
+
+/* Section header */
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--primary); margin-bottom: 0.75rem; }
+.section-header h2 { font-size: clamp(1.5rem,3vw,2.25rem); font-weight: 700; }
+.section-header p { font-size: 0.95rem; color: var(--muted-fg); max-width: 640px; margin: 0.75rem auto 0; line-height: 1.7; }
+
+/* Diensten icon cards */
+.diensten-section { padding: 5rem 0; }
+.diensten-icon-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+@media(min-width:640px){ .diensten-icon-grid { grid-template-columns: repeat(2,1fr); } }
+@media(min-width:900px){ .diensten-icon-grid { grid-template-columns: repeat(4,1fr); } }
+.dienst-icon-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+.dienst-icon-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.dienst-icon-card:has(h3:empty) { display: none; }
+.dienst-icon-wrap { width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 1.25rem; flex-shrink: 0; }
+.dienst-icon-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.625rem; color: var(--foreground); }
+.dienst-icon-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); flex: 1; margin-bottom: 1.25rem; }
+.dienst-meer-link { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.875rem; font-weight: 500; color: var(--primary); transition: gap 0.2s; margin-top: auto; }
+.dienst-icon-card:hover .dienst-meer-link { gap: 0.625rem; }
+
+/* Projecten preview */
+.projecten-section { padding: 5rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.projecten-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2.5rem; }
+@media(max-width:767px){ .projecten-grid { grid-template-columns: repeat(2,1fr); } }
+.project-thumb { border-radius: 0.75rem; overflow: hidden; aspect-ratio: 4/3; background: var(--muted); }
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.project-thumb:hover img { transform: scale(1.05); }
+.projecten-cta { text-align: center; }
+
+/* Reviews */
+.reviews-section { padding: 5rem 0; }
+.reviews-slider { position: relative; overflow: hidden; }
+.reviews-track { display: flex; gap: 1.5rem; transition: transform 0.4s ease; }
+.review-card { min-width: calc(33.333% - 1rem); background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.75rem; flex-shrink: 0; }
+@media(max-width:767px){ .review-card { min-width: calc(100% - 0px); } }
+@media(min-width:768px) and (max-width:1023px){ .review-card { min-width: calc(50% - 0.75rem); } }
+.review-stars { display: flex; gap: 2px; margin-bottom: 1rem; }
+.review-stars svg { color: var(--star); }
+.review-text { font-size: 0.875rem; line-height: 1.7; color: var(--muted-fg); margin-bottom: 1.25rem; }
+.review-name { font-size: 0.875rem; font-weight: 600; }
+.review-date { font-size: 0.75rem; color: var(--muted-fg); margin-top: 2px; }
+.reviews-nav { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; }
+.reviews-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+.reviews-nav button:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+.reviews-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
+.reviews-dot.active { background: var(--primary); }
+
+/* Werkwijze section */
+.werkwijze-section { padding: 5rem 0; }
+.werkwijze-outer { display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto; }
+@media(min-width:900px){ .werkwijze-outer { grid-template-columns: 3fr 2fr; align-items: start; } }
+.werkwijze-left h2 { font-size: clamp(1.5rem,3vw,2rem); font-weight: 700; margin-bottom: 1.25rem; }
+.werkwijze-left > p { font-size: 0.95rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 1rem; }
+.werkwijze-foto { border-radius: 1rem; overflow: hidden; aspect-ratio: 16/9; margin-top: 2rem; }
+.werkwijze-foto img { width: 100%; height: 100%; object-fit: cover; }
+.werkwijze-form-card { background: var(--card); border: 2px solid var(--primary); border-radius: 1.25rem; padding: 1.75rem; }
+@media(min-width:900px){ .werkwijze-form-card { position: sticky; top: 80px; } }
+.werkwijze-form-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+.wf-field { width: 100%; border: 1px solid var(--border); border-radius: 0.5rem; background: var(--background); padding: 0.625rem 0.875rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); outline: none; transition: border-color 0.2s; margin-bottom: 0.75rem; display: block; }
+.wf-field:focus { border-color: var(--primary); }
+.wf-field.wf-textarea { resize: vertical; min-height: 90px; }
+.werkwijze-form-card .btn-primary { width: 100%; justify-content: center; padding: 0.75rem; }
+.stappen-section { padding: 3rem 0 5rem; }
+.stappen-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+@media(min-width:640px){ .stappen-grid { grid-template-columns: repeat(2,1fr); } }
+@media(min-width:900px){ .stappen-grid { grid-template-columns: repeat(4,1fr); } }
+.stap-card { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+.stap-icon { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+.stap-card h4 { font-size: 0.95rem; font-weight: 600; }
+.stap-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); }
+
+/* Dark CTA banner */
+.dark-cta { background: var(--topbar-bg); padding: 3.5rem 0; }
+.dark-cta-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.dark-cta-text h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.375rem; }
+.dark-cta-text p { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
+.dark-cta-btns { display: flex; flex-wrap: wrap; gap: 0.875rem; }
+.dark-cta-btn-outline { display: inline-flex; align-items: center; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+.dark-cta-btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* Werkgebied */
+.werkgebied-section { padding: 4rem 0; text-align: center; }
+.werkgebied-section h2 { font-size: clamp(1.5rem,3vw,2rem); font-weight: 700; margin-bottom: 1rem; }
+.werkgebied-section p { font-size: 0.95rem; color: var(--muted-fg); max-width: 700px; margin: 0 auto; line-height: 1.75; }
+
+/* Footer */
+footer { background: var(--card); border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
+@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+footer h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; }
+footer ul li a:hover { color: var(--primary); }
+footer ul li:has(a:empty) { display: none; }
+.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; }
+.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); }
+
+.wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <div class="topbar-contact">
+      <a href="tel:24327435">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        24327435
+      </a>
+      <a href="mailto:rsre@gf.nl">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        rsre@gf.nl
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/jhgfghfh.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">jhgfghfh</span></a>
+    <nav class="navbar-nav">
+      <a href="/jhgfghfh.html" style="color:var(--primary)">Home</a>
+      <a href="/jhgfghfh-over-ons.html">Over</a>
+      <a href="/jhgfghfh-diensten.html">Diensten</a>
+      <a href="/jhgfghfh-projecten.html">Projecten</a>
+      <a href="/jhgfghfh-contact.html">Contact</a>
+    </nav>
+    <a href="/jhgfghfh-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/jhgfghfh.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/jhgfghfh-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/jhgfghfh-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/jhgfghfh-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/jhgfghfh-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/jhgfghfh-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/hero/timmerman-hero-1.jpeg" alt="jhgfghfh">
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Uw specialist in timmerwerk</p>
+      <h1>Vakkundig timmerwerk voor elk project</h1>
+      <p>jhgfghfh levert hoogwaardig maatwerk timmerwerk in treshgdsgf en omgeving. Wij zorgen voor een perfect resultaat, elke keer weer.</p>
+      <div class="hero-usps">
+        <span class="hero-usp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+          Jarenlange ervaring in timmerwerk
+        </span>
+        <span class="hero-usp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+          Maatwerk op elke wens
+        </span>
+        <span class="hero-usp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+          Betrouwbaar en professioneel
+        </span>
+      </div>
+      <div class="hero-ctas">
+        <a href="tel:24327435" class="btn-primary">Bel direct voor advies</a>
+        <a href="/jhgfghfh-diensten.html" class="btn-hero-outline">Bekijk diensten</a>
+      </div>
+    </div>
+    <div class="hero-form" id="offerte">
+      <h3>Offerte aanvragen</h3>
+      <p class="sub">Binnen 24 uur een voorstel op maat</p>
+      <form id="offerteForm">
+        <input type="text" name="naam" placeholder="Naam *" required>
+        <input type="text" name="woonplaats" placeholder="Woonplaats">
+        <input type="tel" name="telefoon" placeholder="Telefoonnummer *" required>
+        <input type="email" name="email" placeholder="E-mailadres *" required>
+        <textarea name="omschrijving" placeholder="Omschrijf hier uw aanvraag..." rows="4"></textarea>
+        <button type="submit" class="btn-primary">Versturen</button>
+        <div class="form-success" id="offerteSuccess">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Vakmanschap -->
+<section class="vakman-section">
+  <div class="container">
+    <div class="vakman-grid">
+      <div class="vakman-img">
+        <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/sectie2/timmerman-sectie2-1.jpeg" alt="Vakmanschap jhgfghfh">
+      </div>
+      <div class="vakman-text">
+        <span class="section-label">Waarom kiezen voor ons</span>
+        <h2>Vakmanschap, <span class="text-primary">van A tot Z</span> geregeld</h2>
+        <p>Bij jhgfghfh leveren wij kwalitatief hoogstaand timmerwerk voor zowel particulieren als bedrijven in treshgdsgf en omgeving. Of het nu gaat om een nieuwe vloer, maatwerk meubels of een complete verbouwing, wij denken met u mee en zorgen voor een oplossing die perfect aansluit bij uw wensen. Dankzij onze vakkennis en oog voor detail krijgt u een eindresultaat dat er niet alleen prachtig uitziet, maar ook jarenlang meegaat. Wij gebruiken uitsluitend hoogwaardige materialen en bewezen technieken, zodat u met een gerust hart kunt genieten van uw nieuwe interieur of bouwwerk. Neem vandaag nog contact op voor een vrijblijvend gesprek.</p>
+        <a href="/jhgfghfh-contact.html" class="btn-primary">Vraag een offerte aan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Onze diensten -->
+<section class="diensten-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Wat wij doen</p>
+      <h2>Onze diensten</h2>
+      <p>{{DIENSTEN_HOME_DESC}}</p>
+    </div>
+    <div class="diensten-icon-grid">
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>maatwerk-interieur</h3>
+        <p>{{DIENST_1_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,3 21,3 21,9"/><polyline points="9,21 3,21 3,15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
+        <h3>verbouwing-renovatie</h3>
+        <p>{{DIENST_2_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>overkappingen</h3>
+        <p>{{DIENST_3_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>maatwerk-interieur</h3>
+        <p>{{DIENST_4_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <h3>{{DIENST_5}}</h3>
+        <p>{{DIENST_5_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+      <div class="dienst-icon-card">
+        <div class="dienst-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3>{{DIENST_6}}</h3>
+        <p>{{DIENST_6_DESC}}</p>
+        <a href="/jhgfghfh-diensten.html" class="dienst-meer-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projecten preview -->
+<section class="projecten-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Ons werk</p>
+      <h2>Bekijk onze projecten</h2>
+      <p>Een greep uit recent uitgevoerde projecten, vakkundig gerealiseerd door ons team.</p>
+    </div>
+    <div class="projecten-grid">
+      <div class="project-thumb"><img src="{{FOTO_PROJECT_1}}" alt="Project 1" loading="lazy"></div>
+      <div class="project-thumb"><img src="{{FOTO_PROJECT_2}}" alt="Project 2" loading="lazy"></div>
+      <div class="project-thumb"><img src="{{FOTO_PROJECT_3}}" alt="Project 3" loading="lazy"></div>
+      <div class="project-thumb"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div>
+    </div>
+    <div class="projecten-cta">
+      <a href="/jhgfghfh-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews-section" id="reviewsSection" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Wat onze klanten zeggen</p>
+      <h2>Ervaringen van onze <span class="text-primary">klanten</span></h2>
+    </div>
+    <div class="reviews-slider">
+      <div class="reviews-track" id="reviewsTrack"></div>
+    </div>
+    <div class="reviews-nav" id="reviewsNav"></div>
+  </div>
+</section>
+
+<!-- Werkwijze -->
+<section class="werkwijze-section">
+  <div class="container">
+    <div class="werkwijze-outer">
+      <div class="werkwijze-left">
+        <h2>Onze ervaring en werkwijze</h2>
+        <p>Bij jhgfghfh begint elk project met een persoonlijk gesprek. Wij luisteren naar uw ideeën en wensen en vertalen deze naar een concreet plan. Zo weet u precies wat u kunt verwachten voor de werkzaamheden beginnen.</p>
+        <p>Van het eerste contact tot de oplevering houden wij u op de hoogte. Zo verloopt elk project soepel en zonder verrassingen.</p>
+        <a href="/jhgfghfh-contact.html" class="btn-primary" style="margin-top:1.25rem">Advies nodig?</a>
+        <div class="werkwijze-foto">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/timmerman/werkwijze/timmerman-werkwijze-1.jpeg" alt="Werkwijze jhgfghfh" loading="lazy">
+        </div>
+      </div>
+      <div>
+        <div class="werkwijze-form-card">
+          <h3>Offerte aanvragen</h3>
+          <form id="offerteForm2">
+            <input type="text" class="wf-field" name="naam" placeholder="Naam *" required>
+            <input type="text" class="wf-field" name="woonplaats" placeholder="Woonplaats">
+            <input type="tel" class="wf-field" name="telefoon" placeholder="Telefoonnummer *" required>
+            <input type="email" class="wf-field" name="email" placeholder="E-mailadres *" required>
+            <textarea class="wf-field wf-textarea" name="omschrijving" placeholder="Omschrijf hier uw aanvraag..." rows="4"></textarea>
+            <button type="submit" class="btn-primary">Versturen</button>
+            <div class="form-success" id="offerteSuccess2">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Stappen -->
+<section class="stappen-section">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:2.5rem">
+      <h2>Uw project starten in <span class="text-primary">4 stappen</span></h2>
+    </div>
+    <div class="stappen-grid">
+      <div class="stap-card">
+        <div class="stap-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h4>Intake en opname op locatie</h4>
+        <p>We bespreken uw wensen en nemen ter plekke de situatie op om een passend plan te maken.</p>
+      </div>
+      <div class="stap-card">
+        <div class="stap-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        </div>
+        <h4>Heldere offerte en planning</h4>
+        <p>U ontvangt een duidelijke offerte met realistische planning, zonder verborgen kosten.</p>
+      </div>
+      <div class="stap-card">
+        <div class="stap-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h4>Vakkundige uitvoering</h4>
+        <p>Het project wordt netjes en professioneel uitgevoerd met kwaliteitsmaterialen en vakmanschap.</p>
+      </div>
+      <div class="stap-card">
+        <div class="stap-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        </div>
+        <h4>Oplevering en controle</h4>
+        <p>Na afronding controleren we samen het resultaat en zorgen we dat alles schoon en werkend wordt opgeleverd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Donkere CTA banner -->
+<section class="dark-cta">
+  <div class="container dark-cta-inner">
+    <div class="dark-cta-text">
+      <h3>Vrijblijvend advies of offerte?</h3>
+      <p>Neem contact op en wij helpen u graag verder.</p>
+    </div>
+    <div class="dark-cta-btns">
+      <a href="tel:24327435" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        24327435
+      </a>
+      <a href="/jhgfghfh-contact.html" class="dark-cta-btn-outline">Offerte aanvragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Werkgebied -->
+<section class="werkgebied-section">
+  <div class="container">
+    <h2>Werkgebied</h2>
+    <p>Bij jhgfghfh staat vakmanschap centraal in alles wat wij doen. Wij zijn trots op elk project dat wij opleveren en streven altijd naar het beste resultaat voor onze klanten. Uw tevredenheid is onze grootste drijfveer.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="/jhgfghfh-diensten.html">maatwerk-interieur</a></li>
+          <li><a href="/jhgfghfh-diensten.html">verbouwing-renovatie</a></li>
+          <li><a href="/jhgfghfh-diensten.html">overkappingen</a></li>
+          <li><a href="/jhgfghfh-diensten.html">maatwerk-interieur</a></li>
+          <li><a href="/jhgfghfh-diensten.html">{{DIENST_5}}</a></li>
+          <li><a href="/jhgfghfh-diensten.html">{{DIENST_6}}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Over ons</h4>
+        <ul>
+          <li><a href="/jhgfghfh-over-ons.html">Over ons</a></li>
+          <li><a href="/jhgfghfh-contact.html">Contact</a></li>
+          <li><a href="/jhgfghfh-contact.html">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+      <div class="footer-addr">
+        <h4>Adres</h4>
+        <p style="font-weight:600;color:var(--foreground)">jhgfghfh</p>
+        <p></p>
+        <p></p>
+        <p style="margin-top:0.75rem">KvK: </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026 jhgfghfh – Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var slug = 'jhgfghfh';
+  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
+  var contactHref = onLive ? '/contact' : '/' + slug + '-contact.html';
+
+  function handleForm(formId, successId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Versturen...';
+      var data = {};
+      new FormData(form).forEach(function(v, k){ data[k] = v; });
+      fetch('{{OFFERTE_WEBHOOK}}', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }).then(function(){
+        document.getElementById(successId).style.display = 'block';
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = 'Versturen';
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Versturen';
+        alert('Er is iets misgegaan. Probeer het opnieuw.');
+      });
+    });
+  }
+  handleForm('offerteForm', 'offerteSuccess');
+  handleForm('offerteForm2', 'offerteSuccess2');
+
+  try {
+    var reviews = {"name":"Marco V.","text":"jhgfghfh heeft onze woonkamer volledig voorzien van maatwerk kasten. Het resultaat is prachtig en de kwaliteit is uitstekend. Wij zijn enorm tevreden en raden dit bedrijf iedereen aan.","date":"1 maand geleden"},{"name":"Sandra B.","text":"Fantastisch werk geleverd voor onze verbouwing. Alles werd netjes en op tijd afgerond. De communicatie was altijd duidelijk en prettig.","date":"1 maand geleden"},{"name":"Peter K.","text":"Onze nieuwe overkapping is precies zoals wij het ons hadden voorgesteld. Vakkundig werk en een vriendelijk team. Zeker een aanrader voor iedereen in de regio.","date":"1 maand geleden"},{"name":"Lisa H.","text":"Wij hebben jhgfghfh ingeschakeld voor een complete renovatie van onze keuken. Het resultaat heeft al onze verwachtingen overtroffen. Echte vakmannen!","date":"1 maand geleden"},{"name":"Roel D.","text":"Uitstekende service en kwalitatief hoogstaand timmerwerk. Ons terras heeft een prachtige houten overkapping gekregen waar wij enorm blij mee zijn.","date":"1 maand geleden"},{"name":"Annemarie S.","text":"Professioneel, punctueel en zeer vriendelijk. jhgfghfh heeft al het houtwerk in onze nieuwbouwwoning verzorgd en dat tot in de puntjes. Top bedrijf!","date":"1 maand geleden"};
+    if (Array.isArray(reviews) && reviews.length) {
+      var section = document.getElementById('reviewsSection');
+      var track = document.getElementById('reviewsTrack');
+      var nav = document.getElementById('reviewsNav');
+      section.style.display = '';
+      var stars = '<div class="review-stars">' + '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>'.repeat(5) + '</div>';
+      reviews.forEach(function(r) {
+        var card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = stars +
+          '<p class="review-text">' + (r.tekst || '') + '</p>' +
+          '<div class="review-name">' + (r.naam || '') + '</div>' +
+          '<div class="review-date">' + (r.datum || '') + '</div>';
+        track.appendChild(card);
+      });
+      var current = 0;
+      var perPage = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      var total = Math.ceil(reviews.length / perPage);
+      function goto(idx) {
+        current = Math.max(0, Math.min(idx, total - 1));
+        var cardW = track.children[0] ? track.children[0].offsetWidth + 24 : 0;
+        track.style.transform = 'translateX(-' + (current * perPage * cardW) + 'px)';
+        nav.querySelectorAll('.reviews-dot').forEach(function(d, i){ d.classList.toggle('active', i === current); });
+      }
+      var prevBtn = document.createElement('button');
+      prevBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>';
+      prevBtn.onclick = function(){ goto(current - 1); };
+      nav.appendChild(prevBtn);
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('div');
+        dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+        (function(idx){ dot.onclick = function(){ goto(idx); }; })(i);
+        nav.appendChild(dot);
+      }
+      var nextBtn = document.createElement('button');
+      nextBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>';
+      nextBtn.onclick = function(){ goto(current + 1); };
+      nav.appendChild(nextBtn);
+    }
+  } catch(e) {}
+
+  if (onLive) {
+    var remap = {};
+    remap['/' + slug + '.html'] = '/';
+    remap['/' + slug + '-contact.html'] = '/contact';
+    remap['/' + slug + '-diensten.html'] = '/diensten';
+    remap['/' + slug + '-over-ons.html'] = '/over-ons';
+    remap['/' + slug + '-projecten.html'] = '/projecten';
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var h = a.getAttribute('href');
+      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+    });
+  }
+})();
+</script>
+<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
