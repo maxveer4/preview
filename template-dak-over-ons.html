@@ -1,47 +1,317 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>{{SEO_TITLE}}</title>
-    <meta name="description" content="{{SEO_DESCRIPTION}}">
-    <meta name="author" content="Lovable">
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Over Ons | {{BEDRIJFSNAAM}}</title>
+<meta name="description" content="Maak kennis met {{BEDRIJFSNAAM}} — vakkundig, betrouwbaar en lokaal actief.">
+<link rel="icon" href="{{LOGO_URL}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --background: hsl(0,0%,96%);
+  --foreground: hsl(0,0%,10%);
+  --card: hsl(0,0%,100%);
+  --primary: {{KLEUR_PRIMARY}};
+  --primary-fg: hsl(0,0%,100%);
+  --muted: hsl(0,0%,96%);
+  --muted-fg: hsl(0,0%,45%);
+  --border: hsl(0,0%,88%);
+  --star: hsl(33,95%,60%);
+  --topbar-bg: hsl(0,0%,10%);
+  --topbar-fg: hsl(0,0%,100%);
+}
+body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
 
-    <!-- TODO: Update og:title to match your application name -->
-    
-    
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e85f673a-3ee6-4969-b6dd-d730d39a7b54/id-preview-466afce5--90cab53f-b9fe-4ed0-a98f-bdf68fbda930.lovable.app-1773401966518.png">
+/* Topbar */
+.topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.topbar-stars { display: flex; gap: 2px; align-items: center; }
+.star-icon { color: var(--star); }
+.topbar-contact { display: flex; gap: 1.5rem; }
+.topbar-contact a { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
+.topbar-contact a:hover { color: var(--primary); }
+@media(max-width:767px){ .topbar-contact { display: none; } }
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Lovable">
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e85f673a-3ee6-4969-b6dd-d730d39a7b54/id-preview-466afce5--90cab53f-b9fe-4ed0-a98f-bdf68fbda930.lovable.app-1773401966518.png">
-    
-  
-  
-  
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
-  
-  
-  
-  
-  
-  
-  
-  <meta property="og:title" content="Aannemingsbedrijf Veer – Renovatie &amp; Verbouwing Rotterdam">
-  <meta name="twitter:title" content="Aannemingsbedrijf Veer – Renovatie &amp; Verbouwing Rotterdam">
-  <meta property="og:description" content="Aannemingsbedrijf Veer in Rotterdam verzorgt renovaties, verbouwingen, aanbouw, badkamers, keukens, timmer- en stucwerk. Vakkundig en netjes opgeleverd.">
-  <meta name="twitter:description" content="Aannemingsbedrijf Veer in Rotterdam verzorgt renovaties, verbouwingen, aanbouw, badkamers, keukens, timmer- en stucwerk. Vakkundig en netjes opgeleverd.">
-  <style id="gowebbo-colors">:root{--primary:{{KLEUR_PRIMARY_TAILWIND}};--ring:{{KLEUR_PRIMARY_TAILWIND}};}</style>
-<script>window.GOWEBBO_DATA={"BEDRIJFSNAAM":"{{BEDRIJFSNAAM}}","TELEFOON_HREF":"{{TELEFOON_HREF}}","TELEFOON_DISPLAY":"{{TELEFOON_DISPLAY}}","EMAIL":"{{EMAIL}}","ADRES_STRAAT":"{{ADRES_STRAAT}}","ADRES_POSTCODE_STAD":"{{ADRES_POSTCODE_STAD}}","KVK":"{{KVK}}","LOGO_URL":"{{LOGO_URL}}","DIENST_1":"{{DIENST_1}}","DIENST_2":"{{DIENST_2}}","DIENST_3":"{{DIENST_3}}","DIENST_4":"{{DIENST_4}}","DIENST_5":"{{DIENST_5}}","DIENST_6":"{{DIENST_6}}","DIENST_1_TITEL":"{{DIENST_1_TITEL}}","DIENST_2_TITEL":"{{DIENST_2_TITEL}}","DIENST_3_TITEL":"{{DIENST_3_TITEL}}","DIENST_4_TITEL":"{{DIENST_4_TITEL}}","DIENST_5_TITEL":"{{DIENST_5_TITEL}}","DIENST_6_TITEL":"{{DIENST_6_TITEL}}","DIENST_7_TITEL":"{{DIENST_7_TITEL}}","DIENST_8_TITEL":"{{DIENST_8_TITEL}}","DIENST_1_FOTO":"{{DIENST_1_FOTO}}","DIENST_2_FOTO":"{{DIENST_2_FOTO}}","DIENST_3_FOTO":"{{DIENST_3_FOTO}}","DIENST_4_FOTO":"{{DIENST_4_FOTO}}","DIENST_5_FOTO":"{{DIENST_5_FOTO}}","DIENST_6_FOTO":"{{DIENST_6_FOTO}}","DIENST_7_FOTO":"{{DIENST_7_FOTO}}","DIENST_8_FOTO":"{{DIENST_8_FOTO}}","HERO_EYEBROW":"{{HERO_EYEBROW}}","HERO_TITLE":"{{HERO_TITLE}}","HERO_DESC":"{{HERO_DESC}}","USP_1":"{{USP_1}}","USP_2":"{{USP_2}}","USP_3":"{{USP_3}}","SERVICE_DESC":"{{SERVICE_DESC}}","TRUST_DESC":"{{TRUST_DESC}}","WHY_DESC":"{{WHY_DESC}}","WERK_DESC_1":"{{WERK_DESC_1}}","WERK_DESC_2":"{{WERK_DESC_2}}","VAKMANSCHAP_DESC":"{{VAKMANSCHAP_DESC}}","CTA_TITEL":"{{CTA_TITEL}}","CTA_DESC":"{{CTA_DESC}}","OFFERTE_WEBHOOK":"{{OFFERTE_WEBHOOK}}","CONTACT_FORM_WEBHOOK":"{{CONTACT_FORM_WEBHOOK}}","CONTACT_HERO_DESC":"{{CONTACT_HERO_DESC}}","MAPS_URL":"{{MAPS_URL}}","OVER_ONS_HERO_DESC":"{{OVER_ONS_HERO_DESC}}","OVER_ONS_INTRO_P1":"{{OVER_ONS_INTRO_P1}}","OVER_ONS_INTRO_P2":"{{OVER_ONS_INTRO_P2}}","OVER_ONS_INTRO_P3":"{{OVER_ONS_INTRO_P3}}","OVER_ONS_CTA_DESC":"{{OVER_ONS_CTA_DESC}}","DIENSTEN_HERO_DESC":"{{DIENSTEN_HERO_DESC}}","PROJECTEN_HERO_DESC":"{{PROJECTEN_HERO_DESC}}","SEO_TITLE":"{{SEO_TITLE}}","SEO_DESCRIPTION":"{{SEO_DESCRIPTION}}","FOTO_HERO":"{{FOTO_HERO}}","FOTO_WAAROM":"{{FOTO_WAAROM}}","FOTO_USP":"{{FOTO_USP}}","FOTO_WERKWIJZE":"{{FOTO_WERKWIJZE}}","PAGE":"/over-ons"};</script>
-<script type="module" crossorigin="" src="/assets/index-Cycb9MXa.js"></script>
-  <link rel="stylesheet" crossorigin="" href="/assets/index-C9L8bNNG.css">
-<style type="text/css">:where(html[dir="ltr"]),:where([data-sonner-toaster][dir="ltr"]){--toast-icon-margin-start: -3px;--toast-icon-margin-end: 4px;--toast-svg-margin-start: -1px;--toast-svg-margin-end: 0px;--toast-button-margin-start: auto;--toast-button-margin-end: 0;--toast-close-button-start: 0;--toast-close-button-end: unset;--toast-close-button-transform: translate(-35%, -35%)}:where(html[dir="rtl"]),:where([data-sonner-toaster][dir="rtl"]){--toast-icon-margin-start: 4px;--toast-icon-margin-end: -3px;--toast-svg-margin-start: 0px;--toast-svg-margin-end: -1px;--toast-button-margin-start: 0;--toast-button-margin-end: auto;--toast-close-button-start: unset;--toast-close-button-end: 0;--toast-close-button-transform: translate(35%, -35%)}:where([data-sonner-toaster]){position:fixed;width:var(--width);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--gray1: hsl(0, 0%, 99%);--gray2: hsl(0, 0%, 97.3%);--gray3: hsl(0, 0%, 95.1%);--gray4: hsl(0, 0%, 93%);--gray5: hsl(0, 0%, 90.9%);--gray6: hsl(0, 0%, 88.7%);--gray7: hsl(0, 0%, 85.8%);--gray8: hsl(0, 0%, 78%);--gray9: hsl(0, 0%, 56.1%);--gray10: hsl(0, 0%, 52.3%);--gray11: hsl(0, 0%, 43.5%);--gray12: hsl(0, 0%, 9%);--border-radius: 8px;box-sizing:border-box;padding:0;margin:0;list-style:none;outline:none;z-index:999999999;transition:transform .4s ease}:where([data-sonner-toaster][data-lifted="true"]){transform:translateY(-10px)}@media (hover: none) and (pointer: coarse){:where([data-sonner-toaster][data-lifted="true"]){transform:none}}:where([data-sonner-toaster][data-x-position="right"]){right:var(--offset-right)}:where([data-sonner-toaster][data-x-position="left"]){left:var(--offset-left)}:where([data-sonner-toaster][data-x-position="center"]){left:50%;transform:translate(-50%)}:where([data-sonner-toaster][data-y-position="top"]){top:var(--offset-top)}:where([data-sonner-toaster][data-y-position="bottom"]){bottom:var(--offset-bottom)}:where([data-sonner-toast]){--y: translateY(100%);--lift-amount: calc(var(--lift) * var(--gap));z-index:var(--z-index);position:absolute;opacity:0;transform:var(--y);filter:blur(0);touch-action:none;transition:transform .4s,opacity .4s,height .4s,box-shadow .2s;box-sizing:border-box;outline:none;overflow-wrap:anywhere}:where([data-sonner-toast][data-styled="true"]){padding:16px;background:var(--normal-bg);border:1px solid var(--normal-border);color:var(--normal-text);border-radius:var(--border-radius);box-shadow:0 4px 12px #0000001a;width:var(--width);font-size:13px;display:flex;align-items:center;gap:6px}:where([data-sonner-toast]:focus-visible){box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast][data-y-position="top"]){top:0;--y: translateY(-100%);--lift: 1;--lift-amount: calc(1 * var(--gap))}:where([data-sonner-toast][data-y-position="bottom"]){bottom:0;--y: translateY(100%);--lift: -1;--lift-amount: calc(var(--lift) * var(--gap))}:where([data-sonner-toast]) :where([data-description]){font-weight:400;line-height:1.4;color:inherit}:where([data-sonner-toast]) :where([data-title]){font-weight:500;line-height:1.5;color:inherit}:where([data-sonner-toast]) :where([data-icon]){display:flex;height:16px;width:16px;position:relative;justify-content:flex-start;align-items:center;flex-shrink:0;margin-left:var(--toast-icon-margin-start);margin-right:var(--toast-icon-margin-end)}:where([data-sonner-toast][data-promise="true"]) :where([data-icon])>svg{opacity:0;transform:scale(.8);transform-origin:center;animation:sonner-fade-in .3s ease forwards}:where([data-sonner-toast]) :where([data-icon])>*{flex-shrink:0}:where([data-sonner-toast]) :where([data-icon]) svg{margin-left:var(--toast-svg-margin-start);margin-right:var(--toast-svg-margin-end)}:where([data-sonner-toast]) :where([data-content]){display:flex;flex-direction:column;gap:2px}[data-sonner-toast][data-styled=true] [data-button]{border-radius:4px;padding-left:8px;padding-right:8px;height:24px;font-size:12px;color:var(--normal-bg);background:var(--normal-text);margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end);border:none;cursor:pointer;outline:none;display:flex;align-items:center;flex-shrink:0;transition:opacity .4s,box-shadow .2s}:where([data-sonner-toast]) :where([data-button]):focus-visible{box-shadow:0 0 0 2px #0006}:where([data-sonner-toast]) :where([data-button]):first-of-type{margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end)}:where([data-sonner-toast]) :where([data-cancel]){color:var(--normal-text);background:rgba(0,0,0,.08)}:where([data-sonner-toast][data-theme="dark"]) :where([data-cancel]){background:rgba(255,255,255,.3)}:where([data-sonner-toast]) :where([data-close-button]){position:absolute;left:var(--toast-close-button-start);right:var(--toast-close-button-end);top:0;height:20px;width:20px;display:flex;justify-content:center;align-items:center;padding:0;color:var(--gray12);border:1px solid var(--gray4);transform:var(--toast-close-button-transform);border-radius:50%;cursor:pointer;z-index:1;transition:opacity .1s,background .2s,border-color .2s}[data-sonner-toast] [data-close-button]{background:var(--gray1)}:where([data-sonner-toast]) :where([data-close-button]):focus-visible{box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast]) :where([data-disabled="true"]){cursor:not-allowed}:where([data-sonner-toast]):hover :where([data-close-button]):hover{background:var(--gray2);border-color:var(--gray5)}:where([data-sonner-toast][data-swiping="true"]):before{content:"";position:absolute;left:-50%;right:-50%;height:100%;z-index:-1}:where([data-sonner-toast][data-y-position="top"][data-swiping="true"]):before{bottom:50%;transform:scaleY(3) translateY(50%)}:where([data-sonner-toast][data-y-position="bottom"][data-swiping="true"]):before{top:50%;transform:scaleY(3) translateY(-50%)}:where([data-sonner-toast][data-swiping="false"][data-removed="true"]):before{content:"";position:absolute;inset:0;transform:scaleY(2)}:where([data-sonner-toast]):after{content:"";position:absolute;left:0;height:calc(var(--gap) + 1px);bottom:100%;width:100%}:where([data-sonner-toast][data-mounted="true"]){--y: translateY(0);opacity:1}:where([data-sonner-toast][data-expanded="false"][data-front="false"]){--scale: var(--toasts-before) * .05 + 1;--y: translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));height:var(--front-toast-height)}:where([data-sonner-toast])>*{transition:opacity .4s}:where([data-sonner-toast][data-expanded="false"][data-front="false"][data-styled="true"])>*{opacity:0}:where([data-sonner-toast][data-visible="false"]){opacity:0;pointer-events:none}:where([data-sonner-toast][data-mounted="true"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset)));height:var(--initial-height)}:where([data-sonner-toast][data-removed="true"][data-front="true"][data-swipe-out="false"]){--y: translateY(calc(var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="false"]){--y: translateY(40%);opacity:0;transition:transform .5s,opacity .2s}:where([data-sonner-toast][data-removed="true"][data-front="false"]):before{height:calc(var(--initial-height) + 20%)}[data-sonner-toast][data-swiping=true]{transform:var(--y) translateY(var(--swipe-amount-y, 0px)) translate(var(--swipe-amount-x, 0px));transition:none}[data-sonner-toast][data-swiped=true]{user-select:none}[data-sonner-toast][data-swipe-out=true][data-y-position=bottom],[data-sonner-toast][data-swipe-out=true][data-y-position=top]{animation-duration:.2s;animation-timing-function:ease-out;animation-fill-mode:forwards}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=left]{animation-name:swipe-out-left}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=right]{animation-name:swipe-out-right}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=up]{animation-name:swipe-out-up}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=down]{animation-name:swipe-out-down}@keyframes swipe-out-left{0%{transform:var(--y) translate(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translate(calc(var(--swipe-amount-x) - 100%));opacity:0}}@keyframes swipe-out-right{0%{transform:var(--y) translate(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translate(calc(var(--swipe-amount-x) + 100%));opacity:0}}@keyframes swipe-out-up{0%{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) - 100%));opacity:0}}@keyframes swipe-out-down{0%{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) + 100%));opacity:0}}@media (max-width: 600px){[data-sonner-toaster]{position:fixed;right:var(--mobile-offset-right);left:var(--mobile-offset-left);width:100%}[data-sonner-toaster][dir=rtl]{left:calc(var(--mobile-offset-left) * -1)}[data-sonner-toaster] [data-sonner-toast]{left:0;right:0;width:calc(100% - var(--mobile-offset-left) * 2)}[data-sonner-toaster][data-x-position=left]{left:var(--mobile-offset-left)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--mobile-offset-bottom)}[data-sonner-toaster][data-y-position=top]{top:var(--mobile-offset-top)}[data-sonner-toaster][data-x-position=center]{left:var(--mobile-offset-left);right:var(--mobile-offset-right);transform:none}}[data-sonner-toaster][data-theme=light]{--normal-bg: #fff;--normal-border: var(--gray4);--normal-text: var(--gray12);--success-bg: hsl(143, 85%, 96%);--success-border: hsl(145, 92%, 91%);--success-text: hsl(140, 100%, 27%);--info-bg: hsl(208, 100%, 97%);--info-border: hsl(221, 91%, 91%);--info-text: hsl(210, 92%, 45%);--warning-bg: hsl(49, 100%, 97%);--warning-border: hsl(49, 91%, 91%);--warning-text: hsl(31, 92%, 45%);--error-bg: hsl(359, 100%, 97%);--error-border: hsl(359, 100%, 94%);--error-text: hsl(360, 100%, 45%)}[data-sonner-toaster][data-theme=light] [data-sonner-toast][data-invert=true]{--normal-bg: #000;--normal-border: hsl(0, 0%, 20%);--normal-text: var(--gray1)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast][data-invert=true]{--normal-bg: #fff;--normal-border: var(--gray3);--normal-text: var(--gray12)}[data-sonner-toaster][data-theme=dark]{--normal-bg: #000;--normal-bg-hover: hsl(0, 0%, 12%);--normal-border: hsl(0, 0%, 20%);--normal-border-hover: hsl(0, 0%, 25%);--normal-text: var(--gray1);--success-bg: hsl(150, 100%, 6%);--success-border: hsl(147, 100%, 12%);--success-text: hsl(150, 86%, 65%);--info-bg: hsl(215, 100%, 6%);--info-border: hsl(223, 100%, 12%);--info-text: hsl(216, 87%, 65%);--warning-bg: hsl(64, 100%, 6%);--warning-border: hsl(60, 100%, 12%);--warning-text: hsl(46, 87%, 65%);--error-bg: hsl(358, 76%, 10%);--error-border: hsl(357, 89%, 16%);--error-text: hsl(358, 100%, 81%)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast] [data-close-button]{background:var(--normal-bg);border-color:var(--normal-border);color:var(--normal-text)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast] [data-close-button]:hover{background:var(--normal-bg-hover);border-color:var(--normal-border-hover)}[data-rich-colors=true][data-sonner-toast][data-type=success],[data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=info],[data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning],[data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=error],[data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}.sonner-loading-wrapper{--size: 16px;height:var(--size);width:var(--size);position:absolute;inset:0;z-index:10}.sonner-loading-wrapper[data-visible=false]{transform-origin:center;animation:sonner-fade-out .2s ease forwards}.sonner-spinner{position:relative;top:50%;left:50%;height:var(--size);width:var(--size)}.sonner-loading-bar{animation:sonner-spin 1.2s linear infinite;background:var(--gray11);border-radius:6px;height:8%;left:-10%;position:absolute;top:-3.9%;width:24%}.sonner-loading-bar:nth-child(1){animation-delay:-1.2s;transform:rotate(.0001deg) translate(146%)}.sonner-loading-bar:nth-child(2){animation-delay:-1.1s;transform:rotate(30deg) translate(146%)}.sonner-loading-bar:nth-child(3){animation-delay:-1s;transform:rotate(60deg) translate(146%)}.sonner-loading-bar:nth-child(4){animation-delay:-.9s;transform:rotate(90deg) translate(146%)}.sonner-loading-bar:nth-child(5){animation-delay:-.8s;transform:rotate(120deg) translate(146%)}.sonner-loading-bar:nth-child(6){animation-delay:-.7s;transform:rotate(150deg) translate(146%)}.sonner-loading-bar:nth-child(7){animation-delay:-.6s;transform:rotate(180deg) translate(146%)}.sonner-loading-bar:nth-child(8){animation-delay:-.5s;transform:rotate(210deg) translate(146%)}.sonner-loading-bar:nth-child(9){animation-delay:-.4s;transform:rotate(240deg) translate(146%)}.sonner-loading-bar:nth-child(10){animation-delay:-.3s;transform:rotate(270deg) translate(146%)}.sonner-loading-bar:nth-child(11){animation-delay:-.2s;transform:rotate(300deg) translate(146%)}.sonner-loading-bar:nth-child(12){animation-delay:-.1s;transform:rotate(330deg) translate(146%)}@keyframes sonner-fade-in{0%{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}@keyframes sonner-fade-out{0%{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.8)}}@keyframes sonner-spin{0%{opacity:1}to{opacity:.15}}@media (prefers-reduced-motion){[data-sonner-toast],[data-sonner-toast]>*,.sonner-loading-bar{transition:none!important;animation:none!important}}.sonner-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-origin:center;transition:opacity .2s,transform .2s}.sonner-loader[data-visible=false]{opacity:0;transform:scale(.8) translate(-50%,-50%)}
-</style></head>
+/* Navbar */
+.navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
+.navbar-logo img { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+.navbar-nav { display: flex; align-items: center; gap: 2rem; }
+.navbar-nav a, .navbar-nav .dropdown > button { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
+.navbar-nav a:hover, .navbar-nav .dropdown > button:hover { color: var(--primary); }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: inherit; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-outline-dark { display: inline-flex; align-items: center; background: transparent; color: var(--foreground); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+.btn-outline-dark:hover { background: var(--muted); }
+.dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; left: 0; top: 100%; margin-top: 8px; min-width: 240px; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem 0; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 100; }
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: var(--foreground); transition: background 0.15s, color 0.15s; }
+.dropdown-menu a:hover { background: var(--muted); color: var(--primary); }
+.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
+.mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
+.mobile-nav-panel a { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
+.mobile-nav.open { display: block; }
+@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+@media(max-width:767px){ .navbar-nav, .navbar .btn-primary { display: none; } .mobile-menu-btn { display: block; } }
 
-  <body>
-    <div id="root"><div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;"><ol tabindex="-1" class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol></div><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section><div class="min-h-screen bg-background"><div class="bg-topbar text-topbar-foreground"><div class="container mx-auto flex items-center justify-between px-4 py-2 text-sm"><div class="hidden md:flex items-center gap-2"><div class="flex gap-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-3.5 w-3.5 fill-star text-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-3.5 w-3.5 fill-star text-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-3.5 w-3.5 fill-star text-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-3.5 w-3.5 fill-star text-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star h-3.5 w-3.5 fill-star text-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg></div><span class="text-xs font-body">Beoordeeld met een 5.0</span></div><div class="flex md:hidden items-center gap-4 text-xs"><a href="tel:{{TELEFOON_HREF}}" class="flex items-center gap-1.5 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-3.5 w-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{{TELEFOON_DISPLAY}}</a><a href="mailto:{{EMAIL}}" class="flex items-center gap-1.5 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-3.5 w-3.5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>{{EMAIL}}</a></div><div class="hidden md:flex items-center gap-6 text-xs"><a href="tel:{{TELEFOON_HREF}}" class="flex items-center gap-1.5 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-3.5 w-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{{TELEFOON_DISPLAY}}</a><a href="mailto:{{EMAIL}}" class="flex items-center gap-1.5 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-3.5 w-3.5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>{{EMAIL}}</a></div></div></div><div class="bg-card shadow-sm sticky top-0 z-50"><div class="container mx-auto flex items-center justify-between px-4 py-3"><a class="flex items-center gap-2" href="/"><img src="/assets/zenovo_6-x4S1xL6D.jpeg" alt="{{BEDRIJFSNAAM}}" class="h-8 md:h-10 w-auto max-w-[120px] md:max-w-[160px] object-contain"></a><nav class="hidden md:flex items-center gap-8"><a class="relative font-body text-sm font-medium text-foreground transition-colors hover:text-primary" href="/">Home</a><a class="relative font-body text-sm font-medium text-foreground transition-colors hover:text-primary" href="/over-ons">Over</a><a class="relative font-body text-sm font-medium text-foreground transition-colors hover:text-primary" href="/diensten">Diensten</a><a class="relative font-body text-sm font-medium text-foreground transition-colors hover:text-primary" href="/projecten">Projecten</a><a class="relative font-body text-sm font-medium text-foreground transition-colors hover:text-primary" href="/contact">Contact</a></nav><a href="#offerte" class="hidden md:inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">Offerte aanvragen</a><div class="flex md:hidden items-center gap-2 ml-auto"><a href="#offerte" class="inline-flex items-center whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">Offerte aanvragen</a><button class="p-2 text-foreground" aria-label="Menu openen" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r0:" data-state="closed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-6 w-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></div></div><section class="relative py-16 md:py-24"><img src="/assets/airco_1-lsEGXR6c.png" alt="" class="absolute inset-0 h-full w-full object-cover"><div class="absolute inset-0 bg-black/60"></div><div class="container relative mx-auto px-4 text-center"><h1 class="mb-4 font-poppins text-3xl font-semibold text-white md:text-5xl">Over Ons</h1><p class="mx-auto max-w-2xl text-sm text-white/80 md:text-base">{{OVER_ONS_HERO_DESC}}</p></div></section><section class="py-16 md:py-24"><div class="container mx-auto px-4"><div class="mx-auto max-w-4xl"><h2 class="mb-6 font-poppins text-2xl font-semibold text-foreground md:text-3xl">Wie zijn <span class="text-primary">wij</span>?</h2><p class="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">{{OVER_ONS_INTRO_P1}}</p><p class="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">{{OVER_ONS_INTRO_P2}}</p><p class="text-sm leading-relaxed text-muted-foreground md:text-base">{{OVER_ONS_INTRO_P3}}</p></div></div></section><section class="border-t border-border bg-card py-16 md:py-24"><div class="container mx-auto px-4"><div class="mx-auto max-w-4xl text-center"><h2 class="mb-10 font-poppins text-2xl font-semibold text-foreground md:text-3xl">Waar wij voor <span class="text-primary">staan</span></h2></div><div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"><div class="text-center"><div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield h-7 w-7 text-primary"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div><h3 class="mb-2 font-poppins text-base font-semibold text-foreground">Betrouwbaar</h3><p class="text-sm leading-relaxed text-muted-foreground">Wij doen wat we beloven. Afspraken komen we altijd na en we communiceren helder over planning en kosten.</p></div><div class="text-center"><div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hammer h-7 w-7 text-primary"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"></path><path d="m18 15 4-4"></path><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"></path></svg></div><h3 class="mb-2 font-poppins text-base font-semibold text-foreground">Vakmanschap</h3><p class="text-sm leading-relaxed text-muted-foreground">Jarenlange ervaring in renovatie, verbouwing en afbouw. Wij leveren strak werk met oog voor detail.</p></div><div class="text-center"><div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check h-7 w-7 text-primary"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg></div><h3 class="mb-2 font-poppins text-base font-semibold text-foreground">Heldere Planning</h3><p class="text-sm leading-relaxed text-muted-foreground">Een realistische planning en duidelijke afspraken, zodat uw project soepel en op tijd wordt opgeleverd.</p></div><div class="text-center"><div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-7 w-7 text-primary"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></div><h3 class="mb-2 font-poppins text-base font-semibold text-foreground">Lokaal</h3><p class="text-sm leading-relaxed text-muted-foreground">Gevestigd in Rotterdam en actief in de regio. Korte lijnen en persoonlijk contact gedurende het hele project.</p></div></div></div></section><section class="py-16 md:py-24"><div class="container mx-auto px-4 text-center"><h2 class="mb-4 font-poppins text-2xl font-semibold text-foreground md:text-3xl">Vrijblijvend advies of <span class="text-primary">offerte</span>?</h2><p class="mx-auto mb-8 max-w-xl text-sm text-muted-foreground md:text-base">{{OVER_ONS_CTA_DESC}}</p><div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"><a href="#offerte" class="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">Offerte aanvragen</a><a href="tel:{{TELEFOON_HREF}}" class="inline-flex items-center rounded-lg border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">Bel {{TELEFOON_DISPLAY}}</a></div></div></section><footer class="border-t border-border bg-card"><div class="container mx-auto px-4 py-14 md:py-16"><div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3"><div><h4 class="mb-4 font-poppins text-base font-bold text-foreground">Diensten</h4><ul class="space-y-2.5"><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Renovatie woning</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Aanbouw / Uitbouw</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Badkamer verbouwen</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Keuken verbouwen</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Installatiewerk</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/diensten">Stucwerk en afbouw</a></li></ul></div><div><h4 class="mb-4 font-poppins text-base font-bold text-foreground">Over ons</h4><ul class="space-y-2.5"><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/over-ons">Over ons</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/contact">Contact</a></li><li><a class="text-sm text-muted-foreground transition-colors hover:text-primary" href="/contact">Offerte aanvragen</a></li></ul></div><div><h4 class="mb-4 font-poppins text-base font-bold text-foreground">Adres</h4><div class="space-y-1.5 text-sm text-muted-foreground"><p class="font-medium text-foreground">{{BEDRIJFSNAAM}}</p><p>{{ADRES_STRAAT}}</p><p>{{ADRES_POSTCODE_STAD}}</p><p class="mt-3">KvK: {{KVK}}</p></div></div></div></div><div class="border-t border-border bg-card"><div class="container mx-auto px-4 py-4 text-center text-xs text-muted-foreground">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</div></div></footer></div></div>
+/* Page hero (mini) */
+.page-hero { position: relative; padding: 4rem 0 5rem; }
+.page-hero-bg { position: absolute; inset: 0; }
+.page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.page-hero-content { position: relative; text-align: center; color: #fff; }
+.page-hero-content h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 600; margin-bottom: 0.75rem; }
+.page-hero-content p { font-size: 0.95rem; opacity: 0.85; max-width: 560px; margin: 0 auto; line-height: 1.7; }
 
-  
+/* Intro section */
+.intro-section { padding: 5rem 0; }
+.intro-inner { max-width: 800px; margin: 0 auto; }
+.intro-inner h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; margin-bottom: 1.5rem; }
+.intro-inner h2 span { color: var(--primary); }
+.intro-inner p { font-size: 0.95rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 1.25rem; }
 
-</body></html>
+/* Waarden section */
+.waarden-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 0; }
+.waarden-section h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; text-align: center; margin-bottom: 3rem; }
+.waarden-section h2 span { color: var(--primary); }
+.waarden-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
+@media(min-width:640px){ .waarden-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .waarden-grid { grid-template-columns: repeat(4,1fr); } }
+.waarde-card { text-align: center; }
+.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
+.waarde-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.waarde-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); }
+
+/* CTA section */
+.cta-section { padding: 5rem 0; text-align: center; }
+.cta-section h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; margin-bottom: 1rem; }
+.cta-section h2 span { color: var(--primary); }
+.cta-section p { font-size: 0.95rem; color: var(--muted-fg); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* Footer */
+footer { background: var(--card); border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
+@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-grid { grid-template-columns: repeat(4,1fr); } }
+footer h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; }
+footer ul li a:hover { color: var(--primary); }
+footer ul li:has(a:empty) { display: none; }
+.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; }
+.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); }
+
+.text-primary { color: var(--primary); }
+.wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <div class="topbar-contact">
+      <a href="tel:{{TELEFOON_HREF}}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        {{TELEFOON_DISPLAY}}
+      </a>
+      <a href="mailto:{{EMAIL}}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        {{EMAIL}}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
+    <nav class="navbar-nav">
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-over-ons.html" style="color:var(--primary)">Over</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
+    </nav>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="{{FOTO_HERO}}" alt="">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="container page-hero-content">
+    <h1>Over Ons</h1>
+    <p>{{OVER_ONS_HERO_DESC}}</p>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-inner">
+      <h2>Wie zijn <span>wij</span>?</h2>
+      <p>{{OVER_ONS_INTRO_P1}}</p>
+      <p>{{OVER_ONS_INTRO_P2}}</p>
+      <p>{{OVER_ONS_INTRO_P3}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Waarden -->
+<section class="waarden-section">
+  <div class="container">
+    <h2>Waar wij voor <span>staan</span></h2>
+    <div class="waarden-grid">
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>{{OVER_ONS_WAARDE_1_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_1_DESC}}</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>{{OVER_ONS_WAARDE_2_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_2_DESC}}</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>{{OVER_ONS_WAARDE_3_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_3_DESC}}</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>{{OVER_ONS_WAARDE_4_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_4_DESC}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Kunnen wij u <span>helpen</span>?</h2>
+    <p>{{OVER_ONS_CTA_DESC}}</p>
+    <div class="cta-btns">
+      <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+      <a href="tel:{{TELEFOON_HREF}}" class="btn-outline-dark">Bel {{TELEFOON_DISPLAY}}</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
+          <li><a href="#">{{DIENST_5}}</a></li>
+          <li><a href="#">{{DIENST_6}}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
+          <li><a href="#">Compleet werkgebied</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Over ons</h4>
+        <ul>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+      <div class="footer-addr">
+        <h4>Adres</h4>
+        <p style="font-weight:600;color:var(--foreground)">{{BEDRIJFSNAAM}}</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var slug = '{{SLUG}}';
+  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
+  if (onLive) {
+    var remap = {};
+    remap['/' + slug + '.html'] = '/';
+    remap['/' + slug + '-contact.html'] = '/contact';
+    remap['/' + slug + '-diensten.html'] = '/diensten';
+    remap['/' + slug + '-over-ons.html'] = '/over-ons';
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var h = a.getAttribute('href');
+      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+    });
+  }
+})();
+</script>
+<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
