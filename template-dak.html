@@ -244,7 +244,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 /* Work right form */
 .work-form-card { border-radius: 1rem; border: 2px solid var(--primary); background: var(--card); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-@media(min-width:1024px){ .work-form-card { position: sticky; top: 88px; } }
+@media(min-width:1024px){ .work-right-col { position: sticky; top: 96px; align-self: start; } }
 .work-form-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
 @media(min-width:768px){ .work-form-card h3 { font-size: 1.5rem; } }
 .wf-fields { display: flex; flex-direction: column; gap: 1rem; }
@@ -631,7 +631,7 @@ footer ul li:has(a:empty) { display: none; }
       </div>
 
       <!-- Rechter kolom: offerte form -->
-      <div>
+      <div class="work-right-col">
         <div class="work-form-card" id="offerteForm2Wrap">
           <h3>Offerte aanvragen</h3>
           <form id="offerteForm2" class="wf-fields">
