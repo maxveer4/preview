@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diensten | jkjkjokkougug</title>
-<meta name="description" content="Bekijk alle diensten van jkjkjokkougug. Vakkundig, betrouwbaar en lokaal actief.">
+<title>Diensten | Max Stucct</title>
+<meta name="description" content="Bekijk alle diensten van Max Stucct. Vakkundig, betrouwbaar en lokaal actief.">
 <link rel="icon" href="{{LOGO_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #c33737;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -81,7 +81,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .dienst-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 .dienst-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; }
+.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; }
 .dienst-card-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
 .dienst-card-body h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--foreground); }
 .dienst-card-body p { font-size: 0.9rem; line-height: 1.75; color: var(--muted-fg); flex: 1; margin-bottom: 1.5rem; }
@@ -145,13 +145,13 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:87865797">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        87865797
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:jk@fghgh.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        jk@fghgh.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -160,15 +160,15 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-<a href="/jkjkjokkougug.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">jkjkjokkougug</span></a>
+<a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
-      <a href="/jkjkjokkougug.html">Home</a>
-      <a href="/jkjkjokkougug-over-ons.html">Over</a>
-      <a href="/jkjkjokkougug-diensten.html" style="color:var(--primary)">Diensten</a>
-      <a href="/jkjkjokkougug-projecten.html">Projecten</a>
-      <a href="/jkjkjokkougug-contact.html">Contact</a>
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-over-ons.html">Over</a>
+      <a href="/{{SLUG}}-diensten.html" style="color:var(--primary)">Diensten</a>
+      <a href="/{{SLUG}}-projecten.html">Projecten</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
-    <a href="/jkjkjokkougug-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -179,23 +179,23 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/jkjkjokkougug.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/jkjkjokkougug-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/jkjkjokkougug-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/jkjkjokkougug-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="/jkjkjokkougug-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/hero/tegelzetter-hero-1.jpeg" alt="Onze diensten">
+    <img src="{{FOTO_HERO}}" alt="Onze diensten">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Onze Diensten</h1>
-    <p>jkjkjokkougug levert vakkundig tegelwerk voor elke ruimte in huis en buiten.</p>
+    <p>{{DIENSTEN_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -216,8 +216,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
         </div>
         <div>
-          <h3>Vakkundige uitvoering</h3>
-          <p>Elk tegelproject wordt met precisie en zorg uitgevoerd.</p>
+          <h3>{{TRUST_1_TITEL}}</h3>
+          <p>{{TRUST_1_DESC}}</p>
         </div>
       </div>
       <div class="trust-item">
@@ -225,8 +225,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div>
-          <h3>Eerlijke prijzen</h3>
-          <p>Transparante offertes zonder verrassingen achteraf.</p>
+          <h3>{{TRUST_2_TITEL}}</h3>
+          <p>{{TRUST_2_DESC}}</p>
         </div>
       </div>
       <div class="trust-item">
@@ -234,8 +234,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <div>
-          <h3>Klantgericht werken</h3>
-          <p>Uw wensen staan centraal bij elk project dat wij uitvoeren.</p>
+          <h3>{{TRUST_3_TITEL}}</h3>
+          <p>{{TRUST_3_DESC}}</p>
         </div>
       </div>
     </div>
@@ -246,13 +246,13 @@ footer ul li:has(a:empty) { display: none; }
 <section class="cta-section">
   <div class="container">
     <p class="label">Op zoek naar een vakman?</p>
-    <h2>Interesse in een van onze diensten?</h2>
-    <p class="desc">Neem vandaag nog contact op voor een vrijblijvend gesprek en offerte op maat.</p>
+    <h2>{{DIENSTEN_CTA_TITEL}}</h2>
+    <p class="desc">{{DIENSTEN_CTA_DESC}}</p>
     <div class="cta-btns">
-      <a href="/jkjkjokkougug-contact.html" class="cta-btn-white">Offerte aanvragen</a>
-      <a href="tel:87865797" class="cta-btn-outline">
+      <a href="/{{SLUG}}-contact.html" class="cta-btn-white">Offerte aanvragen</a>
+      <a href="tel:{{TELEFOON_HREF}}" class="cta-btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Bel 87865797
+        Bel {{TELEFOON_DISPLAY}}
       </a>
     </div>
   </div>
@@ -265,51 +265,51 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-diensten.html">keuken</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">badkamer</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">buiten</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">toiletten</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_1}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_2}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_3}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_4}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_5}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_6}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Amsterdam</a></li>
-          <li><a href="#">Haarlem</a></li>
-          <li><a href="#">Utrecht</a></li>
-          <li><a href="#">Almere</a></li>
-          <li><a href="#">Zaandam</a></li>
-          <li><a href="#">Hilversum</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-over-ons.html">Over ons</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Contact</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Offerte aanvragen</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">jkjkjokkougug</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">Max Stucct</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 jkjkjokkougug – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max Stucct – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  var slug = 'jkjkjokkougug';
+  var slug = '{{SLUG}}';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
   if (onLive) {
     var remap = {};
@@ -333,7 +333,7 @@ footer ul li:has(a:empty) { display: none; }
     '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'
   ];
 
-  var diensten = [{"naam":"keuken","desc":"Een nieuwe keuken verdient een perfecte tegelvloer of -wand. jkjkjokkougug verzorgt strak tegelwerk in uw keuken dat zowel functioneel als mooi is. Wij houden rekening met vocht, warmte en dagelijks gebruik. Zo geniet u jarenlang van een fraaie en onderhoudsvriendelijke keuken.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/keuken/keuken-1.jpeg"},{"naam":"badkamer","desc":"Uw badkamer is een plek om tot rust te komen en verdient daarna een strakke afwerking. jkjkjokkougug plaatst tegels in de badkamer met oog voor waterdichtheid en esthetiek. Wij adviseren u graag over stijl en materiaalkeuze. Het resultaat is een badkamer die er perfect uitziet.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/badkamer/badkamer-1.jpeg"},{"naam":"buiten","desc":"Buitentegels moeten bestand zijn tegen weer, wind en intensief gebruik. jkjkjokkougug plaatst duurzame buitentegels op terrassen, opritten en tuinpaden. Wij zorgen voor een stevige ondergrond en correcte afwatering. Zo heeft u jaren plezier van uw buitenruimte.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/buiten/buiten-1.jpeg"},{"naam":"toiletten","desc":"Een goed betegeld toilet oogt verzorgd en is hygiënisch makkelijk te onderhouden. jkjkjokkougug verzorgt het tegelwerk in uw toilet snel en netjes. Wij werken ook in kleine ruimtes met veel precisie en vakmanschap. Het eindresultaat is een fris en stijlvol toilet.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/toiletten/toiletten-1.jpeg"},{"naam":"vloerenbetegelen","desc":"Een vlakke en strakke tegelvloer geeft elke ruimte een professionele uitstraling. jkjkjokkougug beheerst de kunst van het vloeren betegelen tot in de puntjes. Wij zorgen voor een egale ondergrond en een naadloze legpatroon. Zo krijgt u een vloer die zowel stijlvol als duurzaam is.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/diensten/vloerenbetegelen/vloerenbetegelen-1.jpeg"}];
+  var diensten = {{DIENSTEN_JSON}};
   var grid = document.getElementById('dienstenGrid');
 
   diensten.forEach(function(d, i){
