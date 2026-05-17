@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{SEO_TITLE}}</title>
-<meta name="description" content="{{SEO_DESCRIPTION}}">
-<link rel="icon" href="{{LOGO_URL}}">
+<title></title>
+<meta name="description" content="">
+<link rel="icon" href="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -220,7 +220,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
 .stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .stap-item { display: flex; align-items: flex-start; gap: 1rem; }
-.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: {{KLEUR_PRIMARY_A10}}; color: var(--primary); }
+.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: rgba(195, 55, 55, 0.1); color: var(--primary); }
 .stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 @media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
 .stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
@@ -279,13 +279,13 @@ footer ul li:has(a:empty) { display: none; }
   <div class="topbar-inner">
     <!-- Mobile: telefoon + email -->
     <div class="topbar-mobile-contact">
-      <a href="tel:{{TELEFOON_HREF}}" class="topbar-contact-link">
+      <a href="tel:+31615605183" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        {{TELEFOON_DISPLAY}}
+        0615605183
       </a>
-      <a href="mailto:{{EMAIL}}" class="topbar-contact-link">
+      <a href="mailto:jk@fghgh.nl" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        {{EMAIL}}
+        jk@fghgh.nl
       </a>
     </div>
     <!-- Desktop: sterren links -->
@@ -299,13 +299,13 @@ footer ul li:has(a:empty) { display: none; }
     </div>
     <!-- Desktop: telefoon + email rechts -->
     <div class="topbar-desktop-contact">
-      <a href="tel:{{TELEFOON_HREF}}" class="topbar-contact-link">
+      <a href="tel:+31615605183" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        {{TELEFOON_DISPLAY}}
+        0615605183
       </a>
-      <a href="mailto:{{EMAIL}}" class="topbar-contact-link">
+      <a href="mailto:jk@fghgh.nl" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        {{EMAIL}}
+        jk@fghgh.nl
       </a>
     </div>
   </div>
@@ -314,13 +314,13 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
+    <a href="/jkjkjokkougug.html" class="navbar-logo"></a>
     <nav class="navbar-nav">
-      <a href="/{{SLUG}}.html" style="color:var(--primary)">Home</a>
-      <a href="/{{SLUG}}-over-ons.html">Over</a>
-      <a href="/{{SLUG}}-diensten.html">Diensten</a>
-      <a href="/{{SLUG}}-projecten.html">Projecten</a>
-      <a href="/{{SLUG}}-contact.html">Contact</a>
+      <a href="/jkjkjokkougug.html" style="color:var(--primary)">Home</a>
+      <a href="/jkjkjokkougug-over-ons.html">Over</a>
+      <a href="/jkjkjokkougug-diensten.html">Diensten</a>
+      <a href="/jkjkjokkougug-projecten.html">Projecten</a>
+      <a href="/jkjkjokkougug-contact.html">Contact</a>
     </nav>
     <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
     <div style="display:flex;align-items:center;gap:0.5rem">
@@ -336,11 +336,11 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/{{SLUG}}-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
-    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <a href="/jkjkjokkougug.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/jkjkjokkougug-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/jkjkjokkougug-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/jkjkjokkougug-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/jkjkjokkougug-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><a href="#offerte" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
@@ -348,30 +348,30 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="{{FOTO_HERO}}" alt="Max Stucct">
+    <img src="" alt="Max Stucct veel">
     <div class="hero-bg-overlay"></div>
   </div>
   <div class="container hero-inner" style="align-items:center">
     <div class="hero-text">
-      <p class="hero-eyebrow">{{HERO_EYEBROW}}</p>
-      <h1>{{HERO_TITLE}}</h1>
-      <p>{{HERO_DESC}}</p>
+      <p class="hero-eyebrow"></p>
+      <h1></h1>
+      <p></p>
       <ul class="hero-usps">
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          {{USP_1}}
+          
         </li>
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          {{USP_2}}
+          
         </li>
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          {{USP_3}}
+          
         </li>
       </ul>
       <div class="hero-ctas">
-        <a href="tel:{{TELEFOON_HREF}}" class="hero-cta-primary">Bel direct voor advies</a>
+        <a href="tel:+31615605183" class="hero-cta-primary">Bel direct voor advies</a>
         <a href="#diensten" class="hero-cta-outline">Bekijk diensten</a>
       </div>
     </div>
@@ -399,11 +399,11 @@ footer ul li:has(a:empty) { display: none; }
     <div class="service-card">
       <div class="service-grid">
         <div class="service-img">
-          <img src="{{FOTO_WAAROM}}" alt="Max Stucct">
+          <img src="" alt="Max Stucct veel">
         </div>
         <div class="service-text">
           <h2>Vakmanschap, <span class="text-primary">van A tot Z</span> geregeld</h2>
-          <p>{{SERVICE_DESC}}</p>
+          <p></p>
           <a href="#offerte" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
@@ -416,39 +416,39 @@ footer ul li:has(a:empty) { display: none; }
   <div class="container">
     <div class="section-header">
       <h2 class="font-poppins">Onze diensten</h2>
-      <p>{{DIENSTEN_HOME_DESC}}</p>
+      <p></p>
     </div>
     <div class="diensten-grid">
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_1}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_2}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_3}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_4}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_5}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_6}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_7}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
-        <h3>{{DIENST_8}}</h3>
+      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+        <h3></h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
     </div>
@@ -458,12 +458,12 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Waarom kiezen voor ons -->
 <section class="why-section">
   <div class="why-bg">
-    <img src="{{FOTO_USP}}" alt="Waarom kiezen voor Max Stucct">
+    <img src="" alt="Waarom kiezen voor Max Stucct veel">
     <div class="why-bg-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span>Max Stucct</span></h2>
-    <p>{{WHY_DESC}}</p>
+    <h2>Waarom kiezen voor <span>Max Stucct veel</span></h2>
+    <p></p>
     <div class="why-cards">
       <div class="why-card">
         <div class="why-card-icon">
@@ -513,13 +513,13 @@ footer ul li:has(a:empty) { display: none; }
       <p>Een greep uit recent uitgevoerde projecten — van nieuwbouw en aanbouw tot dakopbouw, vakkundig gerealiseerd door ons team.</p>
     </div>
     <div class="projecten-grid">
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_1}}" alt="Project 1" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_2}}" alt="Project 2" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_3}}" alt="Project 3" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 1" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 2" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 3" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 4" loading="lazy"></div></div>
     </div>
     <div class="projecten-cta">
-      <a href="/{{SLUG}}-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+      <a href="/jkjkjokkougug-projecten.html" class="btn-primary">Bekijk alle projecten</a>
     </div>
   </div>
 </section>
@@ -560,11 +560,11 @@ footer ul li:has(a:empty) { display: none; }
     <div class="work-outer">
       <div class="work-left">
         <h2 class="font-poppins">Onze <span class="text-primary">ervaring</span> en werkwijze</h2>
-        <p>{{WERK_DESC_1}}</p>
-        <p>{{WERK_DESC_2}}</p>
+        <p></p>
+        <p></p>
         <a href="#offerte" class="btn-primary" style="margin-top:0.5rem;display:inline-flex">Advies nodig?</a>
         <div class="work-foto">
-          <img src="{{FOTO_WERKWIJZE}}" alt="Werkwijze Max Stucct" loading="lazy">
+          <img src="" alt="Werkwijze Max Stucct veel" loading="lazy">
         </div>
 
         <!-- 4 Stappen -->
@@ -615,9 +615,9 @@ footer ul li:has(a:empty) { display: none; }
             <p>Neem contact op en wij helpen u graag verder.</p>
           </div>
           <div class="vrijblijvend-btns">
-            <a href="tel:{{TELEFOON_HREF}}" class="vb-btn-primary">
+            <a href="tel:+31615605183" class="vb-btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              {{TELEFOON_DISPLAY}}
+              0615605183
             </a>
             <a href="#offerte" class="vb-btn-outline">Offerte aanvragen</a>
           </div>
@@ -626,7 +626,7 @@ footer ul li:has(a:empty) { display: none; }
         <!-- Werkgebied -->
         <div class="werkgebied-block">
           <h3 class="font-poppins"><span class="text-primary">Werkgebied</span></h3>
-          <p>{{VAKMANSCHAP_DESC}}</p>
+          <p></p>
         </div>
       </div>
 
@@ -656,39 +656,39 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_1}}</a></li>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_2}}</a></li>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_3}}</a></li>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_4}}</a></li>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
+          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
-          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/jkjkjokkougug-over-ons.html">Over ons</a></li>
+          <li><a href="/jkjkjokkougug-contact.html">Contact</a></li>
           <li><a href="#offerte">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Max Stucct</p>
-        <p>{{ADRES_STRAAT}}</p>
-        <p>{{ADRES_POSTCODE_STAD}}</p>
-        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
+        <p style="font-weight:600;color:var(--foreground)">Max Stucct veel</p>
+        <p></p>
+        <p></p>
+        <p style="margin-top:0.75rem">KvK: </p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Max Stucct – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max Stucct veel – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  var slug = '{{SLUG}}';
+  var slug = 'jkjkjokkougug';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
 
   function handleForm(formId, successId, btnText) {
@@ -701,7 +701,7 @@ footer ul li:has(a:empty) { display: none; }
       btn.textContent = 'Verzenden...';
       var data = {};
       new FormData(form).forEach(function(v, k){ data[k] = v; });
-      fetch('{{OFFERTE_WEBHOOK}}', {
+      fetch('', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -721,7 +721,7 @@ footer ul li:has(a:empty) { display: none; }
   handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
 
   try {
-    var reviews = {{REVIEWS_JSON}};
+    var reviews = [];
     if (Array.isArray(reviews) && reviews.length) {
       var section = document.getElementById('reviewsSection');
       var track = document.getElementById('reviewsTrack');
@@ -808,6 +808,6 @@ footer ul li:has(a:empty) { display: none; }
   }
 })();
 </script>
-<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/https://wa.me/31615605183" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
