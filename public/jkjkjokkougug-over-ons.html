@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Over Ons | jkjkjokkougug</title>
-<meta name="description" content="Maak kennis met jkjkjokkougug — vakkundig, betrouwbaar en lokaal actief.">
+<title>Over Ons | Max Stucct</title>
+<meta name="description" content="Maak kennis met Max Stucct — vakkundig, betrouwbaar en lokaal actief.">
 <link rel="icon" href="{{LOGO_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #c33737;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -89,7 +89,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 @media(min-width:640px){ .waarden-grid { grid-template-columns: 1fr 1fr; } }
 @media(min-width:1024px){ .waarden-grid { grid-template-columns: repeat(4,1fr); } }
 .waarde-card { text-align: center; }
-.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
+.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
 .waarde-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .waarde-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); }
 
@@ -132,13 +132,13 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:87865797">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        87865797
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:jk@fghgh.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        jk@fghgh.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -147,15 +147,15 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/jkjkjokkougug.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">jkjkjokkougug</span></a>
+    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
-      <a href="/jkjkjokkougug.html">Home</a>
-      <a href="/jkjkjokkougug-over-ons.html" style="color:var(--primary)">Over</a>
-      <a href="/jkjkjokkougug-diensten.html">Diensten</a>
-      <a href="/jkjkjokkougug-projecten.html">Projecten</a>
-      <a href="/jkjkjokkougug-contact.html">Contact</a>
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-over-ons.html" style="color:var(--primary)">Over</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
+      <a href="/{{SLUG}}-projecten.html">Projecten</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
-    <a href="/jkjkjokkougug-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -166,23 +166,23 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/jkjkjokkougug.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/jkjkjokkougug-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/jkjkjokkougug-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/jkjkjokkougug-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="/jkjkjokkougug-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/hero/tegelzetter-hero-1.jpeg" alt="">
+    <img src="{{FOTO_HERO}}" alt="">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Over Ons</h1>
-    <p>Uw betrouwbare tegelzetter in jlhjkg en omgeving</p>
+    <p>{{OVER_ONS_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -191,9 +191,9 @@ footer ul li:has(a:empty) { display: none; }
   <div class="container">
     <div class="intro-inner">
       <h2>Wie zijn <span>wij</span>?</h2>
-      <p>jkjkjokkougug is een vakkundig tegelzetbedrijf gevestigd in jlhjkg. Wij zijn gepassioneerd door ons vak en zetten ons elke dag in voor het beste resultaat. Elke klant verdient tegelwerk om trots op te zijn.</p>
-      <p>Ons team werkt nauwkeurig en gestructureerd, met aandacht voor elk detail. Wij hechten veel waarde aan goede communicatie en houden u gedurende het hele project op de hoogte.</p>
-      <p>Onze missie is eenvoudig: tevreden klanten door eerlijk, vakkundig en betrouwbaar tegelwerk te leveren in jlhjkg en de regio.</p>
+      <p>{{OVER_ONS_INTRO_P1}}</p>
+      <p>{{OVER_ONS_INTRO_P2}}</p>
+      <p>{{OVER_ONS_INTRO_P3}}</p>
     </div>
   </div>
 </section>
@@ -207,29 +207,29 @@ footer ul li:has(a:empty) { display: none; }
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Kwaliteit voorop</h3>
-        <p>Wij leveren altijd tegelwerk van de hoogste kwaliteit.</p>
+        <h3>{{OVER_ONS_WAARDE_1_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_1_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <h3>Betrouwbaarheid</h3>
-        <p>Wij komen onze afspraken altijd stipt en eerlijk na.</p>
+        <h3>{{OVER_ONS_WAARDE_2_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_2_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <h3>Klantgerichtheid</h3>
-        <p>Uw tevredenheid is voor ons het belangrijkste resultaat.</p>
+        <h3>{{OVER_ONS_WAARDE_3_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_3_DESC}}</p>
       </div>
       <div class="waarde-card">
         <div class="waarde-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3>Vakmanschap</h3>
-        <p>Jarenlange ervaring zorgt voor een perfect en strak eindresultaat.</p>
+        <h3>{{OVER_ONS_WAARDE_4_TITEL}}</h3>
+        <p>{{OVER_ONS_WAARDE_4_DESC}}</p>
       </div>
     </div>
   </div>
@@ -239,10 +239,10 @@ footer ul li:has(a:empty) { display: none; }
 <section class="cta-section">
   <div class="container">
     <h2>Kunnen wij u <span>helpen</span>?</h2>
-    <p>Wilt u meer weten of een offerte aanvragen? Neem gerust contact op.</p>
+    <p>{{OVER_ONS_CTA_DESC}}</p>
     <div class="cta-btns">
-      <a href="/jkjkjokkougug-contact.html" class="btn-primary">Offerte aanvragen</a>
-      <a href="tel:87865797" class="btn-outline-dark">Bel 87865797</a>
+      <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+      <a href="tel:{{TELEFOON_HREF}}" class="btn-outline-dark">Bel {{TELEFOON_DISPLAY}}</a>
     </div>
   </div>
 </section>
@@ -254,10 +254,10 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">keuken</a></li>
-          <li><a href="#">badkamer</a></li>
-          <li><a href="#">buiten</a></li>
-          <li><a href="#">toiletten</a></li>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
           <li><a href="#">{{DIENST_5}}</a></li>
           <li><a href="#">{{DIENST_6}}</a></li>
         </ul>
@@ -265,40 +265,40 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Amsterdam</a></li>
-          <li><a href="#">Haarlem</a></li>
-          <li><a href="#">Utrecht</a></li>
-          <li><a href="#">Almere</a></li>
-          <li><a href="#">Zaandam</a></li>
-          <li><a href="#">Hilversum</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-over-ons.html">Over ons</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Contact</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Offerte aanvragen</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">jkjkjokkougug</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">Max Stucct</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 jkjkjokkougug – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max Stucct – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  var slug = 'jkjkjokkougug';
+  var slug = '{{SLUG}}';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
   if (onLive) {
     var remap = {};
