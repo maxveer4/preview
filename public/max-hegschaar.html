@@ -346,7 +346,7 @@ footer ul li:has(a:empty) { display: none; }
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span class="text-primary">Max hegschaar</span></h2>
+    <h2>Waarom kiezen voor <span class="text-primary">Max hegschaarr</span></h2>
     <p class="why-desc">Max Hegschaar onderscheidt zich door persoonlijke betrokkenheid, vakmanschap en een passie voor groen in uw woonomgeving.</p>
     <div class="why-grid">
       <div class="why-card">
@@ -474,7 +474,7 @@ footer ul li:has(a:empty) { display: none; }
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Max hegschaar</p>
+        <p style="font-weight:600;color:var(--foreground)">Max hegschaarr</p>
         <p></p>
         <p></p>
         <p style="margin-top:0.75rem">KvK: </p>
@@ -482,7 +482,7 @@ footer ul li:has(a:empty) { display: none; }
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Max hegschaar – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max hegschaarr – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
@@ -539,7 +539,7 @@ async function submitForm(e, form, containerId) {
   const btn = form.querySelector('button[type=submit]');
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
-    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Max hegschaar', email_bedrijf: 'info@hegschaar.nl', slug: 'max-hegschaar' }) });
+    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Max hegschaarr', email_bedrijf: 'info@hegschaar.nl', slug: 'max-hegschaar' }) });
     document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:groen;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
