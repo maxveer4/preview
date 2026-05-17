@@ -7,14 +7,14 @@
 <meta name="description" content="Op zoek naar een vakkundige hovenier in Leersum? Max Hegschaar verzorgt uw tuin met passie. Bel nu voor een vrijblijvende offerte!">
 <link rel="icon" href="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(142,72%,38%);
+  --primary: groen;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -24,250 +24,183 @@
   --topbar-fg: hsl(0,0%,100%);
 }
 body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
-h1,h2,h3,h4,h5,h6 { font-family: 'Roboto Slab', serif; }
-.font-poppins { font-family: 'Poppins', sans-serif !important; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
-.container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-.text-primary { color: var(--primary); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
 
 /* Topbar */
 .topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2rem; font-size: 0.75rem; }
-.topbar-stars { display: none; align-items: center; gap: 6px; }
-@media(min-width:768px){ .topbar-stars { display: flex; } }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.topbar-stars { display: flex; gap: 2px; align-items: center; }
 .star-icon { color: var(--star); }
-.topbar-mobile-contact { display: flex; align-items: center; gap: 1rem; }
-@media(min-width:768px){ .topbar-mobile-contact { display: none; } }
-.topbar-desktop-contact { display: none; align-items: center; gap: 1.5rem; }
-@media(min-width:768px){ .topbar-desktop-contact { display: flex; } }
-.topbar-contact-link { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
-.topbar-contact-link:hover { color: var(--primary); }
+.topbar-contact { display: flex; gap: 1.5rem; }
+.topbar-contact a { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
+.topbar-contact a:hover { color: var(--primary); }
+@media(max-width:767px){ .topbar-contact { display: none; } }
 
 /* Navbar */
 .navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
 .navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
 .navbar-logo img { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
 .navbar-nav { display: flex; align-items: center; gap: 2rem; }
-.navbar-nav a { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; font-family: 'Roboto', sans-serif; }
-.navbar-nav a:hover { color: var(--primary); }
-.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: 'Roboto', sans-serif; }
+.navbar-nav a, .navbar-nav .dropdown > button { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
+.navbar-nav a:hover, .navbar-nav .dropdown > button:hover { color: var(--primary); }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: inherit; }
 .btn-primary:hover { opacity: 0.9; }
-.navbar-desktop-cta { display: none; }
-@media(min-width:768px){ .navbar-desktop-cta { display: inline-flex; } }
-.navbar-mobile-cta { display: inline-flex; font-size: 0.75rem; padding: 0.5rem 0.75rem; }
-@media(min-width:768px){ .navbar-mobile-cta { display: none; } }
-.mobile-menu-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--foreground); }
-@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+.btn-outline { display: inline-flex; align-items: center; background: transparent; color: #fff; border: 2px solid #fff; border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+.btn-outline:hover { background: rgba(255,255,255,0.1); }
+.dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; left: 0; top: 100%; margin-top: 8px; min-width: 240px; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem 0; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 100; }
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: var(--foreground); transition: background 0.15s, color 0.15s; }
+.dropdown-menu a:hover { background: var(--muted); color: var(--primary); }
+.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
 .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
 .mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
-.mobile-nav-panel a { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-family: 'Roboto', sans-serif; }
+.mobile-nav-panel a, .mobile-nav-panel .mobile-nav-link { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; background: none; cursor: pointer; }
 .mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
 .mobile-nav.open { display: block; }
-@media(min-width:768px){ .navbar-nav { display: flex; } }
-@media(max-width:767px){ .navbar-nav { display: none; } }
+@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+@media(max-width:767px){ .navbar-nav, .navbar .btn-primary { display: none; } .mobile-menu-btn { display: block; } }
 
 /* Hero */
-.hero { position: relative; min-height: 80vh; display: flex; align-items: center; }
+.hero { position: relative; min-height: 80vh; }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-.hero-bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
-.hero-inner { position: relative; display: grid; grid-template-columns: 1fr; gap: 2rem; padding: 4rem 0; width: 100%; }
-@media(min-width:1024px){ .hero-inner { grid-template-columns: 3fr 2fr; align-items: center; } }
+.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.hero-content { position: relative; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr; align-items: center; gap: 2rem; padding: 4rem 1rem; min-height: 80vh; }
+@media(min-width:1024px){ .hero-content { grid-template-columns: 3fr 2fr; } }
 .hero-text { color: #fff; }
-.hero-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1rem; opacity: 0.9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); display: none; }
-@media(min-width:768px){ .hero-eyebrow { display: block; } }
-.hero-text h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem,5vw,3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-.hero-text > p { font-family: 'Roboto', sans-serif; font-size: 0.875rem; line-height: 1.75; opacity: 0.9; margin-bottom: 2rem; max-width: 560px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-@media(min-width:768px){ .hero-text > p { font-size: 1rem; } }
-.hero-usps { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
-.hero-usp { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; opacity: 0.9; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-@media(min-width:768px){ .hero-usp { font-size: 1rem; } }
-.hero-ctas { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-@media(min-width:640px){ .hero-ctas { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; } }
-.hero-cta-primary { display: inline-flex; width: 100%; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.5rem; background: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--primary-fg); transition: opacity 0.2s; font-family: 'Roboto', sans-serif; }
-@media(min-width:640px){ .hero-cta-primary { width: auto; justify-content: flex-start; } }
-.hero-cta-primary:hover { opacity: 0.9; }
-.hero-cta-outline { display: inline-flex; width: 100%; align-items: center; justify-content: center; border-radius: 0.5rem; border: 2px solid #fff; background: transparent; padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: #fff; transition: background 0.2s; font-family: 'Roboto', sans-serif; }
-@media(min-width:640px){ .hero-cta-outline { width: auto; justify-content: flex-start; } }
-.hero-cta-outline:hover { background: rgba(255,255,255,0.1); }
+.hero-eyebrow { font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1rem; opacity: 0.9; }
+.hero-title { font-size: clamp(2rem,5vw,3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.hero-desc { font-size: 0.9rem; line-height: 1.7; opacity: 0.9; max-width: 560px; margin-bottom: 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+.hero-list { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.hero-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-form-col { display: none; }
+@media(min-width:768px){ .hero-form-col { display: block; } }
+.card-white { background: var(--card); border-radius: 1rem; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
 
-/* Hero form */
-.hero-form-wrap { display: none; }
-@media(min-width:768px){ .hero-form-wrap { display: block; } }
-.hero-form { background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.07) 100%); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.25); border-radius: 28px; padding: 1.5rem 2rem; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
-.hero-form h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
-@media(min-width:768px){ .hero-form h3 { font-size: 1.5rem; } }
-.hero-form p.sub { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 1rem; }
-.hero-form-fields { display: flex; flex-direction: column; gap: 1rem; }
-.hf-input { width: 100%; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.7); padding: 0.625rem 1rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; color: var(--foreground); outline: none; transition: box-shadow 0.2s; backdrop-filter: blur(4px); }
-.hf-input::placeholder { color: var(--muted-fg); }
-.hf-input:focus { box-shadow: 0 0 0 2px var(--primary); }
-.hf-textarea { resize: vertical; min-height: 100px; }
-.hero-form .btn-submit { width: 100%; justify-content: center; padding: 0.75rem; font-family: 'Roboto', sans-serif; font-size: 0.875rem; font-weight: 500; border-radius: 0.5rem; background: var(--primary); color: var(--primary-fg); border: none; cursor: pointer; transition: opacity 0.2s; }
-.hero-form .btn-submit:hover { opacity: 0.9; }
-.hero-form .btn-submit:disabled { opacity: 0.7; }
-.form-success { display: none; padding: 0.875rem; background: hsl(143,85%,96%); border: 1px solid hsl(145,92%,91%); border-radius: 0.5rem; color: hsl(140,100%,27%); font-size: 0.8rem; text-align: center; }
+/* Quote form inline */
+.qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
+.qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); }
+.qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
+.qf-submit:hover { opacity: 0.9; }
+.qf-success { text-align: center; padding: 2rem 0; }
+.qf-success .check { width: 64px; height: 64px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
 
-/* Service section (Vakmanschap) */
-.service-section { padding: 4rem 0 6rem; }
-@media(min-width:768px){ .service-section { padding: 6rem 0; } }
-.service-card { max-width: 1152px; margin: 0 auto; border-radius: 20px; background: var(--card); padding: 2rem; }
-@media(min-width:768px){ .service-card { padding: 2.8125rem; } }
+/* Trust */
+.trust { background: var(--card); padding: 4rem 0; }
+@media(min-width:768px){ .trust { padding: 6rem 0; } }
+.section-title { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; text-align: center; margin-bottom: 1rem; }
+.trust-desc { text-align: center; max-width: 640px; margin: 0 auto 3rem; font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); }
+.trust-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media(min-width:768px){ .trust-grid { grid-template-columns: repeat(3,1fr); } }
+.trust-card { background: var(--muted); border-radius: 0.75rem; padding: 2rem; text-align: center; }
+.trust-icon { display: inline-flex; margin-bottom: 1rem; color: var(--primary); }
+.trust-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.trust-card p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
+
+/* Service */
+.service { padding: 4rem 0; }
+@media(min-width:768px){ .service { padding: 6rem 0; } }
+.service-inner { background: var(--card); border-radius: 1.25rem; padding: 2rem; }
+@media(min-width:768px){ .service-inner { padding: 2.8rem; } }
 .service-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
 @media(min-width:1024px){ .service-grid { grid-template-columns: 1fr 1fr; } }
-.service-img { border-radius: 1rem; overflow: hidden; }
-.service-img img { width: 100%; border-radius: 1rem; object-fit: cover; }
-.service-text h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; }
-.service-text p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 2rem; }
-@media(min-width:768px){ .service-text p { font-size: 1rem; } }
+.service-img { width: 100%; border-radius: 1rem; object-fit: cover; }
+.service h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; line-height: 1.25; margin-bottom: 1.5rem; }
+.service p { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); margin-bottom: 2rem; }
 
-/* Services grid (Onze diensten) */
-.diensten-section { padding: 4rem 0 6rem; }
-@media(min-width:768px){ .diensten-section { padding: 6rem 0; } }
-.section-header { text-align: center; margin-bottom: 3rem; }
-@media(min-width:768px){ .section-header { margin-bottom: 4rem; } }
-.section-header h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; margin-bottom: 1rem; }
-.section-header p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); max-width: 640px; margin: 0 auto; }
-@media(min-width:768px){ .section-header p { font-size: 1rem; } }
-.diensten-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
-@media(min-width:640px){ .diensten-grid { grid-template-columns: repeat(2,1fr); } }
-@media(min-width:1024px){ .diensten-grid { grid-template-columns: repeat(4,1fr); } }
-.dienst-card { display: flex; flex-direction: column; border-radius: 20px; border: 1px solid var(--border); background: var(--card); padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
-.dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-.dienst-card:has(h3:empty) { display: none; }
-.dienst-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--foreground); }
-.dienst-meer { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: var(--primary); margin-top: auto; transition: gap 0.3s; font-family: 'Roboto', sans-serif; }
-.dienst-card:hover .dienst-meer { gap: 0.75rem; }
-
-/* Why choose us */
-.why-section { position: relative; padding: 4rem 0 6rem; }
-@media(min-width:768px){ .why-section { padding: 6rem 0; } }
+/* WhyChooseUs */
+.why { position: relative; padding: 4rem 0; }
+@media(min-width:768px){ .why { padding: 6rem 0; } }
 .why-bg { position: absolute; inset: 0; }
 .why-bg img { width: 100%; height: 100%; object-fit: cover; }
-.why-bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.why-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
 .why-content { position: relative; text-align: center; }
-.why-content h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; color: #fff; margin-bottom: 1rem; }
-.why-content > p { font-size: 0.875rem; line-height: 1.8; color: rgba(255,255,255,0.8); max-width: 640px; margin: 0 auto 3rem; }
-@media(min-width:768px){ .why-content > p { font-size: 1rem; } }
-.why-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
-@media(min-width:640px){ .why-cards { grid-template-columns: 1fr 1fr; } }
-.why-card { display: flex; align-items: center; gap: 1.25rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); padding: 1.5rem; text-align: left; backdrop-filter: blur(12px); transition: transform 0.3s; }
+.why h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; color: #fff; margin-bottom: 1rem; }
+.why-desc { max-width: 640px; margin: 0 auto 3rem; font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+.why-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 896px; margin: 0 auto; }
+@media(min-width:640px){ .why-grid { grid-template-columns: 1fr 1fr; } }
+.why-card { display: flex; align-items: flex-start; gap: 1.25rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 1.5rem; text-align: left; transition: transform 0.3s; }
 .why-card:hover { transform: translateY(-4px); }
-.why-card-icon { flex-shrink: 0; display: inline-flex; border-radius: 0.75rem; background: var(--primary); padding: 0.75rem; color: #fff; }
-.why-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
-.why-card p { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.8); }
-
-/* Projects section */
-.projecten-section { padding: 4rem 0 6rem; }
-@media(min-width:768px){ .projecten-section { padding: 6rem 0; } }
-.projecten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 1400px; margin: 0 auto 2.5rem; }
-@media(min-width:768px){ .projecten-grid { grid-template-columns: repeat(4,1fr); gap: 0.75rem; } }
-.project-thumb { overflow: hidden; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
-.project-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-.project-thumb-inner { aspect-ratio: 4/3; overflow: hidden; }
-.project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-.project-thumb:hover img { transform: scale(1.05); }
-.projecten-cta { text-align: center; display: none; }
-@media(min-width:768px){ .projecten-cta { display: block; } }
+.why-card-icon { flex-shrink: 0; background: var(--primary); border-radius: 0.75rem; padding: 0.75rem; display: inline-flex; color: #fff; }
+.why-card h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+.why-card p { font-size: 0.875rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
 
 /* Reviews */
-.reviews-section { background: var(--muted); padding: 4rem 0 6rem; }
-@media(min-width:768px){ .reviews-section { padding: 6rem 0; } }
-.reviews-section .section-header { margin-bottom: 3rem; }
-.reviews-track-wrap { overflow: hidden; }
-.reviews-track { display: flex; touch-action: pan-y; }
-.review-card { min-width: 100%; padding-left: 1rem; flex-shrink: 0; }
-@media(min-width:640px){ .review-card { min-width: 50%; } }
-@media(min-width:1024px){ .review-card { min-width: 33.333%; } }
-.review-card-inner { display: flex; flex-direction: column; height: 100%; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
-@media(min-width:768px){ .review-card-inner { padding: 2rem; } }
-.review-card-inner:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
-.review-stars { display: flex; gap: 2px; margin-bottom: 1rem; color: var(--star); }
-.review-text { font-size: 0.875rem; line-height: 1.75; color: var(--muted-fg); flex: 1; margin-bottom: 1.5rem; }
-@media(min-width:768px){ .review-text { font-size: 1rem; } }
-.review-read-more { background: none; border: none; cursor: pointer; font-size: inherit; font-weight: 500; color: var(--primary); margin-left: 4px; }
-.review-read-more:hover { text-decoration: underline; }
-.review-meta { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
-.review-name { font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 600; }
-.review-date { font-size: 0.75rem; color: var(--muted-fg); margin-top: 2px; }
-.reviews-nav-mobile { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
-@media(min-width:1024px){ .reviews-nav-mobile { display: none; } }
-.reviews-arrows-desktop { position: absolute; top: 50%; transform: translateY(-50%); }
-.reviews-prev-desktop { position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); display: none; }
-.reviews-next-desktop { position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); display: none; }
-@media(min-width:1024px){ .reviews-prev-desktop { display: flex; } .reviews-next-desktop { display: flex; } }
-.reviews-nav-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); cursor: pointer; transition: background 0.2s; color: var(--foreground); }
-.reviews-nav-btn:hover { background: var(--muted); }
-.reviews-nav-btn:disabled { opacity: 0.4; }
-.reviews-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
-.review-dot { height: 10px; border-radius: 9999px; transition: all 0.3s; background: var(--border); cursor: pointer; border: none; }
-.review-dot.active { width: 2rem; background: var(--primary); }
-.review-dot:not(.active) { width: 10px; }
-.reviews-slider-wrap { position: relative; }
+.reviews { background: var(--muted); padding: 4rem 0; overflow: hidden; }
+@media(min-width:768px){ .reviews { padding: 6rem 0; } }
+.reviews-header { text-align: center; margin-bottom: 3rem; }
+.reviews-header p { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem; }
+.reviews-header h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; }
+.reviews-carousel { overflow: hidden; }
+.reviews-track { display: flex; transition: transform 0.4s ease; }
+.review-slide { flex: 0 0 100%; padding-left: 1rem; }
+@media(min-width:640px){ .review-slide { flex: 0 0 50%; } }
+@media(min-width:1024px){ .review-slide { flex: 0 0 33.333%; } }
+.review-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; height: 100%; display: flex; flex-direction: column; }
+.review-stars { display: flex; gap: 3px; margin-bottom: 1rem; color: var(--star); font-size: 1.1rem; }
+.review-text { font-size: 0.875rem; line-height: 1.7; color: var(--muted-fg); flex: 1; margin-bottom: 1rem; }
+.review-read-more { background: none; border: none; color: var(--primary); font-size: 0.875rem; font-weight: 500; cursor: pointer; padding: 0; margin-left: 4px; }
+.review-author { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
+.review-author strong { display: block; font-size: 0.875rem; font-weight: 600; }
+.review-author span { font-size: 0.75rem; color: var(--muted-fg); }
+.reviews-nav { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.reviews-nav button { background: var(--card); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+.reviews-nav button:hover { background: var(--muted); }
+.reviews-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+.reviews-dot { width: 10px; height: 10px; border-radius: 9999px; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
+.reviews-dot.active { width: 32px; background: var(--primary); }
 
-/* Work section */
-.work-section { padding: 4rem 0 6rem; }
-@media(min-width:768px){ .work-section { padding: 6rem 0; } }
-.work-outer { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
-@media(min-width:1024px){ .work-outer { grid-template-columns: 65fr 35fr; } }
-.work-left h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; margin-bottom: 1.5rem; line-height: 1.2; }
-.work-left > p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 1rem; }
-@media(min-width:768px){ .work-left > p { font-size: 1rem; } }
-.work-foto { border-radius: 1rem; overflow: hidden; margin-top: 2rem; }
-.work-foto img { width: 100%; border-radius: 1rem; object-fit: cover; }
-.stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
-.stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
-.stap-item { display: flex; align-items: flex-start; gap: 1rem; }
-.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(142,72%,38%,0.1); color: var(--primary); }
-.stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-@media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
-.stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
-@media(min-width:768px){ .stap-item p { font-size: 1rem; } }
-.vrijblijvend-block { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 1.5rem; border-radius: 1rem; background: var(--foreground); padding: 1.5rem 2rem; margin-top: 2.5rem; }
-@media(min-width:640px){ .vrijblijvend-block { flex-direction: row; align-items: center; } }
-.vrijblijvend-block h4 { font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--background); margin-bottom: 0.25rem; }
-@media(min-width:768px){ .vrijblijvend-block h4 { font-size: 1.25rem; } }
-.vrijblijvend-block > div:first-child p { font-size: 0.875rem; color: rgba(255,255,255,0.8); }
-@media(min-width:768px){ .vrijblijvend-block > div:first-child p { font-size: 1rem; } }
-.vrijblijvend-btns { display: flex; flex-direction: column; gap: 0.75rem; flex-shrink: 0; }
-@media(min-width:640px){ .vrijblijvend-btns { flex-direction: row; } }
-.vb-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.5rem; background: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--primary-fg); transition: opacity 0.2s; font-family: 'Roboto', sans-serif; }
-.vb-btn-primary:hover { opacity: 0.9; }
-.vb-btn-outline { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.3); background: transparent; padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--background); transition: background 0.2s; font-family: 'Roboto', sans-serif; }
-.vb-btn-outline:hover { background: rgba(255,255,255,0.1); }
-.werkgebied-block { margin-top: 2.5rem; }
-.werkgebied-block h3 { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin-bottom: 1rem; }
-.werkgebied-block p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
-@media(min-width:768px){ .werkgebied-block p { font-size: 1rem; } }
-
-/* Work right form */
-.work-form-card { border-radius: 1rem; border: 2px solid var(--primary); background: var(--card); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
-@media(min-width:1024px){ .work-right-col { position: sticky; top: 96px; align-self: start; } }
-.work-form-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
-@media(min-width:768px){ .work-form-card h3 { font-size: 1.5rem; } }
-.wf-fields { display: flex; flex-direction: column; gap: 1rem; }
-.wf-input { width: 100%; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--background); padding: 0.625rem 1rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; color: var(--foreground); outline: none; transition: box-shadow 0.2s; }
-.wf-input::placeholder { color: var(--muted-fg); }
-.wf-input:focus { box-shadow: 0 0 0 2px var(--primary); }
-.wf-textarea { resize: vertical; min-height: 100px; }
-.wf-submit { width: 100%; justify-content: center; padding: 0.75rem; }
-.form-success { display: none; padding: 0.875rem; background: hsl(143,85%,96%); border: 1px solid hsl(145,92%,91%); border-radius: 0.5rem; color: hsl(140,100%,27%); font-size: 0.8rem; text-align: center; }
+/* Work */
+.work { padding: 4rem 0; }
+@media(min-width:768px){ .work { padding: 6rem 0; } }
+.work-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media(min-width:1024px){ .work-grid { grid-template-columns: 65fr 35fr; } .work-grid > div:first-child { align-self: start; } }
+.work h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; line-height: 1.25; margin-bottom: 1.5rem; }
+.work-desc { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); margin-bottom: 1rem; }
+.work-img { width: 100%; border-radius: 1rem; margin-top: 2rem; }
+.work-steps { margin-top: 3rem; }
+.work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
+.work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(37, 99, 235, 0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+.work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
+.cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+@media(min-width:640px){ .cta-block { flex-direction: row; align-items: center; justify-content: space-between; padding: 2rem; } }
+.cta-block h4 { font-size: 1.1rem; font-weight: 700; color: var(--background); margin-bottom: 0.25rem; }
+.cta-block p { font-size: 0.875rem; color: rgba(255,255,255,0.8); }
+.work-vakmanschap { margin-top: 2.5rem; }
+.work-vakmanschap h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+.work-vakmanschap p { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); }
+.form-sticky { background: var(--card); border: 2px solid var(--primary); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+@media(min-width:1024px){ .form-sticky { position: sticky; top: 5rem; } }
 
 /* Footer */
-footer { border-top: 1px solid var(--border); background: var(--card); }
-.footer-inner { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
-@media(min-width:640px){ .footer-inner { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px){ .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
-footer h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+footer { background: var(--card); border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
+@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-grid { grid-template-columns: repeat(4,1fr); } }
+footer h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
 footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; font-family: 'Roboto', sans-serif; }
+footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; }
 footer ul li a:hover { color: var(--primary); }
 footer ul li:has(a:empty) { display: none; }
-.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; font-family: 'Roboto', sans-serif; }
-.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); font-family: 'Roboto', sans-serif; }
+.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; }
+.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); }
 
+/* Modal */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: var(--card); border-radius: 1rem; max-width: 560px; width: 100%; max-height: 90vh; overflow: hidden; position: relative; }
+.modal-close { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10; background: var(--muted); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--foreground); line-height: 1; }
+
+.text-primary { color: var(--primary); }
 .wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
 .wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
 </style>
@@ -276,34 +209,21 @@ footer ul li:has(a:empty) { display: none; }
 
 <!-- Topbar -->
 <div class="topbar">
-  <div class="topbar-inner">
-    <!-- Mobile: telefoon + email -->
-    <div class="topbar-mobile-contact">
-      <a href="tel:061569012" class="topbar-contact-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        061569012
-      </a>
-      <a href="mailto:info@hegschaar.nl" class="topbar-contact-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@hegschaar.nl
-      </a>
-    </div>
-    <!-- Desktop: sterren links -->
+  <div class="container topbar-inner">
     <div class="topbar-stars">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span style="font-size:0.75rem;font-family:'Roboto',sans-serif">Beoordeeld met een 5.0</span>
+      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
-    <!-- Desktop: telefoon + email rechts -->
-    <div class="topbar-desktop-contact">
-      <a href="tel:061569012" class="topbar-contact-link">
+    <div class="topbar-contact">
+      <a href="tel:+31615605183">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        061569012
+        0615605183
       </a>
-      <a href="mailto:info@hegschaar.nl" class="topbar-contact-link">
+      <a href="mailto:info@hegschaar.nl">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         info@hegschaar.nl
       </a>
@@ -314,21 +234,17 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/max-hegschaar.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Max hegschaar</span></a>
+    <a href="/max-hegschaar.html" class="navbar-logo"></a>
     <nav class="navbar-nav">
-      <a href="/max-hegschaar.html" style="color:var(--primary)">Home</a>
+      <a href="/max-hegschaar.html">Home</a>
       <a href="/max-hegschaar-over-ons.html">Over</a>
       <a href="/max-hegschaar-diensten.html">Diensten</a>
-      <a href="/max-hegschaar-projecten.html">Projecten</a>
       <a href="/max-hegschaar-contact.html">Contact</a>
     </nav>
-    <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
-    <div style="display:flex;align-items:center;gap:0.5rem">
-      <a href="#offerte" class="btn-primary navbar-mobile-cta">Offerte aanvragen</a>
-      <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu openen">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
+    <a href="/max-hegschaar-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </div>
 
@@ -339,310 +255,182 @@ footer ul li:has(a:empty) { display: none; }
     <a href="/max-hegschaar.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/max-hegschaar-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
     <a href="/max-hegschaar-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/max-hegschaar-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
     <a href="/max-hegschaar-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="#offerte" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
+    <div style="margin-top:1rem"><a href="/max-hegschaar-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/hero/hovenier-hero-1.jpeg" alt="Max hegschaar">
-    <div class="hero-bg-overlay"></div>
+    <img id="heroImg" src="" alt="Verzorgde tuin door hovenier in Leersum">
+    <div class="hero-overlay"></div>
   </div>
-  <div class="container hero-inner" style="align-items:center">
+  <div class="hero-content">
     <div class="hero-text">
       <p class="hero-eyebrow">Uw groene specialist in Leersum</p>
-      <h1>Een prachtige tuin het hele jaar door</h1>
-      <p>Max Hegschaar zorgt voor een verzorgde en groene tuin die u kunt blijven genieten. Vakmanschap en persoonlijke aandacht staan centraal.</p>
-      <ul class="hero-usps">
-        <li class="hero-usp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+      <h1 class="hero-title">Een prachtige tuin het hele jaar door</h1>
+      <p class="hero-desc">Max Hegschaar zorgt voor een verzorgde en groene tuin die u kunt blijven genieten. Vakmanschap en persoonlijke aandacht staan centraal.</p>
+      <ul class="hero-list">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Vakkundig en betrouwbaar
         </li>
-        <li class="hero-usp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Persoonlijk advies op maat
         </li>
-        <li class="hero-usp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Actief in de regio Leersum
         </li>
       </ul>
-      <div class="hero-ctas">
-        <a href="tel:061569012" class="hero-cta-primary">Bel direct voor advies</a>
-        <a href="#diensten" class="hero-cta-outline">Bekijk diensten</a>
+      <div class="hero-btns">
+        <a href="/max-hegschaar-contact.html" class="btn-primary">Plan een gratis adviesgesprek</a>
+        <a href="/max-hegschaar-diensten.html" class="btn-outline">Bekijk diensten</a>
       </div>
     </div>
-    <div class="hero-form-wrap" id="offerte">
-      <div class="hero-form">
-        <h3>Offerte aanvragen</h3>
-        <p class="sub">Binnen 24 uur een voorstel op maat</p>
-        <form id="offerteForm" class="hero-form-fields">
-          <input class="hf-input" type="text" name="naam" placeholder="Naam" required>
-          <input class="hf-input" type="text" name="woonplaats" placeholder="Woonplaats" required>
-          <input class="hf-input" type="tel" name="telefoon" placeholder="Telefoonnummer">
-          <input class="hf-input" type="email" name="email" placeholder="E-mailadres" required>
-          <textarea class="hf-input hf-textarea" name="bericht" rows="4" placeholder="Omschrijf hier uw aanvraag..."></textarea>
-          <button type="submit" class="btn-submit">Versturen</button>
-          <div class="form-success" id="offerteSuccess">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
-        </form>
+    <div class="hero-form-col">
+      <div class="card-white">
+        <div id="heroForm"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Vakmanschap -->
-<section class="service-section">
+<!-- Trust -->
+<section class="trust">
   <div class="container">
-    <div class="service-card">
+    <h2 class="section-title">Kies voor <span class="text-primary">kwaliteit</span> en <span class="text-primary">betrouwbaarheid</span></h2>
+    <p class="trust-desc">Max Hegschaar staat voor kwaliteit, betrouwbaarheid en een groen resultaat waar u trots op bent.</p>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Lokale expertise</h3>
+        <p>Wij kennen de regio en passen onze aanpak aan op uw tuin.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
+        <h3>Persoonlijk contact</h3>
+        <p>U heeft altijd direct contact met uw vaste hovenier.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <h3>Kwaliteitsgarantie</h3>
+        <p>Wij leveren vakwerk en staan voor een duurzaam groen resultaat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service -->
+<section class="service" id="diensten">
+  <div class="container">
+    <div class="service-inner">
       <div class="service-grid">
-        <div class="service-img">
-          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-1.jpeg" alt="Max hegschaar">
-        </div>
-        <div class="service-text">
-          <h2>Vakmanschap, <span class="text-primary">van A tot Z</span> geregeld</h2>
+        <div><img id="serviceImg" src="" alt="Hovenier aan het werk in tuin Leersum" class="service-img"></div>
+        <div>
+          <h2>Professionele hoveniersdiensten in Leersum</h2>
           <p>Max Hegschaar biedt een breed scala aan hoveniersdiensten voor zowel particulieren als bedrijven in en rondom Leersum. Of het nu gaat om het aanleggen van een nieuwe tuin, het onderhouden van uw bestaande beplanting of het snoeien van hagen en struiken, wij zorgen voor een resultaat dat er het hele jaar door goed uitziet. Een goed onderhouden tuin verhoogt de waarde van uw woning en geeft u meer woonplezier. Wij denken met u mee over de beste oplossingen die passen bij uw wensen, budget en de mogelijkheden van uw tuin. Met oog voor detail en liefde voor het vak levert Max Hegschaar groenwerk van topkwaliteit.</p>
-          <a href="#offerte" class="btn-primary">Vraag een offerte aan</a>
+          <a href="/max-hegschaar-contact.html" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Onze diensten -->
-<section class="diensten-section" id="diensten">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="font-poppins">Onze diensten</h2>
-      <p>{{DIENSTEN_HOME_DESC}}</p>
-    </div>
-    <div class="diensten-grid">
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>ontwerp</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>aanleg</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>onderhoud</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>ontwerp</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>{{DIENST_5}}</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>{{DIENST_6}}</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>{{DIENST_7}}</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/max-hegschaar-diensten.html" class="dienst-card">
-        <h3>{{DIENST_8}}</h3>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Waarom kiezen voor ons -->
-<section class="why-section">
+<!-- Why Choose Us -->
+<section class="why">
   <div class="why-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/waarom/hovenier-waarom-1.jpeg" alt="Waarom kiezen voor Max hegschaar">
-    <div class="why-bg-overlay"></div>
+    <img id="whyBgImg" src="" alt="">
+    <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span>Max hegschaar</span></h2>
-    <p>Max Hegschaar onderscheidt zich door persoonlijke betrokkenheid, vakmanschap en een passie voor groen in uw woonomgeving.</p>
-    <div class="why-cards">
+    <h2>Waarom kiezen voor <span class="text-primary">Max hegschaar</span></h2>
+    <p class="why-desc">Max Hegschaar onderscheidt zich door persoonlijke betrokkenheid, vakmanschap en een passie voor groen in uw woonomgeving.</p>
+    <div class="why-grid">
       <div class="why-card">
-        <div class="why-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div>
-          <h3>Erkend vakmanschap</h3>
-          <p>Bouw-, verbouw- en afbouwwerk uitgevoerd volgens de hoogste vakrichtlijnen en kwaliteitsnormen.</p>
-        </div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h3>Vakkundig team</h3><p>Ons team werkt nauwkeurig en met jarenlange ervaring in de hovenierssector.</p></div>
       </div>
       <div class="why-card">
-        <div class="why-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-        </div>
-        <div>
-          <h3>Heldere planning</h3>
-          <p>Een realistische planning vooraf, zodat u precies weet wanneer uw project wordt opgeleverd.</p>
-        </div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg></div>
+        <div><h3>Eerlijk advies</h3><p>Wij geven altijd eerlijk en transparant advies zonder verborgen kosten.</p></div>
       </div>
       <div class="why-card">
-        <div class="why-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </div>
-        <div>
-          <h3>Eén aanspreekpunt</h3>
-          <p>Korte lijnen en heldere communicatie van eerste afspraak tot oplevering van uw project.</p>
-        </div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div><h3>Snel en flexibel</h3><p>Wij plannen snel en houden rekening met uw agenda en wensen.</p></div>
       </div>
       <div class="why-card">
-        <div class="why-card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div>
-          <h3>Netjes opgeleverd</h3>
-          <p>Wij staan achter ons werk en leveren elk project schoon, verzorgd en compleet afgewerkt op.</p>
-        </div>
+        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <div><h3>Lokale betrokkenheid</h3><p>Als lokale hovenier kennen wij de regio en voelen wij ons betrokken.</p></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Projecten preview -->
-<section class="projecten-section" id="projecten">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="font-poppins">Bekijk onze projecten</h2>
-      <p>Een greep uit recent uitgevoerde projecten — van nieuwbouw en aanbouw tot dakopbouw, vakkundig gerealiseerd door ons team.</p>
-    </div>
-    <div class="projecten-grid">
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_1}}" alt="Project 1" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_2}}" alt="Project 2" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_3}}" alt="Project 3" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div></div>
-    </div>
-    <div class="projecten-cta">
-      <a href="/max-hegschaar-projecten.html" class="btn-primary">Bekijk alle projecten</a>
     </div>
   </div>
 </section>
 
 <!-- Reviews -->
-<section class="reviews-section" id="reviewsSection" style="display:none">
+<section class="reviews" style="">
   <div class="container">
-    <div class="section-header">
-      <p style="font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary);margin-bottom:0.5rem;font-family:'Roboto',sans-serif">Wat onze klanten zeggen</p>
-      <h2 class="font-poppins">Ervaringen van onze <span class="text-primary">klanten</span></h2>
+    <div class="reviews-header">
+      <p>Wat onze klanten zeggen</p>
+      <h2>Ervaringen van onze <span class="text-primary">klanten</span></h2>
     </div>
-    <div class="reviews-slider-wrap">
-      <button class="reviews-nav-btn reviews-prev-desktop" id="revPrevD" aria-label="Vorige">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
-      </button>
-      <button class="reviews-nav-btn reviews-next-desktop" id="revNextD" aria-label="Volgende">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
-      </button>
-      <div class="reviews-track-wrap">
-        <div class="reviews-track" id="reviewsTrack"></div>
-      </div>
-      <div class="reviews-nav-mobile">
-        <button class="reviews-nav-btn" id="revPrevM" aria-label="Vorige">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
-        </button>
-        <button class="reviews-nav-btn" id="revNextM" aria-label="Volgende">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
-        </button>
-      </div>
-      <div class="reviews-dots" id="reviewsDots"></div>
+    <div class="reviews-carousel">
+      <div class="reviews-track" id="reviewsTrack"></div>
     </div>
+    <div class="reviews-nav">
+      <button onclick="scrollReviews(-1)" aria-label="Vorige"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg></button>
+      <button onclick="scrollReviews(1)" aria-label="Volgende"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg></button>
+    </div>
+    <div class="reviews-dots" id="reviewsDots"></div>
   </div>
 </section>
 
-<!-- Werkwijze -->
-<section class="work-section">
+<!-- Work -->
+<section class="work">
   <div class="container">
-    <div class="work-outer">
-      <div class="work-left">
-        <h2 class="font-poppins">Onze <span class="text-primary">ervaring</span> en werkwijze</h2>
-        <p>Bij Max Hegschaar begint alles met een persoonlijk gesprek. Wij luisteren naar uw wensen en bekijken samen de mogelijkheden van uw tuin. Zo weten wij precies wat nodig is om het gewenste resultaat te bereiken.</p>
-        <p>Na de intake maken wij een duidelijk plan en gaan wij aan de slag. U wordt gedurende het hele proces op de hoogte gehouden.</p>
-        <a href="#offerte" class="btn-primary" style="margin-top:0.5rem;display:inline-flex">Advies nodig?</a>
-        <div class="work-foto">
-          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/werkwijze/hovenier-werkwijze-1.jpeg" alt="Werkwijze Max hegschaar" loading="lazy">
-        </div>
-
-        <!-- 4 Stappen -->
-        <h3 class="stappen-titel">Uw project starten in <span class="text-primary">4 stappen</span></h3>
-        <div class="stappen-list">
-          <div class="stap-item">
-            <div class="stap-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <div>
-              <h4>Intake en opname op locatie</h4>
-              <p>We bespreken uw wensen en nemen ter plekke de situatie op om een passend plan te maken.</p>
-            </div>
+    <div class="work-grid">
+      <div>
+        <h2>Zo werkt Max Hegschaar voor u</h2>
+        <p class="work-desc">Bij Max Hegschaar begint alles met een persoonlijk gesprek. Wij luisteren naar uw wensen en bekijken samen de mogelijkheden van uw tuin. Zo weten wij precies wat nodig is om het gewenste resultaat te bereiken.</p>
+        <p class="work-desc">Na de intake maken wij een duidelijk plan en gaan wij aan de slag. U wordt gedurende het hele proces op de hoogte gehouden.</p>
+        <a href="/max-hegschaar-contact.html" class="btn-primary">Advies nodig?</a>
+        <img id="werkwijzeImg" src="" alt="Hovenier bespreekt tuinplan met klant" class="work-img">
+        <div class="work-steps">
+          <h3>Van wens naar groene werkelijkheid</h3>
+          <div class="work-step">
+            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div><h4>Vrijblijvend kennismaken</h4><p>Neem contact op en wij plannen een vrijblijvende kennismaking bij u thuis.</p></div>
           </div>
-          <div class="stap-item">
-            <div class="stap-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-            </div>
-            <div>
-              <h4>Heldere offerte en planning</h4>
-              <p>U ontvangt een duidelijke offerte met realistische planning, zonder verborgen kosten.</p>
-            </div>
+          <div class="work-step">
+            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+            <div><h4>Persoonlijk tuinadvies</h4><p>Wij bespreken uw wensen en geven professioneel advies op maat voor uw tuin.</p></div>
           </div>
-          <div class="stap-item">
-            <div class="stap-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <div>
-              <h4>Vakkundige uitvoering</h4>
-              <p>Het project wordt netjes en professioneel uitgevoerd met kwaliteitsmaterialen en vakmanschap.</p>
-            </div>
+          <div class="work-step">
+            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+            <div><h4>Heldere offerte</h4><p>U ontvangt een duidelijke en eerlijke offerte zonder verrassingen achteraf.</p></div>
           </div>
-          <div class="stap-item">
-            <div class="stap-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-            </div>
-            <div>
-              <h4>Oplevering en controle</h4>
-              <p>Na afronding controleren we samen het resultaat en zorgen we dat alles schoon en werkend wordt opgeleverd.</p>
-            </div>
+          <div class="work-step">
+            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
+            <div><h4>Vakkundig uitvoeren</h4><p>Ons team voert het werk netjes, tijdig en met aandacht voor detail uit.</p></div>
           </div>
         </div>
-
-        <!-- Vrijblijvend advies CTA -->
-        <div class="vrijblijvend-block">
+        <div class="cta-block">
           <div>
-            <h4>Vrijblijvend advies of offerte?</h4>
-            <p>Neem contact op en wij helpen u graag verder.</p>
+            <h4>Klaar voor een mooiere tuin?</h4>
+            <p>Neem contact op en ontvang een vrijblijvende offerte op maat.</p>
           </div>
-          <div class="vrijblijvend-btns">
-            <a href="tel:061569012" class="vb-btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              061569012
-            </a>
-            <a href="#offerte" class="vb-btn-outline">Offerte aanvragen</a>
-          </div>
+          <a href="/max-hegschaar-contact.html" class="btn-primary">Gratis adviesgesprek aanvragen</a>
         </div>
-
-        <!-- Werkgebied -->
-        <div class="werkgebied-block">
-          <h3 class="font-poppins"><span class="text-primary">Werkgebied</span></h3>
+        <div class="work-vakmanschap">
+          <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
           <p>Bij Max Hegschaar staat vakmanschap voorop. Wij werken met passie en precisie aan elke tuin, groot of klein. Ons doel is een groen resultaat waar u elke dag van geniet en waar u trots op bent.</p>
         </div>
       </div>
-
-      <!-- Rechter kolom: offerte form -->
-      <div class="work-right-col">
-        <div class="work-form-card" id="offerteForm2Wrap">
-          <h3>Offerte aanvragen</h3>
-          <form id="offerteForm2" class="wf-fields">
-            <input class="wf-input" type="text" name="naam" placeholder="Naam" required>
-            <input class="wf-input" type="text" name="woonplaats" placeholder="Woonplaats" required>
-            <input class="wf-input" type="tel" name="telefoon" placeholder="Telefoonnummer">
-            <input class="wf-input" type="email" name="email" placeholder="E-mailadres" required>
-            <textarea class="wf-input wf-textarea" name="bericht" rows="4" placeholder="Omschrijf hier uw aanvraag..."></textarea>
-            <button type="submit" class="btn-primary wf-submit">Versturen</button>
-            <div class="form-success" id="offerteSuccess2">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
-          </form>
+      <div>
+        <div class="form-sticky">
+          <div id="workForm"></div>
         </div>
       </div>
     </div>
@@ -652,16 +440,28 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Footer -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
+    <div class="footer-grid">
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/max-hegschaar-diensten.html">ontwerp</a></li>
-          <li><a href="/max-hegschaar-diensten.html">aanleg</a></li>
-          <li><a href="/max-hegschaar-diensten.html">onderhoud</a></li>
-          <li><a href="/max-hegschaar-diensten.html">ontwerp</a></li>
-          <li><a href="/max-hegschaar-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/max-hegschaar-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">Doorn</a></li>
+          <li><a href="#">Amerongen</a></li>
+          <li><a href="#">Driebergen-Rijsenburg</a></li>
+          <li><a href="#">Zeist</a></li>
+          <li><a href="#">Wijk bij Duurstede</a></li>
+          <li><a href="#">Rhenen</a></li>
+          <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
       <div>
@@ -669,7 +469,7 @@ footer ul li:has(a:empty) { display: none; }
         <ul>
           <li><a href="/max-hegschaar-over-ons.html">Over ons</a></li>
           <li><a href="/max-hegschaar-contact.html">Contact</a></li>
-          <li><a href="#offerte">Offerte aanvragen</a></li>
+          <li><a href="/max-hegschaar-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
@@ -686,121 +486,135 @@ footer ul li:has(a:empty) { display: none; }
   </div>
 </footer>
 
+<!-- Offerte modal -->
+<div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
+    
+  </div>
+</div>
+
+<!-- Adviesgesprek modal -->
+<div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('advies')">&times;</button>
+    
+  </div>
+</div>
+
+<script src="https://link.smart-reach.nl/js/form_embed.js"></script>
+<script>
+// ── Modal ──────────────────────────────────────────
+function openModal(type) {
+  document.getElementById(type === 'offerte' ? 'modalOfferte' : 'modalAdvies').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(type) {
+  document.getElementById(type === 'offerte' ? 'modalOfferte' : 'modalAdvies').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('offerte'); closeModal('advies'); } });
+
+// ── Quote Form ─────────────────────────────────────
+const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/23a44000-d10d-419e-aa59-22e1f72bf074';
+const inputStyle = 'width:100%;border:1px solid hsl(0,0%,88%);background:hsl(0,0%,96%);border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-family:inherit;color:hsl(0,0%,10%);margin-bottom:.75rem;outline:none;display:block';
+
+function createForm(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = `
+    <h3 style="font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:1rem;color:hsl(0,0%,10%)">Offerte aanvragen</h3>
+    <form onsubmit="submitForm(event,this,'${id}')">
+      <input name="name" placeholder="Naam" required style="${inputStyle}">
+      <input name="city" placeholder="Woonplaats" required style="${inputStyle}">
+      <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
+      <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
+      <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
+      <button type="submit" style="width:100%;background:groen;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+    </form>`;
+}
+
+async function submitForm(e, form, containerId) {
+  e.preventDefault();
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Bezig...'; btn.disabled = true;
+  try {
+    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Max hegschaar', email_bedrijf: 'info@hegschaar.nl', slug: 'max-hegschaar' }) });
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:groen;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+  } catch {
+    btn.textContent = 'Versturen'; btn.disabled = false;
+    alert('Er is iets misgegaan. Probeer het opnieuw.');
+  }
+}
+createForm('heroForm');
+createForm('workForm');
+
+// ── Reviews carousel ───────────────────────────────
+const reviews = [[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]];
+
+let reviewIndex = 0;
+const LIMIT = 150;
+
+function spv() { return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
+
+function renderReviews() {
+  const track = document.getElementById('reviewsTrack');
+  const dots = document.getElementById('reviewsDots');
+  track.innerHTML = reviews.map((r, i) => {
+    const plain = r.text.replace(/<[^>]+>/g, '');
+    const short = plain.length > LIMIT;
+    const preview = short ? r.text.slice(0, LIMIT) + '…' : r.text;
+    const fullAttr = r.text.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    return `<div class="review-slide"><div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text" id="rt${i}" data-full="${fullAttr}">${preview}${short ? `<button class="review-read-more" onclick="toggleR(${i})">Lees meer</button>` : ''}</p>
+      <div class="review-author"><strong>${r.name}</strong><span>${r.date}</span></div>
+    </div></div>`;
+  }).join('');
+  const pages = Math.ceil(reviews.length / spv());
+  dots.innerHTML = Array.from({ length: pages }, (_, i) => `<button class="reviews-dot${i === 0 ? ' active' : ''}" onclick="goReview(${i})"></button>`).join('');
+  goReview(0);
+}
+
+function toggleR(i) {
+  const el = document.getElementById('rt' + i);
+  const full = el.dataset.full || (reviews[i] && reviews[i].text) || '';
+  const btn = el.querySelector('button');
+  if (btn.textContent === 'Lees meer') {
+    el.innerHTML = full + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees minder</button>';
+  } else {
+    const plain = full.replace(/<[^>]+>/g, '');
+    const preview = plain.length > LIMIT ? full.slice(0, LIMIT) + '…' : full;
+    el.innerHTML = preview + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees meer</button>';
+  }
+}
+
+function goReview(i) {
+  reviewIndex = i;
+  const slideW = 100 / spv();
+  document.getElementById('reviewsTrack').style.transform = `translateX(-${i * slideW * spv()}%)`;
+  document.querySelectorAll('.reviews-dot').forEach((d, j) => d.classList.toggle('active', j === i));
+}
+
+function scrollReviews(dir) {
+  const pages = Math.ceil(reviews.length / spv());
+  goReview((reviewIndex + dir + pages) % pages);
+}
+
+renderReviews();
+window.addEventListener('resize', renderReviews);
+</script>
+
 <script>
 (function(){
   var slug = 'max-hegschaar';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
-
-  function handleForm(formId, successId, btnText) {
-    var form = document.getElementById(formId);
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = form.querySelector('button[type=submit]');
-      btn.disabled = true;
-      btn.textContent = 'Verzenden...';
-      var data = {};
-      new FormData(form).forEach(function(v, k){ data[k] = v; });
-      fetch('{{OFFERTE_WEBHOOK}}', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      }).then(function(){
-        document.getElementById(successId).style.display = 'block';
-        form.reset();
-        btn.disabled = false;
-        btn.textContent = btnText || 'Versturen';
-      }).catch(function(){
-        btn.disabled = false;
-        btn.textContent = btnText || 'Versturen';
-        alert('Er is iets misgegaan. Probeer het opnieuw.');
-      });
-    });
-  }
-  handleForm('offerteForm', 'offerteSuccess', 'Versturen');
-  handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
-
-  try {
-    var reviews = {"name":"Sandra V.","text":"Max Hegschaar heeft onze verwaarloosde tuin volledig nieuw leven ingeblazen. Het resultaat is prachtig en de aanpak was professioneel van begin tot eind. Wij zijn er heel blij mee!","date":"1 maand geleden"},{"name":"Peter D.","text":"Heel fijn bedrijf om mee samen te werken. Ze luisteren goed naar je wensen en leveren echt kwaliteitswerk. Onze haag is perfect gesnoeid en de tuin ziet er weer tip-top uit.","date":"1 maand geleden"},{"name":"Marianne K.","text":"Al een aantal jaar vaste klant en nog steeds erg tevreden. Het onderhoud wordt altijd netjes en op tijd uitgevoerd. Fijn dat je op ze kunt rekenen!","date":"1 maand geleden"},{"name":"Thomas B.","text":"Geweldig vakmanschap en een heel prettige samenwerking. Het tuinontwerp dat wij hebben gekregen overtrof onze verwachtingen. Zeker een aanrader voor iedereen in de regio.","date":"1 maand geleden"},{"name":"Inge R.","text":"Snel gereageerd op mijn aanvraag en een duidelijke offerte ontvangen. De uitvoering was netjes en het werk werd keurig opgeleverd. Heel tevreden met het eindresultaat!","date":"1 maand geleden"},{"name":"Bert M.","text":"Eindelijk een hovenier die echt meedenkt en eerlijk advies geeft. Onze achtertuin is volledig omgetoverd en we genieten er elke dag van. Hartelijk dank voor het geweldige werk!","date":"1 maand geleden"};
-    if (Array.isArray(reviews) && reviews.length) {
-      var section = document.getElementById('reviewsSection');
-      var track = document.getElementById('reviewsTrack');
-      var dotsWrap = document.getElementById('reviewsDots');
-      section.style.display = '';
-      var CHAR_LIMIT = 150;
-      reviews.forEach(function(r, i) {
-        var isLong = r.tekst && r.tekst.length > CHAR_LIMIT;
-        var shortText = isLong ? r.tekst.slice(0, CHAR_LIMIT) + '…' : (r.tekst || '');
-        var stars = '<div class="review-stars">' + Array(5).fill('<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>').join('') + '</div>';
-        var card = document.createElement('div');
-        card.className = 'review-card';
-        var textEl = document.createElement('p');
-        textEl.className = 'review-text';
-        textEl.id = 'rt' + i;
-        textEl.textContent = shortText;
-        var inner = document.createElement('article');
-        inner.className = 'review-card-inner';
-        inner.innerHTML = stars;
-        inner.appendChild(textEl);
-        if (isLong) {
-          var btn = document.createElement('button');
-          btn.className = 'review-read-more';
-          btn.textContent = 'Lees meer';
-          var expanded = false;
-          btn.addEventListener('click', function(){
-            expanded = !expanded;
-            textEl.textContent = expanded ? r.tekst : shortText;
-            btn.textContent = expanded ? 'Lees minder' : 'Lees meer';
-            if (!expanded) textEl.appendChild(btn);
-          });
-          textEl.appendChild(btn);
-        }
-        inner.innerHTML += '<div class="review-meta"><p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p></div>';
-        inner.insertBefore(textEl, inner.querySelector('.review-meta'));
-        card.appendChild(inner);
-        track.appendChild(card);
-      });
-      var current = 0;
-      function getPerPage(){ return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
-      var total = 0;
-      function buildDots() {
-        dotsWrap.innerHTML = '';
-        total = Math.ceil(reviews.length / getPerPage());
-        for (var j = 0; j < total; j++) {
-          var dot = document.createElement('button');
-          dot.className = 'review-dot' + (j === current ? ' active' : '');
-          (function(idx){ dot.addEventListener('click', function(){ goto(idx); }); })(j);
-          dotsWrap.appendChild(dot);
-        }
-      }
-      function updateDots() {
-        var dots = dotsWrap.querySelectorAll('.review-dot');
-        dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
-      }
-      function goto(idx) {
-        total = Math.ceil(reviews.length / getPerPage());
-        current = Math.max(0, Math.min(idx, total - 1));
-        var pp = getPerPage();
-        var cards = track.querySelectorAll('.review-card');
-        var w = cards[0] ? cards[0].offsetWidth : 0;
-        track.style.transform = 'translateX(-' + (current * pp * w) + 'px)';
-        track.style.transition = 'transform 0.4s ease';
-        updateDots();
-      }
-      buildDots();
-      ['revPrevD','revPrevM'].forEach(function(id){ var b = document.getElementById(id); if(b) b.addEventListener('click', function(){ goto(current - 1); }); });
-      ['revNextD','revNextM'].forEach(function(id){ var b = document.getElementById(id); if(b) b.addEventListener('click', function(){ goto(current + 1); }); });
-      window.addEventListener('resize', function(){ buildDots(); goto(0); });
-    }
-  } catch(e) {}
-
   if (onLive) {
     var remap = {};
     remap['/' + slug + '.html'] = '/';
     remap['/' + slug + '-contact.html'] = '/contact';
     remap['/' + slug + '-diensten.html'] = '/diensten';
     remap['/' + slug + '-over-ons.html'] = '/over-ons';
-    remap['/' + slug + '-projecten.html'] = '/projecten';
     document.querySelectorAll('a[href]').forEach(function(a) {
       var h = a.getAttribute('href');
       if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
@@ -808,6 +622,6 @@ footer ul li:has(a:empty) { display: none; }
   }
 })();
 </script>
-<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/https://wa.me/31615605183" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
