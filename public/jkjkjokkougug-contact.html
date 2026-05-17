@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | jkjkjokkougug</title>
-<meta name="description" content="Neem contact op met jkjkjokkougug. Vraag een vrijblijvende offerte aan of bel ons direct.">
+<title>Contact | Max Stucct</title>
+<meta name="description" content="Neem contact op met Max Stucct. Vraag een vrijblijvende offerte aan of bel ons direct.">
 <link rel="icon" href="{{LOGO_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #c33737;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -78,7 +78,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .contact-info h2 span { color: var(--primary); }
 .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
-.contact-item-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.contact-item-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 0.75rem; background: {{KLEUR_PRIMARY_A10}}; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .contact-item-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-fg); margin-bottom: 0.25rem; }
 .contact-item a { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; }
 .contact-item a:hover { color: var(--primary); }
@@ -126,13 +126,13 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:87865797">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        87865797
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:jk@fghgh.nl">
+      <a href="mailto:{{EMAIL}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        jk@fghgh.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -141,15 +141,15 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/jkjkjokkougug.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">jkjkjokkougug</span></a>
+    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
-      <a href="/jkjkjokkougug.html">Home</a>
-      <a href="/jkjkjokkougug-over-ons.html">Over</a>
-      <a href="/jkjkjokkougug-diensten.html">Diensten</a>
-      <a href="/jkjkjokkougug-projecten.html">Projecten</a>
-      <a href="/jkjkjokkougug-contact.html" style="color:var(--primary)">Contact</a>
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-over-ons.html">Over</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
+      <a href="/{{SLUG}}-projecten.html">Projecten</a>
+      <a href="/{{SLUG}}-contact.html" style="color:var(--primary)">Contact</a>
     </nav>
-    <a href="/jkjkjokkougug-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -160,24 +160,24 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/jkjkjokkougug.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/jkjkjokkougug-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/jkjkjokkougug-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/jkjkjokkougug-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
-    <a href="/jkjkjokkougug-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="/jkjkjokkougug-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/{{SLUG}}-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/tegelzetter/hero/tegelzetter-hero-1.jpeg" alt="Contact">
+    <img src="{{FOTO_HERO}}" alt="Contact">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
     <h1>Contact</h1>
-    <p>Neem direct contact op met jkjkjokkougug.</p>
+    <p>{{CONTACT_HERO_DESC}}</p>
   </div>
 </section>
 
@@ -194,7 +194,7 @@ footer ul li:has(a:empty) { display: none; }
             </div>
             <div>
               <p class="contact-item-label">Telefoon</p>
-              <a href="tel:87865797">87865797</a>
+              <a href="tel:{{TELEFOON_HREF}}">{{TELEFOON_DISPLAY}}</a>
             </div>
           </div>
           <div class="contact-item">
@@ -203,7 +203,7 @@ footer ul li:has(a:empty) { display: none; }
             </div>
             <div>
               <p class="contact-item-label">E-mail</p>
-              <a href="mailto:jk@fghgh.nl">jk@fghgh.nl</a>
+              <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
             </div>
           </div>
           <div class="contact-item">
@@ -212,7 +212,7 @@ footer ul li:has(a:empty) { display: none; }
             </div>
             <div>
               <p class="contact-item-label">Adres</p>
-              <a href="{{MAPS_URL}}" target="_blank" rel="noopener">, </a>
+              <a href="{{MAPS_URL}}" target="_blank" rel="noopener">{{ADRES_STRAAT}}, {{ADRES_POSTCODE_STAD}}</a>
             </div>
           </div>
         </div>
@@ -258,44 +258,44 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-diensten.html">keuken</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">badkamer</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">buiten</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">toiletten</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_1}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_2}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_3}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_4}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_5}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_6}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Amsterdam</a></li>
-          <li><a href="#">Haarlem</a></li>
-          <li><a href="#">Utrecht</a></li>
-          <li><a href="#">Almere</a></li>
-          <li><a href="#">Zaandam</a></li>
-          <li><a href="#">Hilversum</a></li>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-over-ons.html">Over ons</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Contact</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Offerte aanvragen</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">jkjkjokkougug</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">Max Stucct</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 jkjkjokkougug – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max Stucct – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
@@ -327,7 +327,7 @@ footer ul li:has(a:empty) { display: none; }
     });
   }
 
-  var slug = 'jkjkjokkougug';
+  var slug = '{{SLUG}}';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
   if (onLive) {
     var remap = {};
