@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<meta name="description" content="">
-<link rel="icon" href="">
+<title>{{SEO_TITLE}}</title>
+<meta name="description" content="{{SEO_DESCRIPTION}}">
+<link rel="icon" href="{{LOGO_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #c33737;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -220,7 +220,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
 .stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .stap-item { display: flex; align-items: flex-start; gap: 1rem; }
-.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); color: var(--primary); }
+.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: {{KLEUR_PRIMARY_A10}}; color: var(--primary); }
 .stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 @media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
 .stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
@@ -279,13 +279,13 @@ footer ul li:has(a:empty) { display: none; }
   <div class="topbar-inner">
     <!-- Mobile: telefoon + email -->
     <div class="topbar-mobile-contact">
-      <a href="tel:" class="topbar-contact-link">
+      <a href="tel:{{TELEFOON_HREF}}" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:jk@fghgh.nl" class="topbar-contact-link">
+      <a href="mailto:{{EMAIL}}" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        jk@fghgh.nl
+        {{EMAIL}}
       </a>
     </div>
     <!-- Desktop: sterren links -->
@@ -299,13 +299,13 @@ footer ul li:has(a:empty) { display: none; }
     </div>
     <!-- Desktop: telefoon + email rechts -->
     <div class="topbar-desktop-contact">
-      <a href="tel:" class="topbar-contact-link">
+      <a href="tel:{{TELEFOON_HREF}}" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        
+        {{TELEFOON_DISPLAY}}
       </a>
-      <a href="mailto:jk@fghgh.nl" class="topbar-contact-link">
+      <a href="mailto:{{EMAIL}}" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        jk@fghgh.nl
+        {{EMAIL}}
       </a>
     </div>
   </div>
@@ -314,13 +314,13 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/jkjkjokkougug.html" class="navbar-logo"></a>
+    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
     <nav class="navbar-nav">
-      <a href="/jkjkjokkougug.html" style="color:var(--primary)">Home</a>
-      <a href="/jkjkjokkougug-over-ons.html">Over</a>
-      <a href="/jkjkjokkougug-diensten.html">Diensten</a>
-      <a href="/jkjkjokkougug-projecten.html">Projecten</a>
-      <a href="/jkjkjokkougug-contact.html">Contact</a>
+      <a href="/{{SLUG}}.html" style="color:var(--primary)">Home</a>
+      <a href="/{{SLUG}}-over-ons.html">Over</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
+      <a href="/{{SLUG}}-projecten.html">Projecten</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
     </nav>
     <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
     <div style="display:flex;align-items:center;gap:0.5rem">
@@ -336,11 +336,11 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/jkjkjokkougug.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/jkjkjokkougug-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/jkjkjokkougug-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/jkjkjokkougug-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
-    <a href="/jkjkjokkougug-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/{{SLUG}}-projecten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><a href="#offerte" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
@@ -348,30 +348,30 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="" alt="jkjkjokkougug">
+    <img src="{{FOTO_HERO}}" alt="Max Stucct">
     <div class="hero-bg-overlay"></div>
   </div>
   <div class="container hero-inner" style="align-items:center">
     <div class="hero-text">
-      <p class="hero-eyebrow"></p>
-      <h1></h1>
-      <p></p>
+      <p class="hero-eyebrow">{{HERO_EYEBROW}}</p>
+      <h1>{{HERO_TITLE}}</h1>
+      <p>{{HERO_DESC}}</p>
       <ul class="hero-usps">
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          
+          {{USP_1}}
         </li>
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          
+          {{USP_2}}
         </li>
         <li class="hero-usp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f3f4eb" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
-          
+          {{USP_3}}
         </li>
       </ul>
       <div class="hero-ctas">
-        <a href="tel:" class="hero-cta-primary">Bel direct voor advies</a>
+        <a href="tel:{{TELEFOON_HREF}}" class="hero-cta-primary">Bel direct voor advies</a>
         <a href="#diensten" class="hero-cta-outline">Bekijk diensten</a>
       </div>
     </div>
@@ -399,11 +399,11 @@ footer ul li:has(a:empty) { display: none; }
     <div class="service-card">
       <div class="service-grid">
         <div class="service-img">
-          <img src="" alt="jkjkjokkougug">
+          <img src="{{FOTO_WAAROM}}" alt="Max Stucct">
         </div>
         <div class="service-text">
           <h2>Vakmanschap, <span class="text-primary">van A tot Z</span> geregeld</h2>
-          <p></p>
+          <p>{{SERVICE_DESC}}</p>
           <a href="#offerte" class="btn-primary">Vraag een offerte aan</a>
         </div>
       </div>
@@ -419,35 +419,35 @@ footer ul li:has(a:empty) { display: none; }
       <p>{{DIENSTEN_HOME_DESC}}</p>
     </div>
     <div class="diensten-grid">
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
-        <h3></h3>
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
+        <h3>{{DIENST_1}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
-        <h3></h3>
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
+        <h3>{{DIENST_2}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
-        <h3></h3>
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
+        <h3>{{DIENST_3}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
-        <h3></h3>
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
+        <h3>{{DIENST_4}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
         <h3>{{DIENST_5}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
         <h3>{{DIENST_6}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
         <h3>{{DIENST_7}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/jkjkjokkougug-diensten.html" class="dienst-card">
+      <a href="/{{SLUG}}-diensten.html" class="dienst-card">
         <h3>{{DIENST_8}}</h3>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
@@ -458,12 +458,12 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Waarom kiezen voor ons -->
 <section class="why-section">
   <div class="why-bg">
-    <img src="" alt="Waarom kiezen voor jkjkjokkougug">
+    <img src="{{FOTO_USP}}" alt="Waarom kiezen voor Max Stucct">
     <div class="why-bg-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span>jkjkjokkougug</span></h2>
-    <p></p>
+    <h2>Waarom kiezen voor <span>Max Stucct</span></h2>
+    <p>{{WHY_DESC}}</p>
     <div class="why-cards">
       <div class="why-card">
         <div class="why-card-icon">
@@ -519,7 +519,7 @@ footer ul li:has(a:empty) { display: none; }
       <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div></div>
     </div>
     <div class="projecten-cta">
-      <a href="/jkjkjokkougug-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+      <a href="/{{SLUG}}-projecten.html" class="btn-primary">Bekijk alle projecten</a>
     </div>
   </div>
 </section>
@@ -560,11 +560,11 @@ footer ul li:has(a:empty) { display: none; }
     <div class="work-outer">
       <div class="work-left">
         <h2 class="font-poppins">Onze <span class="text-primary">ervaring</span> en werkwijze</h2>
-        <p></p>
-        <p></p>
+        <p>{{WERK_DESC_1}}</p>
+        <p>{{WERK_DESC_2}}</p>
         <a href="#offerte" class="btn-primary" style="margin-top:0.5rem;display:inline-flex">Advies nodig?</a>
         <div class="work-foto">
-          <img src="" alt="Werkwijze jkjkjokkougug" loading="lazy">
+          <img src="{{FOTO_WERKWIJZE}}" alt="Werkwijze Max Stucct" loading="lazy">
         </div>
 
         <!-- 4 Stappen -->
@@ -615,9 +615,9 @@ footer ul li:has(a:empty) { display: none; }
             <p>Neem contact op en wij helpen u graag verder.</p>
           </div>
           <div class="vrijblijvend-btns">
-            <a href="tel:" class="vb-btn-primary">
+            <a href="tel:{{TELEFOON_HREF}}" class="vb-btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              
+              {{TELEFOON_DISPLAY}}
             </a>
             <a href="#offerte" class="vb-btn-outline">Offerte aanvragen</a>
           </div>
@@ -626,7 +626,7 @@ footer ul li:has(a:empty) { display: none; }
         <!-- Werkgebied -->
         <div class="werkgebied-block">
           <h3 class="font-poppins"><span class="text-primary">Werkgebied</span></h3>
-          <p></p>
+          <p>{{VAKMANSCHAP_DESC}}</p>
         </div>
       </div>
 
@@ -656,39 +656,39 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
-          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
-          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
-          <li><a href="/jkjkjokkougug-diensten.html"></a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/jkjkjokkougug-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_1}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_2}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_3}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_4}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_5}}</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">{{DIENST_6}}</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/jkjkjokkougug-over-ons.html">Over ons</a></li>
-          <li><a href="/jkjkjokkougug-contact.html">Contact</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
           <li><a href="#offerte">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">jkjkjokkougug</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p style="font-weight:600;color:var(--foreground)">Max Stucct</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 jkjkjokkougug – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Max Stucct – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  var slug = 'jkjkjokkougug';
+  var slug = '{{SLUG}}';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
 
   function handleForm(formId, successId, btnText) {
@@ -721,7 +721,7 @@ footer ul li:has(a:empty) { display: none; }
   handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
 
   try {
-    var reviews = ;
+    var reviews = {{REVIEWS_JSON}};
     if (Array.isArray(reviews) && reviews.length) {
       var section = document.getElementById('reviewsSection');
       var track = document.getElementById('reviewsTrack');
