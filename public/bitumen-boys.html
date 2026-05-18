@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: blauw;
+  --primary: hsl(213,76%,52%);
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -220,7 +220,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
 .stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .stap-item { display: flex; align-items: flex-start; gap: 1rem; }
-.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: rgba(37, 99, 235, 0.1); color: var(--primary); }
+.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); color: var(--primary); }
 .stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 @media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
 .stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
@@ -314,7 +314,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/bitumen-boys.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/bitumen-boys/foto_logo_cinewall-lansana-1530-x-407-px-.png" alt="Bitumen Boys" style="height:40px;width:auto;"></a>
+    <a href="/bitumen-boys.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/bitumen-boys/foto_logo_cinewall-lansana-1530-x-407-px-.png" alt="Bitumen Boys logo" style="height:40px;width:auto;max-width:160px;object-fit:contain"></a>
     <nav class="navbar-nav">
       <a href="/bitumen-boys.html" style="color:var(--primary)">Home</a>
       <a href="/bitumen-boys-over-ons.html">Over</a>
@@ -721,7 +721,7 @@ footer ul li:has(a:empty) { display: none; }
   handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
 
   try {
-    var reviews = [object Object],[object Object],[object Object],[object Object],[object Object],[object Object];
+    var reviews = {"naam":"Marco V.","stad":"Leersum","score":5,"tekst":"Bitumen Boys heeft onze daklekkage snel en vakkundig verholpen. Ze kwamen precies op afgesproken tijd en werkten erg netjes. Zeer tevreden met het resultaat!"},{"naam":"Inge D.","stad":"Doorn","score":5,"tekst":"Uitstekende service en eerlijke prijzen. Het team van Bitumen Boys heeft ons platte dak volledig gerenoveerd en het ziet er geweldig uit. Geen lekkages meer!"},{"naam":"Peter S.","stad":"Amerongen","score":5,"tekst":"Na een dakinspectie door Bitumen Boys kregen wij duidelijk advies zonder verkooppraatjes. De reparatie werd snel uitgevoerd en de prijs was prima. Aanrader!"},{"naam":"Sandra K.","stad":"Zeist","score":5,"tekst":"Ons dak was aan vernieuwing toe en Bitumen Boys heeft het prachtig opgeknapt. Professioneel, snel en netjes opgeruimd achtergelaten. We zijn heel blij met het resultaat."},{"naam":"Henk B.","stad":"Driebergen-Rijsenburg","score":5,"tekst":"Bij hevige regen ontdekten we een lekkage. Bitumen Boys reageerde snel en loste het probleem dezelfde dag nog op. Top bedrijf met echte vakmensen!"},{"naam":"Annemiek R.","stad":"Wijk bij Duurstede","score":5,"tekst":"Bitumen Boys heeft nieuwe dakpannen gelegd en meteen de dakisolatie verbeterd. Merkbaar verschil in warmte en geluid. Vriendelijk team en uitstekend vakmanschap."};
     if (Array.isArray(reviews) && reviews.length) {
       var section = document.getElementById('reviewsSection');
       var track = document.getElementById('reviewsTrack');
