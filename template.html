@@ -561,14 +561,14 @@ function renderReviews() {
   const track = document.getElementById('reviewsTrack');
   const dots = document.getElementById('reviewsDots');
   track.innerHTML = reviews.map((r, i) => {
-    const plain = r.text.replace(/<[^>]+>/g, '');
+    const plain = r.tekst.replace(/<[^>]+>/g, '');
     const short = plain.length > LIMIT;
-    const preview = short ? r.text.slice(0, LIMIT) + '…' : r.text;
-    const fullAttr = r.text.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const preview = short ? r.tekst.slice(0, LIMIT) + '…' : r.tekst;
+    const fullAttr = r.tekst.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
     return `<div class="review-slide"><div class="review-card">
       <div class="review-stars">★★★★★</div>
       <p class="review-text" id="rt${i}" data-full="${fullAttr}">${preview}${short ? `<button class="review-read-more" onclick="toggleR(${i})">Lees meer</button>` : ''}</p>
-      <div class="review-author"><strong>${r.name}</strong><span>${r.date}</span></div>
+      <div class="review-author"><strong>${r.naam}</strong><span>${r.datum}</span></div>
     </div></div>`;
   }).join('');
   const pages = Math.ceil(reviews.length / spv());
@@ -578,7 +578,7 @@ function renderReviews() {
 
 function toggleR(i) {
   const el = document.getElementById('rt' + i);
-  const full = el.dataset.full || (reviews[i] && reviews[i].text) || '';
+  const full = el.dataset.full || (reviews[i] && reviews[i].tekst) || '';
   const btn = el.querySelector('button');
   if (btn.textContent === 'Lees meer') {
     el.innerHTML = full + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees minder</button>';
