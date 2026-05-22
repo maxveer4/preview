@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jarlka verg | Dakdekker in Doorn</title>
 <meta name="description" content="Op zoek naar een betrouwbare dakdekker in Doorn? Jarlka verg staat voor u klaar. Bel nu voor een vrijblijvende offerte: 061874623.">
-<link rel="icon" href="">
+<link rel="icon" href="{{LOGO_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(142,72%,38%);
+  --primary: groen;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -86,7 +86,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Quote form inline */
 .qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
 .qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(142,72%,38%,0.2); }
+.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px {{KLEUR_PRIMARY_A20}}; }
 .qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
 .qf-submit:hover { opacity: 0.9; }
 .qf-success { text-align: center; padding: 2rem 0; }
@@ -168,7 +168,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .work-steps { margin-top: 3rem; }
 .work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
 .work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: hsla(142,72%,38%,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: {{KLEUR_PRIMARY_A10}}; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 .work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
 .cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
@@ -219,7 +219,7 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:061874623">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         061874623
       </a>
@@ -234,7 +234,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/jarlka-verg.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Jarlka verg</span></a>
+    <a href="/jarlka-verg.html" class="navbar-logo"><span class="logo-text">Jarlka verg</span></a>
     <nav class="navbar-nav">
       <a href="/jarlka-verg.html">Home</a>
       <a href="/jarlka-verg-over-ons.html">Over</a>
@@ -273,15 +273,15 @@ footer ul li:has(a:empty) { display: none; }
       <p class="hero-desc">Jarlka verg levert vakkundig dakwerk in Doorn en omgeving. Wij zorgen voor een waterdicht en duurzaam resultaat.</p>
       <ul class="hero-list">
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(142,72%,38%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Vakkundig en betrouwbaar dakwerk
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          Vakkundig en betrouwbaar dakkie
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(142,72%,38%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Snel en netjes uitgevoerd
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(142,72%,38%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="groen" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Vrijblijvende offerte op maat
         </li>
       </ul>
@@ -328,7 +328,7 @@ footer ul li:has(a:empty) { display: none; }
   <div class="container">
     <div class="service-inner">
       <div class="service-grid">
-        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="Dakdekker werkt aan dak in Doorn" class="service-img"></div>
+        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="Dakdekker werkt aan dak in Doorn" class="service-img"></div>
         <div>
           <h2>Professioneel dakwerk in Doorn</h2>
           <p>Bij Jarlka verg bent u aan het juiste adres voor al uw dakwerkzaamheden. Wij verzorgen alles van dakinspectie en dakonderhoud tot complete dakrenovaties. Een goed onderhouden dak beschermt uw woning tegen vocht, kou en schade en bespaart u op de lange termijn aanzienlijk veel kosten. Ons team werkt nauwkeurig en gebruikt uitsluitend hoogwaardige materialen die bestand zijn tegen de Nederlandse weersomstandigheden. Of u nu te maken heeft met een lekkage, versleten dakpannen of een dak dat aan renovatie toe is, wij bieden altijd een oplossing op maat. Neem vandaag nog contact op voor een vrijblijvend adviesgesprek.</p>
@@ -342,7 +342,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Why Choose Us -->
 <section class="why">
   <div class="why-bg">
-    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="">
+    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="">
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
@@ -370,7 +370,7 @@ footer ul li:has(a:empty) { display: none; }
 </section>
 
 <!-- Reviews -->
-<section class="reviews" style="{{REVIEWS_DISPLAY}}">
+<section class="reviews" style="">
   <div class="container">
     <div class="reviews-header">
       <p>Wat onze klanten zeggen</p>
@@ -444,12 +444,12 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">dakisolatie</a></li>
-          <li><a href="#">dakpannen-vervangen</a></li>
-          <li><a href="#">dakrenovatie</a></li>
-          <li><a href="#">daklekkage</a></li>
-          <li><a href="#">{{DIENST_5}}</a></li>
-          <li><a href="#">{{DIENST_6}}</a></li>
+          <li><a href="#">Dienst 1</a></li>
+          <li><a href="#">Dienst 2</a></li>
+          <li><a href="#">Dienst 3</a></li>
+          <li><a href="#">Dienst 4</a></li>
+          <li><a href="#">Dienst 5</a></li>
+          <li><a href="#">Dienst 6</a></li>
         </ul>
       </div>
       <div>
@@ -475,9 +475,9 @@ footer ul li:has(a:empty) { display: none; }
       <div class="footer-addr">
         <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Jarlka verg</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:0.75rem">KvK: {{KVK}}</p>
       </div>
     </div>
   </div>
@@ -490,7 +490,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -498,7 +498,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
@@ -530,7 +530,7 @@ function createForm(id) {
       <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
       <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
       <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:hsl(142,72%,38%);color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+      <button type="submit" style="width:100%;background:groen;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
     </form>`;
 }
 
@@ -540,7 +540,7 @@ async function submitForm(e, form, containerId) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
     await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Jarlka verg', email_bedrijf: 'info@kjsf.nl', slug: 'jarlka-verg' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(142,72%,38%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:groen;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
     alert('Er is iets misgegaan. Probeer het opnieuw.');
@@ -550,7 +550,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [{"name":"Peter V.","text":"Jarlka verg heeft ons dak snel en vakkundig gerenoveerd. De werkzaamheden werden netjes uitgevoerd en het resultaat is uitstekend. Zeker een aanrader!","date":"1 maand geleden"},{"name":"Sandra B.","text":"Na een lekkage heeft Jarlka verg het probleem dezelfde week nog opgelost. Eerlijke prijs en keurig netjes werk. Wij zijn erg tevreden.","date":"1 maand geleden"},{"name":"Marco D.","text":"Onze dakpannen zijn volledig vervangen door Jarlka verg. Het team werkte professioneel en liet alles netjes achter. Top bedrijf!","date":"1 maand geleden"},{"name":"Anita K.","text":"Zeer tevreden over de dakinspectie en het advies dat we kregen. Eerlijk en duidelijk, zonder onnodige kosten. Wij raden dit bedrijf iedereen aan.","date":"1 maand geleden"},{"name":"Roel S.","text":"De dakisolatie is perfect aangebracht en we merken nu al een groot verschil in warmte. Jarlka verg werkte snel en netjes. Geweldig!","date":"1 maand geleden"},{"name":"Liesbeth M.","text":"Het platte dak is voorzien van nieuwe bitumen en ziet er geweldig uit. Geen gedoe, gewoon goed werk voor een eerlijke prijs. Hartelijk dank!","date":"1 maand geleden"}];
+const reviews = [{"name":"Peter V.","text":"Jarlka verg heeft ons dak snel en vakkundig gerenoveerd. De werkzaamheden werden netjes uitgevoerd en het resultaat is uitstekend. Zeker een aanrader!","date":"","score":5,"city":"Doorn"},{"name":"Sandra B.","text":"Na een lekkage heeft Jarlka verg het probleem dezelfde week nog opgelost. Eerlijke prijs en keurig netjes werk. Wij zijn erg tevreden.","date":"","score":5,"city":"Zeist"},{"name":"Marco D.","text":"Onze dakpannen zijn volledig vervangen door Jarlka verg. Het team werkte professioneel en liet alles netjes achter. Top bedrijf!","date":"","score":5,"city":"Driebergen-Rijsenburg"},{"name":"Anita K.","text":"Zeer tevreden over de dakinspectie en het advies dat we kregen. Eerlijk en duidelijk, zonder onnodige kosten. Wij raden dit bedrijf iedereen aan.","date":"","score":5,"city":"Houten"},{"name":"Roel S.","text":"De dakisolatie is perfect aangebracht en we merken nu al een groot verschil in warmte. Jarlka verg werkte snel en netjes. Geweldig!","date":"","score":5,"city":"Amersfoort"},{"name":"Liesbeth M.","text":"Het platte dak is voorzien van nieuwe bitumen en ziet er geweldig uit. Geen gedoe, gewoon goed werk voor een eerlijke prijs. Hartelijk dank!","date":"","score":5,"city":"Veenendaal"}];
 
 let reviewIndex = 0;
 const LIMIT = 150;
