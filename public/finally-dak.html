@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: blauw;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -86,7 +86,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Quote form inline */
 .qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
 .qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(213,76%,52%,0.2); }
+.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(11, 10, NaN, 0.2); }
 .qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
 .qf-submit:hover { opacity: 0.9; }
 .qf-success { text-align: center; padding: 2rem 0; }
@@ -168,7 +168,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .work-steps { margin-top: 3rem; }
 .work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
 .work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: hsla(213,76%,52%,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(11, 10, NaN, 0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 .work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
 .cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
@@ -219,7 +219,7 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:06872163">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         06872163
       </a>
@@ -234,12 +234,11 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/finally-dak.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Finally dak</span></a>
+    <a href="/finally-dak.html" class="navbar-logo"><span></span></a>
     <nav class="navbar-nav">
       <a href="/finally-dak.html">Home</a>
       <a href="/finally-dak-over-ons.html">Over</a>
       <a href="/finally-dak-diensten.html">Diensten</a>
-      <a href="/finally-dak-projecten.html" style="{{HIDE_PROJECTEN}}">Projecten</a>
       <a href="/finally-dak-contact.html">Contact</a>
     </nav>
     <a href="/finally-dak-contact.html" class="btn-primary">Offerte aanvragen</a>
@@ -256,7 +255,6 @@ footer ul li:has(a:empty) { display: none; }
     <a href="/finally-dak.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
     <a href="/finally-dak-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
     <a href="/finally-dak-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/finally-dak-projecten.html" style="{{HIDE_PROJECTEN}}" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
     <a href="/finally-dak-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><a href="/finally-dak-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
@@ -275,15 +273,15 @@ footer ul li:has(a:empty) { display: none; }
       <p class="hero-desc">Finally Dak zorgt voor een waterdicht en duurzaam dak. Vakkundig, betrouwbaar en snel ter plaatse in Doorn en omgeving.</p>
       <ul class="hero-list">
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="blauw" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Snel en vakkundig uitgevoerd
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="blauw" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Eerlijk advies en vaste prijs
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="blauw" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Jarenlange ervaring in dakwerk
         </li>
       </ul>
@@ -330,7 +328,7 @@ footer ul li:has(a:empty) { display: none; }
   <div class="container">
     <div class="service-inner">
       <div class="service-grid">
-        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="Dakdekker vernieuwt dak in Doorn" class="service-img"></div>
+        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="Dakdekker vernieuwt dak in Doorn" class="service-img"></div>
         <div>
           <h2>Onze dakdiensten in Doorn</h2>
           <p>Finally Dak biedt een compleet pakket aan dakwerkzaamheden voor zowel particulieren als bedrijven in Doorn en omgeving. Of het nu gaat om een kleine reparatie of een volledige dakrenovatie, ons team pakt het professioneel aan. Dankzij onze grondige aanpak voorkomt u lekkages, schimmel en gevolgschade aan uw woning. Wij gebruiken uitsluitend hoogwaardige materialen die bestand zijn tegen alle weersomstandigheden. Zo profiteert u jarenlang van een waterdicht en energiezuinig dak, zonder gedoe.</p>
@@ -344,7 +342,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Why Choose Us -->
 <section class="why">
   <div class="why-bg">
-    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/sectie2/dakdekker-sectie2-1.jpeg" alt="">
+    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="">
     <div class="why-overlay"></div>
   </div>
   <div class="container why-content">
@@ -372,7 +370,7 @@ footer ul li:has(a:empty) { display: none; }
 </section>
 
 <!-- Reviews -->
-<section class="reviews" style="{{REVIEWS_DISPLAY}}">
+<section class="reviews" style="none">
   <div class="container">
     <div class="reviews-header">
       <p>Wat onze klanten zeggen</p>
@@ -446,12 +444,12 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="#">dakreparatie</a></li>
-          <li><a href="#">dakisolatie</a></li>
-          <li><a href="#">bitumen</a></li>
-          <li><a href="#">daklekkage</a></li>
-          <li><a href="#">{{DIENST_5}}</a></li>
-          <li><a href="#">{{DIENST_6}}</a></li>
+          <li><a href="#">Dienst 1</a></li>
+          <li><a href="#">Dienst 2</a></li>
+          <li><a href="#">Dienst 3</a></li>
+          <li><a href="#">Dienst 4</a></li>
+          <li><a href="#">Dienst 5</a></li>
+          <li><a href="#">Dienst 6</a></li>
         </ul>
       </div>
       <div>
@@ -478,7 +476,7 @@ footer ul li:has(a:empty) { display: none; }
         <h4>Adres</h4>
         <p style="font-weight:600;color:var(--foreground)">Finally dak</p>
         <p></p>
-        <p></p>
+        <p>3956TK Leersum</p>
         <p style="margin-top:0.75rem">KvK: </p>
       </div>
     </div>
@@ -492,7 +490,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -500,7 +498,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
@@ -532,7 +530,7 @@ function createForm(id) {
       <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
       <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
       <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:hsl(213,76%,52%);color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+      <button type="submit" style="width:100%;background:blauw;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
     </form>`;
 }
 
@@ -542,7 +540,7 @@ async function submitForm(e, form, containerId) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
     await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'Finally dak', email_bedrijf: 'info@kajbkds.nl', slug: 'finally-dak' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(213,76%,52%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:blauw;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
     alert('Er is iets misgegaan. Probeer het opnieuw.');
@@ -552,7 +550,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [{"name":"Peter V.","text":"Finally Dak heeft onze dakreparatie snel en netjes uitgevoerd. De lekkage is volledig verholpen en de communicatie was uitstekend. Zeker een aanrader!","date":"1 maand geleden"},{"name":"Sandra K.","text":"Na een storm hadden wij flinke dakschade. Het team van Finally Dak stond er snel bij en heeft alles vakkundig hersteld. Erg tevreden met het resultaat!","date":"1 maand geleden"},{"name":"Marco D.","text":"Uitstekende service en eerlijke prijzen. De dakisolatie is professioneel aangebracht en we merken direct verschil in ons energieverbruik. Top bedrijf!","date":"1 maand geleden"},{"name":"Annelies B.","text":"Finally Dak heeft ons oude dak volledig gerenoveerd. Het werk werd keurig en op tijd afgerond. Wij zijn erg blij met het eindresultaat.","date":"1 maand geleden"},{"name":"Thomas H.","text":"Bij een spoedreparatie van een lekkage was Finally Dak snel ter plaatse. Ze hebben het probleem direct opgelost en duidelijk uitgelegd wat de oorzaak was.","date":"1 maand geleden"},{"name":"Inge W.","text":"Het loodwerk en de schoorsteen zijn perfect gerenoveerd door Finally Dak. Vakkundige mensen, nette werkplek en een eerlijke prijs. Ik beveel hen van harte aan!","date":"1 maand geleden"}];
+const reviews = [[{"naam":"Peter V.","tekst":"Finally Dak heeft onze dakreparatie snel en netjes uitgevoerd. De lekkage is volledig verholpen en de communicatie was uitstekend. Zeker een aanrader!","score":5,"stad":"Doorn","datum":""},{"naam":"Sandra K.","tekst":"Na een storm hadden wij flinke dakschade. Het team van Finally Dak stond er snel bij en heeft alles vakkundig hersteld. Erg tevreden met het resultaat!","score":5,"stad":"Zeist","datum":""},{"naam":"Marco D.","tekst":"Uitstekende service en eerlijke prijzen. De dakisolatie is professioneel aangebracht en we merken direct verschil in ons energieverbruik. Top bedrijf!","score":5,"stad":"Driebergen-Rijsenburg","datum":""},{"naam":"Annelies B.","tekst":"Finally Dak heeft ons oude dak volledig gerenoveerd. Het werk werd keurig en op tijd afgerond. Wij zijn erg blij met het eindresultaat.","score":5,"stad":"Leersum","datum":""},{"naam":"Thomas H.","tekst":"Bij een spoedreparatie van een lekkage was Finally Dak snel ter plaatse. Ze hebben het probleem direct opgelost en duidelijk uitgelegd wat de oorzaak was.","score":5,"stad":"Amerongen","datum":""},{"naam":"Inge W.","tekst":"Het loodwerk en de schoorsteen zijn perfect gerenoveerd door Finally Dak. Vakkundige mensen, nette werkplek en een eerlijke prijs. Ik beveel hen van harte aan!","score":5,"stad":"Wijk bij Duurstede","datum":""}]];
 
 let reviewIndex = 0;
 const LIMIT = 150;
