@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: rood;
+  --primary: #e40c0c;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -86,7 +86,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Quote form inline */
 .qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
 .qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(213,76%,52%,0.2); }
+.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(NaN, NaN, NaN, 0.2); }
 .qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
 .qf-submit:hover { opacity: 0.9; }
 .qf-success { text-align: center; padding: 2rem 0; }
@@ -168,7 +168,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .work-steps { margin-top: 3rem; }
 .work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
 .work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: hsla(213,76%,52%,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(NaN, NaN, NaN, 0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
 .work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 .work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
 .cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
@@ -219,7 +219,7 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:+3162317865">
+      <a href="tel:{{TELEFOON_HREF}}">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         062317865
       </a>
@@ -234,7 +234,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/verpotjesss.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">verpotjesss</span></a>
+    <a href="/verpotjesss.html" class="navbar-logo"><span></span></a>
     <nav class="navbar-nav">
       <a href="/verpotjesss.html">Home</a>
       <a href="/verpotjesss-over-ons.html">Over</a>
@@ -275,15 +275,15 @@ footer ul li:has(a:empty) { display: none; }
       <p class="hero-desc">Verpotjesss verzorgt hoogwaardig schilderwerk in Doorn en omgeving. Wij zorgen voor een perfect resultaat, binnen en buiten.</p>
       <ul class="hero-list">
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rood" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e40c0c" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Scherpe en eerlijke prijzen
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rood" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e40c0c" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Nette en stipte werkwijze
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rood" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e40c0c" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Vrijblijvende offerte op maat
         </li>
       </ul>
@@ -372,7 +372,7 @@ footer ul li:has(a:empty) { display: none; }
 </section>
 
 <!-- Reviews -->
-<section class="reviews" style="">
+<section class="reviews" style="none">
   <div class="container">
     <div class="reviews-header">
       <p>Wat onze klanten zeggen</p>
@@ -492,7 +492,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
-    
+    {{MODAL_OFFERTE_IFRAME}}
   </div>
 </div>
 
@@ -500,7 +500,7 @@ footer ul li:has(a:empty) { display: none; }
 <div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
+    {{MODAL_ADVIES_IFRAME}}
   </div>
 </div>
 
@@ -532,7 +532,7 @@ function createForm(id) {
       <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
       <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
       <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:rood;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+      <button type="submit" style="width:100%;background:#e40c0c;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
     </form>`;
 }
 
@@ -542,7 +542,7 @@ async function submitForm(e, form, containerId) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
     await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'verpotjesss', email_bedrijf: 'info@pvsds.com', slug: 'verpotjesss' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:rood;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:#e40c0c;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
     alert('Er is iets misgegaan. Probeer het opnieuw.');
@@ -552,7 +552,7 @@ createForm('heroForm');
 createForm('workForm');
 
 // ── Reviews carousel ───────────────────────────────
-const reviews = [{"naam":"Peter V.","stad":"Doorn","score":5,"tekst":"Verpotjesss heeft ons huis van buiten geschilderd en het resultaat is geweldig. Netjes gewerkt, goede communicatie en een mooie afwerking. Absoluut een aanrader!"},{"naam":"Sandra K.","stad":"Zeist","score":5,"tekst":"Ons interieur is volledig opgeknapt door verpotjesss. Ze werkten snel, netjes en zonder rommel achter te laten. We zijn heel blij met het resultaat."},{"naam":"Marko B.","stad":"Driebergen-Rijsenburg","score":5,"tekst":"Professioneel bedrijf dat precies doet wat ze beloven. De houtrotreparaties zijn vakkundig uitgevoerd en alles ziet er weer als nieuw uit. Top service!"},{"naam":"Anita D.","stad":"Amerongen","score":5,"tekst":"Het behangen is prachtig gedaan, elke naad zit perfect. Verpotjesss werkte snel en de prijs was heel eerlijk. Ik raad ze iedereen aan."},{"naam":"Thomas R.","stad":"Wijk bij Duurstede","score":5,"tekst":"Onze kozijnen zien er dankzij het spuitwerk fantastisch uit. Strak, egaal en duurzaam. Het team was vriendelijk en werkte erg netjes."},{"naam":"Lisette M.","stad":"Veenendaal","score":5,"tekst":"Van offerte tot oplevering verliep alles soepel en professioneel. Het binnenschilderwerk is prachtig geworden en de prijs klopte precies. Heel tevreden!"}];
+const reviews = [[{"naam":"Peter Bas","tekst":"Max heeft ons huis van buiten geschilderd en het resultaat is geweldig. Netjes gewerkt, goede communicatie en een mooie afwerking. Absoluut een aanrader!","score":4,"stad":"Leersum","datum":"21 april"},{"naam":"Sandra K.","tekst":"Ons interieur is volledig opgeknapt door verpotjesss. Ze werkten snel, netjes en zonder rommel achter te laten. We zijn heel blij met het resultaat.","score":5,"stad":"Zeist","datum":""},{"naam":"Marko B.","tekst":"Professioneel bedrijf dat precies doet wat ze beloven. De houtrotreparaties zijn vakkundig uitgevoerd en alles ziet er weer als nieuw uit. Top service!","score":5,"stad":"Driebergen-Rijsenburg","datum":""},{"naam":"Anita D.","tekst":"Het behangen is prachtig gedaan, elke naad zit perfect. Verpotjesss werkte snel en de prijs was heel eerlijk. Ik raad ze iedereen aan.","score":5,"stad":"Amerongen","datum":""},{"naam":"Thomas R.","tekst":"Onze kozijnen zien er dankzij het spuitwerk fantastisch uit. Strak, egaal en duurzaam. Het team was vriendelijk en werkte erg netjes.","score":5,"stad":"Wijk bij Duurstede","datum":""},{"naam":"Lisette M.","tekst":"Van offerte tot oplevering verliep alles soepel en professioneel. Het binnenschilderwerk is prachtig geworden en de prijs klopte precies. Heel tevreden!","score":5,"stad":"Veenendaal","datum":""}]];
 
 let reviewIndex = 0;
 const LIMIT = 150;
@@ -624,6 +624,6 @@ window.addEventListener('resize', renderReviews);
   }
 })();
 </script>
-<a href="https://wa.me/https://wa.me/3162317865" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
