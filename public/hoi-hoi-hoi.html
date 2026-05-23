@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: geel;
+  --primary: #EAB308;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -273,15 +273,15 @@ footer ul li:has(a:empty) { display: none; }
       <p class="hero-desc">hoi hoi hoi is uw betrouwbare dakdekker in Leersum en omgeving. Wij zorgen voor duurzaam vakwerk met oog voor detail.</p>
       <ul class="hero-list">
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="geel" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EAB308" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Vakkundig en betrouwbaar dakwerk
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="geel" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EAB308" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Snel ter plaatse in Leersum
         </li>
         <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="geel" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EAB308" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
           Eerlijke prijs, geen verrassingen
         </li>
       </ul>
@@ -530,7 +530,7 @@ function createForm(id) {
       <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
       <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
       <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:geel;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
+      <button type="submit" style="width:100%;background:#EAB308;color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
     </form>`;
 }
 
@@ -540,7 +540,7 @@ async function submitForm(e, form, containerId) {
   btn.textContent = 'Bezig...'; btn.disabled = true;
   try {
     await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'hoi hoi hoi', email_bedrijf: 'info@kjahd.nlfds', slug: 'hoi-hoi-hoi' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:geel;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:#EAB308;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
   } catch {
     btn.textContent = 'Versturen'; btn.disabled = false;
     alert('Er is iets misgegaan. Probeer het opnieuw.');
