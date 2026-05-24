@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: {{KLEUR_PRIMARY}};
+  --primary: blauw;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -130,7 +130,7 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:tel:+31612345678">
+      <a href="tel:+31612345678">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         0612345678
       </a>
@@ -145,15 +145,15 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
+    <a href="/liod.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Liod</span></a>
     <nav class="navbar-nav">
-      <a href="/{{SLUG}}.html">Home</a>
-      <a href="/{{SLUG}}-over-ons.html">Over</a>
-      <a href="/{{SLUG}}-diensten.html">Diensten</a>
-      <a href="/{{SLUG}}-projecten.html" style="color:var(--primary);{{HIDE_PROJECTEN}}">Projecten</a>
-      <a href="/{{SLUG}}-contact.html">Contact</a>
+      <a href="/liod.html">Home</a>
+      <a href="/liod-over-ons.html">Over</a>
+      <a href="/liod-diensten.html">Diensten</a>
+      <a href="/liod-projecten.html" style="color:var(--primary);">Projecten</a>
+      <a href="/liod-contact.html">Contact</a>
     </nav>
-    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <a href="/liod-contact.html" class="btn-primary">Offerte aanvragen</a>
     <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -164,19 +164,19 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/{{SLUG}}.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/{{SLUG}}-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/{{SLUG}}-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/{{SLUG}}-projecten.html" style="{{HIDE_PROJECTEN}}" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
-    <a href="/{{SLUG}}-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+    <a href="/liod.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/liod-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/liod-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/liod-projecten.html" style="" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/liod-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/liod-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
   </div>
 </div>
 
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="" alt="Onze projecten">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/loodgieter/hero/loodgieter-hero-1.jpeg" alt="Onze projecten">
     <div class="page-hero-overlay"></div>
   </div>
   <div class="container page-hero-content">
@@ -189,56 +189,56 @@ footer ul li:has(a:empty) { display: none; }
 <section class="gallery-section">
   <div class="container">
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_1}}" alt="Project 1" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_2}}" alt="Project 2" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_3}}" alt="Project 3" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_5}}" alt="Project 5" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_6}}" alt="Project 6" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_7}}" alt="Project 7" loading="lazy"></div>
-      <div class="gallery-item"><img src="{{FOTO_PROJECT_8}}" alt="Project 8" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_9}}" alt="Project 9" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_10}}" alt="Project 10" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_11}}" alt="Project 11" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_12}}" alt="Project 12" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_13}}" alt="Project 13" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_14}}" alt="Project 14" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_15}}" alt="Project 15" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_16}}" alt="Project 16" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_17}}" alt="Project 17" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_18}}" alt="Project 18" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_19}}" alt="Project 19" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_20}}" alt="Project 20" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_21}}" alt="Project 21" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_22}}" alt="Project 22" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_23}}" alt="Project 23" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_24}}" alt="Project 24" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_25}}" alt="Project 25" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_26}}" alt="Project 26" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_27}}" alt="Project 27" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_28}}" alt="Project 28" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_29}}" alt="Project 29" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_30}}" alt="Project 30" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_31}}" alt="Project 31" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_32}}" alt="Project 32" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_33}}" alt="Project 33" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_34}}" alt="Project 34" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_35}}" alt="Project 35" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_36}}" alt="Project 36" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_37}}" alt="Project 37" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_38}}" alt="Project 38" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_39}}" alt="Project 39" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_40}}" alt="Project 40" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_41}}" alt="Project 41" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_42}}" alt="Project 42" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_43}}" alt="Project 43" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_44}}" alt="Project 44" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_45}}" alt="Project 45" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_46}}" alt="Project 46" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_47}}" alt="Project 47" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_48}}" alt="Project 48" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_49}}" alt="Project 49" loading="lazy"></div>
-          <div class="gallery-item"><img src="{{FOTO_PROJECT_50}}" alt="Project 50" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779647506575-rlib7bao1n.jpeg" alt="Project 1" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779647511406-r3x6r9vhcm.jpeg" alt="Project 2" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779647518513-9vgjfdn26r.jpeg" alt="Project 3" loading="lazy"></div>
+      <div class="gallery-item"><img src="" alt="Project 4" loading="lazy"></div>
+      <div class="gallery-item"><img src="" alt="Project 5" loading="lazy"></div>
+      <div class="gallery-item"><img src="" alt="Project 6" loading="lazy"></div>
+      <div class="gallery-item"><img src="" alt="Project 7" loading="lazy"></div>
+      <div class="gallery-item"><img src="" alt="Project 8" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 9" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 10" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 11" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 12" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 13" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 14" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 15" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 16" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 17" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 18" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 19" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 20" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 21" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 22" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 23" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 24" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 25" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 26" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 27" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 28" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 29" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 30" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 31" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 32" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 33" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 34" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 35" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 36" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 37" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 38" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 39" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 40" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 41" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 42" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 43" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 44" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 45" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 46" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 47" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 48" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 49" loading="lazy"></div>
+          <div class="gallery-item"><img src="" alt="Project 50" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -253,8 +253,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <div>
-          <h3>{{TRUST_1_TITEL}}</h3>
-          <p>{{TRUST_1_DESC}}</p>
+          <h3>Snelle Respons</h3>
+          <p>Wij zijn snel ter plaatse zodat u geen onnodig wateroverlast heeft.</p>
         </div>
       </div>
       <div class="trust-item">
@@ -262,8 +262,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div>
-          <h3>{{TRUST_2_TITEL}}</h3>
-          <p>{{TRUST_2_DESC}}</p>
+          <h3>Eerlijke Prijzen</h3>
+          <p>Transparante tarieven zonder verborgen kosten, altijd vooraf duidelijk.</p>
         </div>
       </div>
       <div class="trust-item">
@@ -271,8 +271,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <div>
-          <h3>{{TRUST_3_TITEL}}</h3>
-          <p>{{TRUST_3_DESC}}</p>
+          <h3>Kwaliteitsgarantie</h3>
+          <p>Ons werk wordt zorgvuldig uitgevoerd met hoogwaardige materialen.</p>
         </div>
       </div>
     </div>
@@ -286,8 +286,8 @@ footer ul li:has(a:empty) { display: none; }
     <h2>Direct geholpen door uw lokale loodgieter</h2>
     <p class="desc">Neem contact op met Liod en wij helpen u snel verder.</p>
     <div class="cta-btns">
-      <a href="/{{SLUG}}-contact.html" class="cta-btn-white">Offerte aanvragen</a>
-      <a href="tel:tel:+31612345678" class="btn-outline-primary">
+      <a href="/liod-contact.html" class="cta-btn-white">Offerte aanvragen</a>
+      <a href="tel:+31612345678" class="btn-outline-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Bel 0612345678
       </a>
@@ -302,31 +302,31 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
-          <li><a href="/{{SLUG}}-diensten.html"></a></li>
+          <li><a href="/liod-diensten.html">Dienst 1</a></li>
+          <li><a href="/liod-diensten.html">Dienst 2</a></li>
+          <li><a href="/liod-diensten.html">Dienst 3</a></li>
+          <li><a href="/liod-diensten.html">Dienst 4</a></li>
+          <li><a href="/liod-diensten.html">Dienst 5</a></li>
+          <li><a href="/liod-diensten.html">Dienst 6</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">{{STAD_1}}</a></li>
-          <li><a href="#">{{STAD_2}}</a></li>
-          <li><a href="#">{{STAD_3}}</a></li>
-          <li><a href="#">{{STAD_4}}</a></li>
-          <li><a href="#">{{STAD_5}}</a></li>
-          <li><a href="#">{{STAD_6}}</a></li>
+          <li><a href="#">Driebergen-Rijsenburg</a></li>
+          <li><a href="#">Zeist</a></li>
+          <li><a href="#">Amerongen</a></li>
+          <li><a href="#">Utrechtse Heuvelrug</a></li>
+          <li><a href="#">Wijk bij Duurstede</a></li>
+          <li><a href="#">Rhenen</a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
-          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
-          <li><a href="/{{SLUG}}-contact.html">Offerte aanvragen</a></li>
+          <li><a href="/liod-over-ons.html">Over ons</a></li>
+          <li><a href="/liod-contact.html">Contact</a></li>
+          <li><a href="/liod-contact.html">Offerte aanvragen</a></li>
         </ul>
       </div>
       <div class="footer-addr">
@@ -345,7 +345,7 @@ footer ul li:has(a:empty) { display: none; }
 
 <script>
 (function(){
-  var slug = '{{SLUG}}';
+  var slug = 'liod';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
   if (onLive) {
     var remap = {};
@@ -361,7 +361,7 @@ footer ul li:has(a:empty) { display: none; }
   }
 })();
 </script>
-<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/https://wa.me/31612345678" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.gallery-item').forEach(function(el) {
