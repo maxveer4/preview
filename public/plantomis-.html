@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #2563EB;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -223,7 +223,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
 .stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .stap-item { display: flex; align-items: flex-start; gap: 1rem; }
-.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); color: var(--primary); }
+.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: rgba(37,99,235,0.1); color: var(--primary); }
 .stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
 @media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
 .stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
@@ -323,7 +323,7 @@ footer ul li:has(a:empty) { display: none; }
   <div class="topbar-inner">
     <!-- Mobile: telefoon + email -->
     <div class="topbar-mobile-contact">
-      <a href="tel:06167523" class="topbar-contact-link">
+      <a href="tel:+316167523" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         06167523
       </a>
@@ -343,7 +343,7 @@ footer ul li:has(a:empty) { display: none; }
     </div>
     <!-- Desktop: telefoon + email rechts -->
     <div class="topbar-desktop-contact">
-      <a href="tel:06167523" class="topbar-contact-link">
+      <a href="tel:+316167523" class="topbar-contact-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         06167523
       </a>
@@ -358,13 +358,13 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/plantomis.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Plantomis </span></a>
+    <a href="/plantomis-.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Plantomis </span></a>
     <nav class="navbar-nav">
-      <a href="/plantomis.html" style="color:var(--primary)">Home</a>
-      <a href="/plantomis-over-ons.html">Over</a>
-      <a href="/plantomis-diensten.html">Diensten</a>
-      <a href="/plantomis-projecten.html" style="{{HIDE_PROJECTEN}}">Projecten</a>
-      <a href="/plantomis-contact.html">Contact</a>
+      <a href="/plantomis-.html" style="color:var(--primary)">Home</a>
+      <a href="/plantomis--over-ons.html">Over</a>
+      <a href="/plantomis--diensten.html">Diensten</a>
+      <a href="/plantomis--projecten.html" style="">Projecten</a>
+      <a href="/plantomis--contact.html">Contact</a>
     </nav>
     <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
     <div style="display:flex;align-items:center;gap:0.5rem">
@@ -380,11 +380,11 @@ footer ul li:has(a:empty) { display: none; }
 <div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/plantomis.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/plantomis-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/plantomis-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/plantomis-projecten.html" style="{{HIDE_PROJECTEN}}" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
-    <a href="/plantomis-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <a href="/plantomis-.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/plantomis--over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/plantomis--diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/plantomis--projecten.html" style="" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/plantomis--contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
     <div style="margin-top:1rem"><a href="#offerte" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
   </div>
 </div>
@@ -415,7 +415,7 @@ footer ul li:has(a:empty) { display: none; }
         </li>
       </ul>
       <div class="hero-ctas">
-        <a href="tel:06167523" class="hero-cta-primary">Bel direct voor advies</a>
+        <a href="tel:+316167523" class="hero-cta-primary">Bel direct voor advies</a>
         <a href="#diensten" class="hero-cta-outline">Bekijk diensten</a>
       </div>
     </div>
@@ -443,7 +443,7 @@ footer ul li:has(a:empty) { display: none; }
     <div class="service-card">
       <div class="service-grid">
         <div class="service-img">
-          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/waarom/hovenier-waarom-1.jpeg" alt="Plantomis ">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-1.jpeg" alt="Plantomis ">
         </div>
         <div class="service-text">
           <h2>Onze tuindiensten in Doorn</h2>
@@ -462,52 +462,52 @@ footer ul li:has(a:empty) { display: none; }
       <h2 class="font-poppins">Onze diensten</h2>
     </div>
     <div class="diensten-grid">
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_1}}"/></svg></div>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
         <h3>aanleg</h3>
-        <p>{{DIENST_1_DESC}}</p>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_2}}"/></svg></div>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
         <h3>ontwerp</h3>
-        <p>{{DIENST_2_DESC}}</p>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_3}}"/></svg></div>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
         <h3>onderhoud</h3>
-        <p>{{DIENST_3_DESC}}</p>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_4}}"/></svg></div>
-        <h3>aanleg</h3>
-        <p>{{DIENST_4_DESC}}</p>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3>Snoeien</h3>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_5}}"/></svg></div>
-        <h3>{{DIENST_5}}</h3>
-        <p>{{DIENST_5_DESC}}</p>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_6}}"/></svg></div>
-        <h3>{{DIENST_6}}</h3>
-        <p>{{DIENST_6_DESC}}</p>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_7}}"/></svg></div>
-        <h3>{{DIENST_7}}</h3>
-        <p>{{DIENST_7_DESC}}</p>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
-      <a href="/plantomis-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-{{ICON_8}}"/></svg></div>
-        <h3>{{DIENST_8}}</h3>
-        <p>{{DIENST_8_DESC}}</p>
+      <a href="/plantomis--diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+        <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
     </div>
@@ -517,7 +517,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Waarom kiezen voor ons -->
 <section class="why-section">
   <div class="why-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/sectie2/hovenier-sectie2-1.jpeg" alt="Waarom kiezen voor Plantomis ">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/waarom/hovenier-waarom-1.jpeg" alt="Waarom kiezen voor Plantomis ">
     <div class="why-bg-overlay"></div>
   </div>
   <div class="container why-content">
@@ -572,13 +572,13 @@ footer ul li:has(a:empty) { display: none; }
       <p>Een greep uit recent uitgevoerde projecten — van nieuwbouw en aanbouw tot dakopbouw, vakkundig gerealiseerd door ons team.</p>
     </div>
     <div class="projecten-grid">
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_1}}" alt="Project 1" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_2}}" alt="Project 2" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_3}}" alt="Project 3" loading="lazy"></div></div>
-      <div class="project-thumb"><div class="project-thumb-inner"><img src="{{FOTO_PROJECT_4}}" alt="Project 4" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 1" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 2" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 3" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 4" loading="lazy"></div></div>
     </div>
     <div class="projecten-cta">
-      <a href="/plantomis-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+      <a href="/plantomis--projecten.html" class="btn-primary">Bekijk alle projecten</a>
     </div>
   </div>
 </section>
@@ -674,7 +674,7 @@ footer ul li:has(a:empty) { display: none; }
             <p>Neem contact op en wij helpen u graag verder.</p>
           </div>
           <div class="vrijblijvend-btns">
-            <a href="tel:06167523" class="vb-btn-primary">
+            <a href="tel:+316167523" class="vb-btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               06167523
             </a>
@@ -715,19 +715,19 @@ footer ul li:has(a:empty) { display: none; }
       <div>
         <h4>Diensten</h4>
         <ul>
-          <li><a href="/plantomis-diensten.html">aanleg</a></li>
-          <li><a href="/plantomis-diensten.html">ontwerp</a></li>
-          <li><a href="/plantomis-diensten.html">onderhoud</a></li>
-          <li><a href="/plantomis-diensten.html">aanleg</a></li>
-          <li><a href="/plantomis-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/plantomis-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/plantomis--diensten.html">aanleg</a></li>
+          <li><a href="/plantomis--diensten.html">ontwerp</a></li>
+          <li><a href="/plantomis--diensten.html">onderhoud</a></li>
+          <li><a href="/plantomis--diensten.html">Snoeien</a></li>
+          <li><a href="/plantomis--diensten.html"></a></li>
+          <li><a href="/plantomis--diensten.html"></a></li>
         </ul>
       </div>
       <div>
         <h4>Over ons</h4>
         <ul>
-          <li><a href="/plantomis-over-ons.html">Over ons</a></li>
-          <li><a href="/plantomis-contact.html">Contact</a></li>
+          <li><a href="/plantomis--over-ons.html">Over ons</a></li>
+          <li><a href="/plantomis--contact.html">Contact</a></li>
           <li><a href="#offerte">Offerte aanvragen</a></li>
         </ul>
       </div>
@@ -747,7 +747,7 @@ footer ul li:has(a:empty) { display: none; }
 
 <script>
 (function(){
-  var slug = 'plantomis';
+  var slug = 'plantomis-';
   var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
 
   function handleForm(formId, successId, btnText) {
@@ -760,7 +760,7 @@ footer ul li:has(a:empty) { display: none; }
       btn.textContent = 'Verzenden...';
       var data = {};
       new FormData(form).forEach(function(v, k){ data[k] = v; });
-      fetch('{{OFFERTE_WEBHOOK}}', {
+      fetch('', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -780,7 +780,7 @@ footer ul li:has(a:empty) { display: none; }
   handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
 
   try {
-    var reviews = {"name":"Marieke V.","text":"Plantomis heeft onze tuin volledig getransformeerd. Het werk werd netjes en vakkundig uitgevoerd en het resultaat is prachtig. We genieten elke dag van onze nieuwe buitenruimte!","date":"1 maand geleden"},{"name":"Peter S.","text":"Uitstekende service van Plantomis. Ze luisteren goed naar wat je wilt en leveren precies wat je verwacht. De tuin ziet er fantastisch uit, zeker een aanrader.","date":"1 maand geleden"},{"name":"Sandra de B.","text":"Al jaren laat ik mijn tuin onderhouden door Plantomis en ik ben nog steeds erg tevreden. Betrouwbaar, punctueel en altijd netjes. Een fijn bedrijf om mee samen te werken.","date":"1 maand geleden"},{"name":"Thomas K.","text":"Plantomis heeft voor ons een compleet nieuw tuinontwerp gemaakt en aangelegd. Van begin tot eind verliep alles vlekkeloos. We zijn meer dan tevreden met het eindresultaat.","date":"1 maand geleden"},{"name":"Annemiek H.","text":"Zeer professioneel hoveniersbedrijf met een persoonlijke aanpak. Plantomis dacht goed met ons mee en gaf eerlijk advies. De tuin is nu precies zoals we het ons hadden voorgesteld.","date":"1 maand geleden"},{"name":"Bart R.","text":"Ik had Plantomis gevraagd voor het onderhoud van mijn tuin en ben meer dan tevreden. Ze werken snel, grondig en laten alles piekfijn achter. Zeker aan te raden!","date":"1 maand geleden"};
+    var reviews = {"naam":"Marieke V.","stad":"Doorn","score":5,"tekst":"Plantomis heeft onze tuin volledig getransformeerd. Het werk werd netjes en vakkundig uitgevoerd en het resultaat is prachtig. We genieten elke dag van onze nieuwe buitenruimte!"},{"naam":"Peter S.","stad":"Driebergen-Rijsenburg","score":5,"tekst":"Uitstekende service van Plantomis. Ze luisteren goed naar wat je wilt en leveren precies wat je verwacht. De tuin ziet er fantastisch uit, zeker een aanrader."},{"naam":"Sandra de B.","stad":"Zeist","score":5,"tekst":"Al jaren laat ik mijn tuin onderhouden door Plantomis en ik ben nog steeds erg tevreden. Betrouwbaar, punctueel en altijd netjes. Een fijn bedrijf om mee samen te werken."},{"naam":"Thomas K.","stad":"Leersum","score":5,"tekst":"Plantomis heeft voor ons een compleet nieuw tuinontwerp gemaakt en aangelegd. Van begin tot eind verliep alles vlekkeloos. We zijn meer dan tevreden met het eindresultaat."},{"naam":"Annemiek H.","stad":"Amerongen","score":5,"tekst":"Zeer professioneel hoveniersbedrijf met een persoonlijke aanpak. Plantomis dacht goed met ons mee en gaf eerlijk advies. De tuin is nu precies zoals we het ons hadden voorgesteld."},{"naam":"Bart R.","stad":"Wijk bij Duurstede","score":5,"tekst":"Ik had Plantomis gevraagd voor het onderhoud van mijn tuin en ben meer dan tevreden. Ze werken snel, grondig en laten alles piekfijn achter. Zeker aan te raden!"};
     if (Array.isArray(reviews) && reviews.length) {
       var section = document.getElementById('reviewsSection');
       var track = document.getElementById('reviewsTrack');
@@ -867,7 +867,7 @@ footer ul li:has(a:empty) { display: none; }
   }
 })();
 </script>
-<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/https://wa.me/316167523" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script>
 (function(){
   var iconDefaults=['wrench','home','shield','clock','settings','layers','bolt','droplet'];
