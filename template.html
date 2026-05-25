@@ -516,7 +516,7 @@ function closeModal(type) {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('offerte'); closeModal('advies'); } });
 
 // ── Quote Form ─────────────────────────────────────
-const WEBHOOK = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/23a44000-d10d-419e-aa59-22e1f72bf074';
+const WEBHOOK = '{{FORMULIER_WEBHOOK}}';
 const inputStyle = 'width:100%;border:1px solid hsl(0,0%,88%);background:hsl(0,0%,96%);border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-family:inherit;color:hsl(0,0%,10%);margin-bottom:.75rem;outline:none;display:block';
 
 function createForm(id) {
