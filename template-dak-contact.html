@@ -310,7 +310,7 @@ footer ul li:has(a:empty) { display: none; }
       btn.textContent = 'Versturen...';
       var data = {};
       new FormData(form).forEach(function(v, k){ data[k] = v; });
-      fetch('{{CONTACT_FORM_WEBHOOK}}', {
+      fetch('{{FORMULIER_WEBHOOK}}', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
