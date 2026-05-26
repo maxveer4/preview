@@ -814,8 +814,10 @@ footer ul li:has(a:empty) { display: none; }
           });
           textEl.appendChild(btn);
         }
-        inner.innerHTML += '<div class="review-meta"><p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p></div>';
-        inner.insertBefore(textEl, inner.querySelector('.review-meta'));
+        var meta = document.createElement('div');
+        meta.className = 'review-meta';
+        meta.innerHTML = '<p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p>';
+        inner.appendChild(meta);
         card.appendChild(inner);
         track.appendChild(card);
       });
