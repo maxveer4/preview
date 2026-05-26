@@ -181,9 +181,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .reviews-section .section-header { margin-bottom: 3rem; }
 .reviews-track-wrap { overflow: hidden; }
 .reviews-track { display: flex; touch-action: pan-y; }
-.review-card { min-width: 100%; padding-left: 1rem; flex-shrink: 0; }
-@media(min-width:640px){ .review-card { min-width: 50%; } }
-@media(min-width:1024px){ .review-card { min-width: 33.333%; } }
+.review-card { flex: 0 0 100%; padding: 0 0.5rem; box-sizing: border-box; }
+@media(min-width:640px){ .review-card { flex: 0 0 50%; } }
+@media(min-width:1024px){ .review-card { flex: 0 0 33.333%; } }
 .review-card-inner { display: flex; flex-direction: column; height: 100%; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
 @media(min-width:768px){ .review-card-inner { padding: 2rem; } }
 .review-card-inner:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
