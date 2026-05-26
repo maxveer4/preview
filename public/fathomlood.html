@@ -760,7 +760,7 @@ footer ul li:has(a:empty) { display: none; }
       btn.textContent = 'Verzenden...';
       var data = {};
       new FormData(form).forEach(function(v, k){ data[k] = v; });
-      fetch('', {
+      fetch('https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/b0621d1e-614e-4253-b9de-c1e47c463b7b', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
