@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diensten | Daktechniek Holland</title>
 <meta name="description" content="Bekijk alle diensten van Daktechniek Holland. Vakkundig, betrouwbaar en lokaal actief.">
-<link rel="icon" href="{{LOGO_URL}}">
+<link rel="icon" href="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1780489702604-f1l8wi8elnu.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
+  --primary: #2563EB;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -81,7 +81,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .dienst-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 .dienst-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: hsla(213,76%,52%,0.1); display: flex; align-items: center; justify-content: center; }
+.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: rgba(37,99,235,0.1); display: flex; align-items: center; justify-content: center; }
 .dienst-card-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
 .dienst-card-body h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--foreground); }
 .dienst-card-body p { font-size: 0.9rem; line-height: 1.75; color: var(--muted-fg); flex: 1; margin-bottom: 1.5rem; }
@@ -145,13 +145,13 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:0615537151">
+      <a href="tel:+31685997223">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        06 15 53 71 51
+        0685997223
       </a>
-      <a href="mailto:info@daktechnieknederland.nl">
+      <a href="mailto:info@daktechniekholland.nl">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@daktechnieknederland.nl
+        info@daktechniekholland.nl
       </a>
     </div>
   </div>
@@ -160,11 +160,12 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-<a href="/daktechniek-holland.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Daktechniek Holland</span></a>
+<a href="/daktechniek-holland.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1780489702604-f1l8wi8elnu.png" alt="Daktechniek Holland logo" style="height:40px;width:auto;max-width:160px;object-fit:contain"></a>
     <nav class="navbar-nav">
       <a href="/daktechniek-holland.html">Home</a>
       <a href="/daktechniek-holland-over-ons.html">Over</a>
       <a href="/daktechniek-holland-diensten.html" style="color:var(--primary)">Diensten</a>
+      <a href="/daktechniek-holland-projecten.html" style="">Projecten</a>
       <a href="/daktechniek-holland-contact.html">Contact</a>
     </nav>
     <a href="/daktechniek-holland-contact.html" class="btn-primary">Offerte aanvragen</a>
@@ -194,7 +195,7 @@ footer ul li:has(a:empty) { display: none; }
   </div>
   <div class="container page-hero-content">
     <h1>Onze Diensten</h1>
-    <p>Daktechniek Holland biedt complete dakoplossingen voor particulieren en bedrijven in Midden-Nederland.</p>
+    <p>Daktechniek Holland biedt complete dakoplossingen voor particulieren en bedrijven in Almere.</p>
   </div>
 </section>
 
@@ -215,8 +216,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
         </div>
         <div>
-          <h3>Lokale dakspecialist</h3>
-          <p>Wij kennen de regio en leveren snel en betrouwbaar dakwerk in Midden-Nederland.</p>
+          <h3>Jarenlange ervaring</h3>
+          <p>Ons team heeft ruime ervaring met alle soorten daken en dakproblemen.</p>
         </div>
       </div>
       <div class="trust-item">
@@ -224,8 +225,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div>
-          <h3>Eerlijke prijzen</h3>
-          <p>Transparante offertes zonder verborgen kosten, altijd passend bij uw budget.</p>
+          <h3>Eerlijk advies</h3>
+          <p>Wij geven altijd eerlijk en transparant advies zonder verborgen kosten.</p>
         </div>
       </div>
       <div class="trust-item">
@@ -233,8 +234,8 @@ footer ul li:has(a:empty) { display: none; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
         <div>
-          <h3>Kwaliteitsgarantie</h3>
-          <p>Wij staan voor duurzaam vakwerk en leveren alleen het beste resultaat.</p>
+          <h3>Duurzame kwaliteit</h3>
+          <p>Wij werken uitsluitend met hoogwaardige materialen voor een langdurig resultaat.</p>
         </div>
       </div>
     </div>
@@ -245,13 +246,13 @@ footer ul li:has(a:empty) { display: none; }
 <section class="cta-section">
   <div class="container">
     <p class="label">Op zoek naar een vakman?</p>
-    <h2>Klaar voor een sterk en waterdicht dak?</h2>
-    <p class="desc">Neem vandaag nog contact op met Daktechniek Holland voor een vrijblijvende offerte op maat.</p>
+    <h2>Heeft u een dakprobleem? Wij helpen u direct!</h2>
+    <p class="desc">Neem contact op met Daktechniek Holland voor een vrijblijvende offerte op maat.</p>
     <div class="cta-btns">
       <a href="/daktechniek-holland-contact.html" class="cta-btn-white">Offerte aanvragen</a>
-      <a href="tel:0615537151" class="cta-btn-outline">
+      <a href="tel:+31685997223" class="cta-btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Bel 06 15 53 71 51
+        Bel 0685997223
       </a>
     </div>
   </div>
@@ -268,19 +269,19 @@ footer ul li:has(a:empty) { display: none; }
           <li><a href="/daktechniek-holland-diensten.html">dakisolatie</a></li>
           <li><a href="/daktechniek-holland-diensten.html">dakpannen-vervangen</a></li>
           <li><a href="/daktechniek-holland-diensten.html">dakreparatie</a></li>
-          <li><a href="/daktechniek-holland-diensten.html">{{DIENST_5}}</a></li>
-          <li><a href="/daktechniek-holland-diensten.html">{{DIENST_6}}</a></li>
+          <li><a href="/daktechniek-holland-diensten.html">dakinspectie</a></li>
+          <li><a href="/daktechniek-holland-diensten.html">daklekkage</a></li>
         </ul>
       </div>
       <div>
         <h4>Werkgebied</h4>
         <ul>
-          <li><a href="#">Utrecht</a></li>
-          <li><a href="#">Amersfoort</a></li>
-          <li><a href="#">Veenendaal</a></li>
-          <li><a href="#">Nieuwegein</a></li>
-          <li><a href="#">Zeist</a></li>
-          <li><a href="#">Woerden</a></li>
+          <li><a href="#">Amsterdam</a></li>
+          <li><a href="#">Lelystad</a></li>
+          <li><a href="#">Zeewolde</a></li>
+          <li><a href="#">Huizen</a></li>
+          <li><a href="#">Bussum</a></li>
+          <li><a href="#">Hilversum</a></li>
           <li><a href="#">Compleet werkgebied</a></li>
         </ul>
       </div>
@@ -332,7 +333,7 @@ footer ul li:has(a:empty) { display: none; }
     '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'
   ];
 
-  var diensten = [{"naam":"bitumen","desc":"Bitumen is een van de meest betrouwbare en duurzame materialen voor platte daken. Bij Daktechniek Holland verwerken wij bitumen volgens de hoogste normen, zodat uw dak optimaal beschermd is tegen regen en vocht. Een correct aangebrachte bitumenlaag gaat tientallen jaren mee en voorkomt kostbare lekkages. Kies voor zekerheid en laat uw platte dak professioneel afwerken.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/bitumen/bitumen-1.jpeg"},{"naam":"dakisolatie","desc":"Goede dakisolatie zorgt voor een aangenamer binnenklimaat en lagere energiekosten het hele jaar door. Daktechniek Holland plaatst hoogwaardige isolatie op maat, afgestemd op uw type dak en woning. Door te investeren in dakisolatie bespaart u direct op uw energierekening en verhoogt u het wooncomfort aanzienlijk. Een goed geïsoleerd dak is een slimme en duurzame keuze.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakisolatie/dakisolatie-1.jpeg"},{"naam":"dakpannen-vervangen","desc":"Beschadigde of verouderde dakpannen vormen een risico voor uw woning en kunnen leiden tot lekkages en vocht. Daktechniek Holland vervangt uw dakpannen snel, vakkundig en met oog voor de uitstraling van uw woning. Wij gebruiken kwalitatieve pannen die perfect passen bij uw dak en bestand zijn tegen de Nederlandse weersomstandigheden. Een nieuw pannendak geeft uw woning direct een frisse uitstraling.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakpannen-vervangen/dakpannen-vervangen-1.jpeg"},{"naam":"dakreparatie","desc":"Een dakschade kan snel groter worden als er niet tijdig wordt ingegrepen. Daktechniek Holland voert dakreparaties snel en vakkundig uit, zodat verdere schade wordt voorkomen. Of het nu gaat om een losse dakpan, een beschadigde dakgoot of een verzakt dakvlak, wij lossen het op. Met onze snelle service bent u verzekerd van een betrouwbare en blijvende oplossing.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakreparatie/dakreparatie-1.jpeg"},{"naam":"dakinspectie","desc":"Regelmatige dakinspectie voorkomt dure reparaties en houdt uw dak in optimale conditie. Daktechniek Holland voert grondige inspecties uit waarbij elk onderdeel van uw dak nauwkeurig wordt beoordeeld. Wij signaleren kleine gebreken voordat ze grote problemen worden en adviseren u eerlijk over de beste aanpak. Een jaarlijkse inspectie is de slimste investering voor een lang leven van uw dak.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakinspectie/dakinspectie-1.jpeg"},{"naam":"daklekkage","desc":"Een daklekkage is vervelend en kan snel leiden tot ernstige schade aan uw woning of interieur. Daktechniek Holland spoort de oorzaak van de lekkage snel op en verhelpt het probleem definitief. Wij werken snel en doelgericht, zodat verdere waterschade wordt beperkt en uw woning zo snel mogelijk weer droog is. Bij daklekkage kunt u rekenen op onze directe en deskundige hulp.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/daklekkage/daklekkage-1.jpeg"}];
+  var diensten = [{"naam":"bitumen","desc":"Bitumen is een van de meest gebruikte en bewezen materialen voor platte daken. Bij Daktechniek Holland passen wij bitumen dakbedekking vakkundig toe voor een waterdichte en duurzame afdichting. Een goed aangebrachte bitumenlaag gaat tientallen jaren mee en beschermt uw pand effectief tegen vocht en weersinvloeden. Kies voor kwaliteit en laat ons uw platte dak professioneel voorzien van bitumenbedekking.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/bitumen/bitumen-1.jpeg"},{"naam":"dakisolatie","desc":"Goede dakisolatie zorgt voor een warmer huis in de winter en een koeler huis in de zomer, wat direct bespaart op uw energierekening. Daktechniek Holland isoleert uw dak met hoogwaardige isolatiematerialen die voldoen aan de laatste normen. Naast comfort draagt dakisolatie bij aan een lagere CO2-uitstoot en verhoogt het de waarde van uw woning. Investeer in dakisolatie en merk direct het verschil in wooncomfort.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakisolatie/dakisolatie-1.jpeg"},{"naam":"dakpannen-vervangen","desc":"Beschadigde of verouderde dakpannen laten vocht binnendringen en kunnen leiden tot ernstige schade aan uw woning. Daktechniek Holland vervangt uw dakpannen snel en vakkundig, met oog voor een mooie en uniforme dakuitstraling. Wij adviseren u over het beste type dakpan dat past bij uw woning en budget. Een nieuw pannendak verhoogt niet alleen de bescherming, maar ook de uitstraling van uw huis.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakpannen-vervangen/dakpannen-vervangen-1.jpeg"},{"naam":"dakreparatie","desc":"Een dakschade kan klein beginnen maar snel groter worden als er niet tijdig wordt ingegrepen. Daktechniek Holland voert dakreparaties snel en degelijk uit, zodat verdere schade wordt voorkomen. Of het nu gaat om een gebarsten dakpan, een lekkende nok of beschadigd loodwerk, wij lossen het op. Vertrouw op onze expertise voor een snelle en duurzame reparatie die uw dak weer in topconditie brengt.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakreparatie/dakreparatie-1.jpeg"},{"naam":"dakinspectie","desc":"Een dakinspectie door Daktechniek Holland geeft u inzicht in de actuele staat van uw dak en voorkomt onverwachte problemen. Ons team inspecteert uw dak grondig op slijtage, beschadigingen, lekkages en zwakke plekken. Na de inspectie ontvangt u een helder rapport met onze bevindingen en aanbevelingen. Zo weet u precies wat er speelt en kunt u tijdig actie ondernemen om grotere schade te voorkomen.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/dakinspectie/dakinspectie-1.jpeg"},{"naam":"daklekkage","desc":"Een daklekkage kan leiden tot ernstige waterschade, schimmelvorming en hoge herstelkosten als er niet snel wordt gehandeld. Daktechniek Holland spoort de oorzaak van uw daklekkage snel en nauwkeurig op en verhelpt het probleem definitief. Wij zijn snel ter plaatse in Almere en omgeving om verdere schade te beperken. Vertrouw op onze expertise voor een permanente oplossing en slaap weer zorgeloos.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/diensten/daklekkage/daklekkage-1.jpeg"}];
   var grid = document.getElementById('dienstenGrid');
 
   diensten.forEach(function(d, i){
@@ -356,6 +357,6 @@ card.innerHTML =
   });
 })();
 </script>
-<a href="https://wa.me/{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/31685997223" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
