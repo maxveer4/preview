@@ -181,9 +181,9 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .reviews-section .section-header { margin-bottom: 3rem; }
 .reviews-track-wrap { overflow: hidden; }
 .reviews-track { display: flex; touch-action: pan-y; }
-.review-card { min-width: 100%; padding-left: 1rem; flex-shrink: 0; }
-@media(min-width:640px){ .review-card { min-width: 50%; } }
-@media(min-width:1024px){ .review-card { min-width: 33.333%; } }
+.review-card { flex: 0 0 100%; padding: 0 0.5rem; box-sizing: border-box; }
+@media(min-width:640px){ .review-card { flex: 0 0 50%; } }
+@media(min-width:1024px){ .review-card { flex: 0 0 33.333%; } }
 .review-card-inner { display: flex; flex-direction: column; height: 100%; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
 @media(min-width:768px){ .review-card-inner { padding: 2rem; } }
 .review-card-inner:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
@@ -315,6 +315,81 @@ footer ul li:has(a:empty) { display: none; }
   <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/>
   </symbol>
+  <symbol id="icon-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15.5 4.5 4 4L8 20H4v-4z"/><path d="M4 20c0-2 1-3.5 3-4"/>
+  </symbol>
+  <symbol id="icon-roller" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="5" width="14" height="6" rx="2"/><path d="M9 11v9"/><rect x="7" y="20" width="4" height="2" rx="1"/><path d="M16 8h4a2 2 0 0 1 0 4h-4"/>
+  </symbol>
+  <symbol id="icon-hammer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m13 13-8.5 8.5a2.12 2.12 0 1 1-3-3L10 10"/><path d="m19 10 3-3-4.5-4.5-3 3 1.5 1.5-3 3"/>
+  </symbol>
+  <symbol id="icon-trowel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 19l9-9 2 2-9 9z"/><path d="M14 10l-2-2 5-5 2 2z"/><path d="M3 21l2-2"/>
+  </symbol>
+  <symbol id="icon-tile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+  </symbol>
+  <symbol id="icon-floor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22h20"/><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 16h20"/>
+  </symbol>
+  <symbol id="icon-outdoor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22h20"/><path d="M5 22l3-7 4 4 3-5 4 8"/>
+  </symbol>
+  <symbol id="icon-roof" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12L12 3l9 9"/><path d="M5 10v11h14V10"/>
+  </symbol>
+  <symbol id="icon-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12h20"/><path d="M7 4v16"/><path d="M17 4v16"/><path d="M7 4h10"/><path d="M7 20h10"/>
+  </symbol>
+  <symbol id="icon-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3C9 7 9.5 5 12 3c.5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0 3.5 3.5 0 0 0 1-2.5 2.5 2.5 0 0 0 2.5 2.5z"/>
+  </symbol>
+  <symbol id="icon-spray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 3h5v18H2z"/><path d="M7 9h8a2 2 0 0 1 2 2v1"/><circle cx="18" cy="13" r="3"/><path d="M7 6h3"/>
+  </symbol>
+  <symbol id="icon-toilet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 6h16a2 2 0 0 1 2 2v1H2V8a2 2 0 0 1 2-2z"/><path d="M2 9h20v2a10 10 0 0 1-20 0V9z"/>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+  </symbol>
+  <symbol id="icon-shovel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22l5-5"/><path d="M7 17L5 15l8-8 2 2z"/><path d="M13 7L9 3a4 4 0 0 1 5.5 5.5L13 7z"/>
+  </symbol>
+  <symbol id="icon-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22v-8"/><path d="M12 14L6 8h12z"/><path d="M12 8L7 3h10z"/>
+  </symbol>
+  <symbol id="icon-bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12h20"/><path d="M2 12v5a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-5"/><path d="M5 12V7a3 3 0 0 1 6 0v5"/>
+  </symbol>
+  <symbol id="icon-saw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 2l5 5 12 12a3 3 0 0 1-4.3 4.3L3 12z"/><path d="M14 6l4 4"/>
+  </symbol>
+  <symbol id="icon-wall" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="11" width="9" height="4" rx="1"/><rect x="13" y="11" width="9" height="4" rx="1"/><rect x="2" y="19" width="20" height="2" rx="1"/>
+  </symbol>
+  <symbol id="icon-chimney" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="3" width="8" height="6"/><path d="M4 14l8-5 8 5"/><path d="M8 9v13"/><path d="M16 9v13"/>
+  </symbol>
+  <symbol id="icon-drain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+  </symbol>
+  <symbol id="icon-sewer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M4 12h16"/><rect x="4" y="12" width="16" height="6" rx="2"/>
+  </symbol>
+  <symbol id="icon-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3h18v2H3z"/><path d="M8 7v3M12 7v3M16 7v3M8 13v3M12 13v3M16 13v3M10 19v3M14 19v3"/>
+  </symbol>
+  <symbol id="icon-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3v4"/>
+  </symbol>
+  <symbol id="icon-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3 21 7 7 21H3v-4z"/>
+  </symbol>
+  <symbol id="icon-house-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 21H4a2 2 0 0 1-2-2V9.5L12 2l10 7.5V13"/><path d="M19 17v4M17 19h4"/>
+  </symbol>
 </svg>
 
 
@@ -358,7 +433,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-    <a href="/dakkadujk.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Dakkadujk</span></a>
+    <a href="/dakkadujk.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">Dakdekker Jan</span></a>
     <nav class="navbar-nav">
       <a href="/dakkadujk.html" style="color:var(--primary)">Home</a>
       <a href="/dakkadujk-over-ons.html">Over</a>
@@ -392,7 +467,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779443452159-jkkjm2bny1q.jpeg" alt="Dakkadujk">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1780468928202-543mdz5s54.png" alt="Dakdekker Jan">
     <div class="hero-bg-overlay"></div>
   </div>
   <div class="container hero-inner" style="align-items:center">
@@ -443,7 +518,7 @@ footer ul li:has(a:empty) { display: none; }
     <div class="service-card">
       <div class="service-grid">
         <div class="service-img">
-          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779443591033-quhwyd7x8e.jpeg" alt="Dakkadujk">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1779443591033-quhwyd7x8e.jpeg" alt="Dakdekker Jan">
         </div>
         <div class="service-text">
           <h2>Dakdekker in Doorn en omgeving</h2>
@@ -463,49 +538,49 @@ footer ul li:has(a:empty) { display: none; }
     </div>
     <div class="diensten-grid">
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-home"/></svg></div>
         <h3>Badkamer renovatie</h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-check"/></svg></div>
         <h3>Muren</h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-shield"/></svg></div>
         <h3>Daken</h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-clock"/></svg></div>
         <h3>Dakkakdak</h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
-        <h3>Dienst 5</h3>
-        <p></p>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
-        <h3>toiletteet</h3>
-        <p></p>
-        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
-      </a>
-      <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-settings"/></svg></div>
         <h3></h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
       </a>
       <a href="/dakkadujk-diensten.html" class="dienst-card">
-        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-layers"/></svg></div>
+        <h3>toiletteet</h3>
+        <p></p>
+        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
+      </a>
+      <a href="/dakkadujk-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-bolt"/></svg></div>
+        <h3></h3>
+        <p></p>
+        <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
+      </a>
+      <a href="/dakkadujk-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-droplet"/></svg></div>
         <h3></h3>
         <p></p>
         <span class="dienst-meer">Meer informatie <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></span>
@@ -517,11 +592,11 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Waarom kiezen voor ons -->
 <section class="why-section">
   <div class="why-bg">
-    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="Waarom kiezen voor Dakkadujk">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/waarom/dakdekker-waarom-1.jpeg" alt="Waarom kiezen voor Dakdekker Jan">
     <div class="why-bg-overlay"></div>
   </div>
   <div class="container why-content">
-    <h2>Waarom kiezen voor <span>Dakkadujk</span></h2>
+    <h2>Waarom kiezen voor <span>Dakdekker Jan</span></h2>
     <p>Er zijn veel redenen om voor Dakkadujk te kiezen. Ontdek wat ons team voor u kan betekenen.</p>
     <div class="why-cards">
       <div class="why-card">
@@ -623,7 +698,7 @@ footer ul li:has(a:empty) { display: none; }
         <p>Na de inspectie ontvangt u een duidelijke offerte en gaan wij aan de slag. Ons team werkt efficiënt en zorgt voor een nette oplevering.</p>
         <a href="#offerte" class="btn-primary" style="margin-top:0.5rem;display:inline-flex">Advies nodig?</a>
         <div class="work-foto">
-          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg" alt="Werkwijze Dakkadujk" loading="lazy">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/dakdekker/werkwijze/dakdekker-werkwijze-1.jpeg" alt="Werkwijze Dakdekker Jan" loading="lazy">
         </div>
 
         <!-- 4 Stappen -->
@@ -719,7 +794,7 @@ footer ul li:has(a:empty) { display: none; }
           <li><a href="/dakkadujk-diensten.html">Muren</a></li>
           <li><a href="/dakkadujk-diensten.html">Daken</a></li>
           <li><a href="/dakkadujk-diensten.html">Dakkakdak</a></li>
-          <li><a href="/dakkadujk-diensten.html">Dienst 5</a></li>
+          <li><a href="/dakkadujk-diensten.html"></a></li>
           <li><a href="/dakkadujk-diensten.html">toiletteet</a></li>
         </ul>
       </div>
@@ -733,7 +808,7 @@ footer ul li:has(a:empty) { display: none; }
       </div>
       <div class="footer-addr">
         <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">Dakkadujk</p>
+        <p style="font-weight:600;color:var(--foreground)">Dakdekker Jan</p>
         <p></p>
         <p></p>
         <p style="margin-top:0.75rem">KvK: </p>
@@ -741,7 +816,7 @@ footer ul li:has(a:empty) { display: none; }
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 Dakkadujk – Alle rechten voorbehouden</div>
+    <div class="container">© 2026 Dakdekker Jan – Alle rechten voorbehouden</div>
   </div>
 </footer>
 
@@ -780,7 +855,7 @@ footer ul li:has(a:empty) { display: none; }
   handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
 
   try {
-    var reviews = {"naam":"Marco V.","stad":"Doorn","score":5,"tekst":"Dakkadujk heeft onze dakpannen vervangen en het resultaat is uitstekend. Het team werkte netjes en snel. Zeker een aanrader voor iedereen in de regio."},{"naam":"Linda B.","stad":"Zeist","score":5,"tekst":"Na jaren last gehad van een daklekkage eindelijk de juiste partij gevonden. Dakkadujk loste het probleem snel en vakkundig op. Super tevreden!"},{"naam":"Peter H.","stad":"Driebergen-Rijsenburg","score":5,"tekst":"Goede service en duidelijke communicatie van begin tot eind. De dakinspectie gaf ons precies het inzicht dat we nodig hadden. Echt een betrouwbaar bedrijf."},{"naam":"Anita S.","stad":"Soest","score":5,"tekst":"Dakkadujk heeft ons platte dak voorzien van nieuwe bitumen dakbedekking. Netjes opgeleverd en een eerlijke prijs. We zijn erg blij met het resultaat."},{"naam":"Kees W.","stad":"Amersfoort","score":5,"tekst":"Onze dakrenovatie is prachtig uitgevoerd door het team van Dakkadujk. Ze werkten efficiënt en hielden ons goed op de hoogte. Zeker een 10 waard!"},{"naam":"Sandra M.","stad":"Bunnik","score":5,"tekst":"De dakisolatie die Dakkadujk heeft aangebracht merken we direct in ons energieverbruik. Professioneel uitgevoerd en vriendelijk personeel. Wij bevelen hen van harte aan."};
+    var reviews = [{"naam":"Marco V.","tekst":"Dakkadujk heeft onze dakpannen vervangen en het resultaat is uitstekend. Het team werkte netjes en snel. Zeker een aanrader voor iedereen in de regio.","datum":"","score":5,"stad":"Doorn"},{"naam":"Linda B.","tekst":"Na jaren last gehad van een daklekkage eindelijk de juiste partij gevonden. Dakkadujk loste het probleem snel en vakkundig op. Super tevreden!","datum":"","score":5,"stad":"Zeist"},{"naam":"Peter H.","tekst":"Goede service en duidelijke communicatie van begin tot eind. De dakinspectie gaf ons precies het inzicht dat we nodig hadden. Echt een betrouwbaar bedrijf.","datum":"","score":5,"stad":"Driebergen-Rijsenburg"},{"naam":"Anita S.","tekst":"Dakkadujk heeft ons platte dak voorzien van nieuwe bitumen dakbedekking. Netjes opgeleverd en een eerlijke prijs. We zijn erg blij met het resultaat.","datum":"","score":5,"stad":"Soest"},{"naam":"Kees W.","tekst":"Onze dakrenovatie is prachtig uitgevoerd door het team van Dakkadujk. Ze werkten efficiënt en hielden ons goed op de hoogte. Zeker een 10 waard!","datum":"","score":5,"stad":"Amersfoort"},{"naam":"Sandra M.","tekst":"De dakisolatie die Dakkadujk heeft aangebracht merken we direct in ons energieverbruik. Professioneel uitgevoerd en vriendelijk personeel. Wij bevelen hen van harte aan.","datum":"","score":5,"stad":"Bunnik"}];
     if (Array.isArray(reviews) && reviews.length) {
       var section = document.getElementById('reviewsSection');
       var track = document.getElementById('reviewsTrack');
@@ -814,8 +889,10 @@ footer ul li:has(a:empty) { display: none; }
           });
           textEl.appendChild(btn);
         }
-        inner.innerHTML += '<div class="review-meta"><p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p></div>';
-        inner.insertBefore(textEl, inner.querySelector('.review-meta'));
+        var meta = document.createElement('div');
+        meta.className = 'review-meta';
+        meta.innerHTML = '<p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p>';
+        inner.appendChild(meta);
         card.appendChild(inner);
         track.appendChild(card);
       });
@@ -867,7 +944,7 @@ footer ul li:has(a:empty) { display: none; }
   }
 })();
 </script>
-<a href="https://wa.me/https://wa.me/31612764323" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/31612764323" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script>
 (function(){
   var iconDefaults=['wrench','home','shield','clock','settings','layers','bolt','droplet'];
