@@ -243,24 +243,11 @@ module.exports = async function handler(req, res) {
 
   const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;
 
-  // ── Fetch template files from GitHub (parallel) ───────────────────────────
+  // ── Fetch templates + call Claude in parallel (saves ~0.5–1s) ────────────
   const templates = {};
-  try {
-    await Promise.all(
-      Object.entries(tplConfig)
-        .filter(([, filename]) => !!filename)
-        .map(async ([key, filename]) => {
-          templates[key] = await fetchTemplate(filename);
-        })
-    );
-  } catch (e) {
-    return res.status(500).json({ error: e.message });
-  }
-
-  // ── Call Claude ───────────────────────────────────────────────────────────
   let ai = {};
   try {
-    const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
+    const claudePromise = fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'x-api-key':         apiKey,
@@ -269,13 +256,24 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         model:      'claude-haiku-4-5-20251001',
-        max_tokens: 4000,
+        max_tokens: 2500,
         system:     'Je bent een professionele Nederlandse webtekstschrijver. Je antwoordt UITSLUITEND met een geldig JSON object — geen uitleg, geen markdown, geen codeblokken.',
         messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenNamen, stad, display, email, isModern) }],
       }),
     });
-    if (!anthropicRes.ok) throw new Error(`Anthropic ${anthropicRes.status}: ${await anthropicRes.text()}`);
-    const raw     = (await anthropicRes.json()).content?.[0]?.text || '';
+
+    const templatePromise = Promise.all(
+      Object.entries(tplConfig)
+        .filter(([, filename]) => !!filename)
+        .map(async ([key, filename]) => {
+          templates[key] = await fetchTemplate(filename);
+        })
+    );
+
+    const [claudeRes] = await Promise.all([claudePromise, templatePromise]);
+
+    if (!claudeRes.ok) throw new Error(`Anthropic ${claudeRes.status}: ${await claudeRes.text()}`);
+    const raw     = (await claudeRes.json()).content?.[0]?.text || '';
     const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
     ai = JSON.parse(cleaned);
   } catch (e) {

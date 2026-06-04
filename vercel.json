@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/create-website.js": { "maxDuration": 60 }
+  },
   "rewrites": [
     { "source": "/editor",       "destination": "/public/editor/index.html" },
     { "source": "/editor/",      "destination": "/public/editor/index.html" },
