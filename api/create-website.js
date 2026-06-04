@@ -402,34 +402,28 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: e.message });
   }
 
-  // ── Build Supabase klanten record ─────────────────────────────────────────
+  // ── Build Supabase klanten record (only columns that exist in the schema) ──
   const klantRecord = {
     slug,
     bedrijfsnaam,
-    telefoon:             display,
+    telefoon:       display,
     email,
-    adres_straat,
-    adres_postcode_stad,
-    kvk,
-    maps_url,
+    adres:          [adres_straat, adres_postcode_stad].filter(Boolean).join(', ') || null,
+    kvk:            kvk || null,
     template_keuze,
-    template_homepage:  tplConfig.homepage  || '',
-    template_diensten:  tplConfig.diensten  || '',
-    template_contact:   tplConfig.contact   || '',
-    template_over_ons:  tplConfig.over_ons  || '',
-    template_projecten: tplConfig.projecten || '',
-    sector:    beroep,
     kleur_thema,
-    logo_url:       foto_logo,
+    logo_url:       foto_logo || null,
     foto_hero:      fotoHero,
     foto_waarom:    fotoWaarom,
     foto_usp:       fotoUsp,
     foto_werkwijze: fotoWerkwijze,
-    ...Object.fromEntries(dienstenNamen.map((naam, i) => [`dienst_${i + 1}`, naam])),
-    ...Object.fromEntries(dienstenNamen.map((naam, i) => [
-      `dienst_${i + 1}_foto`,
-      naam ? `${STOCK_BASE}/${beroepSlug}/diensten/${naam}/${naam}-1.jpeg` : '',
-    ])),
+    dienst_1: dienstenNamen[0] || null,
+    dienst_2: dienstenNamen[1] || null,
+    dienst_3: dienstenNamen[2] || null,
+    dienst_4: dienstenNamen[3] || null,
+    dienst_5: dienstenNamen[4] || null,
+    dienst_6: dienstenNamen[5] || null,
+    reviews:    reviewsArr.length > 0 ? reviewsArr : null,
     ai_content: {
       ...ai,
       ...Object.fromEntries(dienstenNamen.map((naam, i) => [`DIENST_${i + 1}`, naam])),
