@@ -1,6 +1,3 @@
-const fs   = require('fs');
-const path = require('path');
-
 const REPO        = 'maxveer4/preview';
 const BRANCH      = 'main';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
@@ -64,6 +61,13 @@ function applyMap(template, map) {
     out = out.split(`{{${key}}}`).join(val == null ? '' : String(val));
   }
   return out;
+}
+
+async function fetchTemplate(filename) {
+  const url = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${filename}`;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`Template fetch failed: ${filename} (${r.status})`);
+  return r.text();
 }
 
 async function githubUpsert(token, filePath, content) {
@@ -239,16 +243,18 @@ module.exports = async function handler(req, res) {
 
   const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;
 
-  // ── Read template files from disk ─────────────────────────────────────────
-  const root      = path.join(__dirname, '..');
+  // ── Fetch template files from GitHub (parallel) ───────────────────────────
   const templates = {};
-  for (const [key, filename] of Object.entries(tplConfig)) {
-    if (!filename) continue;
-    try {
-      templates[key] = fs.readFileSync(path.join(root, filename), 'utf8');
-    } catch (e) {
-      return res.status(500).json({ error: `Template read failed: ${filename}` });
-    }
+  try {
+    await Promise.all(
+      Object.entries(tplConfig)
+        .filter(([, filename]) => !!filename)
+        .map(async ([key, filename]) => {
+          templates[key] = await fetchTemplate(filename);
+        })
+    );
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
   }
 
   // ── Call Claude ───────────────────────────────────────────────────────────
