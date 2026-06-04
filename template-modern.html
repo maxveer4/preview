@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{SEO_TITLE}}</title>
+<meta name="description" content="{{SEO_DESCRIPTION}}">
+<link rel="icon" href="{{LOGO_URL}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#071923;
+  --primary:{{KLEUR_PRIMARY}};
+  --primary-a10:{{KLEUR_PRIMARY_A10}};
+  --primary-a20:{{KLEUR_PRIMARY_A20}};
+  --background:#ffffff;
+  --card:#ffffff;
+  --muted:#f5f5f5;
+  --muted-fg:hsl(0,0%,45%);
+  --border:hsl(0,0%,88%);
+  --star:hsl(33,95%,60%);
+}
+body{font-family:'Inter',sans-serif;background:var(--background);color:var(--navy);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+
+/* Topbar */
+.topbar{background:var(--navy);color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.5rem;font-size:.75rem}
+.topbar-stars{display:flex;gap:2px;align-items:center}
+.star-icon{color:var(--star)}
+.topbar-contact{display:flex;gap:1.5rem}
+.topbar-contact a{display:flex;align-items:center;gap:6px;font-size:.75rem;color:#fff;transition:color .2s}
+.topbar-contact a:hover{color:var(--primary)}
+@media(max-width:767px){.topbar-contact{display:none}}
+
+/* Navbar */
+.navbar{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);position:sticky;top:0;z-index:50}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem}
+.navbar-logo img{height:40px;width:auto;max-width:160px;object-fit:contain}
+.navbar-nav{display:flex;align-items:center;gap:2rem}
+.navbar-nav a{font-size:.875rem;font-weight:500;color:var(--navy);transition:color .2s}
+.navbar-nav a:hover{color:var(--primary)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;border-radius:.5rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:600;transition:opacity .2s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary:hover{opacity:.9}
+.btn-outline-white{display:inline-flex;align-items:center;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:.5rem;padding:.625rem 1.5rem;font-size:.875rem;font-weight:500;transition:background .2s}
+.btn-outline-white:hover{background:rgba(255,255,255,.1)}
+.mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.mobile-nav{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5)}
+.mobile-nav-panel{position:absolute;right:0;top:0;bottom:0;width:280px;background:#fff;padding:2rem 1.5rem;overflow-y:auto}
+.mobile-nav-panel a{display:block;font-size:1rem;font-weight:500;color:var(--navy);padding:.75rem 0;border-bottom:1px solid var(--border)}
+.mobile-nav-close{position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--navy);line-height:1}
+.mobile-nav.open{display:block}
+@media(min-width:768px){.mobile-menu-btn{display:none}}
+@media(max-width:767px){.navbar-nav,.navbar .btn-primary{display:none}.mobile-menu-btn{display:block}}
+
+/* Hero */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(7,25,35,.85) 0%,rgba(7,25,35,.5) 100%)}
+.hero-content{position:relative;max-width:1280px;margin:0 auto;padding:5rem 1.5rem;width:100%}
+.hero-text{max-width:640px;color:#fff}
+.hero-eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:1.25rem}
+.hero-title{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.1;margin-bottom:1.25rem}
+.hero-desc{font-size:1rem;line-height:1.7;opacity:.9;max-width:520px;margin-bottom:2rem}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.875rem}
+
+/* USP bar */
+.usp-bar{background:var(--muted);padding:3rem 0}
+.usp-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:640px){.usp-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.usp-grid{grid-template-columns:repeat(4,1fr)}}
+.usp-item{display:flex;flex-direction:column;gap:.375rem}
+.usp-item-icon{width:40px;height:40px;background:var(--primary);border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.375rem}
+.usp-item h3{font-size:1rem;font-weight:600}
+.usp-item p{font-size:.875rem;line-height:1.6;color:var(--muted-fg)}
+
+/* Diensten section */
+.diensten{padding:4.5rem 0;background:#fff}
+@media(min-width:768px){.diensten{padding:6rem 0}}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.75rem,4vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:.9rem;line-height:1.7;color:var(--muted-fg);max-width:600px;margin-bottom:2.5rem}
+.diensten-header{margin-bottom:2.5rem}
+.diensten-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.diensten-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.diensten-grid{grid-template-columns:repeat(3,1fr)}}
+.dienst-card{border:1px solid var(--border);border-radius:.875rem;overflow:hidden;transition:box-shadow .25s,transform .25s;background:#fff}
+.dienst-card:hover{box-shadow:0 12px 32px rgba(7,25,35,.12);transform:translateY(-3px)}
+.dienst-card-img{aspect-ratio:4/3;overflow:hidden}
+.dienst-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.dienst-card:hover .dienst-card-img img{transform:scale(1.05)}
+.dienst-card-body{padding:1.25rem}
+.dienst-card-body h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+.dienst-card-body p{font-size:.875rem;line-height:1.6;color:var(--muted-fg)}
+
+/* Projecten section */
+.projecten{background:var(--navy);padding:4.5rem 0;color:#fff}
+@media(min-width:768px){.projecten{padding:6rem 0}}
+.projecten .section-label{color:var(--primary)}
+.projecten .section-title{color:#fff}
+.projecten-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:2.5rem}
+@media(min-width:640px){.projecten-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.projecten-grid{grid-template-columns:repeat(4,1fr)}}
+.project-card{border-radius:.875rem;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:transform .25s}
+.project-card:hover{transform:translateY(-4px)}
+.project-card-img{aspect-ratio:4/3;overflow:hidden;background:rgba(255,255,255,.05)}
+.project-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.project-card:hover .project-card-img img{transform:scale(1.05)}
+.project-card-body{padding:1.125rem}
+.project-cat{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}
+.project-card-body h3{font-size:.95rem;font-weight:600;margin:.375rem 0 .5rem;color:#fff}
+.project-card-body p{font-size:.8rem;line-height:1.6;color:rgba(255,255,255,.65);margin-bottom:.625rem}
+.project-loc{font-size:.75rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.3rem}
+
+/* About section */
+.about{padding:4.5rem 0;background:var(--muted)}
+@media(min-width:768px){.about{padding:6rem 0}}
+.about-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:1024px){.about-grid{grid-template-columns:1fr 1fr}}
+.about-img{width:100%;border-radius:1rem;object-fit:cover;aspect-ratio:4/3}
+.about-text .section-label{margin-bottom:.75rem}
+.about-text .section-title{margin-bottom:1rem}
+.about-intro{font-size:.9rem;line-height:1.75;color:var(--muted-fg);margin-bottom:1.75rem}
+.about-benefits{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.about-benefits li{display:flex;align-items:flex-start;gap:.75rem;font-size:.875rem;line-height:1.6;color:var(--navy)}
+.benefit-check{flex-shrink:0;width:20px;height:20px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* Reviews */
+.reviews{background:var(--navy);padding:4.5rem 0;overflow:hidden;color:#fff}
+@media(min-width:768px){.reviews{padding:6rem 0}}
+.reviews-header{text-align:center;margin-bottom:3rem}
+.reviews-header .section-label{color:var(--primary)}
+.reviews-header .section-title{color:#fff}
+.reviews-carousel{overflow:hidden}
+.reviews-track{display:flex;transition:transform .4s ease}
+.review-slide{flex:0 0 100%;padding-left:1rem}
+@media(min-width:640px){.review-slide{flex:0 0 50%}}
+@media(min-width:1024px){.review-slide{flex:0 0 33.333%}}
+.review-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:1rem;padding:1.5rem;height:100%;display:flex;flex-direction:column}
+.review-stars{display:flex;gap:3px;margin-bottom:1rem;color:var(--star);font-size:1.1rem}
+.review-text{font-size:.875rem;line-height:1.7;color:rgba(255,255,255,.75);flex:1;margin-bottom:1rem}
+.review-read-more{background:none;border:none;color:var(--primary);font-size:.875rem;font-weight:500;cursor:pointer;padding:0;margin-left:4px}
+.review-author{border-top:1px solid rgba(255,255,255,.12);padding-top:1rem;margin-top:auto}
+.review-author strong{display:block;font-size:.875rem;font-weight:600;color:#fff}
+.review-author span{font-size:.75rem;color:rgba(255,255,255,.45)}
+.reviews-nav{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.5rem}
+.reviews-nav button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:background .2s}
+.reviews-nav button:hover{background:rgba(255,255,255,.15)}
+.reviews-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+.reviews-dot{width:10px;height:10px;border-radius:9999px;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
+.reviews-dot.active{width:32px;background:var(--primary)}
+
+/* CTA bar */
+.cta-bar{padding:3.5rem 0;background:#fff}
+.cta-bar-inner{background:var(--muted);border-radius:1.25rem;padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+@media(min-width:768px){.cta-bar-inner{flex-direction:row;align-items:center;justify-content:space-between;padding:2.5rem 3rem}}
+.cta-bar-text h2{font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;margin-bottom:.5rem}
+.cta-bar-text p{font-size:.9rem;color:var(--muted-fg)}
+.cta-bar-btns{display:flex;gap:.75rem;flex-shrink:0;flex-wrap:wrap}
+.btn-outline-navy{display:inline-flex;align-items:center;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:.5rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:500;transition:background .2s}
+.btn-outline-navy:hover{background:rgba(7,25,35,.06)}
+
+/* Footer */
+footer{background:var(--navy);color:rgba(255,255,255,.75)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;padding:4rem 0}
+@media(min-width:640px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:repeat(4,1fr)}}
+footer h4{font-size:.875rem;font-weight:700;color:#fff;margin-bottom:1rem;letter-spacing:.04em}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.625rem}
+footer ul li a{font-size:.875rem;color:rgba(255,255,255,.6);transition:color .2s}
+footer ul li a:hover{color:var(--primary)}
+footer ul li:has(a:empty){display:none}
+.footer-addr p{font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:.375rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.25rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.footer-bottom-copy{font-size:.75rem;color:rgba(255,255,255,.4)}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:1rem;max-width:560px;width:100%;max-height:90vh;overflow:hidden;position:relative}
+.modal-close{position:absolute;top:.75rem;right:.75rem;z-index:10;background:var(--muted);border:none;border-radius:50%;width:32px;height:32px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);line-height:1}
+
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:9999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(0,0,0,.3)}
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <div class="topbar-contact">
+      <a href="tel:{{TELEFOON_HREF}}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        {{TELEFOON_DISPLAY}}
+      </a>
+      <a href="mailto:{{EMAIL}}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        {{EMAIL}}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/{{SLUG}}.html" class="navbar-logo">{{LOGO_HTML}}</a>
+    <nav class="navbar-nav">
+      <a href="/{{SLUG}}.html">Home</a>
+      <a href="/{{SLUG}}-diensten.html">Diensten</a>
+      <a href="/{{SLUG}}-projecten.html" style="{{HIDE_PROJECTEN}}">Projecten</a>
+      <a href="/{{SLUG}}-over-ons.html">Over ons</a>
+      <a href="/{{SLUG}}-contact.html">Contact</a>
+    </nav>
+    <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/{{SLUG}}.html">Home</a>
+    <a href="/{{SLUG}}-diensten.html">Diensten</a>
+    <a href="/{{SLUG}}-projecten.html" style="{{HIDE_PROJECTEN}}">Projecten</a>
+    <a href="/{{SLUG}}-over-ons.html">Over ons</a>
+    <a href="/{{SLUG}}-contact.html">Contact</a>
+    <div style="margin-top:1rem"><a href="/{{SLUG}}-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="{{FOTO_HERO}}" alt="{{HERO_ALT}}" loading="eager">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-eyebrow">{{HERO_EYEBROW}}</p>
+      <h1 class="hero-title">{{HERO_TITLE}}</h1>
+      <p class="hero-desc">{{HERO_DESC}}</p>
+      <div class="hero-btns">
+        <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+        <a href="/{{SLUG}}-diensten.html" class="btn-outline-white">Bekijk diensten</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USP bar -->
+<section class="usp-bar">
+  <div class="container">
+    <div class="usp-grid">
+      <div class="usp-item">
+        <div class="usp-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>{{TRUST_1_TITEL}}</h3>
+        <p>{{TRUST_1_DESC}}</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg></div>
+        <h3>{{TRUST_2_TITEL}}</h3>
+        <p>{{TRUST_2_DESC}}</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>{{TRUST_3_TITEL}}</h3>
+        <p>{{TRUST_3_DESC}}</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>{{TRUST_4_TITEL}}</h3>
+        <p>{{TRUST_4_DESC}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diensten -->
+<section class="diensten" id="diensten">
+  <div class="container">
+    <div class="diensten-header">
+      <p class="section-label">Onze diensten</p>
+      <h2 class="section-title">{{SERVICE_TITLE}}</h2>
+      <p class="section-desc">{{SERVICE_DESC}}</p>
+    </div>
+    <div class="diensten-grid" id="dienstenGrid"></div>
+    <div style="margin-top:2rem;text-align:center">
+      <a href="/{{SLUG}}-diensten.html" class="btn-primary">Alle diensten bekijken</a>
+    </div>
+  </div>
+</section>
+
+<!-- Projecten -->
+<section class="projecten" id="projecten" style="{{HIDE_PROJECTEN}}">
+  <div class="container">
+    <p class="section-label">Onze projecten</p>
+    <h2 class="section-title">Recent werk</h2>
+    <div class="projecten-grid" id="projectenGrid"></div>
+    <div style="margin-top:2.5rem;text-align:center">
+      <a href="/{{SLUG}}-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <img src="{{FOTO_USP}}" alt="{{BEDRIJFSNAAM}}" class="about-img" loading="lazy">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Over ons</p>
+        <h2 class="section-title">{{BEDRIJFSNAAM}}</h2>
+        <p class="about-intro">{{OVER_ONS_INTRO_P1}}</p>
+        <ul class="about-benefits">
+          <li>
+            <div class="benefit-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></div>
+            {{WHY_1_TITEL}} — {{WHY_1_DESC}}
+          </li>
+          <li>
+            <div class="benefit-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></div>
+            {{WHY_2_TITEL}} — {{WHY_2_DESC}}
+          </li>
+          <li>
+            <div class="benefit-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></div>
+            {{WHY_3_TITEL}} — {{WHY_3_DESC}}
+          </li>
+        </ul>
+        <a href="/{{SLUG}}-over-ons.html" class="btn-primary">Meer over ons</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <p class="section-label">Reviews</p>
+      <h2 class="section-title">Wat onze klanten zeggen</h2>
+    </div>
+    <div class="reviews-carousel">
+      <div class="reviews-track" id="reviewsTrack"></div>
+    </div>
+    <div class="reviews-nav">
+      <button onclick="scrollReviews(-1)" aria-label="Vorige"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg></button>
+      <button onclick="scrollReviews(1)" aria-label="Volgende"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg></button>
+    </div>
+    <div class="reviews-dots" id="reviewsDots"></div>
+  </div>
+</section>
+
+<!-- CTA bar -->
+<section class="cta-bar">
+  <div class="container">
+    <div class="cta-bar-inner">
+      <div class="cta-bar-text">
+        <h2>{{CTA_TITEL}}</h2>
+        <p>{{CTA_DESC}}</p>
+      </div>
+      <div class="cta-bar-btns">
+        <a href="/{{SLUG}}-contact.html" class="btn-primary">Offerte aanvragen</a>
+        <a href="tel:{{TELEFOON_HREF}}" class="btn-outline-navy">{{TELEFOON_DISPLAY}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#">{{DIENST_1}}</a></li>
+          <li><a href="#">{{DIENST_2}}</a></li>
+          <li><a href="#">{{DIENST_3}}</a></li>
+          <li><a href="#">{{DIENST_4}}</a></li>
+          <li><a href="#">{{DIENST_5}}</a></li>
+          <li><a href="#">{{DIENST_6}}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">{{STAD_1}}</a></li>
+          <li><a href="#">{{STAD_2}}</a></li>
+          <li><a href="#">{{STAD_3}}</a></li>
+          <li><a href="#">{{STAD_4}}</a></li>
+          <li><a href="#">{{STAD_5}}</a></li>
+          <li><a href="#">{{STAD_6}}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="/{{SLUG}}.html">Home</a></li>
+          <li><a href="/{{SLUG}}-diensten.html">Diensten</a></li>
+          <li><a href="/{{SLUG}}-over-ons.html">Over ons</a></li>
+          <li><a href="/{{SLUG}}-contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-addr">
+        <h4>Adres</h4>
+        <p style="font-weight:600;color:#fff">{{BEDRIJFSNAAM}}</p>
+        <p>{{ADRES_STRAAT}}</p>
+        <p>{{ADRES_POSTCODE_STAD}}</p>
+        <p style="margin-top:.75rem">KvK: {{KVK}}</p>
+        <p style="margin-top:.375rem"><a href="mailto:{{EMAIL}}" style="color:rgba(255,255,255,.6)">{{EMAIL}}</a></p>
+        <p><a href="tel:{{TELEFOON_HREF}}" style="color:rgba(255,255,255,.6)">{{TELEFOON_DISPLAY}}</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-bottom-copy">© 2026 {{BEDRIJFSNAAM}} – Alle rechten voorbehouden</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Offerte modal -->
+<div class="modal-overlay" id="modalOfferte" onclick="if(event.target===this)closeModal('offerte')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('offerte')">&times;</button>
+    {{MODAL_OFFERTE_IFRAME}}
+  </div>
+</div>
+
+<script src="https://link.smart-reach.nl/js/form_embed.js"></script>
+<script>
+// Modal
+function openModal(type){document.getElementById(type==='offerte'?'modalOfferte':'modalAdvies').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(type){document.getElementById(type==='offerte'?'modalOfferte':'modalAdvies').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal('offerte')}});
+
+// Diensten grid (JS-rendered from DIENSTEN_JSON)
+(function(){
+  var diensten=[];
+  try{diensten={{DIENSTEN_JSON}};}catch(e){}
+  var grid=document.getElementById('dienstenGrid');
+  if(!grid||!diensten.length)return;
+  grid.innerHTML=diensten.map(function(d){
+    var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
+    var desc=d.desc?'<p>'+d.desc+'</p>':'';
+    return '<div class="dienst-card">'+img+'<div class="dienst-card-body"><h3>'+d.naam+'</h3>'+desc+'</div></div>';
+  }).join('');
+})();
+
+// Projecten grid (JS-rendered from PROJECTEN_JSON)
+(function(){
+  var projecten=[];
+  try{projecten={{PROJECTEN_JSON}};}catch(e){}
+  var grid=document.getElementById('projectenGrid');
+  if(!grid||!projecten.length)return;
+  grid.innerHTML=projecten.map(function(p){
+    var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img"></div>';
+    var loc=p.locatie?'<span class="project-loc"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+p.locatie+'</span>':'';
+    return '<div class="project-card">'+img+'<div class="project-card-body"><span class="project-cat">'+p.categorie+'</span><h3>'+p.titel+'</h3><p>'+p.desc+'</p>'+loc+'</div></div>';
+  }).join('');
+})();
+
+// Reviews carousel
+var reviews=[];
+try{reviews=[{{REVIEWS_JSON}}];}catch(e){}
+var reviewIndex=0;
+var LIMIT=150;
+function spv(){return window.innerWidth>=1024?3:window.innerWidth>=640?2:1}
+function renderReviews(){
+  var track=document.getElementById('reviewsTrack');
+  var dots=document.getElementById('reviewsDots');
+  if(!track)return;
+  track.innerHTML=reviews.map(function(r,i){
+    var plain=r.tekst.replace(/<[^>]+>/g,'');
+    var short=plain.length>LIMIT;
+    var preview=short?r.tekst.slice(0,LIMIT)+'…':r.tekst;
+    var fullAttr=r.tekst.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    return '<div class="review-slide"><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" id="rt'+i+'" data-full="'+fullAttr+'">'+preview+(short?'<button class="review-read-more" onclick="toggleR('+i+')">Lees meer</button>':'')+'</p><div class="review-author"><strong>'+r.naam+'</strong><span>'+r.datum+'</span></div></div></div>';
+  }).join('');
+  var pages=Math.ceil(reviews.length/spv());
+  dots.innerHTML=Array.from({length:pages},function(_,i){return '<button class="reviews-dot'+(i===0?' active':'')+'" onclick="goReview('+i+')"></button>'}).join('');
+  goReview(0);
+}
+function toggleR(i){
+  var el=document.getElementById('rt'+i);
+  var full=el.dataset.full||(reviews[i]&&reviews[i].tekst)||'';
+  var btn=el.querySelector('button');
+  if(btn.textContent==='Lees meer'){el.innerHTML=full+'<button class="review-read-more" onclick="toggleR('+i+')">Lees minder</button>';}
+  else{var plain=full.replace(/<[^>]+>/g,'');var preview=plain.length>LIMIT?full.slice(0,LIMIT)+'…':full;el.innerHTML=preview+'<button class="review-read-more" onclick="toggleR('+i+')">Lees meer</button>';}
+}
+function goReview(i){
+  reviewIndex=i;
+  var slideW=100/spv();
+  document.getElementById('reviewsTrack').style.transform='translateX(-'+(i*slideW*spv())+'%)';
+  document.querySelectorAll('.reviews-dot').forEach(function(d,j){d.classList.toggle('active',j===i)});
+}
+function scrollReviews(dir){var pages=Math.ceil(reviews.length/spv());goReview((reviewIndex+dir+pages)%pages)}
+renderReviews();
+window.addEventListener('resize',renderReviews);
+</script>
+
+<script>
+(function(){
+  var slug='{{SLUG}}';
+  var onLive=window.location.pathname.indexOf('/'+slug)!==0;
+  if(onLive){
+    var remap={};
+    remap['/'+slug+'.html']='/';
+    remap['/'+slug+'-contact.html']='/contact';
+    remap['/'+slug+'-diensten.html']='/diensten';
+    remap['/'+slug+'-over-ons.html']='/over-ons';
+    remap['/'+slug+'-projecten.html']='/projecten';
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var h=a.getAttribute('href');
+      if(remap[h]!==undefined)a.setAttribute('href',remap[h]);
+    });
+  }
+})();
+</script>
+<a href="{{WHATSAPP_HREF}}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

@@ -116,7 +116,8 @@ module.exports = async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN env var not set' });
 
-  const { slug, ...incomingFields } = req.body || {};
+  const { slug, website_data, changed_fields: _cf, ...directFields } = req.body || {};
+  const incomingFields = website_data || directFields;
   if (!slug) return res.status(400).json({ error: 'slug is required' });
 
   // Load existing values from all 4 pages — incoming fields take precedence
@@ -204,6 +205,10 @@ module.exports = async function handler(req, res) {
     },
     dak: {
       prefix:   'template-dak',
+      suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
+    },
+    modern: {
+      prefix:   'template-modern',
       suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
     },
   };

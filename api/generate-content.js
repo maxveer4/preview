@@ -69,8 +69,18 @@ const FIELDS_DAK_EXTRA = [
   ['projecten_cta_desc',   'korte CTA tekst, max 20 woorden'],
 ];
 
+// Extra fields for the 'modern' template
+const FIELDS_MODERN_EXTRA = [
+  ['trust_4_titel',        'titel van vierde vertrouwenskolom, max 4 woorden'],
+  ['trust_4_desc',         'uitleg bij vierde vertrouwenskolom, max 15 woorden'],
+  ['projecten_hero_desc',  'intro zin op de projectenpagina, max 20 woorden'],
+  ['projecten_cta_titel',  'call-to-action titel onderaan projectenpagina, max 6 woorden'],
+  ['projecten_cta_desc',   'korte CTA tekst onderaan projectenpagina, max 20 woorden'],
+  ['projecten_json',       'JSON-array van exact 4 projectkaarten — geef terug als JSON-array (geen string), formaat: [{"foto":"","titel":"projecttitel passend bij bedrijfstype","categorie":"dienstcategorie","locatie":"stad of regio","desc":"korte projectomschrijving max 15 woorden"}] — genereer realistische projecten passend bij het bedrijfstype en werkgebied'],
+];
+
 function buildPrompt(naam, bedrijfstype, template, diensten = [], stad = '') {
-  const extraFields = template === 'dak' ? FIELDS_DAK_EXTRA : [];
+  const extraFields = template === 'dak' ? FIELDS_DAK_EXTRA : template === 'modern' ? FIELDS_MODERN_EXTRA : [];
   const allFields   = [...FIELDS_DEFAULT, ...extraFields];
 
   const fieldLines = allFields
@@ -145,6 +155,11 @@ module.exports = async function handler(req, res) {
   } catch (e) {
     console.error('Claude generation failed:', e.message);
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
+  }
+
+  // If AI returned projecten_json as an array object, stringify it for template embedding
+  if (Array.isArray(fields.projecten_json)) {
+    fields.projecten_json = JSON.stringify(fields.projecten_json);
   }
 
   // Always include bedrijfsnaam + template + bedrijfstype in the stored data
