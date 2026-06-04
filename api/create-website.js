@@ -384,13 +384,14 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Push all files to GitHub in parallel ──────────────────────────────────
+  // ── Push all files to GitHub sequentially (parallel causes SHA conflicts) ──
+  console.log(`[create-website] Pushing ${Object.keys(generated).length} files: ${Object.keys(generated).join(', ')}`);
   try {
-    await Promise.all(
-      Object.entries(generated).map(([filename, content]) =>
-        githubUpsert(token, `public/${filename}`, content)
-      )
-    );
+    for (const [filename, content] of Object.entries(generated)) {
+      console.log(`[create-website] Committing ${filename}...`);
+      await githubUpsert(token, `public/${filename}`, content);
+      console.log(`[create-website] Done: ${filename}`);
+    }
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
