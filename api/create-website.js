@@ -256,7 +256,7 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         model:      'claude-haiku-4-5-20251001',
-        max_tokens: 2500,
+        max_tokens: 4000,
         system:     'Je bent een professionele Nederlandse webtekstschrijver. Je antwoordt UITSLUITEND met een geldig JSON object — geen uitleg, geen markdown, geen codeblokken.',
         messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenNamen, stad, display, email, isModern) }],
       }),
