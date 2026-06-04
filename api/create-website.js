@@ -115,7 +115,7 @@ Geef een JSON object terug met EXACT deze velden:
   "SEO_TITLE": "Paginatitel voor Google (max 60 tekens)",
   "SEO_DESCRIPTION": "Meta description (max 155 tekens) met call-to-action",
   "HERO_EYEBROW": "Tagline boven H1 (max 6 woorden)",
-  "HERO_TITLE": "Krachtige H1 (max 8 woorden)",
+  "HERO_TITLE": "Krachtige H1 (max 8 woorden) — omsluit exact één sleutelwoord met *sterretjes* voor gouden markering, bv: 'Vakkundig *schilderwerk* voor uw woning.'",
   "HERO_DESC": "Hero beschrijving (1-2 zinnen, max 30 woorden)",
   "HERO_ALT": "Alt-tekst hero foto (max 8 woorden)",
   "USP_1": "Eerste USP bullet (max 6 woorden)",
@@ -128,7 +128,7 @@ Geef een JSON object terug met EXACT deze velden:
   "TRUST_2_DESC": "Trust 2 beschrijving (1 zin, max 15 woorden)",
   "TRUST_3_TITEL": "Trust 3 titel (2-4 woorden)",
   "TRUST_3_DESC": "Trust 3 beschrijving (1 zin, max 15 woorden)",${modernExtra}
-  "SERVICE_TITLE": "Sectietitel diensten (4-7 woorden)",
+  "SERVICE_TITLE": "Sectietitel diensten (4-7 woorden) — omsluit één sleutelwoord met *sterretjes*, bv: 'Voor al uw *schilderwerk*.'",
   "SERVICE_DESC": "Hoofddienst beschrijving (5-6 zinnen, overtuigend)",
   "SERVICE_ALT": "Alt-tekst dienstenfoto (max 6 woorden)",
   "WHY_DESC": "Intro waarom-sectie (max 25 woorden)",
@@ -276,6 +276,12 @@ module.exports = async function handler(req, res) {
     const raw     = (await claudeRes.json()).content?.[0]?.text || '';
     const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
     ai = JSON.parse(cleaned);
+
+    // Converteer *accentwoord* naar <span class="accent">accentwoord</span>
+    const accentFields = ['HERO_TITLE', 'SERVICE_TITLE'];
+    for (const field of accentFields) {
+      if (ai[field]) ai[field] = ai[field].replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+    }
   } catch (e) {
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
   }
