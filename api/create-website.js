@@ -448,9 +448,9 @@ module.exports = async function handler(req, res) {
     },
   };
 
-  // Insert into klanten (non-fatal)
+  // Insert into klanten (for editor overview)
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
       method: 'POST',
       headers: {
         apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
@@ -458,7 +458,21 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify(klantRecord),
     });
-  } catch (e) { console.error('Supabase klanten insert failed (non-fatal):', e.message); }
+    if (!r.ok) console.error('Supabase klanten insert failed:', r.status, await r.text());
+  } catch (e) { console.error('Supabase klanten insert failed:', e.message); }
+
+  // Insert into clients (used by save.js to look up template type)
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates',
+      },
+      body: JSON.stringify({ slug, naam: bedrijfsnaam, template: template_keuze }),
+    });
+    if (!r.ok) console.error('Supabase clients insert failed:', r.status, await r.text());
+  } catch (e) { console.error('Supabase clients insert failed:', e.message); }
 
   // Also save to client_content (used by editor save flow)
   try {
