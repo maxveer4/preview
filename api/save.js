@@ -116,7 +116,7 @@ module.exports = async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return res.status(500).json({ error: 'GITHUB_TOKEN env var not set' });
 
-  const { slug, website_data, changed_fields: _cf, ...directFields } = req.body || {};
+  const { slug, template: templateFromPayload, website_data, changed_fields: _cf, ...directFields } = req.body || {};
   const incomingFields = website_data || directFields;
   if (!slug) return res.status(400).json({ error: 'slug is required' });
 
@@ -182,17 +182,19 @@ module.exports = async function handler(req, res) {
   if (!map.DIENST_6) map.DIENST_6 = '';
 
   // Look up which template set this client uses
-  let templateType = 'default';
-  try {
-    const tr = await fetch(
-      `${SUPABASE_URL}/rest/v1/clients?slug=eq.${encodeURIComponent(slug)}&select=template`,
-      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
-    );
-    if (tr.ok) {
-      const rows = await tr.json();
-      if (rows[0]?.template) templateType = rows[0].template;
-    }
-  } catch (_) {}
+  let templateType = templateFromPayload || 'default';
+  if (!templateFromPayload) {
+    try {
+      const tr = await fetch(
+        `${SUPABASE_URL}/rest/v1/clients?slug=eq.${encodeURIComponent(slug)}&select=template`,
+        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+      );
+      if (tr.ok) {
+        const rows = await tr.json();
+        if (rows[0]?.template) templateType = rows[0].template;
+      }
+    } catch (_) {}
+  }
 
   // Read templates from repo root
   const root = path.join(__dirname, '..');
