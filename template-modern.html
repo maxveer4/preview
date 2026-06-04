@@ -530,7 +530,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   grid.innerHTML=diensten.map(function(d,i){
     var icon=icons[i%icons.length];
     var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
-    var desc=d.desc?'<p>'+d.desc+'</p>':'';
+    // Homepage: toon alleen de eerste zin van de beschrijving
+    var firstSentence=d.desc?(d.desc.split(/\.\s/)[0].replace(/\.$/,'')+'.'):''
+    var desc=firstSentence?'<p>'+firstSentence+'</p>':'';
     return '<article class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3>'+desc+'</div>'+img+'</article>';
   }).join('');
 })();
