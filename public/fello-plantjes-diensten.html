@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diensten – Fello plantjes</title>
+<meta name="description" content="Professionele diensten voor de mooiste tuin">
+<link rel="icon" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#071923;--primary:hsl(142,72%,38%);--primary-a20:hsla(142,72%,38%,0.2);--background:#ffffff;--card:#ffffff;--muted:#f5f5f5;--muted-fg:hsl(0,0%,45%);--border:hsl(0,0%,88%);--star:hsl(33,95%,60%)}
+body{font-family:'Inter',sans-serif;background:var(--background);color:var(--navy);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.topbar{background:var(--navy);color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.5rem;font-size:.75rem}
+.topbar-stars{display:flex;gap:2px;align-items:center}
+.star-icon{color:var(--star)}
+.topbar-contact{display:flex;gap:1.5rem}
+.topbar-contact a{display:flex;align-items:center;gap:6px;font-size:.75rem;color:#fff;transition:color .2s}
+.topbar-contact a:hover{color:var(--primary)}
+@media(max-width:767px){.topbar-contact{display:none}}
+.navbar{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);position:sticky;top:0;z-index:50}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem}
+.navbar-logo img{height:40px;width:auto;max-width:160px;object-fit:contain}
+.navbar-nav{display:flex;align-items:center;gap:2rem}
+.navbar-nav a{font-size:.875rem;font-weight:500;color:var(--navy);transition:color .2s}
+.navbar-nav a:hover{color:var(--primary)}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;border-radius:.5rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:600;transition:opacity .2s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary:hover{opacity:.9}
+.mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.mobile-nav{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5)}
+.mobile-nav-panel{position:absolute;right:0;top:0;bottom:0;width:280px;background:#fff;padding:2rem 1.5rem;overflow-y:auto}
+.mobile-nav-panel a{display:block;font-size:1rem;font-weight:500;color:var(--navy);padding:.75rem 0;border-bottom:1px solid var(--border)}
+.mobile-nav-close{position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--navy);line-height:1}
+.mobile-nav.open{display:block}
+@media(min-width:768px){.mobile-menu-btn{display:none}}
+@media(max-width:767px){.navbar-nav,.navbar .btn-primary{display:none}.mobile-menu-btn{display:block}}
+.page-hero{background:var(--navy);color:#fff;padding:4rem 0 5rem}
+.page-hero-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}
+.page-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.page-hero p{font-size:1rem;line-height:1.7;opacity:.8;max-width:560px}
+.diensten-section{padding:5rem 0}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.75rem,4vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:.9rem;line-height:1.7;color:var(--muted-fg);max-width:600px;margin-bottom:3rem}
+.diensten-full-grid{display:grid;grid-template-columns:1fr;gap:1.75rem}
+@media(min-width:640px){.diensten-full-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.diensten-full-grid{grid-template-columns:repeat(3,1fr)}}
+.dienst-full-card{border:1px solid var(--border);border-radius:1rem;overflow:hidden;transition:box-shadow .25s,transform .25s;background:#fff}
+.dienst-full-card:hover{box-shadow:0 16px 40px rgba(7,25,35,.12);transform:translateY(-4px)}
+.dienst-full-card-img{aspect-ratio:16/9;overflow:hidden}
+.dienst-full-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.dienst-full-card:hover .dienst-full-card-img img{transform:scale(1.05)}
+.dienst-full-card-body{padding:1.5rem}
+.dienst-full-card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:.625rem}
+.dienst-full-card-body p{font-size:.875rem;line-height:1.7;color:var(--muted-fg);margin-bottom:1.25rem}
+.dienst-link{font-size:.875rem;font-weight:600;color:var(--primary);display:inline-flex;align-items:center;gap:.375rem}
+.waarom-section{padding:5rem 0;background:var(--muted)}
+@media(min-width:768px){.waarom-section{padding:6rem 0}}
+.waarom-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
+@media(min-width:640px){.waarom-grid{grid-template-columns:repeat(3,1fr)}}
+.waarom-card{background:#fff;border-radius:.875rem;padding:1.75rem;border:1px solid var(--border)}
+.waarom-icon{width:44px;height:44px;background:var(--primary);border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.waarom-card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.waarom-card p{font-size:.875rem;line-height:1.6;color:var(--muted-fg)}
+.cta-section{background:var(--navy);color:#fff;padding:5rem 0;text-align:center}
+.cta-section h2{font-size:clamp(1.75rem,4vw,2.4rem);font-weight:700;margin-bottom:1rem}
+.cta-section p{font-size:.9rem;line-height:1.7;opacity:.75;max-width:520px;margin:0 auto 2rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary-lg{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;border-radius:.5rem;padding:.75rem 1.75rem;font-size:1rem;font-weight:600;transition:opacity .2s}
+.btn-primary-lg:hover{opacity:.9}
+.btn-outline-white-lg{display:inline-flex;align-items:center;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);border-radius:.5rem;padding:.75rem 1.75rem;font-size:1rem;font-weight:500;transition:background .2s}
+.btn-outline-white-lg:hover{background:rgba(255,255,255,.1)}
+footer{background:var(--navy);color:rgba(255,255,255,.75);border-top:1px solid rgba(255,255,255,.08)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;padding:4rem 0}
+@media(min-width:640px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:repeat(4,1fr)}}
+footer h4{font-size:.875rem;font-weight:700;color:#fff;margin-bottom:1rem;letter-spacing:.04em}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.625rem}
+footer ul li a{font-size:.875rem;color:rgba(255,255,255,.6);transition:color .2s}
+footer ul li a:hover{color:var(--primary)}
+footer ul li:has(a:empty){display:none}
+.footer-addr p{font-size:.875rem;color:rgba(255,255,255,.6);margin-bottom:.375rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.25rem 0;font-size:.75rem;color:rgba(255,255,255,.4);text-align:center}
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:9999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:transform .2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <div class="topbar-contact">
+      <a href="tel:061425231"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>061425231</a>
+      <a href="mailto:info@jknas.nl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@jknas.nl</a>
+    </div>
+  </div>
+</div>
+
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/fello-plantjes.html" class="navbar-logo"><span style="font-weight:700;font-size:1.25rem">Fello plantjes</span></a>
+    <nav class="navbar-nav">
+      <a href="/fello-plantjes.html">Home</a>
+      <a href="/fello-plantjes-diensten.html">Diensten</a>
+      <a href="/fello-plantjes-projecten.html" style="">Projecten</a>
+      <a href="/fello-plantjes-over-ons.html">Over ons</a>
+      <a href="/fello-plantjes-contact.html">Contact</a>
+    </nav>
+    <a href="/fello-plantjes-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</div>
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/fello-plantjes.html">Home</a>
+    <a href="/fello-plantjes-diensten.html">Diensten</a>
+    <a href="/fello-plantjes-projecten.html" style="">Projecten</a>
+    <a href="/fello-plantjes-over-ons.html">Over ons</a>
+    <a href="/fello-plantjes-contact.html">Contact</a>
+    <div style="margin-top:1rem"><a href="/fello-plantjes-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="page-hero-label">Diensten</p>
+    <h1>Onze diensten voor uw tuin</h1>
+    <p>Professionele diensten voor de mooiste tuin</p>
+  </div>
+</section>
+
+<section class="diensten-section">
+  <div class="container">
+    <p class="section-label">Wat wij bieden</p>
+    <h2 class="section-title">Onze diensten voor uw tuin</h2>
+    <p class="section-desc">Fello Plantjes biedt een compleet aanbod voor tuineigenaren die kwaliteit en creativiteit waarderen. Ons tuinontwerp creëert unieke, functionele ruimtes die perfect bij uw levensstijl passen. Bij de tuinaanleg werken wij zorgvuldig en professioneel, waarbij elk element perfect wordt geplaatst. Ons jaarlijkse tuinonderhoud houdt uw groene ruimte gezond en mooi. Met oog voor detail en duurzaamheid realiseren wij de tuin van uw dromen.</p>
+    <div class="diensten-full-grid" id="dienstenGrid"></div>
+  </div>
+</section>
+
+<section class="waarom-section">
+  <div class="container">
+    <p class="section-label">Waarom wij</p>
+    <h2 class="section-title">Waarom kiezen voor Fello plantjes?</h2>
+    <div class="waarom-grid">
+      <div class="waarom-card">
+        <div class="waarom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Maatwerk per tuin</h3>
+        <p>Elk tuinproject is uniek, elke oplossing persoonlijk.</p>
+      </div>
+      <div class="waarom-card">
+        <div class="waarom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+        <h3>Professioneel advies</h3>
+        <p>Wij helpen u keuzes maken die echt voor u werken.</p>
+      </div>
+      <div class="waarom-card">
+        <div class="waarom-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+        <h3>Duurzame aanpak</h3>
+        <p>Ecologisch verantwoorde keuzes voor langterm succes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Laten we beginnen aan uw tuin</h2>
+    <p>Bel 061425231 of stuur een bericht.</p>
+    <div class="cta-btns">
+      <a href="/fello-plantjes-contact.html" class="btn-primary-lg">Offerte aanvragen</a>
+      <a href="tel:061425231" class="btn-outline-white-lg">061425231</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>Diensten</h4><ul><li><a href="#">ontwerp</a></li><li><a href="#">aanleg</a></li><li><a href="#">onderhoud</a></li><li><a href="#"></a></li><li><a href="#"></a></li><li><a href="#"></a></li></ul></div>
+      <div><h4>Werkgebied</h4><ul><li><a href="#">Doorn</a></li><li><a href="#">Utrecht</a></li><li><a href="#">Zeist</a></li><li><a href="#">Vleuten</a></li><li><a href="#">De Bilt</a></li><li><a href="#">Harmelen</a></li></ul></div>
+      <div><h4>Navigatie</h4><ul><li><a href="/fello-plantjes.html">Home</a></li><li><a href="/fello-plantjes-diensten.html">Diensten</a></li><li><a href="/fello-plantjes-over-ons.html">Over ons</a></li><li><a href="/fello-plantjes-contact.html">Contact</a></li></ul></div>
+      <div class="footer-addr"><h4>Adres</h4><p style="font-weight:600;color:#fff">Fello plantjes</p><p></p><p></p><p style="margin-top:.75rem">KvK: </p><p style="margin-top:.375rem"><a href="mailto:info@jknas.nl" style="color:rgba(255,255,255,.6)">info@jknas.nl</a></p></div>
+    </div>
+    <div class="footer-bottom">© 2026 Fello plantjes – Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script src="https://link.smart-reach.nl/js/form_embed.js"></script>
+<script>
+(function(){
+  var diensten=[];
+  try{diensten=[{"naam":"ontwerp","desc":"Ons tuinontwerp brengt uw ideeën tot leven in een praktisch en esthetisch plan. Wij analyseren de ruimte, het licht en uw wensen zorgvuldig. Het resultaat is een ontwerp dat perfect aansluit op uw levensstijl en budget.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/ontwerp/ontwerp-1.jpeg"},{"naam":"aanleg","desc":"De aanleg van uw tuin voeren wij uit met grote precisie en aandacht. Wij werken schoon en professioneel, met oog voor detail. Van beplanting tot bestrating, wij zorgen dat alles vakkundig wordt geplaatst.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/aanleg/aanleg-1.jpeg"},{"naam":"onderhoud","desc":"Regelmatig onderhoud houdt uw tuin gezond en mooi het hele jaar door. Wij zorgen voor snoeiwerkzaamheden, bemesting en grasonderhoud. Met ons onderhoudsplan blijft uw tuin optimaal in vorm.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/diensten/onderhoud/onderhoud-1.jpeg"}];}catch(e){}
+  var grid=document.getElementById('dienstenGrid');
+  if(!grid||!diensten.length)return;
+  grid.innerHTML=diensten.map(function(d){
+    var img=d.foto?'<div class="dienst-full-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
+    var desc=d.desc?'<p>'+d.desc+'</p>':'';
+    return '<div class="dienst-full-card">'+img+'<div class="dienst-full-card-body"><h3>'+d.naam+'</h3>'+desc+'<span class="dienst-link">Meer informatie <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg></span></div></div>';
+  }).join('');
+})();
+</script>
+<script>
+(function(){
+  var slug='fello-plantjes';
+  var onLive=window.location.pathname.indexOf('/'+slug)!==0;
+  if(onLive){var remap={};remap['/'+slug+'.html']='/';remap['/'+slug+'-contact.html']='/contact';remap['/'+slug+'-diensten.html']='/diensten';remap['/'+slug+'-over-ons.html']='/over-ons';remap['/'+slug+'-projecten.html']='/projecten';document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(remap[h]!==undefined)a.setAttribute('href',remap[h])});}
+})();
+</script>
+<a href="https://wa.me/3161425231" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
