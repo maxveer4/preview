@@ -190,12 +190,13 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST')   return res.status(405).json({ error: 'Method not allowed' });
 
-  const token  = process.env.GITHUB_TOKEN;
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!token)  return res.status(500).json({ error: 'GITHUB_TOKEN not set' });
-  if (!apiKey) return res.status(500).json({ error: 'ANTHROPIC_API_KEY not set' });
+  const d        = req.body || {};
+  const dry_run  = !!d.dry_run;
+  const token    = process.env.GITHUB_TOKEN;
+  const apiKey   = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey)             return res.status(500).json({ error: 'ANTHROPIC_API_KEY not set' });
+  if (!dry_run && !token)  return res.status(500).json({ error: 'GITHUB_TOKEN not set' });
 
-  const d = req.body || {};
   const bedrijfsnaam       = d.bedrijfsnaam || '';
   const naam_contactpersoon = d.naam_contactpersoon || '';
   const telefoon            = d.telefoon || '';
@@ -206,7 +207,6 @@ module.exports = async function handler(req, res) {
   const template_keuze      = d.template_keuze || 'preview';
   const kleur_thema         = d.kleur_thema || 'blauw';
   const foto_logo           = d.foto_logo || '';
-  const dry_run             = !!d.dry_run;
   const adres_straat        = d.adres_straat || '';
   const adres_postcode_stad = d.adres_postcode_stad || '';
   const kvk                 = d.kvk || '';
