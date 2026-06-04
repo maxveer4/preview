@@ -551,7 +551,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
 
 // Reviews (static grid, no carousel)
 (function(){
-  var reviews=[];try{reviews=[{{REVIEWS_JSON}}];}catch(e){}
+  var reviews=[];try{reviews={{REVIEWS_JSON}};}catch(e){}
   var grid=document.getElementById('reviewsGrid');
   var dots=document.getElementById('reviewsDots');
   if(!grid||!reviews.length)return;
