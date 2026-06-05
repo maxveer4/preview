@@ -40,7 +40,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .header-nav a:hover,.header-nav a.active{color:#fff}
 .header-nav a::after{content:'';position:absolute;bottom:-.5rem;left:0;height:2px;width:0;background:var(--gold);transition:width .3s}
 .header-nav a:hover::after,.header-nav a.active::after{width:1.5rem}
-.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;border-radius:.375rem;padding:.75rem 1.25rem;font-size:.875rem;font-weight:600;box-shadow:var(--shadow-gold);transition:all .3s;border:none;cursor:pointer;font-family:inherit}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#fff;border-radius:.375rem;padding:.75rem 1.25rem;font-size:.875rem;font-weight:600;box-shadow:var(--shadow-gold);transition:all .3s;border:none;cursor:pointer;font-family:inherit}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px color-mix(in srgb,{{KLEUR_PRIMARY}} 45%,transparent)}
 .btn-gold svg{width:1rem;height:1rem}
 .btn-outline-white{display:inline-flex;align-items:center;justify-content:center;border-radius:.375rem;border:1.5px solid rgba(255,255,255,.7);background:transparent;padding:.75rem 1.75rem;font-size:.875rem;font-weight:600;color:#fff;transition:all .3s}
@@ -151,10 +151,12 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .reviews-header{text-align:center}
 .reviews-header .section-title{color:#fff}
 .reviews-header .gold-line{margin:1.75rem auto 0}
-.reviews-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:4rem}
-@media(min-width:640px){.reviews-grid{grid-template-columns:1fr 1fr}}
+.reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1.25rem;margin-top:4rem;padding-bottom:.5rem;scrollbar-width:none;-ms-overflow-style:none}
+.reviews-grid::-webkit-scrollbar{display:none}
+@media(min-width:640px){.reviews-grid{display:grid;grid-template-columns:1fr 1fr;overflow-x:visible;scroll-snap-type:none}}
 @media(min-width:1024px){.reviews-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
-.review-card{background:#fff;border-radius:1rem;border:1px solid rgba(255,255,255,.05);padding:2rem;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.review-card{flex:0 0 82%;scroll-snap-align:start;background:#fff;border-radius:1rem;border:1px solid rgba(255,255,255,.05);padding:2rem;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+@media(min-width:640px){.review-card{flex:unset}}
 @media(min-width:1024px){.review-card{padding:2.5rem}}
 .review-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.15)}
 .review-stars{display:flex;gap:.25rem}
