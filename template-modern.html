@@ -556,7 +556,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   var reviews=[];try{reviews={{REVIEWS_JSON}};}catch(e){}
   var grid=document.getElementById('reviewsGrid');
   var dots=document.getElementById('reviewsDots');
-  if(!grid||!reviews.length)return;
+  if(!grid||!reviews.length||!reviews[0]||typeof reviews[0]!=='object'){var s=grid&&grid.closest('.reviews');if(s)s.style.display='none';return;}
   var star='<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="var(--gold)" stroke="var(--gold)" stroke-width="1"/></svg>';
   grid.innerHTML=reviews.slice(0,3).map(function(r){
     return '<article class="review-card"><div class="review-stars">'+star+star+star+star+star+'</div><p class="review-text">'+(r.tekst||r.text||'')+'</p><p class="review-author">– '+(r.naam||r.name||'')+'</p></article>';
