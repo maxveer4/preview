@@ -96,10 +96,9 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 @media(min-width:1024px){.diensten{padding:7rem 0}}
 .diensten-header{margin-bottom:3.5rem;text-align:center}
 .diensten-header .gold-line{margin-left:auto;margin-right:auto}
-.diensten-grid{display:grid;grid-template-columns:1fr;gap:1.75rem}
-@media(min-width:640px){.diensten-grid{grid-template-columns:1fr 1fr}}
-@media(min-width:1024px){.diensten-grid{grid-template-columns:repeat(5,1fr);gap:1.5rem}}
-.dienst-card{display:flex;flex-direction:column;overflow:hidden;border-radius:.5rem;border:1px solid var(--navy-10);background:#fff;box-shadow:0 10px 30px -18px rgba(7,25,35,.25);transition:all .3s}
+.diensten-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+.dienst-card{flex:0 0 min(100%,calc(50% - .75rem));display:flex;flex-direction:column;overflow:hidden;border-radius:.5rem;border:1px solid var(--navy-10);background:#fff;box-shadow:0 10px 30px -18px rgba(7,25,35,.25);transition:all .3s;text-decoration:none;color:inherit}
+@media(min-width:1024px){.dienst-card{flex:0 0 190px}}
 .dienst-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(7,25,35,.35)}
 .dienst-card-body{flex:1;padding:1.75rem}
 .dienst-card-icon{display:flex;width:3rem;height:3rem;align-items:center;justify-content:center;border-radius:50%;border:1px solid color-mix(in srgb,#2563EB 40%,transparent);color:var(--gold)}
@@ -336,12 +335,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
       <div class="gold-line" style="margin-top:1.5rem"></div>
     </div>
     <div class="diensten-grid" id="dienstenGrid"></div>
-    <div style="margin-top:2.5rem;text-align:center">
-      <a href="/kmk-schilders-diensten.html" class="btn-gold">
-        Alle diensten bekijken
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -533,7 +526,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   grid.innerHTML=diensten.map(function(d,i){
     var icon=icons[i%icons.length];
     var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
-    return '<article class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div>'+img+'</article>';
+    return '<a href="/kmk-schilders-diensten.html" class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div>'+img+'</a>';
   }).join('');
 })();
 
