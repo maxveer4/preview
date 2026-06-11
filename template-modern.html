@@ -332,7 +332,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
       <p class="section-label">Onze diensten</p>
       <h2 class="section-title" style="margin-top:1.25rem">{{SERVICE_TITLE}}</h2>
       <div class="gold-line" style="margin-top:1.5rem"></div>
-      <p style="margin-top:1.25rem;font-size:.9375rem;line-height:1.7;color:var(--muted-fg);max-width:38rem">{{SERVICE_DESC}}</p>
     </div>
     <div class="diensten-grid" id="dienstenGrid"></div>
     <div style="margin-top:2.5rem;text-align:center">
@@ -532,10 +531,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   grid.innerHTML=diensten.map(function(d,i){
     var icon=icons[i%icons.length];
     var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
-    // Homepage: toon alleen de eerste zin van de beschrijving
-    var firstSentence=d.desc?(d.desc.split(/\.\s/)[0].replace(/\.$/,'')+'.'):''
-    var desc=firstSentence?'<p>'+firstSentence+'</p>':'';
-    return '<article class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3>'+desc+'</div>'+img+'</article>';
+    return '<article class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div>'+img+'</article>';
   }).join('');
 })();
 
@@ -547,7 +543,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   grid.innerHTML=projecten.map(function(p){
     var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img" style="background:rgba(255,255,255,.05);min-height:120px"></div>';
     var loc=p.locatie?'<div class="project-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+p.locatie+'</div>':'';
-    return '<article class="project-card">'+img+'<div class="project-card-body"><span class="project-cat">'+p.categorie+'</span><h3>'+p.titel+'</h3><p>'+p.desc+'</p>'+loc+'</div></article>';
+    return '<article class="project-card">'+img+'</article>';
   }).join('');
 })();
 

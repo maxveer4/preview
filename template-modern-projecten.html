@@ -202,7 +202,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
   grid.innerHTML=projecten.map(function(p){
     var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img" style="background:var(--muted);min-height:200px"></div>';
     var loc=p.locatie?'<p class="project-location">'+p.locatie+'</p>':'';
-    return '<article class="project-card">'+img+'<div class="project-card-body"><span class="project-cat">'+p.categorie+'</span><h3>'+p.titel+'</h3>'+loc+'<p>'+p.desc+'</p></div></article>';
+    return '<article class="project-card">'+img+'</article>';
   }).join('');
 })();
 </script>
