@@ -14,7 +14,7 @@
   --background: hsl(0,0%,96%);
   --foreground: hsl(0,0%,10%);
   --card: hsl(0,0%,100%);
-  --primary: hsl(142,72%,38%);
+  --primary: #16A34A;
   --primary-fg: hsl(0,0%,100%);
   --muted: hsl(0,0%,96%);
   --muted-fg: hsl(0,0%,45%);
@@ -43,7 +43,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 /* Navbar */
 .navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
 .navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
-.navbar-logo img { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+.navbar-logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
 .navbar-nav { display: flex; align-items: center; gap: 2rem; }
 .navbar-nav a, .navbar-nav .dropdown > button { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
 .navbar-nav a:hover, .navbar-nav .dropdown > button:hover { color: var(--primary); }
@@ -81,7 +81,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .dienst-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 .dienst-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: hsla(142,72%,38%,0.1); display: flex; align-items: center; justify-content: center; }
+.dienst-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: rgba(22,163,74,0.1); display: flex; align-items: center; justify-content: center; }
 .dienst-card-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
 .dienst-card-body h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--foreground); }
 .dienst-card-body p { font-size: 0.9rem; line-height: 1.75; color: var(--muted-fg); flex: 1; margin-bottom: 1.5rem; }
@@ -145,7 +145,7 @@ footer ul li:has(a:empty) { display: none; }
       <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
     </div>
     <div class="topbar-contact">
-      <a href="tel:061875623">
+      <a href="tel:+3161875623">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         061875623
       </a>
@@ -160,7 +160,7 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Navbar -->
 <div class="navbar">
   <div class="container navbar-inner">
-<a href="/maxcshildervwerf.html" class="navbar-logo"><span style="font-weight:700;font-size:1.25rem">maxcshildervwerf</span></a>
+<a href="/maxcshildervwerf.html" class="navbar-logo"><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--foreground)">maxcshildervwerf</span></a>
     <nav class="navbar-nav">
       <a href="/maxcshildervwerf.html">Home</a>
       <a href="/maxcshildervwerf-over-ons.html">Over</a>
@@ -250,7 +250,7 @@ footer ul li:has(a:empty) { display: none; }
     <p class="desc">Neem contact op voor gratis offerte en advies.</p>
     <div class="cta-btns">
       <a href="/maxcshildervwerf-contact.html" class="cta-btn-white">Offerte aanvragen</a>
-      <a href="tel:061875623" class="cta-btn-outline">
+      <a href="tel:+3161875623" class="cta-btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Bel 061875623
       </a>
