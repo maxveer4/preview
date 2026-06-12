@@ -34,7 +34,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 /* Topbar */
 .topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2rem; font-size: 0.75rem; }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
 .topbar-stars { display: none; align-items: center; gap: 6px; }
 @media(min-width:768px){ .topbar-stars { display: flex; } }
 .star-icon { color: var(--star); }
@@ -395,7 +395,7 @@ footer ul li:has(a:empty) { display: none; }
 
 <!-- Topbar -->
 <div class="topbar">
-  <div class="topbar-inner">
+  <div class="container topbar-inner">
     <!-- Mobile: telefoon + email -->
     <div class="topbar-mobile-contact">
       <a href="tel:+3161875623" class="topbar-contact-link">
@@ -441,13 +441,10 @@ footer ul li:has(a:empty) { display: none; }
       <a href="/maxcshildervwerf-projecten.html" style="">Projecten</a>
       <a href="/maxcshildervwerf-contact.html">Contact</a>
     </nav>
-    <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
-    <div style="display:flex;align-items:center;gap:0.5rem">
-      <a href="#offerte" class="btn-primary navbar-mobile-cta">Offerte aanvragen</a>
-      <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu openen">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
+    <a href="#offerte" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu openen">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </div>
 
