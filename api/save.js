@@ -177,9 +177,10 @@ module.exports = async function handler(req, res) {
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
   if (!map.WERK_ALT)    map.WERK_ALT    = `${name} - werkfoto`;
-  // Optional footer diensten: always replace so empty slots are hidden by CSS
-  if (!map.DIENST_5) map.DIENST_5 = '';
-  if (!map.DIENST_6) map.DIENST_6 = '';
+  // All footer diensten: always replace so deleted/empty slots render as "" not literal {{DIENST_N}}
+  for (let i = 1; i <= 6; i++) {
+    if (!map[`DIENST_${i}`]) map[`DIENST_${i}`] = '';
+  }
 
   // Look up which template set this client uses
   let templateType = templateFromPayload || 'default';
