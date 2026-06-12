@@ -238,7 +238,7 @@ module.exports = async function handler(req, res) {
     : String(dienstenRaw).split(',').map(x => x.trim()).filter(Boolean);
 
   const logoHtml = foto_logo
-    ? `<img src="${foto_logo}" alt="${bedrijfsnaam} logo" style="height:${isModern ? '64px' : '40px'};width:auto;max-width:${isModern ? '220px' : '160px'};object-fit:contain">`
+    ? `<img src="${foto_logo}" alt="${bedrijfsnaam} logo" style="height:${isModern ? '90px' : '40px'};width:auto;max-width:${isModern ? '300px' : '160px'};object-fit:contain">`
     : `<span style="font-weight:700;font-size:1.25rem">${bedrijfsnaam}</span>`;
 
   const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;

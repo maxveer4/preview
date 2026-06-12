@@ -217,7 +217,7 @@ module.exports = async function handler(req, res) {
   const tplCfg = TEMPLATE_CONFIGS[templateType] ?? TEMPLATE_CONFIGS.default;
 
   if (templateType === 'modern' && map.LOGO_URL) {
-    map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:64px;width:auto;max-width:220px;object-fit:contain;">`;
+    map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:90px;width:auto;max-width:300px;object-fit:contain;">`;
   }
 
   let templates;
