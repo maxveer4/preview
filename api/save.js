@@ -32,19 +32,15 @@ function hexToRgba(hex, alpha) {
 }
 
 // Editor sends [{naam, tekst, stad, datum, score}] with outer brackets.
-// Template does: const reviews = [{{REVIEWS_JSON}}]; and uses r.name, r.text, r.date.
-// → strip outer brackets, convert Dutch keys to English.
+// Template does: const reviews = [{{REVIEWS_JSON}}]; and uses r.naam, r.tekst, r.datum.
+// → strip outer brackets only so template gets [{...},{...}] not [[{...}]].
 function processReviewsJson(raw) {
   try {
     let arr = JSON.parse(raw);
     if (!Array.isArray(arr)) arr = [arr];
-    return arr.map(r => JSON.stringify({
-      name:  r.naam  || r.name  || '',
-      text:  r.tekst || r.text  || '',
-      date:  r.datum || r.date  || r.stad || '',
-    })).join(',');
+    return arr.map(r => JSON.stringify(r)).join(',');
   } catch (_) {
-    return '';
+    return raw;
   }
 }
 
