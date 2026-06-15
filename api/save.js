@@ -23,6 +23,31 @@ function hslToHsla(hsl, alpha) {
   return hsl.trim().replace(/^hsl\(/, 'hsla(').replace(/\)$/, `,${alpha})`);
 }
 
+// "#3b82f6" → "rgba(59,130,246,0.1)"
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// Editor sends [{naam, tekst, stad, datum, score}] with outer brackets.
+// Template does: const reviews = [{{REVIEWS_JSON}}]; and uses r.name, r.text, r.date.
+// → strip outer brackets, convert Dutch keys to English.
+function processReviewsJson(raw) {
+  try {
+    let arr = JSON.parse(raw);
+    if (!Array.isArray(arr)) arr = [arr];
+    return arr.map(r => JSON.stringify({
+      name:  r.naam  || r.name  || '',
+      text:  r.tekst || r.text  || '',
+      date:  r.datum || r.date  || r.stad || '',
+    })).join(',');
+  } catch (_) {
+    return '';
+  }
+}
+
 // Fetch all 4 pages and extract every possible field value for merge.
 // Tries Supabase first (no CDN caching delay), falls back to CDN extraction.
 async function loadAllExistingFields(slug) {
@@ -156,11 +181,22 @@ module.exports = async function handler(req, res) {
 
   // Derived values
   if (map.KLEUR_PRIMARY) {
-    map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
-    map.KLEUR_PRIMARY_A10 = hslToHsla(map.KLEUR_PRIMARY, '0.1');
-    // Tailwind CSS expects space-separated HSL without hsl() wrapper (e.g. "133 33% 24%")
-    map.KLEUR_PRIMARY_TAILWIND = map.KLEUR_PRIMARY
-      .replace(/^hsl\(\s*/, '').replace(/\s*\)$/, '').replace(/,\s*/g, ' ');
+    if (/^#[0-9a-fA-F]{6}$/.test(map.KLEUR_PRIMARY)) {
+      // Hex color from new editor
+      map.KLEUR_PRIMARY_A10 = hexToRgba(map.KLEUR_PRIMARY, '0.1');
+      map.KLEUR_PRIMARY_A20 = hexToRgba(map.KLEUR_PRIMARY, '0.2');
+    } else {
+      // HSL color from legacy flow
+      map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
+      map.KLEUR_PRIMARY_A10 = hslToHsla(map.KLEUR_PRIMARY, '0.1');
+      // Tailwind CSS expects space-separated HSL without hsl() wrapper (e.g. "133 33% 24%")
+      map.KLEUR_PRIMARY_TAILWIND = map.KLEUR_PRIMARY
+        .replace(/^hsl\(\s*/, '').replace(/\s*\)$/, '').replace(/,\s*/g, ' ');
+    }
+  }
+  // Fix reviews: convert Dutch keys to English, strip outer brackets
+  if (map.REVIEWS_JSON) {
+    map.REVIEWS_JSON = processReviewsJson(map.REVIEWS_JSON);
   }
   if (map.TELEFOON_DISPLAY) {
     map.TELEFOON_HREF = map.TELEFOON_DISPLAY.replace(/\s+/g, '');
