@@ -28,22 +28,38 @@ const TEMPLATE_CONFIGS = {
     over_ons: 'template-modern-over-ons.html',
     projecten: 'template-modern-projecten.html',
   },
+  bigsite: {
+    homepage:          'template-bigsite.html',
+    airco_installatie: 'template-bigsite-airco-installatie.html',
+    airco_onderhoud:   'template-bigsite-airco-onderhoud.html',
+    contact:           'template-bigsite-contact.html',
+    over_ons:          'template-bigsite-over-ons.html',
+    projecten:         'template-bigsite-projecten.html',
+    werkgebied:        'template-bigsite-werkgebied.html',
+    ede:               'template-bigsite-ede.html',
+    wageningen:        'template-bigsite-wageningen.html',
+  },
 };
 
 // Maps template config key → output filename suffix
 const PAGE_SLUG = {
-  homepage: s => `${s}.html`,
-  contact:  s => `${s}-contact.html`,
-  diensten: s => `${s}-diensten.html`,
-  over_ons: s => `${s}-over-ons.html`,
-  projecten: s => `${s}-projecten.html`,
+  homepage:          s => `${s}.html`,
+  contact:           s => `${s}-contact.html`,
+  diensten:          s => `${s}-diensten.html`,
+  over_ons:          s => `${s}-over-ons.html`,
+  projecten:         s => `${s}-projecten.html`,
+  airco_installatie: s => `${s}-airco-installatie.html`,
+  airco_onderhoud:   s => `${s}-airco-onderhoud.html`,
+  werkgebied:        s => `${s}-werkgebied.html`,
+  ede:               s => `${s}-ede.html`,
+  wageningen:        s => `${s}-wageningen.html`,
 };
 
 const COLOR_MAP = {
-  geel:  { p: 'hsl(45,95%,50%)',   a20: 'hsla(45,95%,50%,0.2)',   a10: 'hsla(45,95%,50%,0.1)'  },
-  groen: { p: 'hsl(142,72%,38%)',  a20: 'hsla(142,72%,38%,0.2)',  a10: 'hsla(142,72%,38%,0.1)' },
-  rood:  { p: 'hsl(0,72%,50%)',    a20: 'hsla(0,72%,50%,0.2)',    a10: 'hsla(0,72%,50%,0.1)'   },
-  blauw: { p: 'hsl(213,76%,52%)',  a20: 'hsla(213,76%,52%,0.2)',  a10: 'hsla(213,76%,52%,0.1)' },
+  geel:  { p: 'hsl(45,95%,50%)',   a20: 'hsla(45,95%,50%,0.2)',   a10: 'hsla(45,95%,50%,0.1)',  tw: '45 95% 50%'   },
+  groen: { p: 'hsl(142,72%,38%)',  a20: 'hsla(142,72%,38%,0.2)',  a10: 'hsla(142,72%,38%,0.1)', tw: '142 72% 38%'  },
+  rood:  { p: 'hsl(0,72%,50%)',    a20: 'hsla(0,72%,50%,0.2)',    a10: 'hsla(0,72%,50%,0.1)',   tw: '0 72% 50%'    },
+  blauw: { p: 'hsl(213,76%,52%)',  a20: 'hsla(213,76%,52%,0.2)',  a10: 'hsla(213,76%,52%,0.1)', tw: '213 76% 52%'  },
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -94,7 +110,7 @@ async function githubUpsert(token, filePath, content) {
   }
 }
 
-function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, isModern) {
+function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, isModern, isBigsite) {
   const modernExtra = isModern ? `
   "TRUST_4_TITEL": "Vierde vertrouwenskolom titel (2-4 woorden)",
   "TRUST_4_DESC": "Uitleg bij vierde vertrouwenskolom (1 zin, max 15 woorden)",
@@ -129,7 +145,8 @@ Geef een JSON object terug met EXACT deze velden:
   "TRUST_3_TITEL": "Trust 3 titel (2-4 woorden)",
   "TRUST_3_DESC": "Trust 3 beschrijving (1 zin, max 15 woorden)",${modernExtra}
   "SERVICE_TITLE": "Sectietitel diensten (4-7 woorden) — omsluit één sleutelwoord met *sterretjes*, bv: 'Voor al uw *schilderwerk*.'",
-  "SERVICE_DESC": "Hoofddienst beschrijving (5-6 zinnen, overtuigend)",
+  "SERVICE_DESC": "Hoofddienst beschrijving (5-6 zinnen, overtuigend)",${isBigsite ? `
+  "SERVICE_DESC_2": "Tweede alinea over airco diensten (3-4 zinnen, max 60 woorden, aanvullend op SERVICE_DESC)",` : ''}
   "SERVICE_ALT": "Alt-tekst dienstenfoto (max 6 woorden)",
   "WHY_DESC": "Intro waarom-sectie (max 25 woorden)",
   "WHY_1_TITEL": "Voordeel 1 titel (2-4 woorden)", "WHY_1_DESC": "Voordeel 1 (1 zin, max 15 woorden)",
@@ -227,6 +244,7 @@ module.exports = async function handler(req, res) {
     : digits;
   const beroepSlug = makeSlug(beroep);
   const isModern   = template_keuze === 'modern';
+  const isBigsite  = template_keuze === 'bigsite';
 
   const fotoHero      = d.foto_hero    || `${STOCK_BASE}/${beroepSlug}/hero/${beroepSlug}-hero-1.jpeg`;
   const fotoWaarom    = d.foto_sectie2 || `${STOCK_BASE}/${beroepSlug}/waarom/${beroepSlug}-waarom-1.jpeg`;
@@ -258,7 +276,7 @@ module.exports = async function handler(req, res) {
         model:      'claude-haiku-4-5-20251001',
         max_tokens: 4000,
         system:     'Je bent een professionele Nederlandse webtekstschrijver. Je antwoordt UITSLUITEND met een geldig JSON object — geen uitleg, geen markdown, geen codeblokken.',
-        messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenNamen, stad, display, email, isModern) }],
+        messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenNamen, stad, display, email, isModern, isBigsite) }],
       }),
     });
 
@@ -329,9 +347,10 @@ module.exports = async function handler(req, res) {
     FAVICON_HTML:        foto_logo ? `<link rel="icon" href="${foto_logo}">` : '',
 
     // Colors
-    KLEUR_PRIMARY:       kleur.p,
-    KLEUR_PRIMARY_A20:   kleur.a20,
-    KLEUR_PRIMARY_A10:   kleur.a10,
+    KLEUR_PRIMARY:          kleur.p,
+    KLEUR_PRIMARY_A20:      kleur.a20,
+    KLEUR_PRIMARY_A10:      kleur.a10,
+    KLEUR_PRIMARY_TAILWIND: kleur.tw,
 
     // Contact
     TELEFOON_DISPLAY:    display,
@@ -358,9 +377,13 @@ module.exports = async function handler(req, res) {
     DIENST_6: dienstenNamen[5] || '',
     ...dienstFotos,
 
+    // Project photos (bigsite only — empty at creation, editor fills in later)
+    FOTO_PROJECT_1: '', FOTO_PROJECT_2: '', FOTO_PROJECT_3: '', FOTO_PROJECT_4: '',
+    FOTO_PROJECT_5: '', FOTO_PROJECT_6: '', FOTO_PROJECT_7: '', FOTO_PROJECT_8: '',
+
     // JSON data
     DIENSTEN_JSON:  JSON.stringify(dienstenJson),
-    REVIEWS_JSON:   reviewsForTemplate,
+    REVIEWS_JSON:   isBigsite ? JSON.stringify(reviewsArr) : reviewsForTemplate,
     PROJECTEN_JSON: projectenJson,
 
     // Conditional / UI

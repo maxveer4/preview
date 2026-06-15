@@ -175,6 +175,14 @@ module.exports = async function handler(req, res) {
   if (!map.FOTO_WERKWIJZE) map.FOTO_WERKWIJZE = '';
   if (!map.FOTO_USP)       map.FOTO_USP       = '';
 
+  // Clear unset project photo and stad placeholders (bigsite template)
+  for (let i = 1; i <= 8; i++) {
+    if (!map[`FOTO_PROJECT_${i}`]) map[`FOTO_PROJECT_${i}`] = '';
+  }
+  for (let i = 3; i <= 6; i++) {
+    if (!map[`STAD_${i}`]) map[`STAD_${i}`] = '';
+  }
+
   // Derived values
   if (map.KLEUR_PRIMARY) {
     if (/^#[0-9a-fA-F]{6}$/.test(map.KLEUR_PRIMARY)) {
@@ -246,6 +254,10 @@ module.exports = async function handler(req, res) {
       prefix:   'template-modern',
       suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
     },
+    bigsite: {
+      prefix:   'template-bigsite',
+      suffixes: ['', '-airco-installatie', '-airco-onderhoud', '-contact', '-over-ons', '-projecten', '-werkgebied', '-ede', '-wageningen'],
+    },
   };
   const tplCfg = TEMPLATE_CONFIGS[templateType] ?? TEMPLATE_CONFIGS.default;
 
@@ -302,13 +314,13 @@ module.exports = async function handler(req, res) {
   }
 
   // Ook opslaan in gowebbo-klanten (non-fataal)
-  const klantenMap = {
-    [`${slug}.html`]:            `${slug}/index.html`,
-    [`${slug}-contact.html`]:    `${slug}/contact.html`,
-    [`${slug}-diensten.html`]:   `${slug}/diensten.html`,
-    [`${slug}-over-ons.html`]:   `${slug}/over-ons.html`,
-    [`${slug}-projecten.html`]:  `${slug}/projecten.html`,
-  };
+  // Build klanten path map dynamically from template suffixes
+  const klantenMap = {};
+  for (const s of tplCfg.suffixes) {
+    const genFile     = s ? `${slug}${s}.html` : `${slug}.html`;
+    const klantenFile = s ? `${slug}${s.replace('-', '/')}.html` : `${slug}/index.html`;
+    klantenMap[genFile] = klantenFile;
+  }
   try {
     for (const [oldName, newPath] of Object.entries(klantenMap)) {
       if (generated[oldName]) {
