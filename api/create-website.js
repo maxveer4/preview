@@ -622,6 +622,17 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: e.message });
   }
 
+  // ── Trigger Vercel deployment via a normal Contents API commit ────────────
+  // The Trees API batch commit doesn't reliably trigger Vercel's webhook.
+  // A single githubUpsert after the batch ensures Vercel picks up all new files.
+  try {
+    const triggerContent = `${slug} ${Date.now()}`;
+    await githubUpsert(token, 'public/_last-generated.txt', triggerContent);
+    console.log(`[create-website] Vercel trigger commit done`);
+  } catch (e) {
+    console.warn(`[create-website] Vercel trigger failed (non-fatal): ${e.message}`);
+  }
+
   // ── Build Supabase klanten record (matched to real schema) ──────────────
   const klantRecord = {
     slug,
