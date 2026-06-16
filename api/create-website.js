@@ -297,10 +297,18 @@ module.exports = async function handler(req, res) {
     const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
     ai = JSON.parse(cleaned);
 
-    // Converteer *accentwoord* naar <span class="accent">accentwoord</span>
+    // Converteer *accentwoord* → <span class="accent"> voor static HTML templates.
+    // Bigsite is React-based: HTML in GOWEBBO_DATA breekt de JS syntax (dubbele aanhalingstekens
+    // in class="accent" termineren de string). Strip de markers daar gewoon.
     const accentFields = ['HERO_TITLE', 'SERVICE_TITLE'];
     for (const field of accentFields) {
-      if (ai[field]) ai[field] = ai[field].replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+      if (ai[field]) {
+        if (isBigsite) {
+          ai[field] = ai[field].replace(/\*([^*]+)\*/g, '$1');
+        } else {
+          ai[field] = ai[field].replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+        }
+      }
     }
   } catch (e) {
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
