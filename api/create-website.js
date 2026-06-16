@@ -125,6 +125,82 @@ async function githubUpsert(token, filePath, content) {
   }
 }
 
+// Push multiple files as a single commit via the GitHub Trees API.
+// Much faster than sequential githubUpsert calls (blobs created in parallel,
+// one commit total), critical for bigsite which has 13 files.
+async function githubBatchCommit(token, files, commitMessage) {
+  const repoUrl = `https://api.github.com/repos/${REPO}`;
+  const headers = {
+    Authorization: `token ${token}`,
+    'Content-Type': 'application/json',
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'gowebbo-create/1.0',
+  };
+
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      // 1. Current branch HEAD
+      const refRes = await fetch(`${repoUrl}/git/refs/heads/${BRANCH}`, { headers });
+      if (!refRes.ok) throw new Error(`get ref failed: ${refRes.status}`);
+      const latestSha = (await refRes.json()).object.sha;
+
+      // 2. Current tree SHA
+      const commitRes = await fetch(`${repoUrl}/git/commits/${latestSha}`, { headers });
+      if (!commitRes.ok) throw new Error(`get commit failed: ${commitRes.status}`);
+      const baseTreeSha = (await commitRes.json()).tree.sha;
+
+      // 3. Create all blobs in parallel
+      const treeItems = await Promise.all(
+        Object.entries(files).map(async ([path, content]) => {
+          const blobRes = await fetch(`${repoUrl}/git/blobs`, {
+            method: 'POST', headers,
+            body: JSON.stringify({ content: Buffer.from(content).toString('base64'), encoding: 'base64' }),
+          });
+          if (!blobRes.ok) throw new Error(`blob for ${path} failed: ${blobRes.status}`);
+          const { sha } = await blobRes.json();
+          return { path, mode: '100644', type: 'blob', sha };
+        })
+      );
+
+      // 4. Create tree
+      const treeRes = await fetch(`${repoUrl}/git/trees`, {
+        method: 'POST', headers,
+        body: JSON.stringify({ base_tree: baseTreeSha, tree: treeItems }),
+      });
+      if (!treeRes.ok) throw new Error(`create tree failed: ${treeRes.status}`);
+      const newTreeSha = (await treeRes.json()).sha;
+
+      // 5. Create commit
+      const newCommitRes = await fetch(`${repoUrl}/git/commits`, {
+        method: 'POST', headers,
+        body: JSON.stringify({ message: commitMessage, tree: newTreeSha, parents: [latestSha] }),
+      });
+      if (!newCommitRes.ok) throw new Error(`create commit failed: ${newCommitRes.status}`);
+      const newCommitSha = (await newCommitRes.json()).sha;
+
+      // 6. Update branch ref (retry whole loop on 422 = non-fast-forward)
+      const updateRes = await fetch(`${repoUrl}/git/refs/heads/${BRANCH}`, {
+        method: 'PATCH', headers,
+        body: JSON.stringify({ sha: newCommitSha }),
+      });
+      if (updateRes.ok) return;
+      const errBody = await updateRes.text();
+      if (updateRes.status === 422 && attempt < 2) {
+        console.warn(`[githubBatchCommit] ref update conflict on attempt ${attempt + 1}, retrying...`);
+        await new Promise(r => setTimeout(r, 500 * (attempt + 1)));
+        continue;
+      }
+      throw new Error(`update ref failed (${updateRes.status}): ${errBody}`);
+    } catch (e) {
+      if (attempt < 2 && e.message.includes('conflict')) {
+        await new Promise(r => setTimeout(r, 500 * (attempt + 1)));
+        continue;
+      }
+      throw e;
+    }
+  }
+}
+
 function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, isModern, isBigsite) {
   const modernExtra = isModern ? `
   "TRUST_4_TITEL": "Vierde vertrouwenskolom titel (2-4 woorden)",
@@ -530,17 +606,19 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Push all files to GitHub sequentially (avoids SHA race conditions on updates) ──
+  // ── Push all files as a single batch commit (Trees API: blobs in parallel → 1 commit) ──
+  // This is 5-10x faster than sequential githubUpsert and avoids Vercel function timeouts
+  // when generating bigsite websites with 13 files.
   const fileList = Object.keys(generated);
-  console.log(`[create-website] Pushing ${fileList.length} files: ${fileList.join(', ')}`);
+  console.log(`[create-website] Batch-committing ${fileList.length} files: ${fileList.join(', ')}`);
+  const publicFiles = Object.fromEntries(
+    Object.entries(generated).map(([filename, content]) => [`public/${filename}`, content])
+  );
   try {
-    for (const [filename, content] of Object.entries(generated)) {
-      console.log(`[create-website] Committing ${filename}...`);
-      await githubUpsert(token, `public/${filename}`, content);
-      console.log(`[create-website] Done: ${filename}`);
-    }
+    await githubBatchCommit(token, publicFiles, `Create website for ${slug} (${fileList.length} files)`);
+    console.log(`[create-website] Batch commit done: ${fileList.length} files`);
   } catch (e) {
-    console.error(`[create-website] GitHub push failed: ${e.message}`);
+    console.error(`[create-website] GitHub batch commit failed: ${e.message}`);
     return res.status(500).json({ error: e.message });
   }
 
