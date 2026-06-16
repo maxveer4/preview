@@ -391,6 +391,7 @@ module.exports = async function handler(req, res) {
     REVIEWS_DISPLAY:  '',
 
     // Forms (empty at creation — editor fills these in later)
+    OFFERTE_WEBHOOK:      '',
     FORMULIER_WEBHOOK:    '',
     MODAL_OFFERTE_IFRAME: '',
     MODAL_ADVIES_IFRAME:  '',
@@ -413,14 +414,15 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Push all files to GitHub sequentially (parallel causes SHA conflicts) ──
+  // ── Push all files to GitHub in parallel (each file has a unique path, no SHA conflict) ──
   console.log(`[create-website] Pushing ${Object.keys(generated).length} files: ${Object.keys(generated).join(', ')}`);
   try {
-    for (const [filename, content] of Object.entries(generated)) {
-      console.log(`[create-website] Committing ${filename}...`);
-      await githubUpsert(token, `public/${filename}`, content);
-      console.log(`[create-website] Done: ${filename}`);
-    }
+    await Promise.all(
+      Object.entries(generated).map(([filename, content]) => {
+        console.log(`[create-website] Committing ${filename}...`);
+        return githubUpsert(token, `public/${filename}`, content);
+      })
+    );
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
