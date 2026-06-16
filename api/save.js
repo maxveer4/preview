@@ -256,7 +256,7 @@ module.exports = async function handler(req, res) {
     },
     bigsite: {
       prefix:   'template-bigsite',
-      suffixes: ['', '-airco-installatie', '-airco-onderhoud', '-contact', '-over-ons', '-projecten', '-werkgebied', '-ede', '-wageningen'],
+      suffixes: ['', '-contact', '-over-ons', '-projecten', '-werkgebied', '-ede', '-wageningen'],
     },
   };
   const tplCfg = TEMPLATE_CONFIGS[templateType] ?? TEMPLATE_CONFIGS.default;
@@ -273,6 +273,17 @@ module.exports = async function handler(req, res) {
       templates[filename] = fs.readFileSync(
         path.join(root, `${tplCfg.prefix}${s || ''}.html`), 'utf8'
       );
+    }
+    // Bigsite: load dynamic dienst pages (1-6) based on stored PAGINA_DIENST_N_SLUG + DIENST_N
+    if (templateType === 'bigsite') {
+      for (let n = 1; n <= 6; n++) {
+        const dienstNaam = map[`DIENST_${n}`];
+        const dienstSlug = map[`PAGINA_DIENST_${n}_SLUG`];
+        if (!dienstNaam || !dienstSlug) continue;
+        const tplFile = path.join(root, `template-bigsite-dienst-${n}.html`);
+        if (!fs.existsSync(tplFile)) continue;
+        templates[`${slug}-${dienstSlug}.html`] = fs.readFileSync(tplFile, 'utf8');
+      }
     }
   } catch (e) {
     return res.status(500).json({ error: `Template read failed: ${e.message}` });

@@ -32,6 +32,10 @@ const TEMPLATE_CONFIGS = {
     homepage:  'template-bigsite.html',
     dienst_1:  'template-bigsite-dienst-1.html',
     dienst_2:  'template-bigsite-dienst-2.html',
+    dienst_3:  'template-bigsite-dienst-3.html',
+    dienst_4:  'template-bigsite-dienst-4.html',
+    dienst_5:  'template-bigsite-dienst-5.html',
+    dienst_6:  'template-bigsite-dienst-6.html',
     contact:   'template-bigsite-contact.html',
     over_ons:  'template-bigsite-over-ons.html',
     projecten: 'template-bigsite-projecten.html',
@@ -42,7 +46,7 @@ const TEMPLATE_CONFIGS = {
 };
 
 // Maps template config key → output filename suffix
-// dienst_1 / dienst_2 use placeholder slugs; overridden per-request after ai response
+// dienst_N use placeholder slugs; overridden per-request after ai response
 const PAGE_SLUG = {
   homepage:   s => `${s}.html`,
   contact:    s => `${s}-contact.html`,
@@ -51,6 +55,10 @@ const PAGE_SLUG = {
   projecten:  s => `${s}-projecten.html`,
   dienst_1:   s => `${s}-dienst-1.html`,
   dienst_2:   s => `${s}-dienst-2.html`,
+  dienst_3:   s => `${s}-dienst-3.html`,
+  dienst_4:   s => `${s}-dienst-4.html`,
+  dienst_5:   s => `${s}-dienst-5.html`,
+  dienst_6:   s => `${s}-dienst-6.html`,
   werkgebied: s => `${s}-werkgebied.html`,
   ede:        s => `${s}-ede.html`,
   wageningen: s => `${s}-wageningen.html`,
@@ -119,19 +127,15 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "TRUST_4_DESC": "Uitleg bij vierde vertrouwenskolom (1 zin, max 15 woorden)",
   "PROJECTEN_JSON": [{"foto":"","titel":"realistisch projecttitel passend bij sector","categorie":"dienstcategorie","locatie":"gemeente in werkgebied","desc":"korte projectomschrijving max 15 woorden"},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."}],` : '';
 
-  const bigsiteExtra = isBigsite ? `
-  "PAGINA_DIENST_1_LABEL": "Korte naam voor dienst 1 in navigatie (2-4 woorden, bijv. 'Dakdekken' of 'Airco installatie')",
-  "PAGINA_DIENST_1_SLUG": "URL-slug voor dienst 1 pagina (kebab-case, bijv. 'dakdekken' of 'airco-installatie')",
-  "PAGINA_DIENST_1_H1": "Paginatitel dienst 1 (max 6 woorden, krachtige h1)",
-  "PAGINA_DIENST_1_INTRO": "Hero intro tekst dienst 1 pagina (1-2 zinnen, max 30 woorden)",
-  "PAGINA_DIENST_1_H2": "Content sectie koptekst dienst 1 (max 8 woorden, bijv. 'Waarom kiezen voor...')",
-  "PAGINA_DIENST_1_BODY": "Content sectie body tekst dienst 1 (3-4 zinnen, max 70 woorden, overtuigend)",
-  "PAGINA_DIENST_2_LABEL": "Korte naam voor dienst 2 in navigatie (2-4 woorden)",
-  "PAGINA_DIENST_2_SLUG": "URL-slug voor dienst 2 pagina (kebab-case)",
-  "PAGINA_DIENST_2_H1": "Paginatitel dienst 2 (max 6 woorden)",
-  "PAGINA_DIENST_2_INTRO": "Hero intro tekst dienst 2 pagina (1-2 zinnen, max 30 woorden)",
-  "PAGINA_DIENST_2_H2": "Content sectie koptekst dienst 2 (max 8 woorden)",
-  "PAGINA_DIENST_2_BODY": "Content sectie body tekst dienst 2 (3-4 zinnen, max 70 woorden, overtuigend)",` : '';
+  // Generate page content fields for each existing dienst (1 up to N)
+  const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 6).map((naam, i) => {
+    const n = i + 1;
+    return `
+  "PAGINA_DIENST_${n}_H1": "Paginatitel voor '${naam}' (max 6 woorden, krachtige h1)",
+  "PAGINA_DIENST_${n}_INTRO": "Hero intro tekst voor '${naam}' pagina (1-2 zinnen, max 30 woorden)",
+  "PAGINA_DIENST_${n}_H2": "Content sectie koptekst voor '${naam}' (max 8 woorden, bijv. 'Waarom kiezen voor...')",
+  "PAGINA_DIENST_${n}_BODY": "Content sectie body voor '${naam}' (3-4 zinnen, max 70 woorden, overtuigend)",`;
+  }).join('') : '';
 
   return `Genereer alle websiteteksten voor dit bedrijf:
 
@@ -406,6 +410,14 @@ module.exports = async function handler(req, res) {
     FOTO_PROJECT_1: '', FOTO_PROJECT_2: '', FOTO_PROJECT_3: '', FOTO_PROJECT_4: '',
     FOTO_PROJECT_5: '', FOTO_PROJECT_6: '', FOTO_PROJECT_7: '', FOTO_PROJECT_8: '',
 
+    // Bigsite dienst page slugs — computed from dienst names (no Claude needed)
+    ...Object.fromEntries(
+      Array.from({ length: 6 }, (_, i) => [
+        `PAGINA_DIENST_${i + 1}_SLUG`,
+        makeSlug(dienstenNamen[i] || ''),
+      ])
+    ),
+
     // JSON data
     DIENSTEN_JSON:  JSON.stringify(dienstenJson),
     REVIEWS_JSON:   isBigsite
@@ -425,15 +437,29 @@ module.exports = async function handler(req, res) {
   };
 
   // ── Apply map to all templates ────────────────────────────────────────────
-  // For bigsite, override dienst_1/dienst_2 slugs with AI-generated slugs
-  const pageSlugFns = isBigsite ? {
-    ...PAGE_SLUG,
-    dienst_1: s => `${s}-${ai.PAGINA_DIENST_1_SLUG || 'dienst-1'}.html`,
-    dienst_2: s => `${s}-${ai.PAGINA_DIENST_2_SLUG || 'dienst-2'}.html`,
-  } : PAGE_SLUG;
+  // For bigsite, override dienst_N slugs (computed from makeSlug of dienst name)
+  // and skip dienst pages that don't have an actual dienst for that slot.
+  const pageSlugFns = isBigsite
+    ? {
+        ...PAGE_SLUG,
+        ...Object.fromEntries(
+          Array.from({ length: 6 }, (_, i) => {
+            const n = i + 1;
+            const dslug = makeSlug(dienstenNamen[i] || '') || `dienst-${n}`;
+            return [`dienst_${n}`, s => `${s}-${dslug}.html`];
+          })
+        ),
+      }
+    : PAGE_SLUG;
 
   const generated = {};
   for (const [key, html] of Object.entries(templates)) {
+    // Skip bigsite dienst pages where no dienst name exists
+    const dienstMatch = key.match(/^dienst_(\d+)$/);
+    if (isBigsite && dienstMatch) {
+      const n = parseInt(dienstMatch[1]);
+      if (!dienstenNamen[n - 1]) continue;
+    }
     generated[(pageSlugFns[key] || PAGE_SLUG[key])(slug)] = applyMap(html, map);
   }
 
