@@ -80,6 +80,10 @@ function makeSlug(name) {
     .replace(/^-+|-+$/g, '');
 }
 
+function slugToLabel(s) {
+  return String(s || '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 function applyMap(template, map) {
   let out = template;
   for (const [key, val] of Object.entries(map)) {
@@ -275,6 +279,8 @@ module.exports = async function handler(req, res) {
   const dienstenNamen = Array.isArray(dienstenRaw)
     ? dienstenRaw.map(x => String(x).trim()).filter(Boolean)
     : String(dienstenRaw).split(',').map(x => x.trim()).filter(Boolean);
+  // Human-readable display names: "lekkage-verhelpen" → "Lekkage Verhelpen"
+  const dienstenLabels = dienstenNamen.map(slugToLabel);
 
   const logoHtml = foto_logo
     ? `<img src="${foto_logo}" alt="${bedrijfsnaam} logo" style="height:${isModern ? '90px' : '40px'};width:auto;max-width:${isModern ? '300px' : '160px'};object-fit:contain">`
@@ -302,12 +308,12 @@ module.exports = async function handler(req, res) {
     foto_waarom:         fotoWaarom,
     foto_usp:            fotoUsp,
     foto_werkwijze:      fotoWerkwijze,
-    dienst_1: dienstenNamen[0] || null,
-    dienst_2: dienstenNamen[1] || null,
-    dienst_3: dienstenNamen[2] || null,
-    dienst_4: dienstenNamen[3] || null,
-    dienst_5: dienstenNamen[4] || null,
-    dienst_6: dienstenNamen[5] || null,
+    dienst_1: dienstenLabels[0] || null,
+    dienst_2: dienstenLabels[1] || null,
+    dienst_3: dienstenLabels[2] || null,
+    dienst_4: dienstenLabels[3] || null,
+    dienst_5: dienstenLabels[4] || null,
+    dienst_6: dienstenLabels[5] || null,
   };
   try {
     const kr = await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
@@ -347,7 +353,7 @@ module.exports = async function handler(req, res) {
         model:      'claude-haiku-4-5-20251001',
         max_tokens: isBigsite ? 8000 : 4000,
         system:     'Je bent een professionele Nederlandse webtekstschrijver. Je antwoordt UITSLUITEND met een geldig JSON object — geen uitleg, geen markdown, geen codeblokken.',
-        messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenNamen, stad, display, email, isModern, isBigsite) }],
+        messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenLabels, stad, display, email, isModern, isBigsite) }],
       }),
     });
 
@@ -447,13 +453,13 @@ module.exports = async function handler(req, res) {
     FOTO_USP:            fotoUsp,
     FOTO_WERKWIJZE:      fotoWerkwijze,
 
-    // Services
-    DIENST_1: dienstenNamen[0] || '',
-    DIENST_2: dienstenNamen[1] || '',
-    DIENST_3: dienstenNamen[2] || '',
-    DIENST_4: dienstenNamen[3] || '',
-    DIENST_5: dienstenNamen[4] || '',
-    DIENST_6: dienstenNamen[5] || '',
+    // Services (display names for nav/labels; photo URLs still use dienstenNamen slugs)
+    DIENST_1: dienstenLabels[0] || '',
+    DIENST_2: dienstenLabels[1] || '',
+    DIENST_3: dienstenLabels[2] || '',
+    DIENST_4: dienstenLabels[3] || '',
+    DIENST_5: dienstenLabels[4] || '',
+    DIENST_6: dienstenLabels[5] || '',
     ...dienstFotos,
 
     // Project photos (bigsite only — empty at creation, editor fills in later)
@@ -562,12 +568,12 @@ module.exports = async function handler(req, res) {
     template_contact:    tplConfig.contact   || null,
     template_over_ons:   tplConfig.over_ons  || null,
     template_projecten:  tplConfig.projecten || null,
-    dienst_1: dienstenNamen[0] || null,
-    dienst_2: dienstenNamen[1] || null,
-    dienst_3: dienstenNamen[2] || null,
-    dienst_4: dienstenNamen[3] || null,
-    dienst_5: dienstenNamen[4] || null,
-    dienst_6: dienstenNamen[5] || null,
+    dienst_1: dienstenLabels[0] || null,
+    dienst_2: dienstenLabels[1] || null,
+    dienst_3: dienstenLabels[2] || null,
+    dienst_4: dienstenLabels[3] || null,
+    dienst_5: dienstenLabels[4] || null,
+    dienst_6: dienstenLabels[5] || null,
     ...Object.fromEntries(dienstenNamen.map((naam, i) => [
       `dienst_${i + 1}_foto`,
       naam ? `${STOCK_BASE}/${beroepSlug}/diensten/${naam}/${naam}-1.jpeg` : null,
