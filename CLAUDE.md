@@ -58,13 +58,14 @@ This builds the Vite app, renders pages with Playwright, substitutes `GOWEBBO_*`
 | File | Role |
 |------|------|
 | `api/save.js` | Core: field merging, template substitution, GitHub commits, Supabase sync |
+| `api/create-website.js` | Intake flow: Claude AI → fill templates → push 4–9 HTML files to GitHub |
 | `api/_extract.js` | Extracts field values from rendered HTML (used by load.js) |
 | `api/load.js` | Pre-fills editor from Supabase or CDN HTML |
-| `api/generate-content.js` | Calls Claude Haiku to generate all 60+ copy fields |
 | `api/new-client.js` | Registers a new client in Supabase |
 | `api/auth.js` | Password check for editor login |
 | `scripts/convert-template.js` | Converts a React template repo to `template-*.html` |
 | `stock-photos.json` | Stock photo URLs by trade type and slot (hero, waarom, werkwijze, diensten) |
+| `docs/website-generatie-en-edit-flow.md` | **Start hier** — volledige uitleg van generatie- en editflow per templatetype, inclusief GOWEBBO_DATA mechanisme en diagnose van placeholder-problemen |
 
 ## Environment variables (Vercel)
 
