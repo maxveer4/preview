@@ -282,8 +282,44 @@ module.exports = async function handler(req, res) {
 
   const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;
 
-  // ── Register in clients table early so editor overview always shows this client ──
-  // Done before GitHub/Claude work to survive function timeouts.
+  // ── Register early in both tables so the editor overview always shows this client ──
+  // Done before GitHub/Claude work to survive Vercel function timeouts.
+  const earlyKlantRecord = {
+    slug,
+    bedrijfsnaam,
+    template_keuze,
+    status:              'actief',
+    telefoon:            display,
+    email,
+    adres_straat,
+    adres_postcode_stad,
+    kvk:                 kvk || null,
+    maps_url:            maps_url || null,
+    sector:              beroep,
+    kleur_thema,
+    logo_url:            foto_logo || null,
+    foto_hero:           fotoHero,
+    foto_waarom:         fotoWaarom,
+    foto_usp:            fotoUsp,
+    foto_werkwijze:      fotoWerkwijze,
+    dienst_1: dienstenNamen[0] || null,
+    dienst_2: dienstenNamen[1] || null,
+    dienst_3: dienstenNamen[2] || null,
+    dienst_4: dienstenNamen[3] || null,
+    dienst_5: dienstenNamen[4] || null,
+    dienst_6: dienstenNamen[5] || null,
+  };
+  try {
+    const kr = await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates',
+      },
+      body: JSON.stringify(earlyKlantRecord),
+    });
+    if (!kr.ok) console.error('Supabase klanten early insert failed:', kr.status, await kr.text().catch(() => ''));
+  } catch (e) { console.error('Supabase klanten early insert failed:', e.message); }
   try {
     const cr = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
       method: 'POST',
