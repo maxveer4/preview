@@ -383,7 +383,9 @@ module.exports = async function handler(req, res) {
 
     // JSON data
     DIENSTEN_JSON:  JSON.stringify(dienstenJson),
-    REVIEWS_JSON:   isBigsite ? JSON.stringify(reviewsArr) : reviewsForTemplate,
+    REVIEWS_JSON:   isBigsite
+      ? JSON.stringify(reviewsArr).replace(/\\/g, '\\\\').replace(/"/g, '\\"')
+      : reviewsForTemplate,
     PROJECTEN_JSON: projectenJson,
 
     // Conditional / UI
