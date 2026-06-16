@@ -166,11 +166,10 @@ module.exports = async function handler(req, res) {
   const fields = normalizeKeys({ ...existingFields, ...incomingFields });
 
   // Build substitution map: field_name → FIELD_NAME
+  // Include ALL fields (even empty/null) so {{KEY}} placeholders are always replaced.
   const map = { SLUG: slug };
   for (const [k, v] of Object.entries(fields)) {
-    if (v !== null && v !== undefined && String(v).trim() !== '') {
-      map[k.toUpperCase()] = String(v).trim();
-    }
+    map[k.toUpperCase()] = (v == null) ? '' : String(v).trim();
   }
 
   // Ensure empty service slots clear their {{KEY}} placeholder so React hides them
@@ -223,6 +222,7 @@ module.exports = async function handler(req, res) {
     map.LOGO_HTML    = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
     map.FAVICON_HTML = `<link rel="icon" href="${map.LOGO_URL}">`;
   } else {
+    map.LOGO_HTML    = '';
     map.FAVICON_HTML = '';
   }
   map.REVIEWS_DISPLAY = (map.REVIEWS_VISIBLE === '0') ? 'display:none' : '';
