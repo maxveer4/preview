@@ -31,6 +31,17 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// Normalize all keys to lowercase so editor getElementById(id) can always find fields
+// (create-website.js saves ALL_CAPS keys; editor elements have lowercase IDs).
+function normalizeKeys(obj) {
+  if (!obj || typeof obj !== 'object') return {};
+  const result = {};
+  for (const [k, v] of Object.entries(obj)) {
+    result[k.toLowerCase()] = v;
+  }
+  return result;
+}
+
 // Editor sends [{naam, tekst, stad, datum, score}] with outer brackets.
 // Template does: const reviews = [{{REVIEWS_JSON}}]; and uses r.naam, r.tekst, r.datum.
 // → strip outer brackets only so template gets [{...},{...}] not [[{...}]].
@@ -54,7 +65,7 @@ async function loadAllExistingFields(slug) {
     );
     if (r.ok) {
       const rows = await r.json();
-      if (rows[0]?.data) return rows[0].data;
+      if (rows[0]?.data) return normalizeKeys(rows[0].data);
     }
   } catch (_) {}
 
@@ -68,12 +79,12 @@ async function loadAllExistingFields(slug) {
     fetchHtml(`${BASE_URL}/${slug}-diensten.html`),
     fetchHtml(`${BASE_URL}/${slug}-over-ons.html`),
   ]);
-  return {
+  return normalizeKeys({
     ...extractHomeFields(homeHtml),
     ...extractContactFields(contactHtml),
     ...extractDienstenFields(dienstenHtml),
     ...extractOverOnsFields(overOnsHtml),
-  };
+  });
 }
 
 async function githubUpdateIfExists(token, filePath, content, repo) {
@@ -150,7 +161,9 @@ module.exports = async function handler(req, res) {
     ['email','bedrijfsnaam','telefoon_display','adres_straat','adres_postcode_stad','kvk',
      'logo_url','maps_url'].forEach(f => delete existingFields[f]);
   }
-  const fields = { ...existingFields, ...incomingFields };
+  // Normalize to lowercase so editor getElementById() can always pre-fill on next load.
+  // Duplicate ALL_CAPS vs lowercase keys: incomingFields (spread last) wins, which is correct.
+  const fields = normalizeKeys({ ...existingFields, ...incomingFields });
 
   // Build substitution map: field_name → FIELD_NAME
   const map = { SLUG: slug };
@@ -300,7 +313,7 @@ module.exports = async function handler(req, res) {
 
   // Save merged field values to Supabase (non-fatal)
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/client_content`, {
+    const sbRes = await fetch(`${SUPABASE_URL}/rest/v1/client_content`, {
       method: 'POST',
       headers: {
         apikey:         SUPABASE_KEY,
@@ -310,6 +323,10 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({ slug, data: fields, updated_at: new Date().toISOString() }),
     });
+    if (!sbRes.ok) {
+      const sbErr = await sbRes.text().catch(() => sbRes.status);
+      console.error(`Supabase save failed (${sbRes.status}):`, sbErr);
+    }
   } catch (e) {
     console.error('Supabase save failed (non-fatal):', e.message);
   }

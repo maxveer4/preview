@@ -1,5 +1,15 @@
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 
+// Normalize all keys to lowercase so editor getElementById(id) can always match fields.
+function normalizeKeys(obj) {
+  if (!obj || typeof obj !== 'object') return {};
+  const result = {};
+  for (const [k, v] of Object.entries(obj)) {
+    result[k.toLowerCase()] = v;
+  }
+  return result;
+}
+
 const BASE_URL     = 'https://preview.gowebbo.io';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
@@ -36,7 +46,8 @@ module.exports = async function handler(req, res) {
       if (contentRes.ok) {
         const rows = await contentRes.json();
         if (rows[0]?.data) {
-          const data = rows[0].data;
+          // Normalize to lowercase so editor getElementById(id) always finds the matching element.
+          const data = normalizeKeys(rows[0].data);
           // Enrich data with template type from clients table
           if (clientRes.ok) {
             const clientRows = await clientRes.json();
@@ -57,12 +68,12 @@ module.exports = async function handler(req, res) {
 
     if (!homeHtml) return res.status(200).json({ ok: true, data: {} });
 
-    const data = {
+    const data = normalizeKeys({
       ...extractHomeFields(homeHtml),
       ...extractContactFields(contactHtml),
       ...extractDienstenFields(dienstenHtml),
       ...extractOverOnsFields(overOnsHtml),
-    };
+    });
 
     return res.status(200).json({ ok: true, data });
   } catch (e) {
