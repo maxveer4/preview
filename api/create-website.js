@@ -282,6 +282,20 @@ module.exports = async function handler(req, res) {
 
   const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;
 
+  // ── Register in clients table early so editor overview always shows this client ──
+  // Done before GitHub/Claude work to survive function timeouts.
+  try {
+    const cr = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates',
+      },
+      body: JSON.stringify({ slug, naam: bedrijfsnaam, template: template_keuze }),
+    });
+    if (!cr.ok) console.error('Supabase clients early insert failed:', cr.status, await cr.text().catch(() => ''));
+  } catch (e) { console.error('Supabase clients early insert failed:', e.message); }
+
   // ── Fetch templates + call Claude in parallel (saves ~0.5–1s) ────────────
   const templates = {};
   let ai = {};
