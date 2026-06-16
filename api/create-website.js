@@ -105,8 +105,10 @@ async function githubUpsert(token, filePath, content) {
     if (existing?.sha) body.sha = existing.sha;
     const putRes = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
     if (putRes.ok) return;
+    const errBody = await putRes.text();
+    console.error(`[githubUpsert] attempt=${attempt} status=${putRes.status} path=${filePath} body=${errBody}`);
     if ((putRes.status === 409 || putRes.status === 422) && attempt === 0) continue;
-    throw new Error(`GitHub ${putRes.status} for ${filePath}: ${await putRes.text()}`);
+    throw new Error(`GitHub ${putRes.status} for ${filePath}: ${errBody}`);
   }
 }
 
@@ -416,16 +418,17 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Push all files to GitHub in parallel (each file has a unique path, no SHA conflict) ──
-  console.log(`[create-website] Pushing ${Object.keys(generated).length} files: ${Object.keys(generated).join(', ')}`);
+  // ── Push all files to GitHub sequentially (avoids SHA race conditions on updates) ──
+  const fileList = Object.keys(generated);
+  console.log(`[create-website] Pushing ${fileList.length} files: ${fileList.join(', ')}`);
   try {
-    await Promise.all(
-      Object.entries(generated).map(([filename, content]) => {
-        console.log(`[create-website] Committing ${filename}...`);
-        return githubUpsert(token, `public/${filename}`, content);
-      })
-    );
+    for (const [filename, content] of Object.entries(generated)) {
+      console.log(`[create-website] Committing ${filename}...`);
+      await githubUpsert(token, `public/${filename}`, content);
+      console.log(`[create-website] Done: ${filename}`);
+    }
   } catch (e) {
+    console.error(`[create-website] GitHub push failed: ${e.message}`);
     return res.status(500).json({ error: e.message });
   }
 
