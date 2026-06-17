@@ -420,6 +420,7 @@ module.exports = async function handler(req, res) {
       }
     }
   } catch (e) {
+    console.error('[create-website] Content generation failed:', e.message);
     return res.status(500).json({ error: `Content generation failed: ${e.message}` });
   }
 
