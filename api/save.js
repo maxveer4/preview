@@ -2,7 +2,7 @@ const fs   = require('fs');
 const path = require('path');
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 const { TEMPLATES, DEFAULT_TEMPLATE } = require('./_template-config');
-const ICON_MAP = require('./_icon-map');
+const { ICON_MAP, DEFAULT_ICON_NAMES } = require('./_icon-map');
 
 const REPO         = 'maxveer4/preview';
 const KLANTEN_REPO = 'maxveer4/gowebbo-klanten';
@@ -249,10 +249,13 @@ module.exports = async function handler(req, res) {
     map.FAVICON_HTML = '';
   }
   map.REVIEWS_DISPLAY = (map.REVIEWS_VISIBLE === '0') ? 'display:none' : '';
-  // Resolve ICON_X icon-name strings (e.g. "wrench") to inline SVG for dak template
+  // Resolve ICON_X icon-name strings (e.g. "wrench") to inline SVG for dak template.
+  // Falls back to the default icon for that slot when the stored value is invalid/corrupt.
   for (let i = 1; i <= 8; i++) {
     const key = `ICON_${i}`;
-    if (map[key] && ICON_MAP[map[key]]) map[key] = ICON_MAP[map[key]];
+    const val = map[key];
+    const svg = ICON_MAP[val] || ICON_MAP[DEFAULT_ICON_NAMES[i - 1]];
+    if (svg) map[key] = svg;
   }
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;

@@ -45,4 +45,7 @@ const ICON_MAP = {
   'house-plus': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21H4a2 2 0 0 1-2-2V9.5L12 2l10 7.5V13"/><path d="M19 17v4M17 19h4"/></svg>',
 };
 
-module.exports = ICON_MAP;
+// Fallback icon name per slot (1-indexed) — used when stored value is invalid/corrupt
+const DEFAULT_ICON_NAMES = ['wrench', 'home', 'shield', 'clock', 'settings', 'layers', 'bolt', 'droplet'];
+
+module.exports = { ICON_MAP, DEFAULT_ICON_NAMES };
