@@ -4,84 +4,91 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-GoWebbo CMS — a Vercel-hosted system that generates and serves Dutch trade-business websites (dakdekkers, loodgieters, schilders, etc.). The editor lets users fill in client details; the API generates HTML from templates and commits it to GitHub, triggering a Vercel deployment.
+GoWebbo CMS — a Vercel-hosted system that generates and serves Dutch trade-business websites (dakdekkers, loodgieters, schilders, etc.). The API generates and saves HTML from templates to GitHub, triggering Vercel deploys.
 
-Live URLs:
-- Editor: `https://preview.gowebbo.io/editor`
-- Client preview: `https://preview.gowebbo.io/{slug}.html`
+Live URL: `https://preview.gowebbo.io/{slug}.html`
+
+The editor is **not** in this repo — it lives in `gowebbo-studio/` (Cloudflare Workers, TanStack Start).
 
 ## Architecture
 
 ```
 api/           Vercel serverless functions (Node.js)
-public/        Static files served directly (client HTML + editor SPA)
-  editor/      CMS editor SPA (index.html entry + editor.html)
+public/        Static files served via CDN
   assets/      Compiled JS/CSS bundles from template repos
-  clients.json Client registry (slug + naam)
+  clients.json Client registry (slug + naam) — fallback if Supabase query fails
+  *.html       Generated client sites (one or more files per slug)
 scripts/       CLI tools (run locally, not deployed)
 template*.html Master templates with {{KEY}} placeholders
 ```
 
 ### Data flow
 
-1. **New client** → `POST /api/new-client` → registers in Supabase `clients` table
-2. **Generate AI content** → `POST /api/generate-content` → Claude Haiku → saves to Supabase `client_content`
-3. **Editor loads** → `GET /api/load?slug=X` → reads from Supabase (primary) or CDN HTML (fallback)
-4. **Save** → `POST /api/save` → merges fields, fills `{{KEY}}` in template HTML, commits to `maxveer4/preview` (triggers Vercel) + `maxveer4/gowebbo-klanten`
-5. **Public access** → Vercel serves `/public/{slug}.html` via CDN
+**Intake flow (new website via n8n):**
+1. n8n → `POST /api/create-website` → Claude AI generates content → `applyMap()` fills `{{KEY}}` placeholders → GitHub Trees API batch commit (all pages + `clients.json` in one commit) → Vercel auto-deploys
+
+**Editor save flow (gowebbo-studio → api/save):**
+1. gowebbo-studio `handleSave()` → `POST /api/save` (for `preview`, `modern`, `bigsite` templates)
+2. `save.js` loads existing field values from Supabase `client_content` (primary) or CDN HTML fallback (`_extract.js`), merges with incoming data, fills template, commits to GitHub + `gowebbo-klanten`
+
+**dak template saves differently:** gowebbo-studio routes dak saves through its own n8n webhook instead of `api/save`.
 
 ### Template system
 
-Two template sets, selected per client via the `template` field in Supabase `clients`:
-- `default` — 4 pages: `template.html`, `template-contact.html`, `template-diensten.html`, `template-over-ons.html`
-- `dak` — 5 pages: same with `template-dak-` prefix + `template-dak-projecten.html`
+Four template types, selected per client via the `template` field in Supabase `clients`:
 
-Templates use `{{KEY}}` placeholders (all-caps). `save.js` builds a substitution map from the merged client fields (keys are uppercased), plus derived values:
-- `KLEUR_PRIMARY_TAILWIND` — derived from `KLEUR_PRIMARY` (strips `hsl()` wrapper)
+| Type | Pages | Template files |
+|------|-------|----------------|
+| `preview` | 4 | `template.html`, `-contact`, `-diensten`, `-over-ons` |
+| `dak` | 5 | `template-dak.html`, `-contact`, `-diensten`, `-over-ons`, `-projecten` |
+| `modern` | 5 | `template-modern.html`, `-contact`, `-diensten`, `-over-ons`, `-projecten` |
+| `bigsite` | 17 | `template-bigsite.html`, 10 dienst pages, `-contact`, `-over-ons`, `-projecten`, `-werkgebied`, `-ede`, `-wageningen` |
+
+Templates use `{{KEY}}` placeholders (all-caps). `save.js` builds a substitution map from merged fields plus derived values:
+- `KLEUR_PRIMARY_TAILWIND` — strips `hsl()` wrapper (space-separated for Tailwind CSS variable)
+- `KLEUR_PRIMARY_A10 / A20` — semi-transparent RGBA variants
 - `TELEFOON_HREF` / `WHATSAPP_HREF` — derived from `TELEFOON_DISPLAY`
 - `LOGO_HTML` / `FAVICON_HTML` — derived from `LOGO_URL`
 
-Templates also contain a `<!-- gowebbo-cms: {...} -->` comment prepended by `save.js`; `_extract.js` reads this for field extraction in subsequent loads.
+Templates contain a `<!-- gowebbo-cms: {...} -->` comment prepended by `save.js`; `_extract.js` reads this for field extraction as CDN fallback.
 
 ### Generating new template HTML files
 
-When the React/Vite template repo changes, regenerate the `template-*.html` files:
+When a React/Vite template repo (`../bigsite`, `../dak-masterpiece`) changes, regenerate:
 
 ```bash
+# From preview-repo/
+node scripts/convert-template.js ../bigsite
 node scripts/convert-template.js ../dak-masterpiece
 ```
 
-This builds the Vite app, renders pages with Playwright, substitutes `GOWEBBO_*` markers with `{{KEY}}` placeholders, injects `window.GOWEBBO_DATA` and the color override `<style>`, and copies JS/CSS bundles to `public/assets/`. The template repo must have a `cms-markers.json` at its root (see script header for format).
+This builds the Vite app, renders pages with Playwright (`addInitScript` sets `window.GOWEBBO_DATA.PAGE` before React mounts), substitutes `GOWEBBO_*` markers with `{{KEY}}` placeholders, injects `window.GOWEBBO_DATA` and the color override `<style>`, and copies JS/CSS bundles to `public/assets/`.
 
 ## Key files
 
 | File | Role |
 |------|------|
-| `api/save.js` | Core: field merging, template substitution, GitHub commits, Supabase sync |
-| `api/create-website.js` | Intake flow: Claude AI → fill templates → push 4–9 HTML files to GitHub |
-| `api/_extract.js` | Extracts field values from rendered HTML (used by load.js) |
-| `api/load.js` | Pre-fills editor from Supabase or CDN HTML |
-| `api/new-client.js` | Registers a new client in Supabase |
-| `api/auth.js` | Password check for editor login |
-| `scripts/convert-template.js` | Converts a React template repo to `template-*.html` |
-| `stock-photos.json` | Stock photo URLs by trade type and slot (hero, waarom, werkwijze, diensten) |
-| `docs/website-generatie-en-edit-flow.md` | **Start hier** — volledige uitleg van generatie- en editflow per templatetype, inclusief GOWEBBO_DATA mechanisme en diagnose van placeholder-problemen |
+| `api/save.js` | Core: field merging, template substitution, dual GitHub commit (preview + klanten repo) |
+| `api/create-website.js` | Intake flow: Claude AI → fill templates → batch GitHub commit |
+| `api/_extract.js` | Extracts field values from `<!-- gowebbo-cms: -->` comment in CDN HTML (fallback) |
+| `scripts/convert-template.js` | Converts a React template repo to `template-*.html` files |
 
 ## Environment variables (Vercel)
 
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | PAT for `maxveer4/preview` and `maxveer4/gowebbo-klanten` |
-| `ANTHROPIC_API_KEY` | Claude API for content generation |
-| `EDITOR_PASSWORD` | Login password for the editor |
+| `ANTHROPIC_API_KEY` | Claude API for content generation in `create-website.js` |
 
 ## GitHub persistence
 
-`githubUpsert` (save.js) GETs the current SHA then PUTs new content. It retries once on 409/422 (stale SHA from concurrent saves). Failures throw and return HTTP 500 to the editor. The PUT to `maxveer4/preview` triggers Vercel auto-deploy; the PUT to `maxveer4/gowebbo-klanten` is non-fatal (only updates if file already exists there).
+`githubUpsert` (save.js) GETs the current SHA then PUTs new content. Retries once on 409/422 (stale SHA). The PUT to `maxveer4/preview` triggers Vercel auto-deploy; the PUT to `maxveer4/gowebbo-klanten` is non-fatal (only updates if file already exists there).
+
+`githubBatchCommit` (create-website.js) uses the Trees API to commit all files in one operation — critical for bigsite (17+ files). Retries 3× on 422 non-fast-forward with exponential backoff.
 
 ## Supabase tables
 
-- `clients` — columns: `slug` (PK), `naam`, `template`
-- `client_content` — columns: `slug` (PK), `data` (jsonb), `updated_at`
+- `clients` — `slug` (PK), `naam`, `template`
+- `client_content` — `slug` (PK), `data` (jsonb), `updated_at`
 
-The anon key is embedded in the API source files (it's a public read-write key scoped to these tables by RLS).
+The anon key is embedded in the API source files (public read-write key scoped to these tables by RLS).
