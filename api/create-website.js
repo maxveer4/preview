@@ -635,6 +635,27 @@ module.exports = async function handler(req, res) {
   const publicFiles = Object.fromEntries(
     Object.entries(generated).map(([filename, content]) => [`public/${filename}`, content])
   );
+
+  // Also include clients.json update in the same batch commit so the editor overview
+  // always shows this client, even if the Supabase insert fails silently.
+  try {
+    const cjUrl = `https://api.github.com/repos/${REPO}/contents/public/clients.json`;
+    const cjHeaders = {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'User-Agent': 'gowebbo-create/1.0',
+    };
+    const cjRes = await fetch(cjUrl, { headers: cjHeaders });
+    if (cjRes.ok) {
+      const { content: cjContent } = await cjRes.json();
+      const existing = JSON.parse(Buffer.from(cjContent, 'base64').toString('utf8'));
+      if (!existing.some(c => c.slug === slug)) {
+        existing.unshift({ slug, naam: bedrijfsnaam });
+        publicFiles['public/clients.json'] = JSON.stringify(existing, null, 4);
+      }
+    }
+  } catch (_) {}
+
   try {
     await githubBatchCommit(token, publicFiles, `Create website for ${slug} (${fileList.length} files)`);
     console.log(`[create-website] Batch commit done: ${fileList.length} files`);
