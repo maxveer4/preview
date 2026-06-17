@@ -54,11 +54,11 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .section-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--navy);margin-top:1.25rem}
 .section-title .accent{color:var(--gold)}
 
-/* Portfolio grid — 2 columns like original */
+/* Portfolio grid — 4 columns */
 .portfolio-section{background:var(--muted);padding:5rem 0}
 @media(min-width:1024px){.portfolio-section{padding:7rem 0}}
-.portfolio-grid{display:grid;grid-template-columns:1fr;gap:1.75rem;margin-top:3.5rem}
-@media(min-width:640px){.portfolio-grid{grid-template-columns:1fr 1fr}}
+.portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3.5rem}
+@media(min-width:768px){.portfolio-grid{grid-template-columns:repeat(4,1fr)}}
 
 /* Project card: image top, text bottom (white bg) */
 .project-card{display:flex;flex-direction:column;overflow:hidden;border-radius:.5rem;border:1px solid rgba(7,25,35,.1);background:#fff;box-shadow:var(--shadow-card);transition:all .3s}
