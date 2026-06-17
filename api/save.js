@@ -1,6 +1,7 @@
 const fs   = require('fs');
 const path = require('path');
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
+const { TEMPLATES, DEFAULT_TEMPLATE } = require('./_template-config');
 
 const REPO         = 'maxveer4/preview';
 const KLANTEN_REPO = 'maxveer4/gowebbo-klanten';
@@ -253,43 +254,29 @@ module.exports = async function handler(req, res) {
   // Read templates from repo root
   const root = path.join(__dirname, '..');
 
-  // Map template type → file prefix and page suffixes
-  const TEMPLATE_CONFIGS = {
-    default: {
-      prefix:   'template',
-      suffixes: ['', '-contact', '-diensten', '-over-ons'],
-    },
-    dak: {
-      prefix:   'template-dak',
-      suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
-    },
-    modern: {
-      prefix:   'template-modern',
-      suffixes: ['', '-contact', '-diensten', '-over-ons', '-projecten'],
-    },
-    bigsite: {
-      prefix:   'template-bigsite',
-      suffixes: ['', '-contact', '-over-ons', '-projecten', '-werkgebied', '-ede', '-wageningen'],
-    },
-  };
-  const tplCfg = TEMPLATE_CONFIGS[templateType] ?? TEMPLATE_CONFIGS.default;
+  // Look up template config — single source of truth is _template-config.js
+  const tplCfg = TEMPLATES[templateType];
+  if (!tplCfg) {
+    console.error(`[save] Unknown template type "${templateType}" for slug "${slug}" — falling back to "${DEFAULT_TEMPLATE}"`);
+  }
+  const tpl = tplCfg ?? TEMPLATES[DEFAULT_TEMPLATE];
 
-  if (templateType === 'modern' && map.LOGO_URL) {
+  if (tpl.isModern && map.LOGO_URL) {
     map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:90px;width:auto;max-width:300px;object-fit:contain;">`;
   }
 
   let templates;
   try {
     templates = {};
-    for (const s of tplCfg.suffixes) {
+    for (const s of tpl.pages) {
       const filename = s ? `${slug}${s}.html` : `${slug}.html`;
       templates[filename] = fs.readFileSync(
-        path.join(root, `${tplCfg.prefix}${s || ''}.html`), 'utf8'
+        path.join(root, `${tpl.prefix}${s}.html`), 'utf8'
       );
     }
-    // Bigsite: load dynamic dienst pages (1-10) based on stored PAGINA_DIENST_N_SLUG + DIENST_N
-    if (templateType === 'bigsite') {
-      for (let n = 1; n <= 10; n++) {
+    // Bigsite: load dynamic dienst pages based on stored PAGINA_DIENST_N_SLUG + DIENST_N
+    if (tpl.isBigsite) {
+      for (let n = 1; n <= tpl.dienstCount; n++) {
         const dienstNaam = map[`DIENST_${n}`];
         const dienstSlug = map[`PAGINA_DIENST_${n}_SLUG`];
         if (!dienstNaam || !dienstSlug) continue;
@@ -344,7 +331,7 @@ module.exports = async function handler(req, res) {
   // Ook opslaan in gowebbo-klanten (non-fataal)
   // Build klanten path map dynamically from template suffixes
   const klantenMap = {};
-  for (const s of tplCfg.suffixes) {
+  for (const s of tpl.pages) {
     const genFile     = s ? `${slug}${s}.html` : `${slug}.html`;
     const klantenFile = s ? `${slug}${s.replace('-', '/')}.html` : `${slug}/index.html`;
     klantenMap[genFile] = klantenFile;

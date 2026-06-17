@@ -1,3 +1,5 @@
+const { TEMPLATES, DEFAULT_TEMPLATE } = require('./_template-config');
+
 const REPO        = 'maxveer4/preview';
 const BRANCH      = 'main';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
@@ -5,72 +7,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const STOCK_BASE  = 'https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos';
 const GHL_URL     = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/ad5ce8f7-1f45-48b6-9045-0909c7c555fa';
 
-// ── Template configs ──────────────────────────────────────────────────────────
-const TEMPLATE_CONFIGS = {
-  preview: {
-    homepage: 'template.html',
-    contact:  'template-contact.html',
-    diensten: 'template-diensten.html',
-    over_ons: 'template-over-ons.html',
-    projecten: null,
-  },
-  dak: {
-    homepage: 'template-dak.html',
-    contact:  'template-dak-contact.html',
-    diensten: 'template-dak-diensten.html',
-    over_ons: 'template-dak-over-ons.html',
-    projecten: 'template-dak-projecten.html',
-  },
-  modern: {
-    homepage: 'template-modern.html',
-    contact:  'template-modern-contact.html',
-    diensten: 'template-modern-diensten.html',
-    over_ons: 'template-modern-over-ons.html',
-    projecten: 'template-modern-projecten.html',
-  },
-  bigsite: {
-    homepage:  'template-bigsite.html',
-    dienst_1:  'template-bigsite-dienst-1.html',
-    dienst_2:  'template-bigsite-dienst-2.html',
-    dienst_3:  'template-bigsite-dienst-3.html',
-    dienst_4:  'template-bigsite-dienst-4.html',
-    dienst_5:  'template-bigsite-dienst-5.html',
-    dienst_6:  'template-bigsite-dienst-6.html',
-    dienst_7:  'template-bigsite-dienst-7.html',
-    dienst_8:  'template-bigsite-dienst-8.html',
-    dienst_9:  'template-bigsite-dienst-9.html',
-    dienst_10: 'template-bigsite-dienst-10.html',
-    contact:   'template-bigsite-contact.html',
-    over_ons:  'template-bigsite-over-ons.html',
-    projecten: 'template-bigsite-projecten.html',
-    werkgebied:'template-bigsite-werkgebied.html',
-    ede:       'template-bigsite-ede.html',
-    wageningen:'template-bigsite-wageningen.html',
-  },
-};
-
-// Maps template config key → output filename suffix
-// dienst_N use placeholder slugs; overridden per-request after ai response
-const PAGE_SLUG = {
-  homepage:   s => `${s}.html`,
-  contact:    s => `${s}-contact.html`,
-  diensten:   s => `${s}-diensten.html`,
-  over_ons:   s => `${s}-over-ons.html`,
-  projecten:  s => `${s}-projecten.html`,
-  dienst_1:   s => `${s}-dienst-1.html`,
-  dienst_2:   s => `${s}-dienst-2.html`,
-  dienst_3:   s => `${s}-dienst-3.html`,
-  dienst_4:   s => `${s}-dienst-4.html`,
-  dienst_5:   s => `${s}-dienst-5.html`,
-  dienst_6:   s => `${s}-dienst-6.html`,
-  dienst_7:   s => `${s}-dienst-7.html`,
-  dienst_8:   s => `${s}-dienst-8.html`,
-  dienst_9:   s => `${s}-dienst-9.html`,
-  dienst_10:  s => `${s}-dienst-10.html`,
-  werkgebied: s => `${s}-werkgebied.html`,
-  ede:        s => `${s}-ede.html`,
-  wageningen: s => `${s}-wageningen.html`,
-};
+// Template configs live in _template-config.js (shared with save.js)
 
 const COLOR_MAP = {
   geel:  { p: 'hsl(45,95%,50%)',   a20: 'hsla(45,95%,50%,0.2)',   a10: 'hsla(45,95%,50%,0.1)',  tw: '45 95% 50%'   },
@@ -357,8 +294,9 @@ module.exports = async function handler(req, res) {
     ? digits.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5')
     : digits;
   const beroepSlug = makeSlug(beroep);
-  const isModern   = template_keuze === 'modern';
-  const isBigsite  = template_keuze === 'bigsite';
+  const tpl        = TEMPLATES[template_keuze] ?? TEMPLATES[DEFAULT_TEMPLATE];
+  const isModern   = tpl.isModern  ?? false;
+  const isBigsite  = tpl.isBigsite ?? false;
 
   const fotoHero      = d.foto_hero    || `${STOCK_BASE}/${beroepSlug}/hero/${beroepSlug}-hero-1.jpeg`;
   const fotoWaarom    = d.foto_sectie2 || `${STOCK_BASE}/${beroepSlug}/waarom/${beroepSlug}-waarom-1.jpeg`;
@@ -374,8 +312,6 @@ module.exports = async function handler(req, res) {
   const logoHtml = foto_logo
     ? `<img src="${foto_logo}" alt="${bedrijfsnaam} logo" style="height:${isModern ? '90px' : '40px'};width:auto;max-width:${isModern ? '300px' : '160px'};object-fit:contain">`
     : `<span style="font-weight:700;font-size:1.25rem">${bedrijfsnaam}</span>`;
-
-  const tplConfig = TEMPLATE_CONFIGS[template_keuze] || TEMPLATE_CONFIGS.preview;
 
   // ── Register early in both tables so the editor overview always shows this client ──
   // Done before GitHub/Claude work to survive Vercel function timeouts.
@@ -450,13 +386,18 @@ module.exports = async function handler(req, res) {
       }),
     });
 
-    const templatePromise = Promise.all(
-      Object.entries(tplConfig)
-        .filter(([, filename]) => !!filename)
-        .map(async ([key, filename]) => {
-          templates[key] = await fetchTemplate(filename);
-        })
-    );
+    // Fetch regular pages + bigsite dienst pages in parallel
+    const regularTemplates = {}; // suffix → html
+    const dienstTemplates  = {}; // n (1-based) → html
+    const templatePromise = Promise.all([
+      ...tpl.pages.map(async suffix => {
+        regularTemplates[suffix] = await fetchTemplate(`${tpl.prefix}${suffix}.html`);
+      }),
+      ...Array.from({ length: tpl.dienstCount }, async (_, i) => {
+        const n = i + 1;
+        dienstTemplates[n] = await fetchTemplate(`${tpl.prefix}-dienst-${n}.html`);
+      }),
+    ]);
 
     const [claudeRes] = await Promise.all([claudePromise, templatePromise]);
 
@@ -579,7 +520,7 @@ module.exports = async function handler(req, res) {
     PROJECTEN_JSON: projectenJson,
 
     // Conditional / UI
-    HIDE_PROJECTEN:   tplConfig.projecten ? '' : 'display:none',
+    HIDE_PROJECTEN:   tpl.pages.includes('-projecten') ? '' : 'display:none',
     REVIEWS_DISPLAY:  '',
 
     // Forms (empty at creation — editor fills these in later)
@@ -590,30 +531,20 @@ module.exports = async function handler(req, res) {
   };
 
   // ── Apply map to all templates ────────────────────────────────────────────
-  // For bigsite, override dienst_N slugs (computed from makeSlug of dienst name)
-  // and skip dienst pages that don't have an actual dienst for that slot.
-  const pageSlugFns = isBigsite
-    ? {
-        ...PAGE_SLUG,
-        ...Object.fromEntries(
-          Array.from({ length: 10 }, (_, i) => {
-            const n = i + 1;
-            const dslug = makeSlug(dienstenNamen[i] || '') || `dienst-${n}`;
-            return [`dienst_${n}`, s => `${s}-${dslug}.html`];
-          })
-        ),
-      }
-    : PAGE_SLUG;
-
   const generated = {};
-  for (const [key, html] of Object.entries(templates)) {
-    // Skip bigsite dienst pages where no dienst name exists
-    const dienstMatch = key.match(/^dienst_(\d+)$/);
-    if (isBigsite && dienstMatch) {
-      const n = parseInt(dienstMatch[1]);
-      if (!dienstenNamen[n - 1]) continue;
-    }
-    generated[(pageSlugFns[key] || PAGE_SLUG[key])(slug)] = applyMap(html, map);
+
+  // Regular pages: suffix '' → {slug}.html, '-contact' → {slug}-contact.html, etc.
+  for (const [suffix, html] of Object.entries(regularTemplates)) {
+    const outputFile = suffix === '' ? `${slug}.html` : `${slug}${suffix}.html`;
+    generated[outputFile] = applyMap(html, map);
+  }
+
+  // Bigsite dienst pages: output file uses the AI-generated dienst name as slug
+  for (const [n, html] of Object.entries(dienstTemplates)) {
+    const idx   = parseInt(n) - 1;
+    if (!dienstenNamen[idx]) continue; // skip empty dienst slots
+    const dslug = makeSlug(dienstenNamen[idx]) || `dienst-${n}`;
+    generated[`${slug}-${dslug}.html`] = applyMap(html, map);
   }
 
   // ── dry_run: return HTML without any side effects ────────────────────────
@@ -694,11 +625,11 @@ module.exports = async function handler(req, res) {
     foto_waarom:         fotoWaarom,
     foto_usp:            fotoUsp,
     foto_werkwijze:      fotoWerkwijze,
-    template_homepage:   tplConfig.homepage  || null,
-    template_diensten:   tplConfig.diensten  || null,
-    template_contact:    tplConfig.contact   || null,
-    template_over_ons:   tplConfig.over_ons  || null,
-    template_projecten:  tplConfig.projecten || null,
+    template_homepage:   `${tpl.prefix}.html`,
+    template_diensten:   tpl.pages.includes('-diensten')  ? `${tpl.prefix}-diensten.html`  : null,
+    template_contact:    tpl.pages.includes('-contact')   ? `${tpl.prefix}-contact.html`   : null,
+    template_over_ons:   tpl.pages.includes('-over-ons')  ? `${tpl.prefix}-over-ons.html`  : null,
+    template_projecten:  tpl.pages.includes('-projecten') ? `${tpl.prefix}-projecten.html` : null,
     dienst_1:  dienstenLabels[0] || null,
     dienst_2:  dienstenLabels[1] || null,
     dienst_3:  dienstenLabels[2] || null,
