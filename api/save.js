@@ -249,13 +249,11 @@ module.exports = async function handler(req, res) {
     map.FAVICON_HTML = '';
   }
   map.REVIEWS_DISPLAY = (map.REVIEWS_VISIBLE === '0') ? 'display:none' : '';
-  // Resolve ICON_X icon-name strings (e.g. "wrench") to inline SVG for dak template.
-  // Falls back to the default icon for that slot when the stored value is invalid/corrupt.
+  // Dak template uses SVG sprites: <use href="#icon-{{ICON_X}}"/> — expects the icon NAME.
+  // If stored value is not a known icon name (e.g. corrupt "/>"), fall back to slot default.
   for (let i = 1; i <= 8; i++) {
     const key = `ICON_${i}`;
-    const val = map[key];
-    const svg = ICON_MAP[val] || ICON_MAP[DEFAULT_ICON_NAMES[i - 1]];
-    if (svg) map[key] = svg;
+    if (map[key] && !ICON_MAP[map[key]]) map[key] = DEFAULT_ICON_NAMES[i - 1];
   }
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
