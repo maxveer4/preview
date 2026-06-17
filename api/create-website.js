@@ -36,6 +36,10 @@ const TEMPLATE_CONFIGS = {
     dienst_4:  'template-bigsite-dienst-4.html',
     dienst_5:  'template-bigsite-dienst-5.html',
     dienst_6:  'template-bigsite-dienst-6.html',
+    dienst_7:  'template-bigsite-dienst-7.html',
+    dienst_8:  'template-bigsite-dienst-8.html',
+    dienst_9:  'template-bigsite-dienst-9.html',
+    dienst_10: 'template-bigsite-dienst-10.html',
     contact:   'template-bigsite-contact.html',
     over_ons:  'template-bigsite-over-ons.html',
     projecten: 'template-bigsite-projecten.html',
@@ -59,6 +63,10 @@ const PAGE_SLUG = {
   dienst_4:   s => `${s}-dienst-4.html`,
   dienst_5:   s => `${s}-dienst-5.html`,
   dienst_6:   s => `${s}-dienst-6.html`,
+  dienst_7:   s => `${s}-dienst-7.html`,
+  dienst_8:   s => `${s}-dienst-8.html`,
+  dienst_9:   s => `${s}-dienst-9.html`,
+  dienst_10:  s => `${s}-dienst-10.html`,
   werkgebied: s => `${s}-werkgebied.html`,
   ede:        s => `${s}-ede.html`,
   wageningen: s => `${s}-wageningen.html`,
@@ -208,7 +216,7 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "PROJECTEN_JSON": [{"foto":"","titel":"realistisch projecttitel passend bij sector","categorie":"dienstcategorie","locatie":"gemeente in werkgebied","desc":"korte projectomschrijving max 15 woorden"},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."}],` : '';
 
   // Generate page content fields for each existing dienst (1 up to N)
-  const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 6).map((naam, i) => {
+  const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 10).map((naam, i) => {
     const n = i + 1;
     return `
   "PAGINA_DIENST_${n}_H1": "Paginatitel voor '${naam}' (max 6 woorden, krachtige h1)",
@@ -288,6 +296,10 @@ Geef een JSON object terug met EXACT deze velden:
   "DIENST_4_DESC": "Beschrijving over '${dienstenNamen[3] || ''}' (3-4 zinnen, max 60 woorden)",
   "DIENST_5_DESC": "Beschrijving over '${dienstenNamen[4] || ''}' (3-4 zinnen, max 60 woorden)",
   "DIENST_6_DESC": "Beschrijving over '${dienstenNamen[5] || ''}' (3-4 zinnen, max 60 woorden)",
+  "DIENST_7_DESC": "Beschrijving over '${dienstenNamen[6] || ''}' (3-4 zinnen, max 60 woorden)",
+  "DIENST_8_DESC": "Beschrijving over '${dienstenNamen[7] || ''}' (3-4 zinnen, max 60 woorden)",
+  "DIENST_9_DESC": "Beschrijving over '${dienstenNamen[8] || ''}' (3-4 zinnen, max 60 woorden)",
+  "DIENST_10_DESC": "Beschrijving over '${dienstenNamen[9] || ''}' (3-4 zinnen, max 60 woorden)",
   "PROJECTEN_HERO_DESC": "Intro projecten pagina (max 20 woorden)",
   "PROJECTEN_CTA_TITEL": "CTA titel projecten pagina (max 6 woorden)",
   "PROJECTEN_CTA_DESC": "CTA tekst projecten pagina (max 20 woorden)",
@@ -384,12 +396,16 @@ module.exports = async function handler(req, res) {
     foto_waarom:         fotoWaarom,
     foto_usp:            fotoUsp,
     foto_werkwijze:      fotoWerkwijze,
-    dienst_1: dienstenLabels[0] || null,
-    dienst_2: dienstenLabels[1] || null,
-    dienst_3: dienstenLabels[2] || null,
-    dienst_4: dienstenLabels[3] || null,
-    dienst_5: dienstenLabels[4] || null,
-    dienst_6: dienstenLabels[5] || null,
+    dienst_1:  dienstenLabels[0] || null,
+    dienst_2:  dienstenLabels[1] || null,
+    dienst_3:  dienstenLabels[2] || null,
+    dienst_4:  dienstenLabels[3] || null,
+    dienst_5:  dienstenLabels[4] || null,
+    dienst_6:  dienstenLabels[5] || null,
+    dienst_7:  dienstenLabels[6] || null,
+    dienst_8:  dienstenLabels[7] || null,
+    dienst_9:  dienstenLabels[8] || null,
+    dienst_10: dienstenLabels[9] || null,
   };
   try {
     const kr = await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
@@ -530,12 +546,16 @@ module.exports = async function handler(req, res) {
     FOTO_WERKWIJZE:      fotoWerkwijze,
 
     // Services (display names for nav/labels; photo URLs still use dienstenNamen slugs)
-    DIENST_1: dienstenLabels[0] || '',
-    DIENST_2: dienstenLabels[1] || '',
-    DIENST_3: dienstenLabels[2] || '',
-    DIENST_4: dienstenLabels[3] || '',
-    DIENST_5: dienstenLabels[4] || '',
-    DIENST_6: dienstenLabels[5] || '',
+    DIENST_1:  dienstenLabels[0] || '',
+    DIENST_2:  dienstenLabels[1] || '',
+    DIENST_3:  dienstenLabels[2] || '',
+    DIENST_4:  dienstenLabels[3] || '',
+    DIENST_5:  dienstenLabels[4] || '',
+    DIENST_6:  dienstenLabels[5] || '',
+    DIENST_7:  dienstenLabels[6] || '',
+    DIENST_8:  dienstenLabels[7] || '',
+    DIENST_9:  dienstenLabels[8] || '',
+    DIENST_10: dienstenLabels[9] || '',
     ...dienstFotos,
 
     // Project photos (bigsite only — empty at creation, editor fills in later)
@@ -544,7 +564,7 @@ module.exports = async function handler(req, res) {
 
     // Bigsite dienst page slugs — computed from dienst names (no Claude needed)
     ...Object.fromEntries(
-      Array.from({ length: 6 }, (_, i) => [
+      Array.from({ length: 10 }, (_, i) => [
         `PAGINA_DIENST_${i + 1}_SLUG`,
         makeSlug(dienstenNamen[i] || ''),
       ])
@@ -575,7 +595,7 @@ module.exports = async function handler(req, res) {
     ? {
         ...PAGE_SLUG,
         ...Object.fromEntries(
-          Array.from({ length: 6 }, (_, i) => {
+          Array.from({ length: 10 }, (_, i) => {
             const n = i + 1;
             const dslug = makeSlug(dienstenNamen[i] || '') || `dienst-${n}`;
             return [`dienst_${n}`, s => `${s}-${dslug}.html`];
@@ -657,12 +677,16 @@ module.exports = async function handler(req, res) {
     template_contact:    tplConfig.contact   || null,
     template_over_ons:   tplConfig.over_ons  || null,
     template_projecten:  tplConfig.projecten || null,
-    dienst_1: dienstenLabels[0] || null,
-    dienst_2: dienstenLabels[1] || null,
-    dienst_3: dienstenLabels[2] || null,
-    dienst_4: dienstenLabels[3] || null,
-    dienst_5: dienstenLabels[4] || null,
-    dienst_6: dienstenLabels[5] || null,
+    dienst_1:  dienstenLabels[0] || null,
+    dienst_2:  dienstenLabels[1] || null,
+    dienst_3:  dienstenLabels[2] || null,
+    dienst_4:  dienstenLabels[3] || null,
+    dienst_5:  dienstenLabels[4] || null,
+    dienst_6:  dienstenLabels[5] || null,
+    dienst_7:  dienstenLabels[6] || null,
+    dienst_8:  dienstenLabels[7] || null,
+    dienst_9:  dienstenLabels[8] || null,
+    dienst_10: dienstenLabels[9] || null,
     ...Object.fromEntries(dienstenNamen.map((naam, i) => [
       `dienst_${i + 1}_foto`,
       naam ? `${STOCK_BASE}/${beroepSlug}/diensten/${naam}/${naam}-1.jpeg` : null,

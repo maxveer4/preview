@@ -231,7 +231,7 @@ module.exports = async function handler(req, res) {
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
   if (!map.WERK_ALT)    map.WERK_ALT    = `${name} - werkfoto`;
   // All footer diensten: always replace so deleted/empty slots render as "" not literal {{DIENST_N}}
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 10; i++) {
     if (!map[`DIENST_${i}`]) map[`DIENST_${i}`] = '';
   }
 
@@ -287,9 +287,9 @@ module.exports = async function handler(req, res) {
         path.join(root, `${tplCfg.prefix}${s || ''}.html`), 'utf8'
       );
     }
-    // Bigsite: load dynamic dienst pages (1-6) based on stored PAGINA_DIENST_N_SLUG + DIENST_N
+    // Bigsite: load dynamic dienst pages (1-10) based on stored PAGINA_DIENST_N_SLUG + DIENST_N
     if (templateType === 'bigsite') {
-      for (let n = 1; n <= 6; n++) {
+      for (let n = 1; n <= 10; n++) {
         const dienstNaam = map[`DIENST_${n}`];
         const dienstSlug = map[`PAGINA_DIENST_${n}_SLUG`];
         if (!dienstNaam || !dienstSlug) continue;
