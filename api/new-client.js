@@ -31,6 +31,35 @@ module.exports = async (req, res) => {
     body: JSON.stringify({ slug, naam, template }),
   }).catch(() => {});
 
+  // Also add to clients.json on GitHub so the editor fallback always shows new clients
+  try {
+    const REPO = 'maxveer4/preview';
+    const FILE = 'public/clients.json';
+    const headers = {
+      Authorization: `token ${token}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json',
+      'User-Agent': 'gowebbo-new-client/1.0',
+    };
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, { headers });
+    if (getRes.ok) {
+      const { content, sha } = await getRes.json();
+      const existing = JSON.parse(Buffer.from(content, 'base64').toString('utf8'));
+      if (!existing.some(c => c.slug === slug)) {
+        existing.unshift({ slug, naam });
+        await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+          method: 'PUT',
+          headers,
+          body: JSON.stringify({
+            message: `Add client ${slug}`,
+            content: Buffer.from(JSON.stringify(existing, null, 4)).toString('base64'),
+            sha,
+            branch: 'main',
+          }),
+        });
+      }
+    }
+  } catch (_) {}
 
   return res.status(200).json({ ok: true, slug, naam, template });
 };
