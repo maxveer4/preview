@@ -28,10 +28,8 @@ template*.html Master templates with {{KEY}} placeholders
 1. n8n → `POST /api/create-website` → Claude AI generates content → `applyMap()` fills `{{KEY}}` placeholders → GitHub Trees API batch commit (all pages + `clients.json` in one commit) → Vercel auto-deploys
 
 **Editor save flow (gowebbo-studio → api/save):**
-1. gowebbo-studio `handleSave()` → `POST /api/save` (for `preview`, `modern`, `bigsite` templates)
-2. `save.js` loads existing field values from Supabase `client_content` (primary) or CDN HTML fallback (`_extract.js`), merges with incoming data, fills template, commits to GitHub + `gowebbo-klanten`
-
-**dak template saves differently:** gowebbo-studio routes dak saves through its own n8n webhook instead of `api/save`.
+1. gowebbo-studio `handleSave()` → `POST /api/save` (all template types including dak)
+2. `save.js` loads existing field values from Supabase `client_content` (primary) or CDN HTML fallback (`_extract.js`), merges with incoming data, resolves icon names to SVG (`_icon-map.js`), fills template, commits to GitHub + `gowebbo-klanten`, updates `klanten.website_data`
 
 ### Template system
 
@@ -88,7 +86,8 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 
 ## Supabase tables
 
-- `clients` — `slug` (PK), `naam`, `template`
-- `client_content` — `slug` (PK), `data` (jsonb), `updated_at`
+- `clients` — `slug` (PK), `naam`, `template` — read by save.js to look up template type
+- `client_content` — `slug` (PK), `data` (jsonb), `updated_at` — primary field store for save.js
+- `klanten` — `slug`, `website_data` (jsonb), `ai_content` (jsonb) — read/written by save.js so gowebbo-studio editor reloads correct state
 
 The anon key is embedded in the API source files (public read-write key scoped to these tables by RLS).

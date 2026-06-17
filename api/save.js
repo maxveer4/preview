@@ -2,6 +2,7 @@ const fs   = require('fs');
 const path = require('path');
 const { extractHomeFields, extractContactFields, extractDienstenFields, extractOverOnsFields } = require('./_extract');
 const { TEMPLATES, DEFAULT_TEMPLATE } = require('./_template-config');
+const ICON_MAP = require('./_icon-map');
 
 const REPO         = 'maxveer4/preview';
 const KLANTEN_REPO = 'maxveer4/gowebbo-klanten';
@@ -30,6 +31,26 @@ function hexToRgba(hex, alpha) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// "#3b82f6" → "213 88% 61%"  (Tailwind HSL format: no hsl() wrapper, spaces not commas)
+function hexToHslTailwind(hex) {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0;
+  const l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return `${Math.round(h * 360)} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`;
 }
 
 // Normalize all keys to lowercase so editor getElementById(id) can always find fields
@@ -200,8 +221,9 @@ module.exports = async function handler(req, res) {
   if (map.KLEUR_PRIMARY) {
     if (/^#[0-9a-fA-F]{6}$/.test(map.KLEUR_PRIMARY)) {
       // Hex color from new editor
-      map.KLEUR_PRIMARY_A10 = hexToRgba(map.KLEUR_PRIMARY, '0.1');
-      map.KLEUR_PRIMARY_A20 = hexToRgba(map.KLEUR_PRIMARY, '0.2');
+      map.KLEUR_PRIMARY_A10      = hexToRgba(map.KLEUR_PRIMARY, '0.1');
+      map.KLEUR_PRIMARY_A20      = hexToRgba(map.KLEUR_PRIMARY, '0.2');
+      map.KLEUR_PRIMARY_TAILWIND = hexToHslTailwind(map.KLEUR_PRIMARY);
     } else {
       // HSL color from legacy flow
       map.KLEUR_PRIMARY_A20 = hslToHsla(map.KLEUR_PRIMARY, '0.2');
@@ -217,7 +239,7 @@ module.exports = async function handler(req, res) {
   }
   if (map.TELEFOON_DISPLAY) {
     map.TELEFOON_HREF = map.TELEFOON_DISPLAY.replace(/\s+/g, '');
-    map.WHATSAPP_HREF = map.TELEFOON_HREF.replace(/^0/, '31');
+    map.WHATSAPP_HREF = `https://wa.me/${map.TELEFOON_HREF.replace(/^0/, '31')}`;
   }
   if (map.LOGO_URL) {
     map.LOGO_HTML    = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:40px;width:auto;max-width:160px;object-fit:contain;">`;
@@ -227,6 +249,11 @@ module.exports = async function handler(req, res) {
     map.FAVICON_HTML = '';
   }
   map.REVIEWS_DISPLAY = (map.REVIEWS_VISIBLE === '0') ? 'display:none' : '';
+  // Resolve ICON_X icon-name strings (e.g. "wrench") to inline SVG for dak template
+  for (let i = 1; i <= 8; i++) {
+    const key = `ICON_${i}`;
+    if (map[key] && ICON_MAP[map[key]]) map[key] = ICON_MAP[map[key]];
+  }
   const name = map.BEDRIJFSNAAM || slug;
   if (!map.HERO_ALT)    map.HERO_ALT    = `${name} - hero afbeelding`;
   if (!map.SERVICE_ALT) map.SERVICE_ALT = `${name} - service afbeelding`;
@@ -316,6 +343,28 @@ module.exports = async function handler(req, res) {
     }
   } catch (e) {
     console.error('Supabase save failed (non-fatal):', e.message);
+  }
+
+  // Update klanten.website_data so gowebbo-studio editor reloads the correct state (non-fatal)
+  try {
+    const klRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/klanten?slug=eq.${encodeURIComponent(slug)}`,
+      {
+        method: 'PATCH',
+        headers: {
+          apikey:         SUPABASE_KEY,
+          Authorization:  `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ website_data: incomingFields }),
+      },
+    );
+    if (!klRes.ok) {
+      const klErr = await klRes.text().catch(() => klRes.status);
+      console.error(`Supabase klanten update failed (${klRes.status}):`, klErr);
+    }
+  } catch (e) {
+    console.error('Supabase klanten update failed (non-fatal):', e.message);
   }
 
   // Commit all 4 files to GitHub
