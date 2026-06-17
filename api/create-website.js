@@ -14,7 +14,7 @@ const TEMPLATE_CONFIGS = {
     over_ons: 'template-over-ons.html',
     projecten: null,
   },
-  'dak-masterpiece': {
+  dak: {
     homepage: 'template-dak.html',
     contact:  'template-dak-contact.html',
     diensten: 'template-dak-diensten.html',
@@ -338,7 +338,8 @@ module.exports = async function handler(req, res) {
   const beroep              = d.beroep || d.sector || '';
   const dienstenRaw         = d.diensten || d.Diensten || '';
   const stad                = d.stad || '';
-  const template_keuze      = d.template_keuze || 'preview';
+  // Normalize legacy key: 'dak-masterpiece' was renamed to 'dak' to match save.js and editor
+  const template_keuze      = (d.template_keuze || 'preview').replace('dak-masterpiece', 'dak');
   const kleur_thema         = d.kleur_thema || 'blauw';
   const foto_logo           = d.foto_logo || '';
   const adres_straat        = d.adres_straat || '';
