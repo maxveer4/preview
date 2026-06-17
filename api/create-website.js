@@ -368,7 +368,8 @@ module.exports = async function handler(req, res) {
   } catch (e) { console.error('Supabase clients early insert failed:', e.message); }
 
   // ── Fetch templates + call Claude in parallel (saves ~0.5–1s) ────────────
-  const templates = {};
+  const regularTemplates = {}; // suffix → html
+  const dienstTemplates  = {}; // n (1-based) → html
   let ai = {};
   try {
     const claudePromise = fetch('https://api.anthropic.com/v1/messages', {
@@ -387,8 +388,6 @@ module.exports = async function handler(req, res) {
     });
 
     // Fetch regular pages + bigsite dienst pages in parallel
-    const regularTemplates = {}; // suffix → html
-    const dienstTemplates  = {}; // n (1-based) → html
     const templatePromise = Promise.all([
       ...tpl.pages.map(async suffix => {
         regularTemplates[suffix] = await fetchTemplate(`${tpl.prefix}${suffix}.html`);
