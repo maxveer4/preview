@@ -264,6 +264,20 @@ module.exports = async function handler(req, res) {
     if (!map[`DIENST_${i}`]) map[`DIENST_${i}`] = '';
   }
 
+  // Rebuild DIENSTEN_JSON from individual DIENST_N fields so editor field edits always win.
+  // The editor may send a stale DIENSTEN_JSON (built from old Supabase column values),
+  // but the individual DIENST_N / DIENST_N_DESC / DIENST_N_FOTO fields always reflect the edit.
+  {
+    const dienstenArr = [];
+    for (let i = 1; i <= 8; i++) {
+      const naam = map[`DIENST_${i}`] || '';
+      const desc = map[`DIENST_${i}_DESC`] || '';
+      const foto = map[`DIENST_${i}_FOTO`] || '';
+      if (naam || desc || foto) dienstenArr.push({ naam, desc, foto });
+    }
+    if (dienstenArr.length > 0) map.DIENSTEN_JSON = JSON.stringify(dienstenArr);
+  }
+
   // Look up which template set this client uses
   let templateType = templateFromPayload || 'default';
   if (!templateFromPayload) {
