@@ -109,16 +109,20 @@ const { chromium } = require('@playwright/test');
 
 (async () => {
   const browser = await chromium.launch();
-  const page    = await browser.newPage();
   const results = {};
 
   const routes = ${JSON.stringify(routes)};
 
   for (const [route, outFile] of Object.entries(routes)) {
+    // Use a fresh page per route so addInitScript doesn't accumulate across navigations.
+    // addInitScript runs BEFORE any page scripts, so React mounts with the correct PAGE.
+    const page = await browser.newPage();
+    await page.addInitScript((r) => { window.GOWEBBO_DATA = { PAGE: r }; }, route);
     const url = '${BASE}' + (route === '/' ? '' : route);
     await page.goto(url, { waitUntil: 'networkidle' });
     results[outFile] = await page.content();
     console.log('Rendered:', url, '->', outFile);
+    await page.close();
   }
 
   await browser.close();
