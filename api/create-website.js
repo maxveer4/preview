@@ -3,7 +3,7 @@ const { TEMPLATES, DEFAULT_TEMPLATE } = require('./_template-config');
 const REPO        = 'maxveer4/preview';
 const BRANCH      = 'main';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
+const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
 const STOCK_BASE  = 'https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos';
 const GHL_URL     = 'https://services.leadconnectorhq.com/hooks/cBpKffr120uYK9k2aD5m/webhook-trigger/ad5ce8f7-1f45-48b6-9045-0909c7c555fa';
 
