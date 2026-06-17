@@ -656,18 +656,18 @@ module.exports = async function handler(req, res) {
     },
   };
 
-  // Insert into klanten (for editor overview)
+  // Update klanten with full data incl. ai_content (early insert already created the row)
   try {
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/klanten`, {
-      method: 'POST',
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/klanten?slug=eq.${encodeURIComponent(slug)}`, {
+      method: 'PATCH',
       headers: {
         apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`,
-        'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(klantRecord),
     });
-    if (!r.ok) console.error('Supabase klanten insert failed:', r.status, await r.text());
-  } catch (e) { console.error('Supabase klanten insert failed:', e.message); }
+    if (!r.ok) console.error('Supabase klanten patch failed:', r.status, await r.text());
+  } catch (e) { console.error('Supabase klanten patch failed:', e.message); }
 
   // Insert into clients (used by save.js to look up template type)
   try {
