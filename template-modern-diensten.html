@@ -63,13 +63,9 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 /* Service cards (image top, text bottom) */
 .services-section{background:var(--muted);padding:5rem 0}
 @media(min-width:1024px){.services-section{padding:7rem 0}}
-.services-row-1{display:grid;grid-template-columns:1fr;gap:1.75rem;margin-top:3.5rem}
-@media(min-width:640px){.services-row-1{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.services-row-1{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1024px){.services-row-1.grid-four{grid-template-columns:repeat(4,1fr)}}
-.services-row-2{display:grid;grid-template-columns:1fr;gap:1.75rem;margin-top:1.75rem}
-@media(min-width:640px){.services-row-2{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.services-row-2{grid-template-columns:repeat(2,1fr);max-width:66.666%;margin-left:auto;margin-right:auto}}
+.services-grid{display:grid;grid-template-columns:1fr;gap:1.75rem;margin-top:3.5rem}
+@media(min-width:640px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.services-grid{grid-template-columns:repeat(3,1fr)}}
 .svc-card{display:flex;flex-direction:column;overflow:hidden;border-radius:.5rem;border:1px solid rgba(7,25,35,.1);background:#fff;box-shadow:var(--shadow-card);transition:all .3s}
 .svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-h)}
 .svc-card-img{aspect-ratio:4/3;overflow:hidden}
@@ -187,8 +183,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
     <p class="section-label">Wat wij doen</p>
     <h2 class="section-title">{{SERVICE_TITLE}}</h2>
     <div class="gold-line"></div>
-    <div class="services-row-1" id="servicesRow1"></div>
-    <div class="services-row-2" id="servicesRow2"></div>
+    <div class="services-grid" id="servicesGrid"></div>
   </div>
 </section>
 
@@ -257,18 +252,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
 (function(){
   var diensten=[];try{diensten={{DIENSTEN_JSON}};}catch(e){}
   if(!diensten.length)return;
-  var row1=document.getElementById('servicesRow1');
-  var row2=document.getElementById('servicesRow2');
-  if(!row1||!row2)return;
-  var first,second;
-  if(diensten.length===4){first=diensten;second=[];row1.classList.add('grid-four');}
-  else{first=diensten.slice(0,3);second=diensten.slice(3);}
+  var grid=document.getElementById('servicesGrid');
+  if(!grid)return;
   function card(d){
     var img=d.foto?'<div class="svc-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
     return '<article class="svc-card">'+img+'<div class="svc-card-body"><h3>'+d.naam+'</h3>'+(d.desc?'<p>'+d.desc+'</p>':'<p></p>')+'<div class="svc-card-cta"><a href="/{{SLUG}}-contact.html" class="btn-gold">Offerte aanvragen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg></a></div></div></article>';
   }
-  row1.innerHTML=first.map(card).join('');
-  row2.innerHTML=second.map(card).join('');
+  grid.innerHTML=diensten.map(card).join('');
 })();
 </script>
 <script>
