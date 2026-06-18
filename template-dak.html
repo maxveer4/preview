@@ -134,8 +134,8 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .section-header p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); max-width: 640px; margin: 0 auto; }
 @media(min-width:768px){ .section-header p { font-size: 1rem; } }
 .diensten-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
-@media(min-width:900px){ .diensten-grid { grid-template-columns: repeat(2,1fr); } }
-@media(min-width:1200px){ .diensten-grid { grid-template-columns: repeat(4,1fr); } }
+@media(min-width:640px){ .diensten-grid { grid-template-columns: repeat(2,1fr); } }
+@media(min-width:1024px){ .diensten-grid { grid-template-columns: repeat(4,1fr); } }
 .dienst-card { display: flex; flex-direction: column; border-radius: 20px; border: 1px solid var(--border); background: var(--card); padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
 .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 .dienst-card:has(h3:empty) { display: none; }
