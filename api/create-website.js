@@ -159,7 +159,8 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "PAGINA_DIENST_${n}_H1": "Paginatitel voor '${naam}' (max 6 woorden, krachtige h1)",
   "PAGINA_DIENST_${n}_INTRO": "Hero intro tekst voor '${naam}' pagina (1-2 zinnen, max 30 woorden)",
   "PAGINA_DIENST_${n}_H2": "Content sectie koptekst voor '${naam}' (max 8 woorden, bijv. 'Waarom kiezen voor...')",
-  "PAGINA_DIENST_${n}_BODY": "Content sectie body voor '${naam}' (3-4 zinnen, max 70 woorden, overtuigend)",`;
+  "PAGINA_DIENST_${n}_BODY": "Content sectie eerste alinea voor '${naam}' (3-4 zinnen, max 70 woorden, overtuigend)",
+  "PAGINA_DIENST_${n}_BODY_2": "Content sectie tweede alinea voor '${naam}' (3-4 zinnen, max 70 woorden, aanvullend op de eerste alinea)",`;
   }).join('') : '';
 
   return `Genereer alle websiteteksten voor dit bedrijf:
