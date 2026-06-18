@@ -316,6 +316,9 @@ module.exports = async function handler(req, res) {
   if (tpl.isModern && map.LOGO_URL) {
     map.LOGO_HTML = `<img src="${map.LOGO_URL}" alt="${map.BEDRIJFSNAAM || slug} logo" style="height:90px;width:auto;max-width:300px;object-fit:contain;">`;
   }
+  if (tpl.isModern && !map.CONTACT_DESC) {
+    map.CONTACT_DESC = 'Heeft u een vraag of wilt u een vrijblijvende offerte? Bel, mail of stuur ons een bericht. Wij reageren snel.';
+  }
 
   let templates;
   try {
