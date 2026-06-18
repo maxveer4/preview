@@ -32,9 +32,12 @@ function slugToLabel(s) {
 function applyMap(template, map) {
   let out = template;
   for (const [key, val] of Object.entries(map)) {
-    out = out.split(`{{${key}}}`).join(val == null ? '' : String(val));
+    const raw = val == null ? '' : String(val);
+    const escaped = raw.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    out = out.split(`"{{${key}}}"`).join(`"${escaped}"`);
+    out = out.split(`{{${key}}}`).join(raw);
   }
-  return out;
+  return out.replace(/\{\{[A-Z0-9_]+\}\}/g, '');
 }
 
 async function fetchTemplate(filename) {

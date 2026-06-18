@@ -11,13 +11,22 @@ const BASE_URL     = 'https://preview.gowebbo.io';
 const SUPABASE_URL = 'https://agdwnlqiepnmxwkrpzqv.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnZHdubHFpZXBubXh3a3JwenF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNzM4MzAsImV4cCI6MjA5MTY0OTgzMH0.bSw1y5gvVGg1C02AFU-bbfq4rSmy99APILktrlPIf2Y';
 
-// Replace all {{KEY}} occurrences using plain split/join
+// Replace all {{KEY}} occurrences using plain split/join.
+// Two passes per key:
+//   1. "{{KEY}}" (quoted) → JSON-escaped value  (safe inside window.GOWEBBO_DATA JSON)
+//   2.  {{KEY}}  (plain)  → raw value            (safe inside JS expressions like [{{REVIEWS_JSON}}])
 function applyMap(template, map) {
   let out = template;
   for (const [key, val] of Object.entries(map)) {
-    out = out.split(`{{${key}}}`).join(val == null ? '' : String(val));
+    const raw = val == null ? '' : String(val);
+    // Escape backslashes and double-quotes so the value is safe inside a JSON string.
+    const escaped = raw.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    // Pass 1: replace the quoted placeholder first (more specific match).
+    out = out.split(`"{{${key}}}"`).join(`"${escaped}"`);
+    // Pass 2: replace any remaining unquoted placeholder with the raw value.
+    out = out.split(`{{${key}}}`).join(raw);
   }
-  // Remove any remaining unknown placeholders so they don't show up in the HTML
+  // Remove any remaining unknown placeholders so they don't show up in the HTML.
   return out.replace(/\{\{[A-Z0-9_]+\}\}/g, '');
 }
 
