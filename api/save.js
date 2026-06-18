@@ -17,7 +17,8 @@ function applyMap(template, map) {
   for (const [key, val] of Object.entries(map)) {
     out = out.split(`{{${key}}}`).join(val == null ? '' : String(val));
   }
-  return out;
+  // Remove any remaining unknown placeholders so they don't show up in the HTML
+  return out.replace(/\{\{[A-Z0-9_]+\}\}/g, '');
 }
 
 // "hsl(142,72%,38%)" → "hsla(142,72%,38%,0.2)"
