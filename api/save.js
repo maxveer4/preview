@@ -319,6 +319,12 @@ module.exports = async function handler(req, res) {
   if (tpl.isModern && !map.CONTACT_DESC) {
     map.CONTACT_DESC = 'Heeft u een vraag of wilt u een vrijblijvende offerte? Bel, mail of stuur ons een bericht. Wij reageren snel.';
   }
+  if (tpl.isModern && !map.PROJECTEN_CTA_LABEL) {
+    map.PROJECTEN_CTA_LABEL = 'Uw project als volgende?';
+  }
+  if (tpl.isModern && !map.PROJECTEN_CTA_TITEL) {
+    map.PROJECTEN_CTA_TITEL = 'Benieuwd wat wij voor uw woning kunnen betekenen?';
+  }
 
   let templates;
   try {
