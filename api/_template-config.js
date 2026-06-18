@@ -44,7 +44,7 @@ const TEMPLATES = {
   },
   bigsite: {
     prefix:      'template-bigsite',
-    pages:       ['', '-contact', '-over-ons', '-projecten', '-werkgebied', '-ede', '-wageningen'],
+    pages:       ['', '-contact', '-over-ons', '-projecten', '-ede', '-wageningen'],
     dienstCount: 10,
     isBigsite:   true,
   },
