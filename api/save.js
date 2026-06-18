@@ -336,6 +336,16 @@ module.exports = async function handler(req, res) {
         if (!fs.existsSync(tplFile)) continue;
         templates[`${slug}-${dienstSlug}.html`] = fs.readFileSync(tplFile, 'utf8');
       }
+      // Bigsite: stad pages 3-6 get URLs based on the city name (e.g. "Doorn" → "{slug}-doorn.html")
+      for (let n = 3; n <= 6; n++) {
+        const stad = map[`STAD_${n}`];
+        if (!stad) continue;
+        const stadSlug = stad.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        map[`PAGINA_STAD_${n}_SLUG`] = stadSlug;
+        const tplFile = path.join(root, `template-bigsite-stad-${n}.html`);
+        if (!fs.existsSync(tplFile)) continue;
+        templates[`${slug}-${stadSlug}.html`] = fs.readFileSync(tplFile, 'utf8');
+      }
     }
   } catch (e) {
     return res.status(500).json({ error: `Template read failed: ${e.message}` });
