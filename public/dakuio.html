@@ -262,7 +262,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 footer { border-top: 1px solid var(--border); background: var(--card); }
 .footer-inner { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
 @media(min-width:640px){ .footer-inner { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px){ .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+@media(min-width:1024px){ .footer-inner { grid-template-columns: repeat(4,1fr); } }
 footer h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
 footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
 footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; font-family: 'Roboto', sans-serif; }
@@ -777,6 +777,17 @@ footer ul li:has(a:empty) { display: none; }
           <li><a href="/dakuio-diensten.html">Schoorsteenrenovatie Loodwerk</a></li>
           <li><a href="/dakuio-diensten.html">Daklekkage</a></li>
           <li><a href="/dakuio-diensten.html">Dak inspecteren</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">Ede</a></li>
+          <li><a href="#">Wageningen</a></li>
+          <li><a href="#">Driebergen</a></li>
+          <li><a href="#">Maarn</a></li>
+          <li><a href="#">Woudenberg</a></li>
+          <li><a href="#">Arnhem</a></li>
         </ul>
       </div>
       <div>
