@@ -325,9 +325,13 @@ module.exports = async function handler(req, res) {
   if (tpl.isModern && !map.PROJECTEN_CTA_TITEL) {
     map.PROJECTEN_CTA_TITEL = 'Benieuwd wat wij voor uw woning kunnen betekenen?';
   }
-  if (tpl.isBigsite && !map.STAD_SECTIE_TITEL)  map.STAD_SECTIE_TITEL  = '';
-  if (tpl.isBigsite && !map.STAD_SECTIE_BODY)   map.STAD_SECTIE_BODY   = '';
-  if (tpl.isBigsite && !map.STAD_SECTIE_BODY_2) map.STAD_SECTIE_BODY_2 = '';
+  if (tpl.isBigsite) {
+    for (const prefix of ['EDE', 'WAGENINGEN', 'STAD_3', 'STAD_4', 'STAD_5', 'STAD_6']) {
+      if (!map[`${prefix}_SECTIE_TITEL`])  map[`${prefix}_SECTIE_TITEL`]  = '';
+      if (!map[`${prefix}_SECTIE_BODY`])   map[`${prefix}_SECTIE_BODY`]   = '';
+      if (!map[`${prefix}_SECTIE_BODY_2`]) map[`${prefix}_SECTIE_BODY_2`] = '';
+    }
+  }
   if (tpl.isBigsite && !map.STAD_EYEBROW)   map.STAD_EYEBROW   = 'Uw specialist in de regio';
   if (tpl.isBigsite && !map.STAD_H1_PREFIX)  map.STAD_H1_PREFIX = 'Specialist';
   if (tpl.isBigsite && !map.STAD_INTRO)      map.STAD_INTRO     = '';
