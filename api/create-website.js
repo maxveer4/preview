@@ -383,6 +383,7 @@ module.exports = async function handler(req, res) {
   // ── Fetch templates + call Claude in parallel (saves ~0.5–1s) ────────────
   const regularTemplates = {}; // suffix → html
   const dienstTemplates  = {}; // n (1-based) → html
+  const stadTemplates    = {}; // n (3-6) → html, bigsite only
   let ai = {};
   try {
     const claudePromise = fetch('https://api.anthropic.com/v1/messages', {
@@ -400,7 +401,7 @@ module.exports = async function handler(req, res) {
       }),
     });
 
-    // Fetch regular pages + bigsite dienst pages in parallel
+    // Fetch regular pages + bigsite dienst/stad pages in parallel
     const templatePromise = Promise.all([
       ...tpl.pages.map(async suffix => {
         regularTemplates[suffix] = await fetchTemplate(`${tpl.prefix}${suffix}.html`);
@@ -409,6 +410,9 @@ module.exports = async function handler(req, res) {
         const n = i + 1;
         dienstTemplates[n] = await fetchTemplate(`${tpl.prefix}-dienst-${n}.html`);
       }),
+      ...(isBigsite ? [3, 4, 5, 6].map(async n => {
+        stadTemplates[n] = await fetchTemplate(`${tpl.prefix}-stad-${n}.html`).catch(() => null);
+      }) : []),
     ]);
 
     const [claudeRes] = await Promise.all([claudePromise, templatePromise]);
@@ -525,6 +529,14 @@ module.exports = async function handler(req, res) {
       ])
     ),
 
+    // Bigsite stad page slugs (3-6) — computed from AI-generated STAD_N city names
+    ...(isBigsite ? Object.fromEntries(
+      [3, 4, 5, 6].map(n => {
+        const stadNaam = (ai[`STAD_${n}`] || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        return [`PAGINA_STAD_${n}_SLUG`, stadNaam];
+      })
+    ) : {}),
+
     // JSON data
     DIENSTEN_JSON:  JSON.stringify(dienstenJson),
     REVIEWS_JSON:   isBigsite
@@ -558,6 +570,14 @@ module.exports = async function handler(req, res) {
     if (!dienstenNamen[idx]) continue; // skip empty dienst slots
     const dslug = makeSlug(dienstenNamen[idx]) || `dienst-${n}`;
     generated[`${slug}-${dslug}.html`] = applyMap(html, map);
+  }
+
+  // Bigsite stad pages (3-6): output file uses lowercased city name as slug
+  for (const [n, html] of Object.entries(stadTemplates)) {
+    if (!html) continue;
+    const stadSlug = map[`PAGINA_STAD_${n}_SLUG`];
+    if (!stadSlug) continue; // skip if STAD_N was not generated
+    generated[`${slug}-${stadSlug}.html`] = applyMap(html, map);
   }
 
   // ── dry_run: return HTML without any side effects ────────────────────────
