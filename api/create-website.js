@@ -155,6 +155,15 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "TRUST_4_DESC": "Uitleg bij vierde vertrouwenskolom (1 zin, max 15 woorden)",
   "PROJECTEN_JSON": [{"foto":"","titel":"realistisch projecttitel passend bij sector","categorie":"dienstcategorie","locatie":"gemeente in werkgebied","desc":"korte projectomschrijving max 15 woorden"},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."},{"foto":"","titel":"...","categorie":"...","locatie":"...","desc":"..."}],` : '';
 
+  // Shared hero content for all werkgebied/stad pages
+  const bigsiteStadExtra = isBigsite ? `
+  "STAD_EYEBROW": "Korte label boven de h1 op stadpagina's (max 8 woorden, bijv. 'Uw specialist in de regio')",
+  "STAD_H1_PREFIX": "Woorden vóór 'in [stad]' in de h1 (2-5 woorden, bijv. 'De beste dakdekker')",
+  "STAD_INTRO": "Intro beschrijving voor alle stadpagina's (2-3 zinnen, max 50 woorden, generiek genoeg voor elke stad)",
+  "STAD_USP_1": "USP 1 voor stadpagina's (max 8 woorden)",
+  "STAD_USP_2": "USP 2 voor stadpagina's (max 8 woorden)",
+  "STAD_USP_3": "USP 3 voor stadpagina's (max 8 woorden)",` : '';
+
   // Generate page content fields for each existing dienst (1 up to N)
   const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 10).map((naam, i) => {
     const n = i + 1;
@@ -217,7 +226,7 @@ Geef een JSON object terug met EXACT deze velden:
   "CTA_DESC": "CTA ondersteuning (1 zin, max 15 woorden)",
   "STAD_1": "Eerste werkgebied gemeente rondom ${stad}",
   "STAD_2": "Tweede gemeente", "STAD_3": "Derde gemeente",
-  "STAD_4": "Vierde gemeente", "STAD_5": "Vijfde gemeente", "STAD_6": "Zesde gemeente",
+  "STAD_4": "Vierde gemeente", "STAD_5": "Vijfde gemeente", "STAD_6": "Zesde gemeente",${bigsiteStadExtra}
   "OVER_ONS_HERO_DESC": "Subtitel over-ons hero (max 10 woorden)",
   "OVER_ONS_INTRO_P1": "Over het bedrijf alinea 1 (2-3 zinnen, max 50 woorden)",
   "OVER_ONS_INTRO_P2": "Werkwijze en aanpak alinea 2 (2-3 zinnen, max 40 woorden)",
