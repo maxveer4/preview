@@ -163,24 +163,24 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "STAD_USP_1": "USP 1 voor stadpagina's (max 8 woorden)",
   "STAD_USP_2": "USP 2 voor stadpagina's (max 8 woorden)",
   "STAD_USP_3": "USP 3 voor stadpagina's (max 8 woorden)",
-  "EDE_SECTIE_TITEL": "Sectie 2 titel voor Ede pagina (max 8 woorden, lokaal gericht op Ede)",
-  "EDE_SECTIE_BODY": "Sectie 2 alinea 1 voor Ede (3-4 zinnen, max 70 woorden, uniek voor Ede, anders dan homepage tekst)",
-  "EDE_SECTIE_BODY_2": "Sectie 2 alinea 2 voor Ede (2-3 zinnen, max 50 woorden, aanvullend)",
-  "WAGENINGEN_SECTIE_TITEL": "Sectie 2 titel voor Wageningen pagina (max 8 woorden, lokaal gericht op Wageningen)",
-  "WAGENINGEN_SECTIE_BODY": "Sectie 2 alinea 1 voor Wageningen (3-4 zinnen, max 70 woorden, uniek voor Wageningen)",
-  "WAGENINGEN_SECTIE_BODY_2": "Sectie 2 alinea 2 voor Wageningen (2-3 zinnen, max 50 woorden, aanvullend)",
-  "STAD_3_SECTIE_TITEL": "Sectie 2 titel voor derde stad (max 8 woorden, lokaal gericht)",
-  "STAD_3_SECTIE_BODY": "Sectie 2 alinea 1 voor derde stad (3-4 zinnen, max 70 woorden, uniek)",
-  "STAD_3_SECTIE_BODY_2": "Sectie 2 alinea 2 voor derde stad (2-3 zinnen, max 50 woorden)",
-  "STAD_4_SECTIE_TITEL": "Sectie 2 titel voor vierde stad (max 8 woorden, lokaal gericht)",
-  "STAD_4_SECTIE_BODY": "Sectie 2 alinea 1 voor vierde stad (3-4 zinnen, max 70 woorden, uniek)",
-  "STAD_4_SECTIE_BODY_2": "Sectie 2 alinea 2 voor vierde stad (2-3 zinnen, max 50 woorden)",
-  "STAD_5_SECTIE_TITEL": "Sectie 2 titel voor vijfde stad (max 8 woorden, lokaal gericht)",
-  "STAD_5_SECTIE_BODY": "Sectie 2 alinea 1 voor vijfde stad (3-4 zinnen, max 70 woorden, uniek)",
-  "STAD_5_SECTIE_BODY_2": "Sectie 2 alinea 2 voor vijfde stad (2-3 zinnen, max 50 woorden)",
-  "STAD_6_SECTIE_TITEL": "Sectie 2 titel voor zesde stad (max 8 woorden, lokaal gericht)",
-  "STAD_6_SECTIE_BODY": "Sectie 2 alinea 1 voor zesde stad (3-4 zinnen, max 70 woorden, uniek)",
-  "STAD_6_SECTIE_BODY_2": "Sectie 2 alinea 2 voor zesde stad (2-3 zinnen, max 50 woorden)",` : '';
+  "EDE_SECTIE_TITEL": "Sectie 2 titel voor de Ede pagina — verwerk de stadnaam 'Ede' in de titel (max 8 woorden)",
+  "EDE_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor Ede — schrijf over de diensten in Ede, anders dan andere steden (3-4 zinnen, max 70 woorden)",
+  "EDE_SECTIE_BODY_2": "Sectie 2 tweede alinea voor Ede — aanvullend, Ede-specifiek (2-3 zinnen, max 50 woorden)",
+  "WAGENINGEN_SECTIE_TITEL": "Sectie 2 titel voor de Wageningen pagina — verwerk 'Wageningen' in de titel (max 8 woorden)",
+  "WAGENINGEN_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor Wageningen — anders dan Ede en andere steden (3-4 zinnen, max 70 woorden)",
+  "WAGENINGEN_SECTIE_BODY_2": "Sectie 2 tweede alinea voor Wageningen — aanvullend, Wageningen-specifiek (2-3 zinnen, max 50 woorden)",
+  "STAD_3_SECTIE_TITEL": "Sectie 2 titel voor de pagina van de stad in STAD_3 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_3_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_3 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_3_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_3 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
+  "STAD_4_SECTIE_TITEL": "Sectie 2 titel voor de pagina van de stad in STAD_4 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_4_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_4 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_4_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_4 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
+  "STAD_5_SECTIE_TITEL": "Sectie 2 titel voor de pagina van de stad in STAD_5 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_5_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_5 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_5_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_5 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
+  "STAD_6_SECTIE_TITEL": "Sectie 2 titel voor de pagina van de stad in STAD_6 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_6_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_6 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_6_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_6 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",` : '';
 
   // Generate page content fields for each existing dienst (1 up to N)
   const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 10).map((naam, i) => {
@@ -281,7 +281,7 @@ Geef een JSON object terug met EXACT deze velden:
   ]
 }
 
-BELANGRIJK: geef ALLEEN het JSON object, geen uitleg of markdown. REVIEWS_JSON is een array van 6 objecten. Steden zijn echte gemeenten rondom ${stad}. Gebruik NOOIT gedachtestreepjes. Spreek altijd namens het bedrijf, nooit op naam van de contactpersoon.`;
+BELANGRIJK: geef ALLEEN het JSON object, geen uitleg of markdown. REVIEWS_JSON is een array van 6 objecten. Steden zijn echte gemeenten rondom ${stad}. Gebruik NOOIT gedachtestreepjes. Spreek altijd namens het bedrijf, nooit op naam van de contactpersoon.${isBigsite ? ' Voor de *_SECTIE_* velden: elke stad moet ANDERE inhoud krijgen — verwerk de specifieke stadnaam in elke titel en schrijf per stad een unieke lokale tekst. Kopieer NOOIT dezelfde tekst voor meerdere steden.' : ''}`;
 }
 
 // ── Main handler ──────────────────────────────────────────────────────────────
