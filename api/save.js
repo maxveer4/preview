@@ -326,7 +326,7 @@ module.exports = async function handler(req, res) {
     map.PROJECTEN_CTA_TITEL = 'Benieuwd wat wij voor uw woning kunnen betekenen?';
   }
   if (tpl.isBigsite) {
-    for (const prefix of ['EDE', 'WAGENINGEN', 'STAD_3', 'STAD_4', 'STAD_5', 'STAD_6']) {
+    for (const prefix of ['STAD_1', 'STAD_2', 'STAD_3', 'STAD_4', 'STAD_5', 'STAD_6']) {
       if (!map[`${prefix}_SECTIE_TITEL`])  map[`${prefix}_SECTIE_TITEL`]  = '';
       if (!map[`${prefix}_SECTIE_BODY`])   map[`${prefix}_SECTIE_BODY`]   = '';
       if (!map[`${prefix}_SECTIE_BODY_2`]) map[`${prefix}_SECTIE_BODY_2`] = '';

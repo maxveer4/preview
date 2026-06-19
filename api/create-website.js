@@ -163,12 +163,12 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "STAD_USP_1": "USP 1 voor stadpagina's (max 8 woorden)",
   "STAD_USP_2": "USP 2 voor stadpagina's (max 8 woorden)",
   "STAD_USP_3": "USP 3 voor stadpagina's (max 8 woorden)",
-  "EDE_SECTIE_TITEL": "Sectie 2 titel voor de Ede pagina — verwerk de stadnaam 'Ede' in de titel (max 8 woorden)",
-  "EDE_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor Ede — schrijf over de diensten in Ede, anders dan andere steden (3-4 zinnen, max 70 woorden)",
-  "EDE_SECTIE_BODY_2": "Sectie 2 tweede alinea voor Ede — aanvullend, Ede-specifiek (2-3 zinnen, max 50 woorden)",
-  "WAGENINGEN_SECTIE_TITEL": "Sectie 2 titel voor de Wageningen pagina — verwerk 'Wageningen' in de titel (max 8 woorden)",
-  "WAGENINGEN_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor Wageningen — anders dan Ede en andere steden (3-4 zinnen, max 70 woorden)",
-  "WAGENINGEN_SECTIE_BODY_2": "Sectie 2 tweede alinea voor Wageningen — aanvullend, Wageningen-specifiek (2-3 zinnen, max 50 woorden)",
+  "STAD_1_SECTIE_TITEL": "Sectie 2 titel voor de pagina van STAD_1 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_1_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_1 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_1_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_1 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
+  "STAD_2_SECTIE_TITEL": "Sectie 2 titel voor de pagina van STAD_2 — verwerk die stadnaam in de titel (max 8 woorden)",
+  "STAD_2_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_2 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
+  "STAD_2_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_2 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
   "STAD_3_SECTIE_TITEL": "Sectie 2 titel voor de pagina van de stad in STAD_3 — verwerk die stadnaam in de titel (max 8 woorden)",
   "STAD_3_SECTIE_BODY": "Sectie 2 eerste alinea specifiek voor de stad van STAD_3 — gebruik die stadnaam, anders dan alle andere steden (3-4 zinnen, max 70 woorden)",
   "STAD_3_SECTIE_BODY_2": "Sectie 2 tweede alinea voor STAD_3 stad — aanvullend en uniek (2-3 zinnen, max 50 woorden)",
@@ -439,6 +439,52 @@ module.exports = async function handler(req, res) {
     const raw     = (await claudeRes.json()).content?.[0]?.text || '';
     const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
     ai = JSON.parse(cleaned);
+
+    // Herorden STAD_N_SECTIE_* zodat de stadnaam in de titel overeenkomt met STAD_N.
+    // De AI genereert soms de content in de verkeerde volgorde. Dit legt elk sectie
+    // bij de stad die in de titel wordt vermeld.
+    if (isBigsite) {
+      const sections = [1,2,3,4,5,6].map(n => ({
+        n,
+        stad: (ai[`STAD_${n}`] || '').toLowerCase().trim(),
+        titel: ai[`STAD_${n}_SECTIE_TITEL`] || '',
+        body:  ai[`STAD_${n}_SECTIE_BODY`]  || '',
+        body2: ai[`STAD_${n}_SECTIE_BODY_2`] || '',
+      }));
+      const result  = Array(6).fill(null);
+      const used    = new Set();
+      // Pass 1: match by stad name in titel
+      for (let i = 0; i < 6; i++) {
+        const stadNaam = sections[i].stad;
+        if (!stadNaam) continue;
+        for (let j = 0; j < 6; j++) {
+          if (used.has(j)) continue;
+          if (sections[j].titel.toLowerCase().includes(stadNaam)) {
+            result[i] = sections[j];
+            used.add(j);
+            break;
+          }
+        }
+      }
+      // Pass 2: fill remaining slots with unused sections (original order)
+      let spare = 0;
+      for (let i = 0; i < 6; i++) {
+        if (!result[i]) {
+          while (spare < 6 && used.has(spare)) spare++;
+          result[i] = spare < 6 ? sections[spare++] : sections[i];
+          used.add(spare - 1);
+        }
+      }
+      // Write back
+      for (let i = 0; i < 6; i++) {
+        const n = i + 1;
+        if (result[i]) {
+          ai[`STAD_${n}_SECTIE_TITEL`] = result[i].titel;
+          ai[`STAD_${n}_SECTIE_BODY`]  = result[i].body;
+          ai[`STAD_${n}_SECTIE_BODY_2`] = result[i].body2;
+        }
+      }
+    }
 
     // Converteer *accentwoord* → <span class="accent"> voor static HTML templates.
     // Bigsite is React-based: HTML in GOWEBBO_DATA breekt de JS syntax (dubbele aanhalingstekens
