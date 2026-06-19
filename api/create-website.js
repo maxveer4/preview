@@ -162,7 +162,10 @@ function buildPrompt(bedrijfsnaam, sector, dienstenNamen, stad, display, email, 
   "STAD_INTRO": "Intro beschrijving voor alle stadpagina's (2-3 zinnen, max 50 woorden, generiek genoeg voor elke stad)",
   "STAD_USP_1": "USP 1 voor stadpagina's (max 8 woorden)",
   "STAD_USP_2": "USP 2 voor stadpagina's (max 8 woorden)",
-  "STAD_USP_3": "USP 3 voor stadpagina's (max 8 woorden)",` : '';
+  "STAD_USP_3": "USP 3 voor stadpagina's (max 8 woorden)",
+  "STAD_SECTIE_TITEL": "Sectie 2 titel op stadpagina's (max 8 woorden, anders dan SERVICE_TITLE op homepage)",
+  "STAD_SECTIE_BODY": "Sectie 2 eerste alinea op stadpagina's (3-4 zinnen, max 70 woorden, lokaal-gericht, anders dan SERVICE_DESC)",
+  "STAD_SECTIE_BODY_2": "Sectie 2 tweede alinea op stadpagina's (2-3 zinnen, max 50 woorden, aanvullend, anders dan SERVICE_DESC_2)",` : '';
 
   // Generate page content fields for each existing dienst (1 up to N)
   const bigsiteExtra = isBigsite ? dienstenNamen.slice(0, 10).map((naam, i) => {
