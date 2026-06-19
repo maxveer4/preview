@@ -325,6 +325,12 @@ module.exports = async function handler(req, res) {
   if (tpl.isModern && !map.PROJECTEN_CTA_TITEL) {
     map.PROJECTEN_CTA_TITEL = 'Benieuwd wat wij voor uw woning kunnen betekenen?';
   }
+  if (tpl.isBigsite && !map.STAD_EYEBROW)   map.STAD_EYEBROW   = 'Uw specialist in de regio';
+  if (tpl.isBigsite && !map.STAD_H1_PREFIX)  map.STAD_H1_PREFIX = 'Specialist';
+  if (tpl.isBigsite && !map.STAD_INTRO)      map.STAD_INTRO     = '';
+  if (tpl.isBigsite && !map.STAD_USP_1)      map.STAD_USP_1     = '';
+  if (tpl.isBigsite && !map.STAD_USP_2)      map.STAD_USP_2     = '';
+  if (tpl.isBigsite && !map.STAD_USP_3)      map.STAD_USP_3     = '';
 
   let templates;
   try {
