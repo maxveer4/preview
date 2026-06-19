@@ -181,8 +181,9 @@ function injectGowebboData(html, markers, pageRoute) {
 
   const injection = styleBlock + '\n' + scriptBlock;
 
-  // Insert before the first <script src=... or <script type=... tag (the Vite bundle)
-  return html.replace(/(<script\b(?:[^>]*\bsrc\b|\s+type\s*=)[^>]*>)/, injection + '\n$1');
+  // Insert just before </head> so our style override comes AFTER the Vite CSS bundle <link>
+  // (which would otherwise override our --primary variable due to cascade order).
+  return html.replace(/<\/head>/, injection + '\n</head>');
 }
 
 // Copy JS and CSS bundles from dist/assets to preview-repo/public/assets.
