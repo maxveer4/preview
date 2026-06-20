@@ -40,7 +40,7 @@ Four template types, selected per client via the `template` field in Supabase `c
 | `preview` | 4 | `template.html`, `-contact`, `-diensten`, `-over-ons` |
 | `dak` | 5 | `template-dak.html`, `-contact`, `-diensten`, `-over-ons`, `-projecten` |
 | `modern` | 5 | `template-modern.html`, `-contact`, `-diensten`, `-over-ons`, `-projecten` |
-| `bigsite` | 17 | `template-bigsite.html`, 10 dienst pages, `-contact`, `-over-ons`, `-projecten`, `-werkgebied`, `-ede`, `-wageningen` |
+| `bigsite` | 20 | `template-bigsite.html`, 10 dienst pages, `-contact`, `-over-ons`, `-projecten`, `-ede`, `-wageningen`, stad-3 t/m stad-6 (dynamic slug) |
 
 Templates use `{{KEY}}` placeholders (all-caps). `save.js` builds a substitution map from merged fields plus derived values:
 - `KLEUR_PRIMARY_TAILWIND` — strips `hsl()` wrapper (space-separated for Tailwind CSS variable)
@@ -68,6 +68,7 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 |------|------|
 | `api/save.js` | Core: field merging, template substitution, dual GitHub commit (preview + klanten repo) |
 | `api/create-website.js` | Intake flow: Claude AI → fill templates → batch GitHub commit |
+| `api/deploy-klanten.js` | One-time deploy endpoint: copies all slug pages to `gowebbo-klanten/{slug}/` for own-domain hosting |
 | `api/_extract.js` | Extracts field values from `<!-- gowebbo-cms: -->` comment in CDN HTML (fallback) |
 | `scripts/convert-template.js` | Converts a React template repo to `template-*.html` files |
 
@@ -80,9 +81,13 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 
 ## GitHub persistence
 
-`githubUpsert` (save.js) GETs the current SHA then PUTs new content. Retries once on 409/422 (stale SHA). The PUT to `maxveer4/preview` triggers Vercel auto-deploy; the PUT to `maxveer4/gowebbo-klanten` is non-fatal (only updates if file already exists there).
+`githubUpsert` (save.js) GETs the current SHA then PUTs new content. Retries once on 409/422 (stale SHA). The PUT to `maxveer4/preview` triggers Vercel auto-deploy.
 
-`githubBatchCommit` (create-website.js) uses the Trees API to commit all files in one operation — critical for bigsite (17+ files). Retries 3× on 422 non-fast-forward with exponential backoff.
+**gowebbo-klanten sync (save.js):** After every editor save, ALL generated HTML files are synced to `maxveer4/gowebbo-klanten/{slug}/` via `githubUpdateIfExists` (non-fatal, skips if file doesn't exist yet). Path mapping: `{slug}.html` → `{slug}/index.html`, `{slug}-contact.html` → `{slug}/contact.html`, etc. Asset paths (`/assets/...`) are rewritten to absolute `https://preview.gowebbo.io/assets/...` URLs so the JS/CSS bundles load correctly on own-domain deployments. Covers all pages including bigsite's dynamic dienst and stad pages.
+
+**deploy-klanten.js:** One-time endpoint called from the editor "Eigen domein" button. Fetches all `{slug}*.html` from `maxveer4/preview/public/`, applies the same asset path fix + path mapping, generates a `vercel.json` with `cleanUrls: true` and redirects from old `/{slug}-page` URLs, then batch-commits everything to `gowebbo-klanten`. After this initial deploy, every editor save keeps the klanten folder in sync automatically.
+
+`githubBatchCommit` (create-website.js + deploy-klanten.js) uses the Trees API to commit all files in one operation — critical for bigsite (20+ files). Retries 3× on 422 non-fast-forward with exponential backoff.
 
 ## Supabase tables
 
