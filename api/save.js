@@ -434,19 +434,18 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: e.message });
   }
 
-  // Ook opslaan in gowebbo-klanten (non-fataal)
-  // Build klanten path map dynamically from template suffixes
-  const klantenMap = {};
-  for (const s of tpl.pages) {
-    const genFile     = s ? `${slug}${s}.html` : `${slug}.html`;
-    const klantenFile = s ? `${slug}${s.replace('-', '/')}.html` : `${slug}/index.html`;
-    klantenMap[genFile] = klantenFile;
-  }
+  // Ook opslaan in gowebbo-klanten (non-fataal) — dekt alle gegenereerde pagina's incl. bigsite
+  // dienst/stad pagina's. Asset paden worden omgezet naar absolute CDN-URL zodat ze op een
+  // eigen domein blijven werken.
   try {
-    for (const [oldName, newPath] of Object.entries(klantenMap)) {
-      if (generated[oldName]) {
-        await githubUpdateIfExists(token, newPath, generated[oldName], KLANTEN_REPO);
-      }
+    for (const [filename, content] of Object.entries(generated)) {
+      const klantPath = filename === `${slug}.html`
+        ? `${slug}/index.html`
+        : `${slug}/${filename.slice(slug.length + 1)}`; // strip "{slug}-" prefix
+      const transformed = content
+        .split('href="/assets/').join(`href="${BASE_URL}/assets/`)
+        .split('src="/assets/').join(`src="${BASE_URL}/assets/`);
+      await githubUpdateIfExists(token, klantPath, transformed, KLANTEN_REPO);
     }
   } catch (e) {
     console.error('gowebbo-klanten commit failed (non-fatal):', e.message);
