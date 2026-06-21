@@ -3,435 +3,440 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>López Bouw & Renovatie | Aannemer Den-Haag</title>
-<meta name="description" content="Professionele bouw- en renovatiediensten in Den-Haag. Badkamer, schilderwerk, timmerwerk en meer. Bel nu: 06 24 48 44 45">
-<link rel="icon" href="">
+<title>López Bouw en Renovatie | Aannemer Zuid-Holland</title>
+<meta name="description" content="Professionele bouw- en renovatiediensten in Zuid-Holland. Aanbouw, badkamer, keuken en meer. Bel nu: 06 24 48 44 45">
+<link rel="icon" href="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/lopez-bouw-en-renovatie/foto_logo_ontwerp-zonder-titel-87-.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --background: hsl(0,0%,96%);
-  --foreground: hsl(0,0%,10%);
-  --card: hsl(0,0%,100%);
-  --primary: hsl(213,76%,52%);
-  --primary-fg: hsl(0,0%,100%);
-  --muted: hsl(0,0%,96%);
-  --muted-fg: hsl(0,0%,45%);
-  --border: hsl(0,0%,88%);
-  --star: hsl(33,95%,60%);
-  --topbar-bg: hsl(0,0%,10%);
-  --topbar-fg: hsl(0,0%,100%);
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#071923;
+  --gold:hsl(213,76%,52%);
+  --gold-soft:hsl(213,76%,52%);
+  --background:#ffffff;
+  --muted:#f5f5f5;
+  --muted-fg:oklch(0.45 0.02 250);
+  --border:oklch(0.92 0.01 250);
+  --navy-75:rgba(7,25,35,0.75);
+  --navy-10:rgba(7,25,35,0.10);
+  --shadow-gold:0 10px 30px -12px color-mix(in srgb,hsl(213,76%,52%) 45%,transparent);
 }
-body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
-h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; font-family: inherit; border: none; background: none; }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:var(--navy);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+@media(min-width:1024px){.container{padding:0 2.5rem}}
 
-/* Topbar */
-.topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
-.topbar-stars { display: flex; gap: 2px; align-items: center; }
-.star-icon { color: var(--star); }
-.topbar-contact { display: flex; gap: 1.5rem; }
-.topbar-contact a { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
-.topbar-contact a:hover { color: var(--primary); }
-@media(max-width:767px){ .topbar-contact { display: none; } }
+/* ── Header (absolute, overlaps hero) ──────────────────────────────── */
+.site-header{position:absolute;inset-inline:0;top:0;z-index:30}
+.site-header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:1.5rem 1.5rem}
+@media(min-width:1024px){.site-header-inner{padding:1.75rem 2.5rem}}
+.header-logo img{height:90px;width:auto;max-width:300px;object-fit:contain}
+.header-nav{display:none;align-items:center;gap:2.25rem}
+@media(min-width:1024px){.header-nav{display:flex}}
+.header-nav a{position:relative;font-size:.875rem;font-weight:500;color:rgba(255,255,255,.8);transition:color .2s}
+.header-nav a:hover,.header-nav a.active{color:#fff}
+.header-nav a::after{content:'';position:absolute;bottom:-.5rem;left:0;height:2px;width:0;background:var(--gold);transition:width .3s}
+.header-nav a:hover::after,.header-nav a.active::after{width:1.5rem}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#fff;border-radius:.375rem;padding:.75rem 1.25rem;font-size:.875rem;font-weight:600;box-shadow:var(--shadow-gold);transition:all .3s;border:none;cursor:pointer;font-family:inherit}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px color-mix(in srgb,hsl(213,76%,52%) 45%,transparent)}
+.btn-gold svg{width:1rem;height:1rem}
+.btn-outline-white{display:inline-flex;align-items:center;justify-content:center;border-radius:.375rem;border:1.5px solid rgba(255,255,255,.7);background:transparent;padding:.75rem 1.75rem;font-size:.875rem;font-weight:600;color:#fff;transition:all .3s}
+.btn-outline-white:hover{transform:translateY(-2px);border-color:#fff;background:rgba(255,255,255,.05)}
+.btn-navy{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--navy);color:#fff;border-radius:.375rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:600;transition:all .3s}
+.btn-navy:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(7,25,35,.3)}
+.header-mobile-btn{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.375rem;border:1px solid rgba(255,255,255,.2);color:#fff}
+@media(min-width:1024px){.header-mobile-btn{display:none}}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5)}
+.mobile-menu.open{display:block}
+.mobile-menu-panel{margin:1.5rem;border-radius:.75rem;border:1px solid rgba(255,255,255,.1);background:rgba(7,25,35,.95);backdrop-filter:blur(8px);padding:1.5rem}
+.mobile-menu-panel a{display:block;font-size:1rem;font-weight:500;color:rgba(255,255,255,.85);padding:.625rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu-panel a.active{color:var(--gold)}
+.mobile-menu-close{float:right;background:none;border:none;color:rgba(255,255,255,.7);font-size:1.25rem;cursor:pointer;margin-bottom:.5rem}
 
-/* Navbar */
-.navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
-.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
-.navbar-logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
-.navbar-nav { display: flex; align-items: center; gap: 2rem; }
-.navbar-nav a, .navbar-nav .dropdown > button { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
-.navbar-nav a:hover, .navbar-nav .dropdown > button:hover { color: var(--primary); }
-.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: inherit; }
-.btn-primary:hover { opacity: 0.9; }
-.btn-outline { display: inline-flex; align-items: center; background: transparent; color: #fff; border: 2px solid #fff; border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
-.btn-outline:hover { background: rgba(255,255,255,0.1); }
-.dropdown { position: relative; }
-.dropdown-menu { display: none; position: absolute; left: 0; top: 100%; margin-top: 8px; min-width: 240px; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem 0; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 100; }
-.dropdown:hover .dropdown-menu { display: block; }
-.dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: var(--foreground); transition: background 0.15s, color 0.15s; }
-.dropdown-menu a:hover { background: var(--muted); color: var(--primary); }
-.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-.mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
-.mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
-.mobile-nav-panel a, .mobile-nav-panel .mobile-nav-link { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; background: none; cursor: pointer; }
-.mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
-.mobile-nav.open { display: block; }
-@media(min-width:768px){ .mobile-menu-btn { display: none; } }
-@media(max-width:767px){ .navbar-nav, .navbar .btn-primary { display: none; } .mobile-menu-btn { display: block; } }
+/* ── Hero ───────────────────────────────────────────────────────────── */
+.hero{position:relative;background:var(--navy);overflow:hidden}
+.hero-img-wrap{position:absolute;inset:0}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+.hero-overlay-r{position:absolute;inset:0;background:linear-gradient(to right,var(--navy) 0%,rgba(7,25,35,.85) 40%,transparent 100%)}
+.hero-overlay-b{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,25,35,.6) 0%,transparent 50%,rgba(7,25,35,.4) 100%)}
+.hero-overlay-l{position:absolute;inset-y:0;left:0;width:66.666%;background:linear-gradient(to right,var(--navy),transparent)}
+.hero-content{position:relative;max-width:1280px;margin:0 auto;padding:10rem 1.5rem 6rem;min-height:760px;display:flex;align-items:center}
+@media(min-width:1024px){.hero-content{padding:11rem 2.5rem 6rem}}
+.hero-text{max-width:40rem}
+.hero-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.hero-title{margin-top:1.5rem;font-size:clamp(2.5rem,5vw,4.25rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:#fff}
+.hero-title .accent{color:var(--gold)}
+.gold-line{margin-top:1.75rem;height:3px;width:4rem;background:var(--gold)}
+.hero-desc{margin-top:1.75rem;max-width:28rem;font-size:1rem;line-height:1.7;color:rgba(255,255,255,.8)}
+.hero-btns{margin-top:2.25rem;display:flex;flex-direction:column;gap:.75rem}
+@media(min-width:640px){.hero-btns{flex-direction:row;gap:1rem}}
 
-/* Hero */
-.hero { position: relative; min-height: 80vh; }
-.hero-bg { position: absolute; inset: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-.hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
-.hero-content { position: relative; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr; align-items: center; gap: 2rem; padding: 4rem 1rem; min-height: 80vh; }
-@media(min-width:1024px){ .hero-content { grid-template-columns: 3fr 2fr; } }
-.hero-text { color: #fff; }
-.hero-eyebrow { font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1rem; opacity: 0.9; }
-.hero-title { font-size: clamp(2rem,5vw,3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-.hero-desc { font-size: 0.9rem; line-height: 1.7; opacity: 0.9; max-width: 560px; margin-bottom: 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-.hero-list { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.hero-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
-.hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
-.hero-form-col { display: none; }
-@media(min-width:768px){ .hero-form-col { display: block; } }
-.card-white { background: var(--card); border-radius: 1rem; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+/* ── Section labels & headings ─────────────────────────────────────── */
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--navy)}
+.section-title .accent{color:var(--gold)}
 
-/* Quote form inline */
-.qf-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--foreground); }
-.qf-input { width: 100%; border: 1px solid var(--border); background: var(--background); border-radius: 0.5rem; padding: 0.625rem 1rem; font-size: 0.875rem; font-family: inherit; color: var(--foreground); margin-bottom: 0.75rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-.qf-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px hsla(213,76%,52%,0.2); }
-.qf-submit { width: 100%; background: var(--primary); color: var(--primary-fg); border: none; border-radius: 0.5rem; padding: 0.75rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
-.qf-submit:hover { opacity: 0.9; }
-.qf-success { text-align: center; padding: 2rem 0; }
-.qf-success .check { width: 64px; height: 64px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+/* ── USP Bar ────────────────────────────────────────────────────────── */
+.usp-bar{background:#fff}
+.usp-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1280px;margin:0 auto;padding:3.5rem 1.5rem}
+@media(min-width:640px){.usp-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.usp-grid{grid-template-columns:repeat(4,1fr);gap:2rem;padding:4rem 2.5rem}}
+.usp-item{display:flex;align-items:flex-start;gap:1.25rem}
+.usp-icon-ring{flex-shrink:0;width:3.5rem;height:3.5rem;border-radius:50%;border:1px solid color-mix(in srgb,hsl(213,76%,52%) 40%,transparent);display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.usp-icon-ring svg{width:1.75rem;height:1.75rem;stroke-width:1.5}
+.usp-item-body h3{font-size:1rem;font-weight:700;color:var(--navy)}
+.usp-item-body p{margin-top:.25rem;font-size:.875rem;line-height:1.6;color:var(--muted-fg)}
 
-/* Trust */
-.trust { background: var(--card); padding: 4rem 0; }
-@media(min-width:768px){ .trust { padding: 6rem 0; } }
-.section-title { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; text-align: center; margin-bottom: 1rem; }
-.trust-desc { text-align: center; max-width: 640px; margin: 0 auto 3rem; font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); }
-.trust-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-@media(min-width:768px){ .trust-grid { grid-template-columns: repeat(3,1fr); } }
-.trust-card { background: var(--muted); border-radius: 0.75rem; padding: 2rem; text-align: center; }
-.trust-icon { display: inline-flex; margin-bottom: 1rem; color: var(--primary); }
-.trust-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.trust-card p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
+/* ── Services/Diensten ─────────────────────────────────────────────── */
+.diensten{background:var(--muted);padding:5rem 0}
+@media(min-width:1024px){.diensten{padding:7rem 0}}
+.diensten-header{margin-bottom:3.5rem;text-align:center}
+.diensten-header .gold-line{margin-left:auto;margin-right:auto}
+.diensten-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:900px){.diensten-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1200px){.diensten-grid{grid-template-columns:repeat(3,1fr)}}
+.dienst-card{display:flex;flex-direction:column;overflow:hidden;border-radius:.5rem;border:1px solid var(--navy-10);background:#fff;box-shadow:0 10px 30px -18px rgba(7,25,35,.25);transition:all .3s;text-decoration:none;color:inherit}
+.dienst-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(7,25,35,.35)}
+.dienst-card-body{flex:1;padding:1.75rem}
+.dienst-card-icon{display:flex;width:3rem;height:3rem;align-items:center;justify-content:center;border-radius:50%;border:1px solid color-mix(in srgb,hsl(213,76%,52%) 40%,transparent);color:var(--gold)}
+.dienst-card-icon svg{width:1.5rem;height:1.5rem;stroke-width:1.5}
+.dienst-card-body h3{margin-top:1.5rem;font-size:1.125rem;font-weight:700;color:var(--navy)}
+.dienst-card-body p{margin-top:.75rem;font-size:.875rem;line-height:1.7;color:var(--muted-fg)}
+.dienst-card-img{aspect-ratio:4/3;overflow:hidden}
+.dienst-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.dienst-card:hover .dienst-card-img img{transform:scale(1.05)}
 
-/* Service */
-.service { padding: 4rem 0; }
-@media(min-width:768px){ .service { padding: 6rem 0; } }
-.service-inner { background: var(--card); border-radius: 1.25rem; padding: 2rem; }
-@media(min-width:768px){ .service-inner { padding: 2.8rem; } }
-.service-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
-@media(min-width:1024px){ .service-grid { grid-template-columns: 1fr 1fr; } }
-.service-img { width: 100%; border-radius: 1rem; object-fit: cover; }
-.service h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; line-height: 1.25; margin-bottom: 1.5rem; }
-.service p { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); margin-bottom: 2rem; }
+/* ── Projecten ─────────────────────────────────────────────────────── */
+.projecten{background:var(--navy);padding:5rem 0;color:#fff}
+@media(min-width:1024px){.projecten{padding:7rem 0}}
+.projecten-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem}
+@media(max-width:639px){.projecten-header{flex-direction:column;align-items:flex-start}}
+.projecten .section-title{color:#fff}
+.projecten-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem}
+@media(min-width:640px){.projecten-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.projecten-grid{grid-template-columns:repeat(4,1fr)}}
+.project-card{border-radius:.75rem;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:all .3s}
+.project-card:hover{transform:translateY(-4px)}
+.project-card-img{aspect-ratio:4/3;overflow:hidden;background:rgba(255,255,255,.05)}
+.project-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.project-card:hover .project-card-img img{transform:scale(1.05)}
+.project-card-body{padding:1.25rem 1.25rem 1.5rem;background:rgba(255,255,255,.04)}
+.project-cat{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.project-card-body h3{margin-top:.375rem;font-size:.95rem;font-weight:600;color:#fff;line-height:1.4}
+.project-card-body p{margin-top:.5rem;font-size:.8rem;line-height:1.6;color:rgba(255,255,255,.6)}
+.project-loc{margin-top:.625rem;display:flex;align-items:center;gap:.375rem;font-size:.75rem;color:rgba(255,255,255,.45)}
+.project-loc svg{width:.875rem;height:.875rem;flex-shrink:0}
 
-/* WhyChooseUs */
-.why { position: relative; padding: 4rem 0; }
-@media(min-width:768px){ .why { padding: 6rem 0; } }
-.why-bg { position: absolute; inset: 0; }
-.why-bg img { width: 100%; height: 100%; object-fit: cover; }
-.why-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
-.why-content { position: relative; text-align: center; }
-.why h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; color: #fff; margin-bottom: 1rem; }
-.why-desc { max-width: 640px; margin: 0 auto 3rem; font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
-.why-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 896px; margin: 0 auto; }
-@media(min-width:640px){ .why-grid { grid-template-columns: 1fr 1fr; } }
-.why-card { display: flex; align-items: flex-start; gap: 1.25rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 1.5rem; text-align: left; transition: transform 0.3s; }
-.why-card:hover { transform: translateY(-4px); }
-.why-card-icon { flex-shrink: 0; background: var(--primary); border-radius: 0.75rem; padding: 0.75rem; display: inline-flex; color: #fff; }
-.why-card h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
-.why-card p { font-size: 0.875rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
+/* ── About ─────────────────────────────────────────────────────────── */
+.about{background:var(--muted);padding:6rem 0}
+@media(min-width:1024px){.about{padding:7rem 0}}
+.about-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:1024px){.about-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.about-text-col{order:2}
+@media(min-width:1024px){.about-text-col{order:1}}
+.about-img-col{order:1}
+@media(min-width:1024px){.about-img-col{order:2}}
+.about-img{width:100%;border-radius:1rem;object-fit:cover;max-height:560px;box-shadow:0 25px 60px -20px rgba(7,25,35,.35)}
+.about-subtitle{margin-top:.5rem;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:300;line-height:1.2;letter-spacing:-.02em;color:rgba(7,25,35,.6)}
+.about-subtitle strong{color:rgba(7,25,35,.8);font-weight:400}
+.about-desc{margin-top:1.75rem;max-width:36rem;font-size:1rem;line-height:1.7;color:rgba(7,25,35,.75)}
+.about-benefits{margin-top:2rem;list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.about-benefits li{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:rgba(7,25,35,.85)}
+.benefit-ring{flex-shrink:0;width:1.5rem;height:1.5rem;border-radius:50%;border:1px solid color-mix(in srgb,hsl(213,76%,52%) 40%,transparent);display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.benefit-ring svg{width:.875rem;height:.875rem;stroke-width:3}
 
-/* Reviews */
-.reviews { background: var(--muted); padding: 4rem 0; overflow: hidden; }
-@media(min-width:768px){ .reviews { padding: 6rem 0; } }
-.reviews-header { text-align: center; margin-bottom: 3rem; }
-.reviews-header p { font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 0.5rem; }
-.reviews-header h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; }
-.reviews-carousel { overflow: hidden; }
-.reviews-track { display: flex; transition: transform 0.4s ease; }
-.review-slide { flex: 0 0 100%; padding-left: 1rem; }
-@media(min-width:640px){ .review-slide { flex: 0 0 50%; } }
-@media(min-width:1024px){ .review-slide { flex: 0 0 33.333%; } }
-.review-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; height: 100%; display: flex; flex-direction: column; }
-.review-stars { display: flex; gap: 3px; margin-bottom: 1rem; color: var(--star); font-size: 1.1rem; }
-.review-text { font-size: 0.875rem; line-height: 1.7; color: var(--muted-fg); flex: 1; margin-bottom: 1rem; }
-.review-read-more { background: none; border: none; color: var(--primary); font-size: 0.875rem; font-weight: 500; cursor: pointer; padding: 0; margin-left: 4px; }
-.review-author { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
-.review-author strong { display: block; font-size: 0.875rem; font-weight: 600; }
-.review-author span { font-size: 0.75rem; color: var(--muted-fg); }
-.reviews-nav { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem; }
-.reviews-nav button { background: var(--card); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
-.reviews-nav button:hover { background: var(--muted); }
-.reviews-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
-.reviews-dot { width: 10px; height: 10px; border-radius: 9999px; background: var(--border); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
-.reviews-dot.active { width: 32px; background: var(--primary); }
+/* ── Reviews ────────────────────────────────────────────────────────── */
+.reviews{background:var(--navy);padding:6rem 0}
+@media(min-width:1024px){.reviews{padding:8rem 0}}
+.reviews-header{text-align:center}
+.reviews-header .section-title{color:#fff}
+.reviews-header .gold-line{margin:1.75rem auto 0}
+.reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1.25rem;margin-top:4rem;padding-bottom:.5rem;scrollbar-width:none;-ms-overflow-style:none}
+.reviews-grid::-webkit-scrollbar{display:none}
+@media(min-width:640px){.reviews-grid{display:grid;grid-template-columns:1fr 1fr;overflow-x:visible;scroll-snap-type:none}}
+@media(min-width:1024px){.reviews-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.review-card{flex:0 0 82%;scroll-snap-align:start;background:#fff;border-radius:1rem;border:1px solid rgba(255,255,255,.05);padding:2rem;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+@media(min-width:640px){.review-card{flex:unset}}
+@media(min-width:1024px){.review-card{padding:2.5rem}}
+.review-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.15)}
+.review-stars{display:flex;gap:.25rem}
+.review-stars svg{width:1.25rem;height:1.25rem;fill:var(--gold);color:var(--gold)}
+.review-text{margin-top:1.5rem;font-size:1rem;line-height:1.7;color:rgba(7,25,35,.8)}
+.review-author{margin-top:2rem;font-size:.875rem;font-weight:700;color:var(--navy)}
+.reviews-dots{display:flex;justify-content:center;gap:.625rem;margin-top:3rem}
+.reviews-dot{width:.625rem;height:.625rem;border-radius:50%;background:rgba(255,255,255,.25)}
+.reviews-dot.active{background:var(--gold)}
 
-/* Work */
-.work { padding: 4rem 0; }
-@media(min-width:768px){ .work { padding: 6rem 0; } }
-.work-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-@media(min-width:1024px){ .work-grid { grid-template-columns: 65fr 35fr; } .work-grid > div:first-child { align-self: start; } }
-.work h2 { font-size: clamp(1.75rem,4vw,2.8rem); font-weight: 600; line-height: 1.25; margin-bottom: 1.5rem; }
-.work-desc { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); margin-bottom: 1rem; }
-.work-img { width: 100%; border-radius: 1rem; margin-top: 2rem; }
-.work-steps { margin-top: 3rem; }
-.work-steps h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
-.work-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.work-step-icon { flex-shrink: 0; width: 48px; height: 48px; background: hsla(213,76%,52%,0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: var(--primary); }
-.work-step h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-.work-step p { font-size: 0.875rem; line-height: 1.6; color: var(--muted-fg); }
-.cta-block { background: var(--foreground); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
-@media(min-width:640px){ .cta-block { flex-direction: row; align-items: center; justify-content: space-between; padding: 2rem; } }
-.cta-block h4 { font-size: 1.1rem; font-weight: 700; color: var(--background); margin-bottom: 0.25rem; }
-.cta-block p { font-size: 0.875rem; color: rgba(255,255,255,0.8); }
-.work-vakmanschap { margin-top: 2.5rem; }
-.work-vakmanschap h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
-.work-vakmanschap p { font-size: 0.9rem; line-height: 1.7; color: var(--muted-fg); }
-.form-sticky { background: var(--card); border: 2px solid var(--primary); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-@media(min-width:1024px){ .form-sticky { position: sticky; top: 5rem; } }
+/* ── CTA Bar ────────────────────────────────────────────────────────── */
+.cta-bar{background:#fff;padding:4rem 0}
+@media(min-width:1024px){.cta-bar{padding:5rem 0}}
+.cta-bar-inner{display:flex;flex-direction:column;align-items:center;gap:1.5rem;border-radius:1rem;border:1px solid var(--border);background:var(--muted);padding:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+@media(min-width:640px){.cta-bar-inner{flex-direction:row;justify-content:space-between;padding:2rem}}
+.cta-bar-left{display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+@media(min-width:640px){.cta-bar-left{flex-direction:row;text-align:left}}
+.cta-phone-ring{flex-shrink:0;width:3.5rem;height:3.5rem;border-radius:50%;border:1px solid color-mix(in srgb,hsl(213,76%,52%) 40%,transparent);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.cta-phone-ring svg{width:1.5rem;height:1.5rem;stroke-width:1.75}
+.cta-bar-text h2{font-size:1.125rem;font-weight:700;color:var(--navy)}
+.cta-bar-text p{margin-top:.25rem;font-size:.875rem;color:rgba(7,25,35,.7)}
+.cta-bar-btns{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;width:100%}
+@media(min-width:640px){.cta-bar-btns{flex-direction:row;width:auto}}
 
-/* Footer */
-footer { background: var(--card); border-top: 1px solid var(--border); }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
-@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px){ .footer-grid { grid-template-columns: repeat(4,1fr); } }
-footer h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
-footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; }
-footer ul li a:hover { color: var(--primary); }
-footer ul li:has(a:empty) { display: none; }
-.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; }
-.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); }
+/* ── Footer ─────────────────────────────────────────────────────────── */
+footer{background:var(--navy);color:rgba(255,255,255,.8)}
+.footer-inner{display:grid;grid-template-columns:1fr;gap:3rem;padding:5rem 1.5rem 5rem}
+@media(min-width:640px){.footer-inner{grid-template-columns:1fr 1fr;padding:5rem 1.5rem}}
+@media(min-width:1024px){.footer-inner{grid-template-columns:repeat(4,1fr);gap:2.5rem;padding:6rem 2.5rem}}
+.footer-col-heading{font-size:.875rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.footer-col-heading::after{content:'';display:block;margin-top:.75rem;height:2px;width:2.5rem;background:var(--gold)}
+.footer-links{margin-top:1.75rem;display:flex;flex-direction:column;gap:.875rem}
+.footer-links a{font-size:.9375rem;color:rgba(255,255,255,.75);transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact-list{margin-top:1.75rem;display:flex;flex-direction:column;gap:1rem}
+.footer-contact-item{display:flex;align-items:flex-start;gap:.75rem;font-size:.9375rem;color:rgba(255,255,255,.75)}
+.footer-contact-item a{color:rgba(255,255,255,.75);transition:color .2s}
+.footer-contact-item a:hover{color:var(--gold)}
+.footer-contact-item svg{flex-shrink:0;margin-top:.125rem;width:1.25rem;height:1.25rem;color:var(--gold);stroke-width:1.75}
+.footer-logo-col img{width:160px;height:auto}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:2rem 1.5rem}
+@media(min-width:1024px){.footer-bottom{padding:2rem 2.5rem}}
+.footer-bottom-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem}
+@media(min-width:640px){.footer-bottom-inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-copy{font-size:.875rem;color:rgba(255,255,255,.55)}
+.footer-socials{display:flex;align-items:center;gap:1.25rem}
+.footer-socials a{color:rgba(255,255,255,.7);transition:color .2s}
+.footer-socials a:hover{color:var(--gold)}
+.footer-socials svg{width:1.25rem;height:1.25rem;stroke-width:1.75}
 
-/* Modal */
-.modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 1rem; }
-.modal-overlay.open { display: flex; }
-.modal-box { background: var(--card); border-radius: 1rem; max-width: 560px; width: 100%; max-height: 90vh; overflow: hidden; position: relative; }
-.modal-close { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10; background: var(--muted); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--foreground); line-height: 1; }
-
-.text-primary { color: var(--primary); }
-.wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
-.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
+/* ── Modal ──────────────────────────────────────────────────────────── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:1rem;max-width:560px;width:100%;max-height:90vh;overflow:hidden;position:relative}
+.modal-close{position:absolute;top:.75rem;right:.75rem;z-index:10;background:var(--muted);border:none;border-radius:50%;width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;color:var(--navy);cursor:pointer;font-size:1.125rem;line-height:1}
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;width:3.5rem;height:3.5rem;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 </style>
 </head>
 <body>
 
-<!-- Topbar -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="topbar-stars">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
-    </div>
-    <div class="topbar-contact">
-      <a href="tel:0624484445">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        06 24 48 44 45
-      </a>
-      <a href="mailto:info@lopezbouwrenovatie.nl">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@lopezbouwrenovatie.nl
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- Navbar -->
-<div class="navbar">
-  <div class="container navbar-inner">
-    <a href="/lopez-bouw-en-renovatie.html" class="navbar-logo"><span style="font-weight:700;font-size:1.25rem">López Bouw en Renovatie</span></a>
-    <nav class="navbar-nav">
-      <a href="/lopez-bouw-en-renovatie.html">Home</a>
-      <a href="/lopez-bouw-en-renovatie-over-ons.html">Over</a>
+<!-- Header (absolute over hero) -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="/lopez-bouw-en-renovatie.html" class="header-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/lopez-bouw-en-renovatie/foto_logo_ontwerp-zonder-titel-87-.png" alt="López Bouw en Renovatie logo" style="height:90px;width:auto;max-width:300px;object-fit:contain"></a>
+    <nav class="header-nav">
+      <a href="/lopez-bouw-en-renovatie.html" class="active">Home</a>
       <a href="/lopez-bouw-en-renovatie-diensten.html">Diensten</a>
+      <a href="/lopez-bouw-en-renovatie-projecten.html" style="">Projecten</a>
+      <a href="/lopez-bouw-en-renovatie-over-ons.html">Over ons</a>
       <a href="/lopez-bouw-en-renovatie-contact.html">Contact</a>
     </nav>
-    <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary">Offerte aanvragen</a>
-    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-gold" style="display:none" id="headerCta">
+      Offerte aanvragen
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+    </a>
+    <script>document.getElementById('headerCta').style.display=window.innerWidth>=1024?'inline-flex':'none';window.addEventListener('resize',function(){document.getElementById('headerCta').style.display=window.innerWidth>=1024?'inline-flex':'none'});</script>
+    <button class="header-mobile-btn" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
-</div>
+</header>
 
-<!-- Mobile nav -->
-<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="mobile-nav-panel">
-    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
-    <a href="/lopez-bouw-en-renovatie.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
-    <a href="/lopez-bouw-en-renovatie-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
-    <a href="/lopez-bouw-en-renovatie-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
-    <a href="/lopez-bouw-en-renovatie-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
-    <div style="margin-top:1rem"><a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-menu-panel">
+    <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+    <a href="/lopez-bouw-en-renovatie.html" class="active">Home</a>
+    <a href="/lopez-bouw-en-renovatie-diensten.html">Diensten</a>
+    <a href="/lopez-bouw-en-renovatie-projecten.html" style="">Projecten</a>
+    <a href="/lopez-bouw-en-renovatie-over-ons.html">Over ons</a>
+    <a href="/lopez-bouw-en-renovatie-contact.html">Contact</a>
+    <div style="margin-top:1.5rem">
+      <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-gold" style="width:100%;justify-content:center;display:inline-flex">
+        Offerte aanvragen
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-bg">
-    <img id="heroImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/hero/aannemer-hero-1.jpeg" alt="Professionele aannemer aan het werk">
-    <div class="hero-overlay"></div>
+  <div class="hero-img-wrap">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/lopez-bouw-en-renovatie/foto_hero_chatgpt-image-apr-23-2026-01_13_12-am.png" alt="Professioneel bouwteam aan het werk" loading="eager">
+    <div class="hero-overlay-r"></div>
+    <div class="hero-overlay-b"></div>
+    <div class="hero-overlay-l"></div>
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <p class="hero-eyebrow">Kwaliteit en vakmanschap</p>
-      <h1 class="hero-title">Uw <span class="accent">renovatie</span> specialist in Den-Haag</h1>
-      <p class="hero-desc">López Bouw verzorgt alle bouw- en renovatiewerkzaamheden met vakkundige handen en transparante prijzen.</p>
-      <ul class="hero-list">
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Snelle en schone uitvoering
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Transparante offerte en prijzen
-        </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(213,76%,52%)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-          Ruim 15 jaar vakervaring
-        </li>
-      </ul>
+      <p class="hero-eyebrow">Vakkundig bouw en renovatie</p>
+      <h1 class="hero-title">Uw droom<span class="accent">renovatie</span> begint hier</h1>
+      <div class="gold-line"></div>
+      <p class="hero-desc">López Bouw en Renovatie realiseert uw bouwplannen met vakmanschap en betrouwbaarheid in Zuid-Holland.</p>
       <div class="hero-btns">
-        <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary">Plan een gratis adviesgesprek</a>
-        <a href="/lopez-bouw-en-renovatie-diensten.html" class="btn-outline">Bekijk diensten</a>
-      </div>
-    </div>
-    <div class="hero-form-col">
-      <div class="card-white">
-        <div id="heroForm"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Trust -->
-<section class="trust">
-  <div class="container">
-    <h2 class="section-title">Kies voor <span class="text-primary">kwaliteit</span> en <span class="text-primary">betrouwbaarheid</span></h2>
-    <p class="trust-desc">Waarom kiezen klanten López Bouw voor hun project?</p>
-    <div class="trust-grid">
-      <div class="trust-card">
-        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Erkend vakmanschap</h3>
-        <p>Deskundig team met jarenlange praktijkervaring.</p>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div>
-        <h3>Compleet aanbod</h3>
-        <p>Van badkamer tot tuinwerk, alles onder één dak.</p>
-      </div>
-      <div class="trust-card">
-        <div class="trust-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <h3>Betrouwbare partner</h3>
-        <p>Stipt, vakkundig en klantgericht in alles wat we doen.</p>
+        <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-gold">
+          Offerte aanvragen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+        <a href="#diensten" class="btn-outline-white">Bekijk diensten</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Service -->
-<section class="service" id="diensten">
+<!-- USP Bar -->
+<section class="usp-bar">
+  <div class="usp-grid">
+    <div class="usp-item">
+      <div class="usp-icon-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="usp-item-body">
+        <h3>Volledige Aanneming</h3>
+        <p>Van concept tot oplevering, alles verzorgd.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+      </div>
+      <div class="usp-item-body">
+        <h3>Kwaliteitswaarborg</h3>
+        <p>Vakkundig uitgevoerd volgens normen.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="usp-item-body">
+        <h3>Transparante Communicatie</h3>
+        <p>Duidelijke planning en regelmatige updates.</p>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon-ring">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="usp-item-body">
+        <h3>Ruime Servicedekking</h3>
+        <p>Alle diensten: bouw tot onderhoud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diensten -->
+<section class="diensten" id="diensten">
   <div class="container">
-    <div class="service-inner">
-      <div class="service-grid">
-        <div><img id="serviceImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/sectie2/aannemer-sectie2-1.jpeg" alt="Diverse renovatieprojecten door López" class="service-img"></div>
-        <div>
-          <h2>Complete diensten voor uw <span class="accent">woning</span></h2>
-          <p>López Bouw biedt het volledige spectrum van bouw- en renovatiediensten. Of het nu gaat om een luxe badkamerrenovatie, totale woningrenovatie of onderhoudswerk: wij hebben de expertise. Ons team werkt efficiënt en vakkundig, altijd gericht op uw tevredenheid. We zorgen voor schone werkterreinen en minimale overlast. Bij López Bouw staat kwaliteit altijd voorop.</p>
-          <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary">Vraag een offerte aan</a>
+    <div class="diensten-header">
+      <p class="section-label">Onze diensten</p>
+      <h2 class="section-title" style="margin-top:1.25rem">Voor al uw <span class="accent">bouw</span> en renovatie</h2>
+      <div class="gold-line" style="margin-top:1.5rem"></div>
+    </div>
+    <div class="diensten-grid" id="dienstenGrid"></div>
+  </div>
+</section>
+
+<!-- Projecten -->
+<section class="projecten" id="projecten" style="">
+  <div class="container">
+    <div class="projecten-header">
+      <div>
+        <p class="section-label">Onze projecten</p>
+        <h2 class="section-title" style="margin-top:1.25rem;color:#fff">Recent werk</h2>
+        <div class="gold-line" style="margin-top:1.5rem"></div>
+      </div>
+      <a href="/lopez-bouw-en-renovatie-projecten.html" class="btn-outline-white" style="flex-shrink:0">
+        Bekijk alle projecten
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem;margin-left:.5rem"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
+    </div>
+    <div class="projecten-grid" id="projectenGrid"></div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text-col">
+        <p class="section-label">Over ons</p>
+        <h2 class="section-title" style="margin-top:1.5rem">López Bouw en Renovatie</h2>
+        <p class="about-subtitle"><strong>Vakmanschap</strong> <span>in elk detail</span></p>
+        <div class="gold-line" style="margin-top:1.75rem"></div>
+        <p class="about-desc">López Bouw en Renovatie is dé aannemer voor complete bouw- en renovatieprojecten in Zuid-Holland. Met jarenlange ervaring en een dedicated team voeren wij elk project vakkundig en transparant uit. Uw satisfactie is ons doel.</p>
+        <ul class="about-benefits">
+          <li>
+            <div class="benefit-ring">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            Compleet Servicepakket — Alle diensten onder één dak, geen gedoe.
+          </li>
+          <li>
+            <div class="benefit-ring">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            Erkende Vakmannen — Vakkundig team met jaren ervaring.
+          </li>
+          <li>
+            <div class="benefit-ring">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            Sterke Communicatie — U bent altijd op de hoogte van voortgang.
+          </li>
+        </ul>
+        <div style="margin-top:2.5rem">
+          <a href="/lopez-bouw-en-renovatie-over-ons.html" class="btn-gold">
+            Meer over ons
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg>
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us -->
-<section class="why">
-  <div class="why-bg">
-    <img id="whyBgImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/waarom/aannemer-waarom-1.jpeg" alt="">
-    <div class="why-overlay"></div>
-  </div>
-  <div class="container why-content">
-    <h2>Waarom kiezen voor <span class="text-primary">López Bouw en Renovatie</span></h2>
-    <p class="why-desc">López Bouw onderscheidt zich door vakmanschap, betrouwbaarheid en een breed servicepakket.</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div><h3>Ruim aanbod</h3><p>Alle renovatie en bouw onder één dak.</p></div>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 014 13c0-5.5 7-11 7-11s7 5.5 7 11a7 7 0 01-7 7z"/></svg></div>
-        <div><h3>Snel en efficiënt</h3><p>Minimale overlast, maximale kwaliteit.</p></div>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div><h3>Eerlijke prijzen</h3><p>Transparante offertes zonder verborgen kosten.</p></div>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-        <div><h3>Goed contact</h3><p>Deskundig advies en duidelijke communicatie.</p></div>
+      <div class="about-img-col">
+        <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/sectie2/aannemer-sectie2-1.jpeg" alt="López Bouw en Renovatie" class="about-img" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
 <!-- Reviews -->
-<section class="reviews" style="">
+<section class="reviews">
   <div class="container">
     <div class="reviews-header">
-      <p>Wat onze klanten zeggen</p>
-      <h2>Ervaringen van onze <span class="text-primary">klanten</span></h2>
+      <p class="section-label">Reviews</p>
+      <h2 class="section-title" style="margin-top:1.5rem;color:#fff">Wat onze klanten zeggen</h2>
+      <div class="gold-line" style="margin:1.75rem auto 0"></div>
     </div>
-    <div class="reviews-carousel">
-      <div class="reviews-track" id="reviewsTrack"></div>
-    </div>
-    <div class="reviews-nav">
-      <button onclick="scrollReviews(-1)" aria-label="Vorige"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg></button>
-      <button onclick="scrollReviews(1)" aria-label="Volgende"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg></button>
-    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
     <div class="reviews-dots" id="reviewsDots"></div>
   </div>
 </section>
 
-<!-- Work -->
-<section class="work">
+<!-- CTA Bar -->
+<section class="cta-bar">
   <div class="container">
-    <div class="work-grid">
-      <div>
-        <h2>Onze aanpak garandeert succes</h2>
-        <p class="work-desc">We starten met een grondige analyse van uw project. Vervolgens maken we een schematische schets en duidelijke offerte. Ons team werkt volgens een stap-voor-stap plan om alles zonder stress uit te voeren.</p>
-        <p class="work-desc">Transparantie en communicatie staan centraal. U krijgt regelmatig updates en wij staan altijd voor vragen open.</p>
-        <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary">Advies nodig?</a>
-        <img id="werkwijzeImg" src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/werkwijze/aannemer-werkwijze-1.jpeg" alt="Werkteam in actie bij project" class="work-img">
-        <div class="work-steps">
-          <h3>Zo werken we samen aan uw project</h3>
-          <div class="work-step">
-            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <div><h4>Kennismakings gesprek</h4><p>U vertelt uw wensen, wij luisteren en adviseren.</p></div>
-          </div>
-          <div class="work-step">
-            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><h4>Schets en offerte</h4><p>Duidelijk plan en transparante prijs.</p></div>
-          </div>
-          <div class="work-step">
-            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-            <div><h4>Uitvoering en contact</h4><p>Vakkundig werk met regelmatige updates.</p></div>
-          </div>
-          <div class="work-step">
-            <div class="work-step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
-            <div><h4>Oplevering en nazorg</h4><p>Schoon opgeleverd met volle garantie.</p></div>
-          </div>
+    <div class="cta-bar-inner">
+      <div class="cta-bar-left">
+        <div class="cta-phone-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 1.9 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         </div>
-        <div class="cta-block">
-          <div>
-            <h4>Klaar voor uw project?</h4>
-            <p>Bel ons nu of stuur een email voor een vrijblijvend advies.</p>
-          </div>
-          <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-primary">Gratis adviesgesprek aanvragen</a>
-        </div>
-        <div class="work-vakmanschap">
-          <h3>Vakmanschap en <span class="text-primary">kwaliteit</span></h3>
-          <p>López Bouw staat voor kwaliteit op elke centimeter. Onze vakmannen werken met passie en aandacht voor detail. Uw satisfactie is ons doel.</p>
+        <div class="cta-bar-text">
+          <h2>Klaar voor uw bouwproject?</h2>
+          <p>Bel of mail ons nu voor een vrijblijvende offerte.</p>
         </div>
       </div>
-      <div>
-        <div class="form-sticky">
-          <div id="workForm"></div>
-        </div>
+      <div class="cta-bar-btns">
+        <a href="/lopez-bouw-en-renovatie-contact.html" class="btn-gold">
+          Offerte aanvragen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+        <a href="tel:0624484445" class="btn-navy">
+          Bel direct
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="width:1rem;height:1rem"><path d="M22 16.92v3a2 2 0 01-2.18 1.9 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -440,49 +445,65 @@ footer ul li:has(a:empty) { display: none; }
 <!-- Footer -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>Diensten</h4>
-        <ul>
-          <li><a href="#">badkamer</a></li>
-          <li><a href="#">renovatie-woning</a></li>
-          <li><a href="#">stucwerk</a></li>
-          <li><a href="#">timmerwerk</a></li>
-          <li><a href="#">Vloer</a></li>
-          <li><a href="#">Elektriciteit</a></li>
-        </ul>
+    <div class="footer-inner">
+      <div class="footer-logo-col">
+        <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/lopez-bouw-en-renovatie/foto_logo_ontwerp-zonder-titel-87-.png" alt="López Bouw en Renovatie logo" style="height:90px;width:auto;max-width:300px;object-fit:contain">
       </div>
       <div>
-        <h4>Werkgebied</h4>
-        <ul>
-          <li><a href="#">Leidschendam-Voorburg</a></li>
-          <li><a href="#">Wassenaar</a></li>
-          <li><a href="#">Pijnacker-Nootdorp</a></li>
-          <li><a href="#">Rijswijk</a></li>
-          <li><a href="#">Delft</a></li>
-          <li><a href="#">Zoetermeer</a></li>
-          <li><a href="#">Compleet werkgebied</a></li>
-        </ul>
+        <p class="footer-col-heading">Diensten</p>
+        <div class="footer-links">
+          <a href="#">Aanbouw Uitbouw</a>
+          <a href="#">Badkamer</a>
+          <a href="#">Installatie</a>
+          <a href="#">Keuken</a>
+          <a href="#">Onderhoud</a>
+          <a href="#">Renovatie Woning</a>
+        </div>
       </div>
       <div>
-        <h4>Over ons</h4>
-        <ul>
-          <li><a href="/lopez-bouw-en-renovatie-over-ons.html">Over ons</a></li>
-          <li><a href="/lopez-bouw-en-renovatie-contact.html">Contact</a></li>
-          <li><a href="/lopez-bouw-en-renovatie-contact.html">Offerte aanvragen</a></li>
-        </ul>
+        <p class="footer-col-heading">Site</p>
+        <div class="footer-links">
+          <a href="/lopez-bouw-en-renovatie.html">Home</a>
+          <a href="/lopez-bouw-en-renovatie-diensten.html">Diensten</a>
+          <a href="/lopez-bouw-en-renovatie-over-ons.html">Over ons</a>
+          <a href="/lopez-bouw-en-renovatie-projecten.html" style="">Projecten</a>
+          <a href="/lopez-bouw-en-renovatie-contact.html">Contact</a>
+        </div>
       </div>
-      <div class="footer-addr">
-        <h4>Adres</h4>
-        <p style="font-weight:600;color:var(--foreground)">López Bouw en Renovatie</p>
-        <p></p>
-        <p></p>
-        <p style="margin-top:0.75rem">KvK: </p>
+      <div>
+        <p class="footer-col-heading">Contact</p>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 1.9 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:0624484445">06 24 48 44 45</a>
+          </li>
+          <li class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@lopezbouwrenovatie.nl">info@lopezbouwrenovatie.nl</a>
+          </li>
+          <li class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>, </span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">© 2026 López Bouw en Renovatie – Alle rechten voorbehouden</div>
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2026 López Bouw en Renovatie. Alle rechten voorbehouden.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -494,134 +515,69 @@ footer ul li:has(a:empty) { display: none; }
   </div>
 </div>
 
-<!-- Adviesgesprek modal -->
-<div class="modal-overlay" id="modalAdvies" onclick="if(event.target===this)closeModal('advies')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('advies')">&times;</button>
-    
-  </div>
-</div>
-
 <script src="https://link.smart-reach.nl/js/form_embed.js"></script>
 <script>
-// ── Modal ──────────────────────────────────────────
-function openModal(type) {
-  document.getElementById(type === 'offerte' ? 'modalOfferte' : 'modalAdvies').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(type) {
-  document.getElementById(type === 'offerte' ? 'modalOfferte' : 'modalAdvies').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('offerte'); closeModal('advies'); } });
+function openModal(type){document.getElementById(type==='offerte'?'modalOfferte':'modalAdvies').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(type){document.getElementById(type==='offerte'?'modalOfferte':'modalAdvies').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal('offerte')}});
 
-// ── Quote Form ─────────────────────────────────────
-const WEBHOOK = '';
-const inputStyle = 'width:100%;border:1px solid hsl(0,0%,88%);background:hsl(0,0%,96%);border-radius:.5rem;padding:.625rem 1rem;font-size:.875rem;font-family:inherit;color:hsl(0,0%,10%);margin-bottom:.75rem;outline:none;display:block';
-
-function createForm(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.innerHTML = `
-    <h3 style="font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:1rem;color:hsl(0,0%,10%)">Offerte aanvragen</h3>
-    <form onsubmit="submitForm(event,this,'${id}')">
-      <input name="name" placeholder="Naam" required style="${inputStyle}">
-      <input name="city" placeholder="Woonplaats" required style="${inputStyle}">
-      <input name="phone" type="tel" placeholder="Telefoonnummer" required style="${inputStyle}">
-      <input name="email" type="email" placeholder="E-mailadres" required style="${inputStyle}">
-      <textarea name="message" rows="4" placeholder="Omschrijf hier uw aanvraag..." required style="${inputStyle}resize:vertical;min-height:90px"></textarea>
-      <button type="submit" style="width:100%;background:hsl(213,76%,52%);color:#fff;border:none;border-radius:.5rem;padding:.75rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit">Versturen</button>
-    </form>`;
-}
-
-async function submitForm(e, form, containerId) {
-  e.preventDefault();
-  const btn = form.querySelector('button[type=submit]');
-  btn.textContent = 'Bezig...'; btn.disabled = true;
-  try {
-    await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), source: 'website offerte aanvraag', bedrijf: 'López Bouw en Renovatie', email_bedrijf: 'info@lopezbouwrenovatie.nl', slug: 'lopez-bouw-en-renovatie' }) });
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:2rem 0"><div style="width:64px;height:64px;background:hsl(213,76%,52%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></div><h3 style="font-family:Poppins,sans-serif;margin-bottom:.5rem">Aanvraag ontvangen</h3><p style="font-size:.875rem;color:hsl(0,0%,45%)">Bedankt! We nemen zo snel mogelijk contact met u op.</p></div>`;
-  } catch {
-    btn.textContent = 'Versturen'; btn.disabled = false;
-    alert('Er is iets misgegaan. Probeer het opnieuw.');
-  }
-}
-createForm('heroForm');
-createForm('workForm');
-
-// ── Reviews carousel ───────────────────────────────
-const reviews = [{"naam":"Marcel D.","stad":"Den-Haag","tekst":"López Bouw heeft onze badkamer volledig gerenoveerd. Vakkundig werk, schoon gewerkt en stipt afgesproken. Echt een aanrader!","datum":"1 maand geleden","score":5},{"naam":"Ingrid M.","stad":"Wassenaar","tekst":"Zeer professioneel team. Ze hebben ons huis gerennoveerd en alles werd perfect afgeleverd. Dank voor het harde werk!","datum":"2 weken geleden","score":5},{"naam":"Jan T.","stad":"Rijswijk","tekst":"Timmerwerk en schilderwerk in ons interieur. López Bouw deed precies wat ze zeiden. Kwaliteit en betrouwbaarheid!","datum":"3 weken geleden","score":5},{"naam":"Linda V.","stad":"Leidschendam","tekst":"Onze tuin is nu een droomtuin. Het team werkte schoon, communiceerde goed en leverde op tijd af. Top!","datum":"1 week geleden","score":5},{"naam":"Robert B.","stad":"Delft","tekst":"Vloerwerken en elektriciteit. López Bouw zette alles vakkundig neer. Eerlijke prijzen en goed contact!","datum":"2 maanden geleden","score":5},{"naam":"Anita S.","stad":"Pijnacker","tekst":"Stucwerk en schilderwerk, alles is piekfijn afgewerkt. Ik ben erg blij met het resultaat. Aanrader!","datum":"4 weken geleden","score":5}];
-
-let reviewIndex = 0;
-const LIMIT = 150;
-
-function spv() { return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
-
-function renderReviews() {
-  const track = document.getElementById('reviewsTrack');
-  const dots = document.getElementById('reviewsDots');
-  track.innerHTML = reviews.map((r, i) => {
-    const plain = r.tekst.replace(/<[^>]+>/g, '');
-    const short = plain.length > LIMIT;
-    const preview = short ? r.tekst.slice(0, LIMIT) + '…' : r.tekst;
-    const fullAttr = r.tekst.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-    return `<div class="review-slide"><div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text" id="rt${i}" data-full="${fullAttr}">${preview}${short ? `<button class="review-read-more" onclick="toggleR(${i})">Lees meer</button>` : ''}</p>
-      <div class="review-author"><strong>${r.naam}</strong><span>${r.datum}</span></div>
-    </div></div>`;
+// Diensten grid
+(function(){
+  var diensten=[];try{diensten=[{"naam":"aanbouw-uitbouw","desc":"Een aanbouw of uitbouw geeft uw woning meer ruimte en waarde. Wij ontwerpen en bouwen deze vakkundig met alle nodige installatiewerk. Van fundering tot afwerking zorgen wij voor een stevige en duurzame uitbouw. Uw nieuwe ruimte wordt een natuurlijke verlengstuk van uw huis.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/aanbouw-uitbouw/aanbouw-uitbouw-1.jpeg"},{"naam":"badkamer","desc":"Een moderne badkamer verhoogt uw woongenot aanzienlijk. López Bouw en Renovatie ontwerpt en bouwt badkamers naar uw wensen. Met aandacht voor waterdichting, afvoeren en design. Van sanitair tot tegels, alles wordt professioneel aangebracht.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/badkamer/badkamer-1.jpeg"},{"naam":"installatie","desc":"Installatiewerk vraagt vakkundigheid en kennis van normen. Wij voeren gas, water, elektra en luchting out. Alle installaties voldoen aan wettelijke vereisten. Veilig, betrouwbaar en met oog voor details.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/installatie/installatie-1.jpeg"},{"naam":"keuken","desc":"Een nieuwe keuken is een investering in uw dagelijks leven. Wij plaatsen kasten, aanrechtbladen, apparaten en zorgen voor alle vereiste installaties. Uw keuken wordt functioneel en mooi, precies zoals u het wilt.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/keuken/keuken-1.jpeg"},{"naam":"onderhoud","desc":"Regelmatig onderhoud voorkomt grote problemen later. Wij voeren reparaties, schilderwerk en klein onderhoud uit. Van lekkage tot verfwerk, alles wat uw huis in topconditie houdt.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/onderhoud/onderhoud-1.jpeg"},{"naam":"renovatie-woning","desc":"Een totale woningrenovatie geeft uw huis nieuw leven. López Bouw zorgt voor alles: ontwerp, sloop, opbouw, installatiewerk en afwerking. Wij transformeren uw woning in uw droomaantasting.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/renovatie-woning/renovatie-woning-1.jpeg"},{"naam":"stucwerk","desc":"Stucwerk bepaalt de afwerking van wanden en plafonds. Onze stucwerkers voeren glad en professioneel uit. Van schade herstellen tot nieuwe wanden afwerken, altijd strak en netjes.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/stucwerk/stucwerk-1.jpeg"},{"naam":"timmerwerk","desc":"Timmerwerk is vakkundigheid op hoog niveau. Kasten, deuren, ramen, trappen en meer. Wij werken met precision en kwaliteitsmaterialen. Elk stuk wordt netjes afgewerkt.","foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/aannemer/diensten/timmerwerk/timmerwerk-1.jpeg"}];}catch(e){}
+  var grid=document.getElementById('dienstenGrid');
+  if(!grid||!diensten.length)return;
+  var icons=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'];
+  grid.innerHTML=diensten.map(function(d,i){
+    var icon=icons[i%icons.length];
+    var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
+    return '<a href="/lopez-bouw-en-renovatie-diensten.html" class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div>'+img+'</a>';
   }).join('');
-  const pages = Math.ceil(reviews.length / spv());
-  dots.innerHTML = Array.from({ length: pages }, (_, i) => `<button class="reviews-dot${i === 0 ? ' active' : ''}" onclick="goReview(${i})"></button>`).join('');
-  goReview(0);
-}
+})();
 
-function toggleR(i) {
-  const el = document.getElementById('rt' + i);
-  const full = el.dataset.full || (reviews[i] && reviews[i].tekst) || '';
-  const btn = el.querySelector('button');
-  if (btn.textContent === 'Lees meer') {
-    el.innerHTML = full + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees minder</button>';
-  } else {
-    const plain = full.replace(/<[^>]+>/g, '');
-    const preview = plain.length > LIMIT ? full.slice(0, LIMIT) + '…' : full;
-    el.innerHTML = preview + '<button class="review-read-more" onclick="toggleR(' + i + ')">Lees meer</button>';
-  }
-}
+// Projecten grid
+(function(){
+  var projecten=[];try{projecten=[{"foto":"","titel":"Moderne Badkamerrenovatie Rotterdam","categorie":"Badkamer","locatie":"Rotterdam","desc":"Volledige badkamer omgebouwd met moderne armaturen."},{"foto":"","titel":"Keukenbouw Delfshaven","categorie":"Keuken","locatie":"Delfshaven","desc":"Luxe keuken geplaatst met alle installatiewerk."},{"foto":"","titel":"Aanbouw Woning Capelle aan de IJssel","categorie":"Aanbouw","locatie":"Capelle aan de IJssel","desc":"Stevige aanbouw met professioneel timmerwerk."},{"foto":"","titel":"Woningrenovatie Schiedam Compleet","categorie":"Renovatie Woning","locatie":"Schiedam","desc":"Totale renovatie inclusief stucwerk en installaties."}];}catch(e){}
+  var grid=document.getElementById('projectenGrid');
+  if(!grid||!projecten.length)return;
+  grid.innerHTML=projecten.map(function(p){
+    var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img" style="background:rgba(255,255,255,.05);min-height:120px"></div>';
+    var loc=p.locatie?'<div class="project-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+p.locatie+'</div>':'';
+    return '<article class="project-card">'+img+'</article>';
+  }).join('');
+})();
 
-function goReview(i) {
-  reviewIndex = i;
-  const slideW = 100 / spv();
-  document.getElementById('reviewsTrack').style.transform = `translateX(-${i * slideW * spv()}%)`;
-  document.querySelectorAll('.reviews-dot').forEach((d, j) => d.classList.toggle('active', j === i));
-}
-
-function scrollReviews(dir) {
-  const pages = Math.ceil(reviews.length / spv());
-  goReview((reviewIndex + dir + pages) % pages);
-}
-
-renderReviews();
-window.addEventListener('resize', renderReviews);
+// Reviews (static grid, no carousel)
+(function(){
+  var reviews=[];try{reviews={"naam":"Peter V.","stad":"Rotterdam","tekst":"López Bouw heeft onze badkamer fantastisch gerenoveerd. Heel professioneel, op tijd en binnen budget. Aanrader!","datum":"2 weken geleden","score":5},{"naam":"Sandra M.","stad":"Delft","tekst":"De aanbouw is perfect uitgevoerd. Het team was netjes en communiceerde duidelijk. Zeer tevreden met het resultaat.","datum":"1 maand geleden","score":5},{"naam":"Johan K.","stad":"Schiedam","tekst":"Vakkundig werk geleverd aan onze keuken. Alle installatiewerk prima uitgevoerd. Dank u wel!","datum":"3 weken geleden","score":5},{"naam":"Marieke D.","stad":"Den Haag","tekst":"López Bouw was flexibel, professioneel en betrouwbaar. Onze woningrenovatie is voorbijig gegaan. Sterke aanbeveling.","datum":"1 week geleden","score":5},{"naam":"Robert L.","stad":"Vlaardingen","tekst":"Stucwerk en schilderwerk perfecte afgewerkt. Vakkundig team met goede samenwerking. Blij met ons onderhoud.","datum":"4 weken geleden","score":5},{"naam":"Ina S.","stad":"Capelle aan de IJssel","tekst":"Het timmerwerk in huis is schitterend. Vakkundig aangemeten en afgewerkt. López Bouw is betrouwbaar!","datum":"2 maanden geleden","score":5};}catch(e){}
+  var grid=document.getElementById('reviewsGrid');
+  var dots=document.getElementById('reviewsDots');
+  if(!grid||!reviews.length||!reviews[0]||typeof reviews[0]!=='object'){var s=grid&&grid.closest('.reviews');if(s)s.style.display='none';return;}
+  var star='<svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="var(--gold)" stroke="var(--gold)" stroke-width="1"/></svg>';
+  grid.innerHTML=reviews.slice(0,3).map(function(r){
+    return '<article class="review-card"><div class="review-stars">'+star+star+star+star+star+'</div><p class="review-text">'+(r.tekst||r.text||'')+'</p><p class="review-author">– '+(r.naam||r.name||'')+'</p></article>';
+  }).join('');
+  dots.innerHTML='<span class="reviews-dot active"></span><span class="reviews-dot"></span><span class="reviews-dot"></span>';
+})();
 </script>
 
 <script>
 (function(){
-  var slug = 'lopez-bouw-en-renovatie';
-  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
-  if (onLive) {
-    var remap = {};
-    remap['/' + slug + '.html'] = '/';
-    remap['/' + slug + '-contact.html'] = '/contact';
-    remap['/' + slug + '-diensten.html'] = '/diensten';
-    remap['/' + slug + '-over-ons.html'] = '/over-ons';
-    document.querySelectorAll('a[href]').forEach(function(a) {
-      var h = a.getAttribute('href');
-      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+  var slug='lopez-bouw-en-renovatie';
+  var onLive=window.location.pathname.indexOf('/'+slug)!==0;
+  if(onLive){
+    var remap={};
+    remap['/'+slug+'.html']='/';
+    remap['/'+slug+'-contact.html']='/contact';
+    remap['/'+slug+'-diensten.html']='/diensten';
+    remap['/'+slug+'-over-ons.html']='/over-ons';
+    remap['/'+slug+'-projecten.html']='/projecten';
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var h=a.getAttribute('href');
+      if(remap[h]!==undefined)a.setAttribute('href',remap[h]);
     });
   }
 })();
 </script>
-<a href="https://wa.me/31624484445" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<a href="https://wa.me/31624484445" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
 </html>
