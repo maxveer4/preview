@@ -295,8 +295,8 @@ module.exports = async function handler(req, res) {
   const d        = req.body || {};
   const dry_run  = !!d.dry_run;
   const token    = process.env.GITHUB_TOKEN;
-  const apiKey   = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey)             return res.status(500).json({ error: 'ANTHROPIC_API_KEY not set' });
+  const apiKey   = process.env.OPENAI_API_KEY;
+  if (!apiKey)             return res.status(500).json({ error: 'OPENAI_API_KEY not set' });
   if (!dry_run && !token)  return res.status(500).json({ error: 'GITHUB_TOKEN not set' });
 
   const bedrijfsnaam       = d.bedrijfsnaam || '';
@@ -404,18 +404,87 @@ module.exports = async function handler(req, res) {
   const stadTemplates    = {}; // n (3-6) → html, bigsite only
   let ai = {};
   try {
-    const claudePromise = fetch('https://api.anthropic.com/v1/messages', {
+    const claudePromise = fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
-        'x-api-key':         apiKey,
-        'anthropic-version': '2023-06-01',
-        'content-type':      'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type':  'application/json',
       },
       body: JSON.stringify({
-        model:      'claude-haiku-4-5-20251001',
-        max_tokens: isBigsite ? 8000 : 4000,
-        system:     'Je bent een professionele Nederlandse webtekstschrijver. Je antwoordt UITSLUITEND met een geldig JSON object — geen uitleg, geen markdown, geen codeblokken.',
-        messages:   [{ role: 'user', content: buildPrompt(bedrijfsnaam, beroep, dienstenLabels, stad, display, email, isModern, isBigsite) }],
+        model:             'gpt-5.5',
+        max_output_tokens: isBigsite ? 8000 : 4000,
+        instructions:      `Je bent een professionele Nederlandse webtekstschrijver voor GoWebbo. Je schrijft website teksten voor lokale vakbedrijven zoals schilders, dakdekkers, stukadoors, aannemers, klussenbedrijven, loodgieters, installateurs, hoveniers, vloerenleggers en renovatiebedrijven.
+
+Je antwoordt UITSLUITEND met één geldig JSON object. Geen uitleg, geen markdown, geen codeblok en geen tekst vóór of na de JSON. De output moet direct parsebaar zijn met JSON.parse().
+
+Volg exact het JSON schema dat is meegegeven:
+
+* Gebruik exact dezelfde keys.
+* Voeg geen extra keys toe.
+* Laat geen keys weg.
+* Gebruik strings, arrays en objecten precies zoals het schema vraagt.
+* Gebruik geen null.
+* Gebruik geen trailing commas.
+* Gebruik geen HTML, tenzij het schema dit expliciet vraagt.
+
+Schrijfstijl:
+
+* Schrijf in natuurlijk, professioneel Nederlands.
+* Gebruik altijd "u" en "uw".
+* Schrijf simpel, duidelijk en betrouwbaar.
+* Klink als een echte Nederlandse vakman, niet als een marketingbureau.
+* Gebruik korte zinnen en korte alinea's.
+* Maak de tekst geschikt voor een normale lokale bedrijfswebsite.
+* Schrijf rustig en overtuigend, niet schreeuwerig.
+* Maak de tekst specifiek voor de branche, diensten, plaats en bedrijfsnaam die zijn aangeleverd.
+
+Kwaliteitseisen:
+
+* Elke tekst moet logisch, concreet en bruikbaar zijn op een website.
+* Schrijf geen rare, zweverige of overdreven zinnen.
+* Herhaal niet steeds dezelfde woorden of voordelen.
+* Zorg dat elke diensttekst anders klinkt.
+* Schrijf alsof de bezoeker snel wil weten: wat doet dit bedrijf, waarom is het betrouwbaar en hoe kan ik contact opnemen?
+
+Claims en veiligheid:
+
+* Verzin geen feiten.
+* Zeg niet dat het bedrijf erkend, gecertificeerd, verzekerd, specialist, marktleider, de beste of 24/7 bereikbaar is, tenzij dit expliciet is aangeleverd.
+* Zeg niet "jarenlange ervaring", "meer dan 20 jaar ervaring", "duizenden klanten" of vergelijkbare claims, tenzij dit expliciet is aangeleverd.
+* Maak geen harde beloftes over prijs, snelheid, garantie, levertijd of beschikbaarheid als dit niet is aangeleverd.
+* Als informatie ontbreekt, schrijf dan een veilige algemene tekst die past bij de branche.
+
+Voor diensten:
+
+* Beschrijf concreet wat de klant krijgt.
+* Benoem praktische voordelen zoals nette afwerking, duidelijke communicatie, zorgvuldige voorbereiding, betrouwbaar werk en duurzaam resultaat.
+* Houd de tekst professioneel maar eenvoudig.
+* Gebruik geen overdreven technische details als die niet zijn aangeleverd.
+
+Voor lokale SEO:
+
+* Gebruik plaatsnamen en werkgebied natuurlijk.
+* Forceer zoekwoorden niet.
+* SEO titles moeten duidelijk en klikbaar zijn.
+* Meta descriptions moeten kort, concreet en uitnodigend zijn.
+
+Voor CTA's:
+
+* Schrijf laagdrempelig en professioneel.
+* Gebruik rustige zinnen zoals "Vraag vrijblijvend advies aan", "Neem contact op voor een offerte" of "Bespreek uw project".
+* Gebruik geen agressieve verkooptactieken.
+
+Controleer vóór je antwoordt:
+
+* Is het 100% geldige JSON?
+* Kloppen alle keys met het schema?
+* Zijn alle strings goed afgesloten?
+* Zijn er geen trailing commas?
+* Is de tekst natuurlijk Nederlands?
+* Zijn er geen verzonnen claims?
+* Klinkt het niet als AI?
+* Zijn de teksten geschikt voor een lokale Nederlandse bedrijfswebsite?`,
+        input:             buildPrompt(bedrijfsnaam, beroep, dienstenLabels, stad, display, email, isModern, isBigsite),
       }),
     });
 
@@ -435,8 +504,9 @@ module.exports = async function handler(req, res) {
 
     const [claudeRes] = await Promise.all([claudePromise, templatePromise]);
 
-    if (!claudeRes.ok) throw new Error(`Anthropic ${claudeRes.status}: ${await claudeRes.text()}`);
-    const raw     = (await claudeRes.json()).content?.[0]?.text || '';
+    if (!claudeRes.ok) throw new Error(`OpenAI ${claudeRes.status}: ${await claudeRes.text()}`);
+    const claudeJson = await claudeRes.json();
+    const raw = claudeJson.output?.find(item => item.type === 'message')?.content?.[0]?.text || '';
     const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
     ai = JSON.parse(cleaned);
 
