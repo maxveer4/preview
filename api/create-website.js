@@ -433,7 +433,6 @@ Schrijfstijl:
 * Gebruik altijd "u" en "uw".
 * Schrijf simpel, duidelijk en betrouwbaar.
 * Klink als een echte Nederlandse vakman, niet als een marketingbureau.
-* Gebruik korte zinnen en korte alinea's.
 * Maak de tekst geschikt voor een normale lokale bedrijfswebsite.
 * Schrijf rustig en overtuigend, niet schreeuwerig.
 * Maak de tekst specifiek voor de branche, diensten, plaats en bedrijfsnaam die zijn aangeleverd.
@@ -673,9 +672,7 @@ Controleer vóór je antwoordt:
 
     // JSON data
     DIENSTEN_JSON:  JSON.stringify(dienstenJson),
-    REVIEWS_JSON:   isBigsite
-      ? JSON.stringify(reviewsArr).replace(/\\/g, '\\\\').replace(/"/g, '\\"')
-      : reviewsForTemplate,
+    REVIEWS_JSON:   reviewsForTemplate,
     PROJECTEN_JSON: projectenJson,
 
     // Conditional / UI

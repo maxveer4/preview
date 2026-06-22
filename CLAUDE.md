@@ -8,7 +8,7 @@ GoWebbo CMS — a Vercel-hosted system that generates and serves Dutch trade-bus
 
 Live URL: `https://preview.gowebbo.io/{slug}.html`
 
-The editor is **not** in this repo — it lives in `gowebbo-studio/` (Cloudflare Workers, TanStack Start).
+The editor is **not** in this repo — it lives in `gowebbo-studio/` (TanStack Start SPA, deployed on Vercel).
 
 ## Architecture
 
@@ -42,7 +42,9 @@ Four template types, selected per client via the `template` field in Supabase `c
 | `modern` | 5 | `template-modern.html`, `-contact`, `-diensten`, `-over-ons`, `-projecten` |
 | `bigsite` | 20 | `template-bigsite.html`, 10 dienst pages, `-contact`, `-over-ons`, `-projecten`, `-ede`, `-wageningen`, stad-3 t/m stad-6 (dynamic slug) |
 
-Templates use `{{KEY}}` placeholders (all-caps). `save.js` builds a substitution map from merged fields plus derived values:
+Templates use `{{KEY}}` placeholders (all-caps). `applyMap()` does **two passes per key**: first replaces `"{{KEY}}"` (quoted) with a JSON-escaped value (safe inside `window.GOWEBBO_DATA` strings), then replaces bare `{{KEY}}` with the raw value (safe inside JS array literals like `[{{REVIEWS_JSON}}]`). Unknown placeholders are stripped at the end.
+
+`save.js` builds a substitution map from merged fields plus derived values:
 - `KLEUR_PRIMARY_TAILWIND` — strips `hsl()` wrapper (space-separated for Tailwind CSS variable)
 - `KLEUR_PRIMARY_A10 / A20` — semi-transparent RGBA variants
 - `TELEFOON_HREF` / `WHATSAPP_HREF` — derived from `TELEFOON_DISPLAY`
@@ -67,17 +69,25 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 | File | Role |
 |------|------|
 | `api/save.js` | Core: field merging, template substitution, dual GitHub commit (preview + klanten repo) |
-| `api/create-website.js` | Intake flow: Claude AI → fill templates → batch GitHub commit |
+| `api/create-website.js` | Intake flow: GPT-5.5 AI → fill templates → batch GitHub commit |
 | `api/deploy-klanten.js` | One-time deploy endpoint: copies all slug pages to `gowebbo-klanten/{slug}/` for own-domain hosting |
+| `api/_template-config.js` | Single source of truth for all template types — required by both save.js and create-website.js |
 | `api/_extract.js` | Extracts field values from `<!-- gowebbo-cms: -->` comment in CDN HTML (fallback) |
-| `scripts/convert-template.js` | Converts a React template repo to `template-*.html` files |
+| `api/_icon-map.js` | Resolves icon names (e.g. `"wrench"`) to SVG sprite `<use>` references in dak template |
+| `scripts/convert-template.js` | Converts a React template repo to `template-*.html` files via Playwright |
 
 ## Environment variables (Vercel)
 
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | PAT for `maxveer4/preview` and `maxveer4/gowebbo-klanten` |
-| `ANTHROPIC_API_KEY` | Claude API for content generation in `create-website.js` |
+| `OPENAI_API_KEY` | OpenAI API for content generation in `create-website.js` (uses `gpt-5.5`) |
+| `SUPABASE_ANON_KEY` | Optional override; anon key is hardcoded as fallback in all API files |
+
+## Vercel config (`vercel.json`)
+
+- `api/create-website.js` has `maxDuration: 300` (bigsite generation + AI can take ~60–120s)
+- All requests rewrite to `/public/$1` — so `https://preview.gowebbo.io/slug.html` serves `public/slug.html`
 
 ## GitHub persistence
 
@@ -88,6 +98,12 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 **deploy-klanten.js:** One-time endpoint called from the editor "Eigen domein" button. Fetches all `{slug}*.html` from `maxveer4/preview/public/`, applies the same asset path fix + path mapping, generates a `vercel.json` with `cleanUrls: true` and redirects from old `/{slug}-page` URLs, then batch-commits everything to `gowebbo-klanten`. After this initial deploy, every editor save keeps the klanten folder in sync automatically.
 
 `githubBatchCommit` (create-website.js + deploy-klanten.js) uses the Trees API to commit all files in one operation — critical for bigsite (20+ files). Retries 3× on 422 non-fast-forward with exponential backoff.
+
+**Vercel trigger workaround:** The Trees API batch commit doesn't reliably trigger Vercel's deploy webhook. After the batch, `create-website.js` does a separate `githubUpsert` to `public/_last-generated.txt` to guarantee Vercel picks up the new files.
+
+**`dry_run` mode:** `create-website.js` accepts `{ dry_run: true }` in the POST body. It generates all HTML and returns `{ ok, slug, files, html }` without any GitHub commits, Supabase writes, or GHL notifications — useful for testing content generation.
+
+**GoHighLevel webhook:** After a successful website creation, `create-website.js` POSTs a WhatsApp-style notification to GHL (`services.leadconnectorhq.com`) with the new site URL. Non-fatal.
 
 ## Supabase tables
 
