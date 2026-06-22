@@ -234,6 +234,8 @@ Geef een JSON object terug met EXACT deze velden:
   "WERK_DESC_1": "Werkwijze alinea 1 (2-3 zinnen, max 45 woorden)",
   "WERK_DESC_2": "Werkwijze alinea 2 (1-2 zinnen, max 30 woorden)",
   "WERK_ALT": "Alt-tekst werkwijzefoto (max 6 woorden)",
+  "WERK_STAP_TITEL": "Ondertitel stappenplan, bijv. 'Dakwerk in 4 stappen' (4-6 woorden)",
+  "VAKMANSCHAP_TITEL": "Ondertitel vakmanschapsblok, bijv. 'Vakmanschap en betrouwbaarheid' (3-5 woorden)",
   "STAPPEN_TITLE": "Titel boven stappen (4-7 woorden)",
   "STAP_1_TITEL": "Stap 1 (2-4 woorden)", "STAP_1_DESC": "Stap 1 uitleg (max 20 woorden)",
   "STAP_2_TITEL": "Stap 2 (2-4 woorden)", "STAP_2_DESC": "Stap 2 uitleg (max 20 woorden)",
