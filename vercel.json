@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/create-website.js": { "maxDuration": 60 }
+    "api/create-website.js": { "maxDuration": 300 }
   },
   "rewrites": [
     { "source": "/(.*)", "destination": "/public/$1" }
