@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Vergrendelde secties — VERPLICHT LEZEN VOOR BEWERKEN
+
+`section-status.json` in de repo-root bevat de status van elke template: `"todo"`, `"in-progress"` of `"locked"`.
+
+**Regel: bewerk NOOIT een bestand waarvan de sectie als `"locked"` is gemarkeerd, tenzij de gebruiker dit expliciet vraagt.**
+
+Vergrendelen doe je door `"status": "locked"` en `"lockedAt": "YYYY-MM-DD"` in te stellen. Er is geen visuele UI — het JSON bestand direct bewerken.
+
+---
+
 ## What this repo is
 
 GoWebbo CMS — a Vercel-hosted system that generates and serves Dutch trade-business websites (dakdekkers, loodgieters, schilders, etc.). The API generates and saves HTML from templates to GitHub, triggering Vercel deploys.

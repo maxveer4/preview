@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "template-preview": { "category": "preview", "file": "template.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-preview-contact": { "category": "preview", "file": "template-contact.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-preview-diensten": { "category": "preview", "file": "template-diensten.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-preview-over-ons": { "category": "preview", "file": "template-over-ons.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-preview-projecten": { "category": "preview", "file": "template-projecten.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-modern": { "category": "modern", "file": "template-modern.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-modern-contact": { "category": "modern", "file": "template-modern-contact.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-modern-diensten": { "category": "modern", "file": "template-modern-diensten.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-modern-over-ons": { "category": "modern", "file": "template-modern-over-ons.html", "status": "todo", "lockedAt": null, "notes": "" },
+    "template-modern-projecten": { "category": "modern", "file": "template-modern-projecten.html", "status": "todo", "lockedAt": null, "notes": "" }
+  }
+}
