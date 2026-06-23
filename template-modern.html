@@ -539,7 +539,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   var projecten=[];try{projecten={{PROJECTEN_JSON}};}catch(e){}
   var grid=document.getElementById('projectenGrid');
   if(!grid||!projecten.length)return;
-  grid.innerHTML=projecten.map(function(p){
+  grid.innerHTML=projecten.slice(0,4).map(function(p){
     var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img" style="background:rgba(255,255,255,.05);min-height:120px"></div>';
     var loc=p.locatie?'<div class="project-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+p.locatie+'</div>':'';
     return '<article class="project-card">'+img+'</article>';
