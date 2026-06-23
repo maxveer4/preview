@@ -203,6 +203,7 @@ module.exports = async function handler(req, res) {
   for (const [k, v] of Object.entries(fields)) {
     map[k.toUpperCase()] = (v == null) ? '' : String(v).trim();
   }
+  map.SLUG = slug; // Request slug wint altijd — website_data mag dit nooit overschrijven
 
   // Ensure empty service slots clear their {{KEY}} placeholder so React hides them
   for (let i = 1; i <= 8; i++) {
