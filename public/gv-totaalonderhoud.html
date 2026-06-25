@@ -46,6 +46,8 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .btn-gold svg{width:1rem;height:1rem}
 .btn-outline-white{display:inline-flex;align-items:center;justify-content:center;border-radius:.375rem;border:1.5px solid rgba(255,255,255,.7);background:transparent;padding:.75rem 1.75rem;font-size:.875rem;font-weight:600;color:#fff;transition:all .3s}
 .btn-outline-white:hover{transform:translateY(-2px);border-color:#fff;background:rgba(255,255,255,.05)}
+.btn-outline-primary{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:.375rem;border:1.5px solid var(--gold);background:transparent;padding:.75rem 1.75rem;font-size:.875rem;font-weight:600;color:var(--gold);transition:all .3s}
+.btn-outline-primary:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--gold) 8%,transparent)}
 .btn-navy{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--navy);color:#fff;border-radius:.375rem;padding:.625rem 1.25rem;font-size:.875rem;font-weight:600;transition:all .3s}
 .btn-navy:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(7,25,35,.3)}
 .header-mobile-btn{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:.375rem;border:1px solid rgba(255,255,255,.2);color:#fff}
@@ -338,6 +340,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.8)}
       <div class="gold-line" style="margin-top:1.5rem"></div>
     </div>
     <div class="diensten-grid" id="dienstenGrid"></div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="/gv-totaalonderhoud-diensten.html" class="btn-outline-primary">Bekijk alle diensten <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem"><polyline points="9,18 15,12 9,6"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -528,10 +533,10 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   var grid=document.getElementById('dienstenGrid');
   if(!grid||!diensten.length)return;
   var icons=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'];
-  grid.innerHTML=diensten.map(function(d,i){
+  grid.innerHTML=diensten.slice(0,6).map(function(d,i){
     var icon=icons[i%icons.length];
     var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
-    return '<a href="/gv-totaalonderhoud-diensten.html" class="dienst-card"><div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div>'+img+'</a>';
+    return '<a href="/gv-totaalonderhoud-diensten.html" class="dienst-card">'+img+'<div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div></a>';
   }).join('');
 })();
 
@@ -540,7 +545,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   var projecten=[];try{projecten=[{"foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1782223736022-o2be2y92s18.jpeg","titel":"","categorie":"","locatie":"","desc":""},{"foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1782223743126-vna670lc5db.jpeg","titel":"","categorie":"","locatie":"","desc":""},{"foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1782223751003-ad0rgx1m36q.jpeg","titel":"","categorie":"","locatie":"","desc":""},{"foto":"https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto's/1782223756556-5urg8o5so2m.jpeg","titel":"","categorie":"","locatie":"","desc":""}];}catch(e){}
   var grid=document.getElementById('projectenGrid');
   if(!grid||!projecten.length)return;
-  grid.innerHTML=projecten.map(function(p){
+  grid.innerHTML=projecten.slice(0,4).map(function(p){
     var img=p.foto?'<div class="project-card-img"><img src="'+p.foto+'" alt="'+p.titel+'" loading="lazy"></div>':'<div class="project-card-img" style="background:rgba(255,255,255,.05);min-height:120px"></div>';
     var loc=p.locatie?'<div class="project-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+p.locatie+'</div>':'';
     return '<article class="project-card">'+img+'</article>';
