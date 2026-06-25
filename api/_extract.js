@@ -120,9 +120,11 @@ function extractHomeFields(html) {
   // ── Footer lists: diensten + steden (parsed per section to avoid index shift) ──
   const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? '';
   if (footer) {
-    const dienstenBlock = footer.match(/<h4>Diensten<\/h4>\s*<ul>([\s\S]*?)<\/ul>/);
+    // Try <h4>Diensten</h4><ul> (preview/dak templates) then <p class="footer-col-heading">Diensten</p><div> (modern template)
+    const dienstenBlock = footer.match(/<h4>Diensten<\/h4>\s*<ul>([\s\S]*?)<\/ul>/) ||
+                          footer.match(/<p class="footer-col-heading">Diensten<\/p>\s*<div[^>]*>([\s\S]*?)<\/div>/);
     if (dienstenBlock) {
-      const dl = all(dienstenBlock[1], /<li><a[^>]*>([^<]*)<\/a><\/li>/g).map(m => m[1].trim()).filter(Boolean);
+      const dl = all(dienstenBlock[1], /<(?:li|a)[^>]*>([^<]+)<\/(?:li|a)>/g).map(m => m[1].trim()).filter(Boolean);
       ['dienst_1','dienst_2','dienst_3','dienst_4','dienst_5','dienst_6'].forEach((k, i) => { if (dl[i]) set(data, k, dl[i]); });
     }
     const stedenBlock = footer.match(/<h4>Werkgebied<\/h4>\s*<ul>([\s\S]*?)<\/ul>/);
@@ -157,8 +159,10 @@ function extractDienstenFields(html) {
   set(data, 'diensten_hero_desc', first(html, /<h1>Onze Diensten<\/h1>\s*<p>(.*?)<\/p>/));
   const ctaM = html.match(/<h2>(.*?)<\/h2>\s*<p class="desc">(.*?)<\/p>/);
   if (ctaM) { set(data, 'diensten_cta_titel', ctaM[1]); set(data, 'diensten_cta_desc', ctaM[2]); }
-  // diensten_json: content between `var diensten =` and `; var grid`
-  set(data, 'diensten_json', first(html, /var diensten = ([\s\S]*?);\s*var grid/));
+  // diensten_json: handles both `var diensten = CONTENT; var grid` (old) and
+  // `var diensten=[];try{diensten=CONTENT;}catch(e){}` (modern template format)
+  set(data, 'diensten_json', first(html, /var diensten\s*=\s*\[\];\s*try\{diensten=([\s\S]*?);(?:\}catch|\s*\}catch)/));
+  if (!data.diensten_json) set(data, 'diensten_json', first(html, /var diensten = ([\s\S]*?);\s*var grid/));
   return data;
 }
 

@@ -284,7 +284,7 @@ module.exports = async function handler(req, res) {
       const naam = map[`DIENST_${i}`] || '';
       const desc = map[`DIENST_${i}_DESC`] || '';
       const foto = map[`DIENST_${i}_FOTO`] || '';
-      if (naam || desc || foto) dienstenArr.push({ naam, desc, foto });
+      if (naam) dienstenArr.push({ naam, desc, foto });
     }
     if (dienstenArr.length > 0) map.DIENSTEN_JSON = JSON.stringify(dienstenArr);
     else if (!map.DIENSTEN_JSON) map.DIENSTEN_JSON = '[]'; // prevent {{DIENSTEN_JSON}} being stripped → SyntaxError

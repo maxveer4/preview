@@ -48,6 +48,11 @@ const TEMPLATES = {
     dienstCount: 10,
     isBigsite:   true,
   },
+  craft: {
+    prefix:      'template-craft',
+    pages:       ['', '-contact', '-diensten', '-over-ons', '-projecten'],
+    dienstCount: 0,
+  },
 };
 
 const DEFAULT_TEMPLATE = 'preview';
