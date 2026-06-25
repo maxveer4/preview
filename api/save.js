@@ -287,7 +287,10 @@ module.exports = async function handler(req, res) {
       if (naam || desc || foto) dienstenArr.push({ naam, desc, foto });
     }
     if (dienstenArr.length > 0) map.DIENSTEN_JSON = JSON.stringify(dienstenArr);
+    else if (!map.DIENSTEN_JSON) map.DIENSTEN_JSON = '[]'; // prevent {{DIENSTEN_JSON}} being stripped → SyntaxError
   }
+  // Prevent {{PROJECTEN_JSON}} being stripped to empty → projecten=; → SyntaxError breaks entire script block
+  if (!map.PROJECTEN_JSON) map.PROJECTEN_JSON = '[]';
 
   // Look up which template set this client uses
   let templateType = templateFromPayload || 'default';
