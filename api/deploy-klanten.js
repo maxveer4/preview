@@ -77,35 +77,62 @@ module.exports = async function handler(req, res) {
     Accept:        'application/vnd.github.v3+json',
   };
 
-  // 1. Haal directory-listing van preview/public op
-  const listRes = await fetch(
-    `https://api.github.com/repos/${PREVIEW_REPO}/contents/public`,
+  // 1. Haal directory-listing van preview/public op via de Trees API (geen 1000-item limiet)
+  // De Contents API trunceert stilletjes bij 1000 bestanden — de Trees API niet.
+  const refRes = await fetch(
+    `https://api.github.com/repos/${PREVIEW_REPO}/git/refs/heads/${BRANCH}`,
     { headers: ghHeaders }
   );
-  if (!listRes.ok) {
+  if (!refRes.ok) {
     return res.status(502).json({ error: 'Kon preview repo niet bereiken' });
   }
-  const listing = await listRes.json();
+  const latestSha = (await refRes.json()).object.sha;
+
+  const commitRes = await fetch(
+    `https://api.github.com/repos/${PREVIEW_REPO}/git/commits/${latestSha}`,
+    { headers: ghHeaders }
+  );
+  const rootTreeSha = (await commitRes.json()).tree.sha;
+
+  const rootTreeRes = await fetch(
+    `https://api.github.com/repos/${PREVIEW_REPO}/git/trees/${rootTreeSha}`,
+    { headers: ghHeaders }
+  );
+  const rootTree = (await rootTreeRes.json()).tree;
+  const publicEntry = rootTree.find(e => e.path === 'public' && e.type === 'tree');
+  if (!publicEntry) {
+    return res.status(502).json({ error: 'public/ directory niet gevonden in preview repo' });
+  }
+
+  const publicTreeRes = await fetch(
+    `https://api.github.com/repos/${PREVIEW_REPO}/git/trees/${publicEntry.sha}`,
+    { headers: ghHeaders }
+  );
+  const publicTree = (await publicTreeRes.json()).tree;
 
   // Filter: alleen HTML bestanden die bij deze slug horen
-  const slugFiles = listing.filter(f =>
-    f.type === 'file' && f.name.endsWith('.html') &&
-    (f.name === `${slug}.html` || f.name.startsWith(`${slug}-`))
+  const slugEntries = publicTree.filter(e =>
+    e.type === 'blob' && e.path.endsWith('.html') &&
+    (e.path === `${slug}.html` || e.path.startsWith(`${slug}-`))
   );
 
-  if (!slugFiles.length) {
+  if (!slugEntries.length) {
     return res.status(404).json({
       error: `Geen HTML-bestanden gevonden voor "${slug}". Sla de website eerst op via de editor.`,
     });
   }
 
-  // 2. Haal alle bestanden parallel op
+  // 2. Haal alle bestanden parallel op via blob SHA
   const fetched = await Promise.allSettled(
-    slugFiles.map(async f => {
-      const r = await fetch(f.url, { headers: ghHeaders });
-      if (!r.ok) throw new Error(`${f.name}: HTTP ${r.status}`);
-      const { content: b64 } = await r.json();
-      return { name: f.name, html: Buffer.from(b64, 'base64').toString('utf-8') };
+    slugEntries.map(async entry => {
+      const r = await fetch(
+        `https://api.github.com/repos/${PREVIEW_REPO}/git/blobs/${entry.sha}`,
+        { headers: ghHeaders }
+      );
+      if (!r.ok) throw new Error(`${entry.path}: HTTP ${r.status}`);
+      const { content: b64, encoding } = await r.json();
+      if (encoding !== 'base64') throw new Error(`${entry.path}: onverwachte encoding ${encoding}`);
+      return { name: entry.path, html: Buffer.from(b64, 'base64').toString('utf-8') };
     })
   );
 
