@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schilder in Utrecht | ADM Totaalbouw</title>
+<meta name="description" content="ADM Totaalbouw verzorgt binnen- en buitenschilderwerk en sloopwerk in Utrecht. Neem contact op voor een offerte.">
+<link rel="icon" href="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/adm-totaalbouw/foto_logo_unnamed-18-.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --background: hsl(0,0%,96%);
+  --foreground: hsl(0,0%,10%);
+  --card: hsl(0,0%,100%);
+  --primary: hsl(213,76%,52%);
+  --primary-fg: hsl(0,0%,100%);
+  --muted: hsl(0,0%,96%);
+  --muted-fg: hsl(0,0%,45%);
+  --border: hsl(0,0%,88%);
+  --star: hsl(33,95%,60%);
+  --topbar-bg: hsl(0,0%,10%);
+  --topbar-fg: hsl(0,0%,100%);
+}
+body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Roboto Slab', serif; }
+.font-poppins { font-family: 'Poppins', sans-serif !important; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+.text-primary { color: var(--primary); }
+
+/* Topbar */
+.topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.topbar-stars { display: none; align-items: center; gap: 2px; }
+@media(min-width:768px){ .topbar-stars { display: flex; } }
+.star-icon { color: var(--star); }
+.topbar-mobile-contact { display: flex; align-items: center; gap: 1rem; }
+@media(min-width:768px){ .topbar-mobile-contact { display: none; } }
+.topbar-desktop-contact { display: none; align-items: center; gap: 1.5rem; }
+@media(min-width:768px){ .topbar-desktop-contact { display: flex; } }
+.topbar-contact-link { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
+.topbar-contact-link:hover { color: var(--primary); }
+
+/* Navbar */
+.navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
+.navbar-logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
+.navbar-nav { display: flex; align-items: center; gap: 2rem; }
+.navbar-nav a { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; font-family: 'Roboto', sans-serif; }
+.navbar-nav a:hover { color: var(--primary); }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: 'Roboto', sans-serif; }
+.btn-primary:hover { opacity: 0.9; }
+.navbar-desktop-cta { display: none; }
+@media(min-width:768px){ .navbar-desktop-cta { display: inline-flex; } }
+.navbar-mobile-cta { display: inline-flex; font-size: 0.75rem; padding: 0.5rem 0.75rem; }
+@media(min-width:768px){ .navbar-mobile-cta { display: none; } }
+.mobile-menu-btn { background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--foreground); }
+@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
+.mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
+.mobile-nav-panel a { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-family: 'Roboto', sans-serif; }
+.mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
+.mobile-nav.open { display: block; }
+@media(min-width:768px){ .navbar-nav { display: flex; } }
+@media(max-width:767px){ .navbar-nav { display: none; } }
+
+/* Hero */
+.hero { position: relative; min-height: 80vh; display: flex; align-items: center; }
+@media(max-width:767px){ .hero { min-height: auto; } }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.hero-inner { position: relative; display: grid; grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem; width: 100%; }
+@media(min-width:1024px){ .hero-inner { grid-template-columns: 3fr 2fr; align-items: center; } }
+.hero-text { color: #fff; }
+.hero-eyebrow { font-family: 'Roboto', sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1rem; opacity: 0.9; text-shadow: 0 1px 3px rgba(0,0,0,0.5); display: none; }
+@media(min-width:768px){ .hero-eyebrow { display: block; } }
+.hero-text h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem,5vw,3.2rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.hero-text > p { font-family: 'Roboto', sans-serif; font-size: 0.875rem; line-height: 1.75; opacity: 0.9; margin-bottom: 2rem; max-width: 560px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+@media(min-width:768px){ .hero-text > p { font-size: 1rem; } }
+.hero-usps { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+.hero-usp { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; opacity: 0.9; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+.hero-usp svg { color: var(--primary); flex-shrink: 0; }
+@media(min-width:768px){ .hero-usp { font-size: 1rem; } }
+.hero-ctas { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+@media(min-width:640px){ .hero-ctas { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; } }
+.hero-cta-primary { display: inline-flex; width: 100%; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.5rem; background: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--primary-fg); transition: opacity 0.2s; font-family: 'Roboto', sans-serif; }
+@media(min-width:640px){ .hero-cta-primary { width: auto; justify-content: flex-start; } }
+.hero-cta-primary:hover { opacity: 0.9; }
+.hero-cta-outline { display: inline-flex; width: 100%; align-items: center; justify-content: center; border-radius: 0.5rem; border: 2px solid #fff; background: transparent; padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: #fff; transition: background 0.2s; font-family: 'Roboto', sans-serif; }
+@media(min-width:640px){ .hero-cta-outline { width: auto; justify-content: flex-start; } }
+.hero-cta-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* Hero form */
+.hero-form-wrap { display: none; }
+@media(min-width:768px){ .hero-form-wrap { display: block; } }
+.hero-form { background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.07) 100%); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.25); border-radius: 28px; padding: 1.5rem 2rem; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+.hero-form h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+@media(min-width:768px){ .hero-form h3 { font-size: 1.5rem; } }
+.hero-form p.sub { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 1rem; }
+.hero-form-fields { display: flex; flex-direction: column; gap: 1rem; }
+.hf-input { width: 100%; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.7); padding: 0.625rem 1rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; color: var(--foreground); outline: none; transition: box-shadow 0.2s; backdrop-filter: blur(4px); }
+.hf-input::placeholder { color: var(--muted-fg); }
+.hf-input:focus { box-shadow: 0 0 0 2px var(--primary); }
+.hf-textarea { resize: vertical; min-height: 100px; }
+.hero-form .btn-submit { width: 100%; justify-content: center; padding: 0.75rem; font-family: 'Roboto', sans-serif; font-size: 0.875rem; font-weight: 500; border-radius: 0.5rem; background: var(--primary); color: var(--primary-fg); border: none; cursor: pointer; transition: opacity 0.2s; }
+.hero-form .btn-submit:hover { opacity: 0.9; }
+.hero-form .btn-submit:disabled { opacity: 0.7; }
+.form-success { display: none; padding: 0.875rem; background: hsl(143,85%,96%); border: 1px solid hsl(145,92%,91%); border-radius: 0.5rem; color: hsl(140,100%,27%); font-size: 0.8rem; text-align: center; }
+
+/* Service section (Vakmanschap) */
+.service-section { padding: 4rem 0 6rem; }
+@media(min-width:768px){ .service-section { padding: 6rem 0; } }
+.service-card { max-width: 1152px; margin: 0 auto; border-radius: 20px; background: var(--card); padding: 2rem; }
+@media(min-width:768px){ .service-card { padding: 2.8125rem; } }
+.service-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+@media(min-width:1024px){ .service-grid { grid-template-columns: 1fr 1fr; } }
+.service-img { border-radius: 1rem; overflow: hidden; }
+.service-img img { width: 100%; border-radius: 1rem; object-fit: cover; }
+.service-text h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; }
+.service-text p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 2rem; }
+@media(min-width:768px){ .service-text p { font-size: 1rem; } }
+
+/* Services grid (Onze diensten) */
+.diensten-section { padding: 4rem 0 6rem; }
+@media(min-width:768px){ .diensten-section { padding: 6rem 0; } }
+.section-header { text-align: center; margin-bottom: 3rem; }
+@media(min-width:768px){ .section-header { margin-bottom: 4rem; } }
+.section-header h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; margin-bottom: 1rem; }
+.section-header p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); max-width: 640px; margin: 0 auto; }
+@media(min-width:768px){ .section-header p { font-size: 1rem; } }
+.diensten-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
+@media(min-width:640px){ .diensten-grid { grid-template-columns: repeat(2,1fr); } }
+@media(min-width:1024px){ .diensten-grid { grid-template-columns: repeat(4,1fr); } }
+.dienst-card { display: flex; flex-direction: column; border-radius: 20px; border: 1px solid var(--border); background: var(--card); padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
+.dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.dienst-card:has(h3:empty) { display: none; }
+.dienst-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--foreground); }
+.dienst-icon { width: 48px; height: 48px; background: color-mix(in srgb, var(--primary) 12%, transparent); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--primary); flex-shrink: 0; }
+.dienst-icon svg { width: 24px; height: 24px; }
+
+/* Why choose us */
+.why-section { position: relative; padding: 4rem 0 6rem; }
+@media(min-width:768px){ .why-section { padding: 6rem 0; } }
+.why-bg { position: absolute; inset: 0; }
+.why-bg img { width: 100%; height: 100%; object-fit: cover; }
+.why-bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.why-content { position: relative; text-align: center; }
+.why-content h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; color: #fff; margin-bottom: 1rem; }
+.why-content > p { font-size: 0.875rem; line-height: 1.8; color: rgba(255,255,255,0.8); max-width: 640px; margin: 0 auto 3rem; }
+@media(min-width:768px){ .why-content > p { font-size: 1rem; } }
+.why-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+@media(min-width:640px){ .why-cards { grid-template-columns: 1fr 1fr; } }
+.why-card { display: flex; align-items: center; gap: 1.25rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); padding: 1.5rem; text-align: left; backdrop-filter: blur(12px); transition: transform 0.3s; }
+.why-card:hover { transform: translateY(-4px); }
+.why-card-icon { flex-shrink: 0; display: inline-flex; border-radius: 0.75rem; background: var(--primary); padding: 0.75rem; color: #fff; }
+.why-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+.why-card p { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.8); }
+
+/* Projects section */
+.projecten-section { padding: 4rem 0 6rem; }
+@media(min-width:768px){ .projecten-section { padding: 6rem 0; } }
+.projecten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 1400px; margin: 0 auto 2.5rem; }
+@media(min-width:768px){ .projecten-grid { grid-template-columns: repeat(4,1fr); gap: 0.75rem; } }
+.project-thumb { overflow: hidden; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
+.project-thumb:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.project-thumb-inner { aspect-ratio: 4/3; overflow: hidden; }
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.project-thumb:hover img { transform: scale(1.05); }
+.projecten-cta { text-align: center; display: none; }
+@media(min-width:768px){ .projecten-cta { display: block; } }
+
+/* Reviews */
+.reviews-section { background: var(--muted); padding: 4rem 0 6rem; }
+@media(min-width:768px){ .reviews-section { padding: 6rem 0; } }
+.reviews-section .section-header { margin-bottom: 3rem; }
+.reviews-track-wrap { overflow: hidden; }
+.reviews-track { display: flex; touch-action: pan-y; }
+.review-card { flex: 0 0 100%; padding: 0 0.5rem; box-sizing: border-box; }
+@media(min-width:640px){ .review-card { flex: 0 0 50%; } }
+@media(min-width:1024px){ .review-card { flex: 0 0 33.333%; } }
+.review-card-inner { display: flex; flex-direction: column; height: 100%; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
+@media(min-width:768px){ .review-card-inner { padding: 2rem; } }
+.review-card-inner:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+.review-stars { display: flex; gap: 2px; margin-bottom: 1rem; color: var(--star); }
+.review-text { font-size: 0.875rem; line-height: 1.75; color: var(--muted-fg); flex: 1; margin-bottom: 1.5rem; }
+@media(min-width:768px){ .review-text { font-size: 1rem; } }
+.review-read-more { background: none; border: none; cursor: pointer; font-size: inherit; font-weight: 500; color: var(--primary); margin-left: 4px; }
+.review-read-more:hover { text-decoration: underline; }
+.review-meta { border-top: 1px solid var(--border); padding-top: 1rem; margin-top: auto; }
+.review-name { font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 600; }
+.review-date { font-size: 0.75rem; color: var(--muted-fg); margin-top: 2px; }
+.reviews-nav-mobile { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+@media(min-width:1024px){ .reviews-nav-mobile { display: none; } }
+.reviews-arrows-desktop { position: absolute; top: 50%; transform: translateY(-50%); }
+.reviews-prev-desktop { position: absolute; left: -1rem; top: 50%; transform: translateY(-50%); display: none; }
+.reviews-next-desktop { position: absolute; right: -1rem; top: 50%; transform: translateY(-50%); display: none; }
+@media(min-width:1024px){ .reviews-prev-desktop { display: flex; } .reviews-next-desktop { display: flex; } }
+.reviews-nav-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); cursor: pointer; transition: background 0.2s; color: var(--foreground); }
+.reviews-nav-btn:hover { background: var(--muted); }
+.reviews-nav-btn:disabled { opacity: 0.4; }
+.reviews-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+.review-dot { height: 10px; border-radius: 9999px; transition: all 0.3s; background: var(--border); cursor: pointer; border: none; }
+.review-dot.active { width: 2rem; background: var(--primary); }
+.review-dot:not(.active) { width: 10px; }
+.reviews-slider-wrap { position: relative; }
+
+/* Work section */
+.work-section { padding: 4rem 0 6rem; }
+@media(min-width:768px){ .work-section { padding: 6rem 0; } }
+.work-outer { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+@media(min-width:1024px){ .work-outer { grid-template-columns: 65fr 35fr; } }
+.work-left h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.75rem,3vw,2.8rem); font-weight: 600; margin-bottom: 1.5rem; line-height: 1.2; }
+.work-left > p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 1rem; }
+@media(min-width:768px){ .work-left > p { font-size: 1rem; } }
+.work-foto { border-radius: 1rem; overflow: hidden; margin-top: 2rem; }
+.work-foto img { width: 100%; border-radius: 1rem; object-fit: cover; }
+.stappen-titel { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin: 3rem 0 2rem; }
+.stappen-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.stap-item { display: flex; align-items: flex-start; gap: 1rem; }
+.stap-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 0.75rem; background: hsla(213,76%,52%,0.1); color: var(--primary); }
+.stap-item h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+@media(min-width:768px){ .stap-item h4 { font-size: 1.125rem; } }
+.stap-item p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
+@media(min-width:768px){ .stap-item p { font-size: 1rem; } }
+.vrijblijvend-block { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 1.5rem; border-radius: 1rem; background: var(--foreground); padding: 1.5rem 2rem; margin-top: 2.5rem; }
+@media(min-width:640px){ .vrijblijvend-block { flex-direction: row; align-items: center; } }
+.vrijblijvend-block h4 { font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--background); margin-bottom: 0.25rem; }
+@media(min-width:768px){ .vrijblijvend-block h4 { font-size: 1.25rem; } }
+.vrijblijvend-block > div:first-child p { font-size: 0.875rem; color: rgba(255,255,255,0.8); }
+@media(min-width:768px){ .vrijblijvend-block > div:first-child p { font-size: 1rem; } }
+.vrijblijvend-btns { display: flex; flex-direction: column; gap: 0.75rem; flex-shrink: 0; }
+@media(min-width:640px){ .vrijblijvend-btns { flex-direction: row; } }
+.vb-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.5rem; background: var(--primary); padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--primary-fg); transition: opacity 0.2s; font-family: 'Roboto', sans-serif; }
+.vb-btn-primary:hover { opacity: 0.9; }
+.vb-btn-outline { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.3); background: transparent; padding: 0.75rem 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--background); transition: background 0.2s; font-family: 'Roboto', sans-serif; }
+.vb-btn-outline:hover { background: rgba(255,255,255,0.1); }
+.werkgebied-block { margin-top: 2.5rem; }
+.werkgebied-block h3 { font-family: 'Poppins', sans-serif; font-size: clamp(1.25rem,2vw,1.75rem); font-weight: 600; margin-bottom: 1rem; }
+.werkgebied-block p { font-size: 0.875rem; line-height: 1.8; color: var(--muted-fg); }
+@media(min-width:768px){ .werkgebied-block p { font-size: 1rem; } }
+
+/* Work right form */
+.work-form-card { border-radius: 1rem; border: 2px solid var(--primary); background: var(--card); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+@media(min-width:1024px){ .work-right-col { position: sticky; top: 96px; align-self: start; } }
+.work-form-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
+@media(min-width:768px){ .work-form-card h3 { font-size: 1.5rem; } }
+.wf-fields { display: flex; flex-direction: column; gap: 1rem; }
+.wf-input { width: 100%; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--background); padding: 0.625rem 1rem; font-size: 0.875rem; font-family: 'Roboto', sans-serif; color: var(--foreground); outline: none; transition: box-shadow 0.2s; }
+.wf-input::placeholder { color: var(--muted-fg); }
+.wf-input:focus { box-shadow: 0 0 0 2px var(--primary); }
+.wf-textarea { resize: vertical; min-height: 100px; }
+.wf-submit { width: 100%; justify-content: center; padding: 0.75rem; }
+.form-success { display: none; padding: 0.875rem; background: hsl(143,85%,96%); border: 1px solid hsl(145,92%,91%); border-radius: 0.5rem; color: hsl(140,100%,27%); font-size: 0.8rem; text-align: center; }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); background: var(--card); }
+.footer-inner { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
+@media(min-width:640px){ .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-inner { grid-template-columns: repeat(4,1fr); } }
+footer h4 { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; font-family: 'Roboto', sans-serif; }
+footer ul li a:hover { color: var(--primary); }
+footer ul li:has(a:empty) { display: none; }
+.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; font-family: 'Roboto', sans-serif; }
+.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); font-family: 'Roboto', sans-serif; }
+
+.wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
+</style>
+</head>
+<body>
+<!-- Icon sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="icon-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+  </symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
+  </symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9,22 9,12 15,12 15,22"/>
+  </symbol>
+  <symbol id="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3"/>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+  </symbol>
+  <symbol id="icon-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 8C8 10 5.9 16.17 3.82 22"/><path d="M9.67 17.34C10 15 12 14 14 13c3-1 5-1 7-4-1 4-4 6-7 6 0 0-1.33.34-2.33.34z"/>
+  </symbol>
+  <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+  </symbol>
+  <symbol id="icon-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2C8 8 5 12 5 15a7 7 0 0 0 14 0c0-3-3-7-7-13z"/>
+  </symbol>
+  <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12,2 2,7 12,12 22,7"/><polyline points="2,17 12,22 22,17"/><polyline points="2,12 12,17 22,12"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/>
+  </symbol>
+  <symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/>
+  </symbol>
+  <symbol id="icon-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15.5 4.5 4 4L8 20H4v-4z"/><path d="M4 20c0-2 1-3.5 3-4"/>
+  </symbol>
+  <symbol id="icon-roller" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="5" width="14" height="6" rx="2"/><path d="M9 11v9"/><rect x="7" y="20" width="4" height="2" rx="1"/><path d="M16 8h4a2 2 0 0 1 0 4h-4"/>
+  </symbol>
+  <symbol id="icon-hammer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m13 13-8.5 8.5a2.12 2.12 0 1 1-3-3L10 10"/><path d="m19 10 3-3-4.5-4.5-3 3 1.5 1.5-3 3"/>
+  </symbol>
+  <symbol id="icon-trowel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 19l9-9 2 2-9 9z"/><path d="M14 10l-2-2 5-5 2 2z"/><path d="M3 21l2-2"/>
+  </symbol>
+  <symbol id="icon-tile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+  </symbol>
+  <symbol id="icon-floor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22h20"/><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 16h20"/>
+  </symbol>
+  <symbol id="icon-outdoor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22h20"/><path d="M5 22l3-7 4 4 3-5 4 8"/>
+  </symbol>
+  <symbol id="icon-roof" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12L12 3l9 9"/><path d="M5 10v11h14V10"/>
+  </symbol>
+  <symbol id="icon-pipe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12h20"/><path d="M7 4v16"/><path d="M17 4v16"/><path d="M7 4h10"/><path d="M7 20h10"/>
+  </symbol>
+  <symbol id="icon-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3C9 7 9.5 5 12 3c.5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0 3.5 3.5 0 0 0 1-2.5 2.5 2.5 0 0 0 2.5 2.5z"/>
+  </symbol>
+  <symbol id="icon-spray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 3h5v18H2z"/><path d="M7 9h8a2 2 0 0 1 2 2v1"/><circle cx="18" cy="13" r="3"/><path d="M7 6h3"/>
+  </symbol>
+  <symbol id="icon-toilet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 6h16a2 2 0 0 1 2 2v1H2V8a2 2 0 0 1 2-2z"/><path d="M2 9h20v2a10 10 0 0 1-20 0V9z"/>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+  </symbol>
+  <symbol id="icon-shovel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 22l5-5"/><path d="M7 17L5 15l8-8 2 2z"/><path d="M13 7L9 3a4 4 0 0 1 5.5 5.5L13 7z"/>
+  </symbol>
+  <symbol id="icon-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22v-8"/><path d="M12 14L6 8h12z"/><path d="M12 8L7 3h10z"/>
+  </symbol>
+  <symbol id="icon-bath" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12h20"/><path d="M2 12v5a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5v-5"/><path d="M5 12V7a3 3 0 0 1 6 0v5"/>
+  </symbol>
+  <symbol id="icon-saw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 2l5 5 12 12a3 3 0 0 1-4.3 4.3L3 12z"/><path d="M14 6l4 4"/>
+  </symbol>
+  <symbol id="icon-wall" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="11" width="9" height="4" rx="1"/><rect x="13" y="11" width="9" height="4" rx="1"/><rect x="2" y="19" width="20" height="2" rx="1"/>
+  </symbol>
+  <symbol id="icon-chimney" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="3" width="8" height="6"/><path d="M4 14l8-5 8 5"/><path d="M8 9v13"/><path d="M16 9v13"/>
+  </symbol>
+  <symbol id="icon-drain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+  </symbol>
+  <symbol id="icon-sewer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M4 12h16"/><rect x="4" y="12" width="16" height="6" rx="2"/>
+  </symbol>
+  <symbol id="icon-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3h18v2H3z"/><path d="M8 7v3M12 7v3M16 7v3M8 13v3M12 13v3M16 13v3M10 19v3M14 19v3"/>
+  </symbol>
+  <symbol id="icon-utensils" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3v4"/>
+  </symbol>
+  <symbol id="icon-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3 21 7 7 21H3v-4z"/>
+  </symbol>
+  <symbol id="icon-house-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 21H4a2 2 0 0 1-2-2V9.5L12 2l10 7.5V13"/><path d="M19 17v4M17 19h4"/>
+  </symbol>
+</svg>
+
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <!-- Mobile: telefoon + email -->
+    <div class="topbar-mobile-contact">
+      <a href="tel:0649253835" class="topbar-contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        06 49 25 38 35
+      </a>
+      <a href="mailto:info@admtotaalbouw.nl" class="topbar-contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@admtotaalbouw.nl
+      </a>
+    </div>
+    <!-- Desktop: sterren links -->
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <!-- Desktop: telefoon + email rechts -->
+    <div class="topbar-desktop-contact">
+      <a href="tel:0649253835" class="topbar-contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        06 49 25 38 35
+      </a>
+      <a href="mailto:info@admtotaalbouw.nl" class="topbar-contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@admtotaalbouw.nl
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/adm-totaalbouw.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/adm-totaalbouw/foto_logo_unnamed-18-.webp" alt="ADM Totaalbouw logo" style="height:40px;width:auto;max-width:160px;object-fit:contain"></a>
+    <nav class="navbar-nav">
+      <a href="/adm-totaalbouw.html" style="color:var(--primary)">Home</a>
+      <a href="/adm-totaalbouw-over-ons.html">Over</a>
+      <a href="/adm-totaalbouw-diensten.html">Diensten</a>
+      <a href="/adm-totaalbouw-projecten.html" style="">Projecten</a>
+      <a href="/adm-totaalbouw-contact.html">Contact</a>
+    </nav>
+    <a href="#offerte" class="btn-primary navbar-desktop-cta">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu openen">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/adm-totaalbouw.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/adm-totaalbouw-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/adm-totaalbouw-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/adm-totaalbouw-projecten.html" style="" onclick="document.getElementById('mobileNav').classList.remove('open')">Projecten</a>
+    <a href="/adm-totaalbouw-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="#offerte" class="btn-primary" style="width:100%;justify-content:center" onclick="document.getElementById('mobileNav').classList.remove('open')">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/hero/schilder-hero-1.jpeg" alt="ADM Totaalbouw">
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="container hero-inner" style="align-items:center">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Schilder in Utrecht</p>
+      <h1>Net <span class="accent">schilderwerk</span> voor uw woning</h1>
+      <p>ADM Totaalbouw helpt u met strak schilderwerk en zorgvuldig sloopwerk in Utrecht en omgeving.</p>
+      <ul class="hero-usps">
+        <li class="hero-usp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          Strakke en nette afwerking
+        </li>
+        <li class="hero-usp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          Duidelijke communicatie vooraf
+        </li>
+        <li class="hero-usp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+          Zorgvuldig voorbereid werk
+        </li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="tel:0649253835" class="hero-cta-primary">Bel direct voor advies</a>
+        <a href="#diensten" class="hero-cta-outline">Bekijk diensten</a>
+      </div>
+    </div>
+    <div class="hero-form-wrap" id="offerte">
+      <div class="hero-form">
+        <h3>Offerte aanvragen</h3>
+        <p class="sub">Binnen 24 uur een voorstel op maat</p>
+        <form id="offerteForm" class="hero-form-fields">
+          <input class="hf-input" type="text" name="naam" placeholder="Naam" required>
+          <input class="hf-input" type="text" name="woonplaats" placeholder="Woonplaats" required>
+          <input class="hf-input" type="tel" name="telefoon" placeholder="Telefoonnummer">
+          <input class="hf-input" type="email" name="email" placeholder="E-mailadres" required>
+          <textarea class="hf-input hf-textarea" name="bericht" rows="4" placeholder="Omschrijf hier uw aanvraag..."></textarea>
+          <button type="submit" class="btn-submit">Versturen</button>
+          <div class="form-success" id="offerteSuccess">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vakmanschap -->
+<section class="service-section">
+  <div class="container">
+    <div class="service-card">
+      <div class="service-grid">
+        <div class="service-img">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/sectie2/schilder-sectie2-1.jpeg" alt="ADM Totaalbouw">
+        </div>
+        <div class="service-text">
+          <h2>Voor verzorgd <span class="accent">schilderwerk</span> in Utrecht</h2>
+          <p>ADM Totaalbouw verzorgt buitenschilderwerk, binnenschilderwerk en sloopwerk voor woningen en bedrijfspanden in Utrecht. Wij kijken goed naar de ondergrond, de staat van het werk en uw wensen. Een nette voorbereiding is belangrijk voor een strak en duurzaam resultaat. Tijdens de werkzaamheden houden wij rekening met uw woning, planning en omgeving. U kunt rekenen op duidelijke communicatie en een verzorgde afwerking.</p>
+          <a href="#offerte" class="btn-primary">Vraag een offerte aan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Onze diensten -->
+<section class="diensten-section" id="diensten">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="font-poppins">Onze diensten</h2>
+    </div>
+    <div class="diensten-grid">
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3>Buitenschilderwerk</h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3>Binnenschilderwerk</h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3>Sloopwerk</h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+      </a>
+      <a href="/adm-totaalbouw-diensten.html" class="dienst-card">
+        <div class="dienst-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-"/></svg></div>
+        <h3></h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Waarom kiezen voor ons -->
+<section class="why-section">
+  <div class="why-bg">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/waarom/schilder-waarom-1.jpeg" alt="Waarom kiezen voor ADM Totaalbouw">
+    <div class="why-bg-overlay"></div>
+  </div>
+  <div class="container why-content">
+    <h2>Waarom kiezen voor <span>ADM Totaalbouw</span></h2>
+    <p>Met ADM Totaalbouw kiest u voor een rustige aanpak, duidelijke afspraken en werk dat netjes wordt afgerond.</p>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3>Goede voorbereiding</h3>
+          <p>Wij zorgen voor schoon, geschuurd en passend voorbereid werk.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        </div>
+        <div>
+          <h3>Nette afwerking</h3>
+          <p>Randen, hoeken en oppervlakken worden zorgvuldig afgewerkt.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <h3>Duidelijk overleg</h3>
+          <p>Wij bespreken uw wensen en houden u op de hoogte.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
+          <h3>Breed inzetbaar</h3>
+          <p>Wij helpen met schilderwerk en praktisch sloopwerk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projecten preview -->
+<section class="projecten-section" id="projecten">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="font-poppins">Bekijk onze projecten</h2>
+      <p>Een greep uit recent uitgevoerde projecten — van nieuwbouw en aanbouw tot dakopbouw, vakkundig gerealiseerd door ons team.</p>
+    </div>
+    <div class="projecten-grid">
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 1" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 2" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 3" loading="lazy"></div></div>
+      <div class="project-thumb"><div class="project-thumb-inner"><img src="" alt="Project 4" loading="lazy"></div></div>
+    </div>
+    <div class="projecten-cta">
+      <a href="/adm-totaalbouw-projecten.html" class="btn-primary">Bekijk alle projecten</a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews-section" id="reviewsSection" style="display:none">
+  <div class="container">
+    <div class="section-header">
+      <p style="font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary);margin-bottom:0.5rem;font-family:'Roboto',sans-serif">Wat onze klanten zeggen</p>
+      <h2 class="font-poppins">Ervaringen van onze <span class="text-primary">klanten</span></h2>
+    </div>
+    <div class="reviews-slider-wrap">
+      <button class="reviews-nav-btn reviews-prev-desktop" id="revPrevD" aria-label="Vorige">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="reviews-nav-btn reviews-next-desktop" id="revNextD" aria-label="Volgende">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+      <div class="reviews-track-wrap">
+        <div class="reviews-track" id="reviewsTrack"></div>
+      </div>
+      <div class="reviews-nav-mobile">
+        <button class="reviews-nav-btn" id="revPrevM" aria-label="Vorige">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+        </button>
+        <button class="reviews-nav-btn" id="revNextM" aria-label="Volgende">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+        </button>
+      </div>
+      <div class="reviews-dots" id="reviewsDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Werkwijze -->
+<section class="work-section">
+  <div class="container">
+    <div class="work-outer">
+      <div class="work-left">
+        <h2 class="font-poppins">Onze <span class="text-primary">ervaring</span> en werkwijze</h2>
+        <p>We beginnen met een duidelijke opname van het werk. Daarbij kijken we naar de staat van de ondergrond, de benodigde voorbereiding en de gewenste afwerking.</p>
+        <p>Daarna ontvangt u een passende aanpak en voeren wij het werk netjes en zorgvuldig uit.</p>
+        <a href="#offerte" class="btn-primary" style="margin-top:0.5rem;display:inline-flex">Advies nodig?</a>
+        <div class="work-foto">
+          <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/schilder/werkwijze/schilder-werkwijze-1.jpeg" alt="Werkwijze ADM Totaalbouw" loading="lazy">
+        </div>
+
+        <!-- 4 Stappen -->
+        <h3 class="stappen-titel">Uw project starten in <span class="text-primary">4 stappen</span></h3>
+        <div class="stappen-list">
+          <div class="stap-item">
+            <div class="stap-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div>
+              <h4>Werk bekijken</h4>
+              <p>Wij bekijken het schilderwerk of sloopwerk en bespreken uw wensen.</p>
+            </div>
+          </div>
+          <div class="stap-item">
+            <div class="stap-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+            </div>
+            <div>
+              <h4>Aanpak bepalen</h4>
+              <p>U krijgt duidelijkheid over werkzaamheden, materialen en planning.</p>
+            </div>
+          </div>
+          <div class="stap-item">
+            <div class="stap-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div>
+              <h4>Net uitvoeren</h4>
+              <p>Wij werken zorgvuldig, veilig en met aandacht voor uw woning.</p>
+            </div>
+          </div>
+          <div class="stap-item">
+            <div class="stap-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+            </div>
+            <div>
+              <h4>Opleveren</h4>
+              <p>Samen controleren we het resultaat en ronden we het werk netjes af.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vrijblijvend advies CTA -->
+        <div class="vrijblijvend-block">
+          <div>
+            <h4>Vrijblijvend advies of offerte?</h4>
+            <p>Neem contact op en wij helpen u graag verder.</p>
+          </div>
+          <div class="vrijblijvend-btns">
+            <a href="tel:0649253835" class="vb-btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              06 49 25 38 35
+            </a>
+            <a href="#offerte" class="vb-btn-outline">Offerte aanvragen</a>
+          </div>
+        </div>
+
+        <!-- Werkgebied -->
+        <div class="werkgebied-block">
+          <h3 class="font-poppins"><span class="text-primary">Werkgebied</span></h3>
+          <p>Goed schilderwerk begint met aandacht voor voorbereiding en afwerking. ADM Totaalbouw werkt netjes, denkt praktisch mee en zorgt dat uw woning of pand er verzorgd uitziet.</p>
+        </div>
+      </div>
+
+      <!-- Rechter kolom: offerte form -->
+      <div class="work-right-col">
+        <div class="work-form-card" id="offerteForm2Wrap">
+          <h3>Offerte aanvragen</h3>
+          <form id="offerteForm2" class="wf-fields">
+            <input class="wf-input" type="text" name="naam" placeholder="Naam" required>
+            <input class="wf-input" type="text" name="woonplaats" placeholder="Woonplaats" required>
+            <input class="wf-input" type="tel" name="telefoon" placeholder="Telefoonnummer">
+            <input class="wf-input" type="email" name="email" placeholder="E-mailadres" required>
+            <textarea class="wf-input wf-textarea" name="bericht" rows="4" placeholder="Omschrijf hier uw aanvraag..."></textarea>
+            <button type="submit" class="btn-primary wf-submit">Versturen</button>
+            <div class="form-success" id="offerteSuccess2">Bedankt! We nemen zo snel mogelijk contact met u op.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="/adm-totaalbouw-diensten.html">Buitenschilderwerk</a></li>
+          <li><a href="/adm-totaalbouw-diensten.html">Binnenschilderwerk</a></li>
+          <li><a href="/adm-totaalbouw-diensten.html">Sloopwerk</a></li>
+          <li><a href="/adm-totaalbouw-diensten.html"></a></li>
+          <li><a href="/adm-totaalbouw-diensten.html"></a></li>
+          <li><a href="/adm-totaalbouw-diensten.html"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">Nieuwegein</a></li>
+          <li><a href="#">Houten</a></li>
+          <li><a href="#">Zeist</a></li>
+          <li><a href="#">De Bilt</a></li>
+          <li><a href="#">Bunnik</a></li>
+          <li><a href="#">Maarssen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Over ons</h4>
+        <ul>
+          <li><a href="/adm-totaalbouw-over-ons.html">Over ons</a></li>
+          <li><a href="/adm-totaalbouw-contact.html">Contact</a></li>
+          <li><a href="#offerte">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+      <div class="footer-addr">
+        <h4>Adres</h4>
+        <p style="font-weight:600;color:var(--foreground)">ADM Totaalbouw</p>
+        <p></p>
+        <p></p>
+        <p style="margin-top:0.75rem">KvK: </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026 ADM Totaalbouw – Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var slug = 'adm-totaalbouw';
+  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
+
+  function handleForm(formId, successId, btnText) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Verzenden...';
+      var data = {};
+      new FormData(form).forEach(function(v, k){ data[k] = v; });
+      fetch('', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }).then(function(){
+        document.getElementById(successId).style.display = 'block';
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = btnText || 'Versturen';
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = btnText || 'Versturen';
+        alert('Er is iets misgegaan. Probeer het opnieuw.');
+      });
+    });
+  }
+  handleForm('offerteForm', 'offerteSuccess', 'Versturen');
+  handleForm('offerteForm2', 'offerteSuccess2', 'Versturen');
+
+  try {
+    var reviews = [{"naam":"Sander K.","stad":"Utrecht","tekst":"ADM Totaalbouw heeft ons buitenschilderwerk netjes uitgevoerd. De communicatie was duidelijk en de werkplek werd schoon achtergelaten.","datum":"1 maand geleden","score":5},{"naam":"Marieke V.","stad":"Nieuwegein","tekst":"Wij zijn tevreden over het binnenschilderwerk. Er werd rustig gewerkt en de afwerking ziet er verzorgd uit.","datum":"2 weken geleden","score":5},{"naam":"Peter B.","stad":"Houten","tekst":"Voor onze verbouwing is er sloopwerk uitgevoerd. Alles werd duidelijk afgestemd en netjes opgeruimd achtergelaten.","datum":"3 weken geleden","score":5},{"naam":"Anouk D.","stad":"Zeist","tekst":"Prettig contact en duidelijke afspraken vooraf. Het schilderwerk aan de kozijnen is strak en zorgvuldig gedaan.","datum":"1 week geleden","score":5},{"naam":"Jeroen M.","stad":"De Bilt","tekst":"ADM Totaalbouw dacht goed mee over de aanpak. Het werk is netjes uitgevoerd en het resultaat past bij onze wensen.","datum":"2 maanden geleden","score":5},{"naam":"Linda R.","stad":"Bunnik","tekst":"Het binnenschilderwerk is keurig gedaan. Fijn dat er duidelijk werd gecommuniceerd over de planning en uitvoering.","datum":"4 weken geleden","score":5}];
+    if (Array.isArray(reviews) && reviews.length) {
+      var section = document.getElementById('reviewsSection');
+      var track = document.getElementById('reviewsTrack');
+      var dotsWrap = document.getElementById('reviewsDots');
+      section.style.display = '';
+      var CHAR_LIMIT = 150;
+      reviews.forEach(function(r, i) {
+        var isLong = r.tekst && r.tekst.length > CHAR_LIMIT;
+        var shortText = isLong ? r.tekst.slice(0, CHAR_LIMIT) + '…' : (r.tekst || '');
+        var stars = '<div class="review-stars">' + Array(5).fill('<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>').join('') + '</div>';
+        var card = document.createElement('div');
+        card.className = 'review-card';
+        var textEl = document.createElement('p');
+        textEl.className = 'review-text';
+        textEl.id = 'rt' + i;
+        textEl.textContent = shortText;
+        var inner = document.createElement('article');
+        inner.className = 'review-card-inner';
+        inner.innerHTML = stars;
+        inner.appendChild(textEl);
+        if (isLong) {
+          var btn = document.createElement('button');
+          btn.className = 'review-read-more';
+          btn.textContent = 'Lees meer';
+          var expanded = false;
+          btn.addEventListener('click', function(){
+            expanded = !expanded;
+            textEl.textContent = expanded ? r.tekst : shortText;
+            btn.textContent = expanded ? 'Lees minder' : 'Lees meer';
+            if (!expanded) textEl.appendChild(btn);
+          });
+          textEl.appendChild(btn);
+        }
+        var meta = document.createElement('div');
+        meta.className = 'review-meta';
+        meta.innerHTML = '<p class="review-name">' + (r.naam || '') + '</p><p class="review-date">' + (r.datum || '') + '</p>';
+        inner.appendChild(meta);
+        card.appendChild(inner);
+        track.appendChild(card);
+      });
+      var current = 0;
+      function getPerPage(){ return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
+      var total = 0;
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        total = Math.ceil(reviews.length / getPerPage());
+        for (var j = 0; j < total; j++) {
+          var dot = document.createElement('button');
+          dot.className = 'review-dot' + (j === current ? ' active' : '');
+          (function(idx){ dot.addEventListener('click', function(){ goto(idx); }); })(j);
+          dotsWrap.appendChild(dot);
+        }
+      }
+      function updateDots() {
+        var dots = dotsWrap.querySelectorAll('.review-dot');
+        dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+      }
+      function goto(idx) {
+        total = Math.ceil(reviews.length / getPerPage());
+        current = Math.max(0, Math.min(idx, total - 1));
+        var pp = getPerPage();
+        var cards = track.querySelectorAll('.review-card');
+        var w = cards[0] ? cards[0].offsetWidth : 0;
+        track.style.transform = 'translateX(-' + (current * pp * w) + 'px)';
+        track.style.transition = 'transform 0.4s ease';
+        updateDots();
+      }
+      buildDots();
+      ['revPrevD','revPrevM'].forEach(function(id){ var b = document.getElementById(id); if(b) b.addEventListener('click', function(){ goto(current - 1); }); });
+      ['revNextD','revNextM'].forEach(function(id){ var b = document.getElementById(id); if(b) b.addEventListener('click', function(){ goto(current + 1); }); });
+      window.addEventListener('resize', function(){ buildDots(); goto(0); });
+    }
+  } catch(e) {}
+
+  if (onLive) {
+    var remap = {};
+    remap['/' + slug + '.html'] = '/';
+    remap['/' + slug + '-contact.html'] = '/contact';
+    remap['/' + slug + '-diensten.html'] = '/diensten';
+    remap['/' + slug + '-over-ons.html'] = '/over-ons';
+    remap['/' + slug + '-projecten.html'] = '/projecten';
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var h = a.getAttribute('href');
+      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+    });
+  }
+})();
+</script>
+<a href="https://wa.me/31649253835" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script>
+(function(){
+  var iconDefaults=['wrench','home','shield','clock','settings','layers','bolt','droplet'];
+  document.querySelectorAll('.dienst-icon use').forEach(function(use,i){
+    var href=use.getAttribute('href')||'';
+    if(!href||href.indexOf('{{')!==-1||href==='#icon-'){
+      use.setAttribute('href','#icon-'+(iconDefaults[i]||'wrench'));
+    }
+  });
+  document.querySelectorAll('.dienst-card p').forEach(function(p){
+    if(/\{\{/.test(p.textContent)) p.style.display='none';
+  });
+  document.querySelectorAll('.dienst-card').forEach(function(card){
+    var h3=card.querySelector('h3');
+    if(!h3||h3.textContent.trim()===''||/\{\{/.test(h3.textContent)){
+      card.style.display='none';
+    }
+  });
+})();
+</script>
+</body>
+</html>
