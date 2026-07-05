@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Over Ons |  Maas Nieuwenhuis Klus en Tuinservice</title>
+<meta name="description" content="Maak kennis met  Maas Nieuwenhuis Klus en Tuinservice — vakkundig, betrouwbaar en lokaal actief.">
+<link rel="icon" href="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/maas-nieuwenhuis-klus-en-tuinservice/foto_logo_ontwerp-zonder-titel---2026-07-05t122432.354.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --background: hsl(0,0%,96%);
+  --foreground: hsl(0,0%,10%);
+  --card: hsl(0,0%,100%);
+  --primary: hsl(142,72%,38%);
+  --primary-fg: hsl(0,0%,100%);
+  --muted: hsl(0,0%,96%);
+  --muted-fg: hsl(0,0%,45%);
+  --border: hsl(0,0%,88%);
+  --star: hsl(33,95%,60%);
+  --topbar-bg: hsl(0,0%,10%);
+  --topbar-fg: hsl(0,0%,100%);
+}
+body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--foreground); -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', sans-serif; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+
+/* Topbar */
+.topbar { background: var(--topbar-bg); color: var(--topbar-fg); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.75rem; }
+.topbar-stars { display: flex; gap: 2px; align-items: center; }
+.star-icon { color: var(--star); }
+.topbar-contact { display: flex; gap: 1.5rem; }
+.topbar-contact a { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--topbar-fg); transition: color 0.2s; }
+.topbar-contact a:hover { color: var(--primary); }
+@media(max-width:767px){ .topbar-contact { display: none; } }
+
+/* Navbar */
+.navbar { background: var(--card); box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; }
+.navbar-logo img { height: 56px; width: auto; max-width: 200px; object-fit: contain; }
+.navbar-nav { display: flex; align-items: center; gap: 2rem; }
+.navbar-nav a, .navbar-nav .dropdown > button { font-size: 0.875rem; font-weight: 500; color: var(--foreground); transition: color 0.2s; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 4px; font-family: inherit; }
+.navbar-nav a:hover, .navbar-nav .dropdown > button:hover { color: var(--primary); }
+.btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: var(--primary-fg); border-radius: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 500; transition: opacity 0.2s; border: none; cursor: pointer; font-family: inherit; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-outline-dark { display: inline-flex; align-items: center; background: transparent; color: var(--foreground); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.625rem 1.5rem; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+.btn-outline-dark:hover { background: var(--muted); }
+.dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; left: 0; top: 100%; margin-top: 8px; min-width: 240px; background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.5rem 0; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 100; }
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu a { display: block; padding: 0.625rem 1rem; font-size: 0.875rem; color: var(--foreground); transition: background 0.15s, color 0.15s; }
+.dropdown-menu a:hover { background: var(--muted); color: var(--primary); }
+.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.5); }
+.mobile-nav-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 280px; background: var(--card); padding: 2rem 1.5rem; overflow-y: auto; }
+.mobile-nav-panel a { display: block; font-size: 1rem; font-weight: 500; color: var(--foreground); padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.mobile-nav-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--foreground); }
+.mobile-nav.open { display: block; }
+@media(min-width:768px){ .mobile-menu-btn { display: none; } }
+@media(max-width:767px){ .navbar-nav, .navbar .btn-primary { display: none; } .mobile-menu-btn { display: block; } }
+
+/* Page hero (mini) */
+.page-hero { position: relative; padding: 4rem 0 5rem; }
+.page-hero-bg { position: absolute; inset: 0; }
+.page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+.page-hero-content { position: relative; text-align: center; color: #fff; }
+.page-hero-content h1 { font-size: clamp(2rem,5vw,3rem); font-weight: 600; margin-bottom: 0.75rem; }
+.page-hero-content p { font-size: 0.95rem; opacity: 0.85; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+/* Intro section */
+.intro-section { padding: 5rem 0; }
+.intro-inner { max-width: 800px; margin: 0 auto; }
+.intro-inner h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; margin-bottom: 1.5rem; }
+.intro-inner h2 span { color: var(--primary); }
+.intro-inner p { font-size: 0.95rem; line-height: 1.8; color: var(--muted-fg); margin-bottom: 1.25rem; }
+
+/* Waarden section */
+.waarden-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 0; }
+.waarden-section h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; text-align: center; margin-bottom: 3rem; }
+.waarden-section h2 span { color: var(--primary); }
+.waarden-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
+@media(min-width:640px){ .waarden-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .waarden-grid { grid-template-columns: repeat(4,1fr); } }
+.waarde-card { text-align: center; }
+.waarde-icon { width: 56px; height: 56px; border-radius: 0.875rem; background: hsla(142,72%,38%,0.1); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--primary); }
+.waarde-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.waarde-card p { font-size: 0.875rem; line-height: 1.65; color: var(--muted-fg); }
+
+/* CTA section */
+.cta-section { padding: 5rem 0; text-align: center; }
+.cta-section h2 { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 600; margin-bottom: 1rem; }
+.cta-section h2 span { color: var(--primary); }
+.cta-section p { font-size: 0.95rem; color: var(--muted-fg); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* Footer */
+footer { background: var(--card); border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0 4rem; }
+@media(min-width:640px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:1024px){ .footer-grid { grid-template-columns: repeat(4,1fr); } }
+footer h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+footer ul li a { font-size: 0.875rem; color: var(--muted-fg); transition: color 0.2s; }
+footer ul li a:hover { color: var(--primary); }
+footer ul li:has(a:empty) { display: none; }
+.footer-addr p { font-size: 0.875rem; color: var(--muted-fg); margin-bottom: 0.375rem; }
+.footer-bottom { border-top: 1px solid var(--border); padding: 1rem 0; text-align: center; font-size: 0.75rem; color: var(--muted-fg); }
+
+.text-primary { color: var(--primary); }
+.wa-float { position:fixed; bottom:24px; right:24px; z-index:9999; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:transform .2s,box-shadow .2s; text-decoration:none; }
+.wa-float:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,.3); }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-stars">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span style="font-size:0.75rem;margin-left:6px">Beoordeeld met een 5.0</span>
+    </div>
+    <div class="topbar-contact">
+      <a href="tel:0638420007">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        06 38 42 00 07
+      </a>
+      <a href="mailto:maasnieuwenhuis@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        maasnieuwenhuis@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="container navbar-inner">
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice.html" class="navbar-logo"><img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/foto%27s/maas-nieuwenhuis-klus-en-tuinservice/foto_logo_ontwerp-zonder-titel---2026-07-05t122432.354.png" alt=" Maas Nieuwenhuis Klus en Tuinservice logo" style="height:40px;width:auto;max-width:160px;object-fit:contain"></a>
+    <nav class="navbar-nav">
+      <a href="/maas-nieuwenhuis-klus-en-tuinservice.html">Home</a>
+      <a href="/maas-nieuwenhuis-klus-en-tuinservice-over-ons.html" style="color:var(--primary)">Over</a>
+      <a href="/maas-nieuwenhuis-klus-en-tuinservice-diensten.html">Diensten</a>
+      <a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html">Contact</a>
+    </nav>
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html" class="btn-primary">Offerte aanvragen</a>
+    <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a>
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice-over-ons.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Over</a>
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice-diensten.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Diensten</a>
+    <a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
+    <div style="margin-top:1rem"><a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html" class="btn-primary" style="width:100%;justify-content:center">Offerte aanvragen</a></div>
+  </div>
+</div>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="https://agdwnlqiepnmxwkrpzqv.supabase.co/storage/v1/object/public/stockfotos/hovenier/hero/hovenier-hero-1.jpeg" alt="">
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="container page-hero-content">
+    <h1>Over Ons</h1>
+    <p>Betrokken hulp voor tuin en buitenruimte</p>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-inner">
+      <h2>Wie zijn <span>wij</span>?</h2>
+      <p>Maas Nieuwenhuis Klus en Tuinservice helpt klanten in Apeldoorn en omgeving met praktisch tuinwerk en klussen rondom huis. Van onderhoud tot bestrating en schuttingen, wij pakken het werk rustig en zorgvuldig aan.</p>
+      <p>Bij iedere klus luisteren wij eerst naar uw wensen. Daarna bespreken we wat mogelijk is en voeren we het werk uit met aandacht voor een nette afwerking.</p>
+      <p>Ons doel is eenvoudig: uw tuin en buitenruimte netjes, bruikbaar en goed verzorgd maken.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Waarden -->
+<section class="waarden-section">
+  <div class="container">
+    <h2>Waar wij voor <span>staan</span></h2>
+    <div class="waarden-grid">
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Net werk</h3>
+        <p>Wij zorgen voor een verzorgde uitvoering en oplevering.</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Eerlijk overleg</h3>
+        <p>U krijgt duidelijke uitleg over de aanpak.</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Praktisch meedenken</h3>
+        <p>Wij kijken naar oplossingen die passen bij uw situatie.</p>
+      </div>
+      <div class="waarde-card">
+        <div class="waarde-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Rustige aanpak</h3>
+        <p>Wij werken overzichtelijk, zorgvuldig en zonder onnodige haast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Kunnen wij u <span>helpen</span>?</h2>
+    <p>Neem contact op en bespreek uw tuin of klus.</p>
+    <div class="cta-btns">
+      <a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html" class="btn-primary">Offerte aanvragen</a>
+      <a href="tel:0638420007" class="btn-outline-dark">Bel 06 38 42 00 07</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="#">Tuinaanleg & Onderhoud</a></li>
+          <li><a href="#">Bestrating & Terrassen</a></li>
+          <li><a href="#">Schuttingen & Poorten</a></li>
+          <li><a href="#">Klussen Rondom Huis</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul>
+          <li><a href="#">Voorst</a></li>
+          <li><a href="#">Epe</a></li>
+          <li><a href="#">Heerde</a></li>
+          <li><a href="#">Brummen</a></li>
+          <li><a href="#">Deventer</a></li>
+          <li><a href="#">Zutphen</a></li>
+          <li><a href="#">Compleet werkgebied</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Over ons</h4>
+        <ul>
+          <li><a href="/maas-nieuwenhuis-klus-en-tuinservice-over-ons.html">Over ons</a></li>
+          <li><a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html">Contact</a></li>
+          <li><a href="/maas-nieuwenhuis-klus-en-tuinservice-contact.html">Offerte aanvragen</a></li>
+        </ul>
+      </div>
+      <div class="footer-addr">
+        <h4>Adres</h4>
+        <p style="font-weight:600;color:var(--foreground)"> Maas Nieuwenhuis Klus en Tuinservice</p>
+        <p></p>
+        <p></p>
+        <p style="margin-top:0.75rem">KvK: </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026  Maas Nieuwenhuis Klus en Tuinservice – Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var slug = 'maas-nieuwenhuis-klus-en-tuinservice';
+  var onLive = window.location.pathname.indexOf('/' + slug) !== 0;
+  if (onLive) {
+    var remap = {};
+    remap['/' + slug + '.html'] = '/';
+    remap['/' + slug + '-contact.html'] = '/contact';
+    remap['/' + slug + '-diensten.html'] = '/diensten';
+    remap['/' + slug + '-over-ons.html'] = '/over-ons';
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var h = a.getAttribute('href');
+      if (remap[h] !== undefined) a.setAttribute('href', remap[h]);
+    });
+  }
+})();
+</script>
+<a href="https://wa.me/https://wa.me/31638420007" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
