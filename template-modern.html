@@ -532,8 +532,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeModal(
   var grid=document.getElementById('dienstenGrid');
   if(!grid||!diensten.length)return;
   var icons=['<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'];
-  grid.innerHTML=diensten.slice(0,6).map(function(d,i){
-    var icon=icons[i%icons.length];
+  grid.innerHTML=diensten.slice(0,8).map(function(d,i){
+    var icon=d.icon||icons[i%icons.length];
     var img=d.foto?'<div class="dienst-card-img"><img src="'+d.foto+'" alt="'+d.naam+'" loading="lazy"></div>':'';
     return '<a href="/{{SLUG}}-diensten.html" class="dienst-card">'+img+'<div class="dienst-card-body"><div class="dienst-card-icon">'+icon+'</div><h3>'+d.naam+'</h3></div></a>';
   }).join('');
