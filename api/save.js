@@ -329,6 +329,9 @@ module.exports = async function handler(req, res) {
   if (tpl.isModern && !map.PROJECTEN_CTA_TITEL) {
     map.PROJECTEN_CTA_TITEL = 'Benieuwd wat wij voor uw woning kunnen betekenen?';
   }
+  if (tpl.isModern && !map.SOCIAL_FACEBOOK)  map.SOCIAL_FACEBOOK  = '#';
+  if (tpl.isModern && !map.SOCIAL_INSTAGRAM) map.SOCIAL_INSTAGRAM = '#';
+  if (tpl.isModern && !map.SOCIAL_LINKEDIN)  map.SOCIAL_LINKEDIN  = '#';
   if (tpl.isBigsite) {
     for (const prefix of ['STAD_1', 'STAD_2', 'STAD_3', 'STAD_4', 'STAD_5', 'STAD_6']) {
       if (!map[`${prefix}_SECTIE_TITEL`])  map[`${prefix}_SECTIE_TITEL`]  = '';

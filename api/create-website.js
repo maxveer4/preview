@@ -686,6 +686,11 @@ Controleer vóór je antwoordt:
     FORMULIER_WEBHOOK:    '',
     MODAL_OFFERTE_IFRAME: '',
     MODAL_ADVIES_IFRAME:  '',
+
+    // Social footer icons (modern only — editor fills these in later)
+    SOCIAL_FACEBOOK:  '#',
+    SOCIAL_INSTAGRAM: '#',
+    SOCIAL_LINKEDIN:  '#',
   };
 
   // ── Apply map to all templates ────────────────────────────────────────────
