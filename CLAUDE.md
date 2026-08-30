@@ -16,7 +16,7 @@ Vergrendelen doe je door `"status": "locked"` en `"lockedAt": "YYYY-MM-DD"` in t
 
 ## Commands
 
-There is no local dev server — this repo is a Vercel serverless API + static HTML files. There are no test commands.
+There is no local dev server — this repo is a Vercel serverless API + static HTML files. There are no test commands. There is also no `package.json`/`node_modules` at the repo root: every `api/*.js` file uses only Node built-ins (`fs`, `path`) plus the global `fetch` for all external calls (OpenAI, GitHub REST/Trees API, Supabase REST) — no npm install needed to work on the API.
 
 ```bash
 # Regenerate template HTML from a React/Vite template repo (run from preview-repo/)
@@ -27,6 +27,8 @@ node scripts/convert-template.js ../premium-craft-hero   # craft template
 # Test create-website without committing (dry_run mode)
 # POST /api/create-website with { "dry_run": true, ... } — returns HTML, no side effects
 ```
+
+`convert-template.js` takes exactly **one** argument (the template repo path) — output filenames come from that repo's own `cms-markers.json` `routes`. Its own header comment shows a stale second `<template-name>` arg that the script no longer accepts; trust the `Usage:` error message in the code, not the docstring above it.
 
 ---
 
@@ -66,7 +68,7 @@ stock-photos.json  Stock photo URLs keyed by sector + photo type (hero/waarom/we
 
 ### Template system
 
-Six template types, selected per client via the `template` field in Supabase `clients`:
+Five template types, selected per client via the `template` field in Supabase `clients`:
 
 | Type | Pages | Template files |
 |------|-------|----------------|
@@ -162,7 +164,11 @@ This builds the Vite app, renders pages with Playwright (`addInitScript` sets `w
 - `client_content` — `slug` (PK), `data` (jsonb), `updated_at` — primary field store for save.js
 - `klanten` — `slug`, `website_data` (jsonb), `ai_content` (jsonb) — read/written by save.js so gowebbo-studio editor reloads correct state
 
-The anon key is embedded in the API source files (public read-write key scoped to these tables by RLS).
+The anon key is embedded in the API source files (public read-write key scoped to these tables by RLS). `supabase-clients-import.sql` and `supabase-client-content.sql` in the repo root are the source-of-truth table-creation scripts (schema + RLS policies) for `clients` and `client_content`.
+
+## Further reading
+
+`docs/website-generatie-en-edit-flow.md` has a more detailed (Dutch) walkthrough of both flows plus a symptom→cause→fix diagnosis table. Note: it mentions "Claude Haiku" as the AI provider — that's stale; the current code (`api/create-website.js`) uses OpenAI `gpt-5.5`.
 
 ## Known pitfalls
 
